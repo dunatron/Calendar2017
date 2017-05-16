@@ -19,13 +19,23 @@ var _partsLogoSvgLogo = require('./parts/logo/svg-logo');
 
 var _partsLogoSvgLogo2 = _interopRequireDefault(_partsLogoSvgLogo);
 
+var _partsEventAddEvent = require('./parts/event/addEvent');
+
+var _partsEventAddEvent2 = _interopRequireDefault(_partsEventAddEvent);
+
+var _partsLocationLocationPickerAutofill = require('./parts/location/location-picker-autofill');
+
+var _partsLocationLocationPickerAutofill2 = _interopRequireDefault(_partsLocationLocationPickerAutofill);
+
 $(document).ready(function () {
     (0, _partsLogoSvgLogo2['default'])();
     (0, _partsNavigation2['default'])();
     (0, _partsApprovedApprovedEvent2['default'])();
+    (0, _partsEventAddEvent2['default'])();
+    (0, _partsLocationLocationPickerAutofill2['default'])();
 });
 
-},{"./parts/approved/approved-event":2,"./parts/logo/svg-logo":3,"./parts/navigation":4}],2:[function(require,module,exports){
+},{"./parts/approved/approved-event":2,"./parts/event/addEvent":3,"./parts/location/location-picker-autofill":4,"./parts/logo/svg-logo":5,"./parts/navigation":6}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -126,6 +136,274 @@ function HappLogoAnimation() {
 module.exports = exports["default"];
 
 },{}],3:[function(require,module,exports){
+/**
+ * Created by admin on 16/05/17.
+ */
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+exports['default'] = AddEventForm;
+
+function AddEventForm() {
+
+    var DetailsNext = $('#detailsNextBtn'),
+        TicketCheck = $('#hasTickets'),
+        DetailsWrapper = $('#details-step'),
+        TicketWrapper = $('#ticket-step'),
+        TicketBackBtn = $('#ticketBackBtn'),
+        TicketNextBtn = $('#ticketNextBtn'),
+        AccessField = $('#Form_HappEventForm_AccessType_5'),
+        TicketWebWrapper = $('#ticket-web-step'),
+        TicketWebBackBtn = $('#ticketWebBack'),
+        TicketWebNextBtn = $('#ticketWebNext'),
+        LocationWrapper = $('#location-step'),
+        LocationBack = $('#locationBack'),
+        LocationNext = $('#locationNext'),
+        DateWrapper = $('#date-step'),
+        DateBack = $('#dateBack'),
+        SubmitBtn = $('#submitHappEvent'),
+        addEventModal = $('#AddHappEventModal'),
+        continueAddEventOverlay = $('.continue-add-event-overlay'),
+        clearFormBtn = $('#Form_HappEventForm_action_ClearAction'),
+        resetFormBtn = $('#reset-add-event'),
+        continueFormBtn = $('#continue-add-event');
+
+    $(DetailsNext).on('click', function () {
+        if ($(TicketCheck).is(':checked')) {
+
+            showTicketStep();
+            hideDetailsStep();
+        } else {
+            hideDetailsStep();
+            showLocationStep();
+        }
+    });
+
+    $(TicketBackBtn).on('click', function () {
+        hideTicketStep();
+        showDetailsStep();
+    });
+
+    $(TicketNextBtn).on('click', function () {
+        if ($(AccessField).is(':checked')) {
+            hideTicketStep();
+            showTicketWebsiteStep();
+        } else {
+            hideTicketStep();
+            showLocationStep();
+        }
+    });
+
+    $(TicketWebBackBtn).on('click', function () {
+        hideTicketWebsiteStep();
+        showTicketStep();
+    });
+
+    $(TicketWebNextBtn).on('click', function () {
+        hideTicketWebsiteStep();
+        showLocationStep();
+    });
+
+    $(LocationBack).on('click', function () {
+        if ($(AccessField).is(':checked')) {
+            hideLocationStep();
+            showTicketWebsiteStep();
+        } else if ($(TicketCheck).is(':checked')) {
+            hideLocationStep();
+            showTicketStep();
+        } else {
+            hideLocationStep();
+            showDetailsStep();
+        }
+    });
+
+    $(LocationNext).on('click', function () {
+        hideLocationStep();
+        showDateStep();
+        showSubmitBtn();
+    });
+
+    $(DateBack).on('click', function () {
+        hideSubmitBtn();
+        hideDateStep();
+        showLocationStep();
+    });
+
+    function showDetailsStep() {
+        $(DetailsWrapper).removeClass('field-hidden');
+    }
+
+    function hideDetailsStep() {
+        $(DetailsWrapper).addClass('field-hidden');
+    }
+
+    function showTicketStep() {
+        $(TicketWrapper).removeClass('field-hidden');
+    }
+
+    function hideTicketStep() {
+        $(TicketWrapper).addClass('field-hidden');
+    }
+
+    function showTicketWebsiteStep() {
+        $(TicketWebWrapper).removeClass('field-hidden');
+    }
+
+    function hideTicketWebsiteStep() {
+        $(TicketWebWrapper).addClass('field-hidden');
+    }
+
+    function showLocationStep() {
+        $(LocationWrapper).removeClass('field-hidden');
+        showMap();
+    }
+
+    function hideLocationStep() {
+        $(LocationWrapper).addClass('field-hidden');
+    }
+
+    function showDateStep() {
+        $(DateWrapper).removeClass('field-hidden');
+    }
+
+    function hideDateStep() {
+        $(DateWrapper).addClass('field-hidden');
+    }
+
+    function hideSubmitBtn() {
+        $(SubmitBtn).addClass('field-hidden');
+    }
+
+    function showSubmitBtn() {
+        $(SubmitBtn).removeClass('field-hidden');
+    }
+
+    function showMap() {
+        $('#addEventMap').locationpicker('autosize');
+    }
+
+    // Continue overlay functions
+    function hideContinueOverlay() {
+        $(continueAddEventOverlay).addClass('hide-continue-options');
+        $(continueAddEventOverlay).removeClass('show-continue-options');
+    }
+
+    function showContinueOverlay() {
+        $(continueAddEventOverlay).addClass('show-continue-options');
+        $(continueAddEventOverlay).removeClass('hide-continue-options');
+    }
+
+    // wipe/reset form
+    $(resetFormBtn).on('click', function () {
+        resetAddEventForm();
+    });
+    //Continue form where user left off
+    $(continueFormBtn).on('click', function () {
+        resumeAddEventForm();
+    });
+
+    function resumeAddEventForm() {
+        hideContinueOverlay();
+    }
+
+    function resetAddEventForm() {
+        $(clearFormBtn).trigger('click');
+        hideSubmitBtn();
+        hideDateStep();
+        hideLocationStep();
+        hideTicketWebsiteStep();
+        showDetailsStep();
+        hideContinueOverlay();
+    }
+
+    // //Details Tags step
+    // $('.checkbox').on('click', function(){
+    //     $(this).parent().toggleClass('tag-selected');
+    // });
+    //Details Tags step
+    $("input[name*='EventTags']").on('click', function () {
+        $(this).parent().toggleClass('tag-selected');
+    });
+
+    // If details step has tickets
+
+    $("input[name*='HasTickets']").on('click', function () {
+        $(this).parent().toggleClass('tag-selected');
+    });
+
+    $(addEventModal).on('shown.bs.modal', function () {
+        $('#eventMap1').locationpicker('autosize');
+        $('html').addClass('modal-open');
+    });
+
+    $(addEventModal).on('hidden.bs.modal', function () {
+        $('html').removeClass('modal-open');
+        showContinueOverlay();
+    });
+}
+
+module.exports = exports['default'];
+
+},{}],4:[function(require,module,exports){
+/**
+ * Created by Heath on 28/08/16.
+ */
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+exports['default'] = LocationPickerAutoFill;
+
+function LocationPickerAutoFill() {
+
+    var EventLat = $('#addEventLat'),
+        EventLon = $('#addEventLon'),
+        EventRadius = $('#addEventRadius'),
+        EventAddress = $('#addEventAddress');
+
+    $('#eventMap').locationpicker({
+        location: {
+            latitude: -45.8751791,
+            longitude: 170.5031467
+        },
+        radius: 300,
+        inputBinding: {
+            latitudeInput: $(EventLat),
+            longitudeInput: $(EventLon),
+            radiusInput: $(EventRadius),
+            locationNameInput: $(EventAddress)
+        },
+        enableAutocomplete: true,
+        markerIcon: 'mysite/images/svg/location.svg'
+    });
+    // Modal Dialog control | reference
+    $('#AddHappEventModal').on('shown.bs.modal', function () {
+        $('#addEventMap').locationpicker('autosize');
+    });
+
+    $('#addEventMap').locationpicker({
+        location: {
+            latitude: -45.8751791,
+            longitude: 170.5031467
+        },
+        radius: 300,
+        inputBinding: {
+            latitudeInput: $(EventLat),
+            longitudeInput: $(EventLon),
+            radiusInput: $(EventRadius),
+            locationNameInput: $(EventAddress)
+        },
+        enableAutocomplete: true,
+        markerIcon: 'mysite/images/svg/location.svg'
+    });
+}
+
+module.exports = exports['default'];
+
+},{}],5:[function(require,module,exports){
 /**
  * Created by Heath on 16/02/17.
  */
@@ -636,7 +914,7 @@ function ApprovedEvent() {
 
 module.exports = exports['default'];
 
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /**
  * Created by admin on 16/05/17.
  */
