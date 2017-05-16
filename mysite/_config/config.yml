@@ -11,3 +11,32 @@ SSViewer:
   theme: 'simple'
 Debug:
   friendly_error_httpcode: true
+
+SiteConfig:
+  extensions:
+    - EventFindaExtension
+    - HappSiteConfig
+
+
+FulltextSearchable:
+  searchable_classes:
+    - 'SiteTree'
+SiteTree:
+  create_table_options:
+    MySQLDatabase:
+      'ENGINE=MyISAM'
+  extensions:
+    - MyISAMExtension
+    - "FulltextSearchable('Title, MenuTitle, Content, MetaDescription')"
+
+DataObject:
+  extensions:
+    - MyISAMExtension
+
+Event:
+  extensions:
+    - MyISAMExtension
+
+File:
+  extensions:
+    - MyISAMExtension
