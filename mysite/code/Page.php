@@ -40,6 +40,10 @@ class Page_Controller extends ContentController {
         // Set the folder to our theme so that relative image paths work
         Requirements::set_combined_files_folder($themeFolder . '/combinedfiles');
 
+        Requirements::javascript('https://unpkg.com/vue');
+        Requirements::javascript('https://unpkg.com/axios/dist/axios.min.js');
+
+
         // Add all our css files to combine into an array
         $CSSFiles = array(
             //$themeFolder . '/css/base-styles.css',
@@ -54,13 +58,14 @@ class Page_Controller extends ContentController {
 
         // Add all our files to combine into an array
         $JSFiles = array(
-            $themeFolder . '/js/scripts/vendor/jquery-3.2.1.min.js',
-            $themeFolder . '/js/scripts/vendor/bootstrap3.3.7.min.js',
-            $themeFolder . '/js/scripts/vendor/svg-core.min.js',
-            $themeFolder . '/js/scripts/vendor/select2.min.js',
-            $themeFolder . '/js/scripts/vendor/locationpicker.jquery.min.js',
-            $themeFolder . '/js/scripts/vendor/jquery.bxslider.min.js',
-            $themeFolder . '/js/scripts/all.js',
+//            $themeFolder . '/js/scripts/vendor/jquery-3.2.1.min.js',
+//            $themeFolder . '/js/scripts/vendor/bootstrap3.3.7.min.js',
+//            $themeFolder . '/js/scripts/vendor/svg-core.min.js',
+//            $themeFolder . '/js/scripts/vendor/select2.min.js',
+//            $themeFolder . '/js/scripts/vendor/locationpicker.jquery.min.js',
+//            $themeFolder . '/js/scripts/vendor/jquery.bxslider.min.js',
+//            $themeFolder . '/js/scripts/all.js',
+                $themeFolder . '/dist/app.bundle.js'
         );
         // Combine css files
         Requirements::combine_files('styles.css', $CSSFiles);
@@ -71,48 +76,61 @@ class Page_Controller extends ContentController {
 
     public function HappEventForm()
     {
-        // Details Fields
+        /**
+         * NOTE: The ->setRightTitle is being used in a custom form template and by Vue.
+         * It is using it to match the Vue Title and to check for validation.
+         */
         $detailsStart = LiteralField::create('DetailsStart', '<div id="details-step" class="form-step">');
-        $title = TextField::create('EventTitle', 'Title of the Event')
+
+        // Title
+        $Title = TextField::create('Title', 'Event Title')
             ->setAttribute('required', true)
-            ->setAttribute('v-model', 'AddEventForm.Title')
-            ->setAttribute('v-validate', 'AddEventForm.Title')
-            ->setAttribute('data-v-rules', 'required')
-            ->setAttribute('placeholder', 'Title');
+            ->setAttribute('v-model', 'Title')
+            ->setAttribute('v-validate', 'Title')
+            ->setAttribute('data-vv-rules', 'required|min:5|max:80')
+            ->setRightTitle('Title');
 
-        $titleError = LiteralField::create('titleError', '<p class="text-danger" v-if="errors.has(\'AddEventForm.Title\')">{{ errors.first(\'AddEventForm.Title\') }}</p>');
-        //$titleError = LiteralField::create('titleError', '<p class="text-danger">Error field???</p>');
+        //$titleError = LiteralField::create('titleError', '<p class="text-danger" v-if="errors.has(\'Title\')">{{ errors.first(\'Title\') }}</p>');
 
-        $desc = TextareaField::create('EventDescription', 'description of the event');
-        $ticket = CheckboxField::create('HasTickets', 'Check if event has tickets')->setAttribute('id', 'hasTickets');
-//        $tags = MultiValueCheckboxField::create(
-//            'EventTags',
-//            'Check relevant Tags',
-//            Tag::get()->map('ID', 'Title')->toArray(),
-//            null,
-//            true
-//        );
-        $detailsNext = LiteralField::create('detailsNextBtn', '<div class="add-event-controls"><div id="detailsNextBtn" class="add-event-next"><span>next</span></div></div>');
+        // Description
+        $desc = TextareaField::create('Description', 'Event Description')
+            ->setAttribute('required', true)
+            ->setAttribute('v-model', 'Description')
+            ->setAttribute('v-validate', 'Description')
+            ->setAttribute('data-vv-rules', 'required|min:10')
+            ->setRightTitle('Description');
+        //$descError = LiteralField::create('descError', '<p class="text-danger" v-if="errors.has(\'Description\')">{{ errors.first(\'Description\') }}</p>');
+        $ticket = CheckboxField::create('HasTickets', 'Check if event has tickets')
+            ->setAttribute('id', 'hasTickets')
+            ->setAttribute('v-model', 'HasTickets');
+
+        $detailsNext = LiteralField::create('detailsNextBtn', '<div v-show="!errors.has(\'Title\') && !errors.has(\'Description\')" class="add-event-controls"><div id="detailsNextBtn" class="add-event-next"><span>next</span></div></div>');
         $detailsEnd = LiteralField::create('DetailsEnd', '</div>');
 
-        // Ticket Step
+        //--> Ticket Step
         $ticketStart = LiteralField::create('TicketStart', '<div id="ticket-step" class="form-step field-hidden">');
+        // Restriction
         $restrictions = DropdownField::create('Restriction',
             'Restrictions for event',
             EventRestriction::get()->map('ID', 'Description')->toArray(),
             null,
             true
-        );
+        )
+            ->setAttribute('v-model', 'Restriction')
+            ->setAttribute('v-validate', 'Restriction')
+            ->setAttribute('data-vv-rules', 'required')
+            ->setRightTitle('Restriction');
+        //$restrictionError = LiteralField::create('restrictionError', '<p class="text-danger" v-if="errors.has(\'Restriction\')">{{ errors.first(\'Restriction\') }}</p>');
 
         $acc = new AccessTypeArray();
         $acc->getAccessValues();
         $ticketBack = LiteralField::create('ticketBackBtn', '<div class="add-event-controls"> <div id="ticketBackBtn" class="add-event-back"><span>back</span></div>');
-        $ticketNext = LiteralField::create('ticketNextBtn', '<div id="ticketNextBtn" class="add-event-next"><span>next</span></div></div>');
+        $ticketNext = LiteralField::create('ticketNextBtn', '<div v-show="!errors.has(\'Restriction\')" id="ticketNextBtn" class="add-event-next"><span>next</span></div></div>');
 
         $access = $acc->getAccessValues();
         $ticketEnd = LiteralField::create('TicketEnd', '</div>');
 
-        // Ticket Website (Option 5 is selected for radio option field)
+        //--> Ticket Website (Option 5 is selected for radio option field)
         $ticWebStart = LiteralField::create('TicWebStart', '<div id="ticket-web-step" class="form-step field-hidden">');
         $website = TextField::create('TicketWebsite', 'Ticket website');
         $phone = TextField::create('TicketPhone', 'Ticket provider phone number');
@@ -120,7 +138,15 @@ class Page_Controller extends ContentController {
         $ticketWebNext = LiteralField::create('ticketWebNext', '<div id="ticketWebNext" class="add-event-next"><span>next</span></div></div>');
         $ticWebEnd = LiteralField::create('TicWebEnd', '</div>');
 
-        // Location Step
+        //--> Location Step
+        $vueMap = LiteralField::create('vueMap', '<vue-google-autocomplete
+    id="map"
+    classname="form-control"
+    placeholder="Start typing"
+    v-on:placechanged="getAddressData"
+>
+</vue-google-autocomplete>
+');
         $locationStart = LiteralField::create('LocationStart', '<div id="location-step" class="form-step field-hidden">');
         $locationField = TextField::create('LocationText')->setAttribute('id', 'addEventAddress');
         $locLat = HiddenField::create('LocationLat', 'Location Latitude')->setAttribute('id', 'addEventLat');
@@ -131,7 +157,7 @@ class Page_Controller extends ContentController {
         $locationNext = LiteralField::create('LocationNext', '<div id="locationNext" class="add-event-next"><span>next</span></div></div>');
         $locationEnd = LiteralField::create('LocationEnd', '</div>');
 
-        // Date Step
+        //--> Date Step
         $dateStart = LiteralField::create('DateStart', '<div id="date-step" class="form-step field-hidden">');
         $date = DateField::create('EventDate', 'Date of the event')->setConfig('dateformat', 'dd-MM-yyyy')->setAttribute('type', 'date');
         $startTime = TextField::create('StartTime', 'Event start time')->addExtraClass('timepicker');
@@ -141,41 +167,11 @@ class Page_Controller extends ContentController {
         $dateEnd = LiteralField::create('DateEnd', '</div>');
 
         $fields = new FieldList(
-            $detailsStart,
-            $title,
-            $titleError,
-            $desc,
-            $ticket,
-            //$tags,
-            $detailsNext,
-            $detailsEnd,
-            $ticketStart,
-            $restrictions,
-            $access,
-            $ticketBack,
-            $ticketNext,
-            $ticketEnd,
-            $ticWebStart,
-            $website,
-            $phone,
-            $ticketWebBack,
-            $ticketWebNext,
-            $ticWebEnd,
-            $locationStart,
-            $locationField,
-            $locLat,
-            $locLong,
-            $locRadius,
-            $map,
-            $locationBack,
-            $locationNext,
-            $locationEnd,
-            $dateStart,
-            $date,
-            $startTime,
-            $finishTime,
-            $dateBack,
-            $dateEnd
+            $detailsStart, $Title,
+            $desc, $ticket, $detailsNext, $detailsEnd, $ticketStart, $restrictions,
+            $access, $ticketBack, $ticketNext, $ticketEnd, $ticWebStart, $website, $phone, $ticketWebBack, $ticketWebNext,
+            $ticWebEnd, $locationStart,$vueMap, $locationField, $locLat, $locLong, $locRadius, $map, $locationBack,
+            $locationNext, $locationEnd, $dateStart, $date, $startTime, $finishTime, $dateBack, $dateEnd
         );
 
 
@@ -187,8 +183,16 @@ class Page_Controller extends ContentController {
             ResetFormAction::create('ClearAction', 'Clear')
         );
 
-        $form = Form::create($this, 'HappEventForm', $fields, $actions)->addExtraClass('happ-add-event-form');
-        return $form;
+        $required = RequiredFields::create(array(
+            'EventTitle'
+        ));
+
+        $form = Form::create($this, 'HappEventForm', $fields, $actions, $required)->addExtraClass('happ-add-event-form');
+        $form->setTemplate('AddEventTemplate');
+//        return $form;
+        $data = Session::get("FormData.{$form->getName()}.data");
+
+        return $data ? $form->loadDataFrom($data) : $form;
     }
 
     public function processHappEvent($data, $form)
