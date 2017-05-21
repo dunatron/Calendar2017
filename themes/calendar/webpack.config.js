@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const jquery = require('jquery');
 
 
+
 module.exports = {
 
     context: path.resolve(__dirname, './src'),
@@ -26,6 +27,10 @@ module.exports = {
         //     minChunks: 2,
         // }),
         // Doing the more manual approach with entry of vendor. Remember to cashe the vendor output file
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        })
 
     ],
 
@@ -59,6 +64,9 @@ module.exports = {
                     'vue-loader',
                 ]
             },
+
+            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
+
             {
                 test: /\.svg$/,
                 use: [

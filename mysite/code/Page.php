@@ -40,6 +40,13 @@ class Page_Controller extends ContentController {
         // Set the folder to our theme so that relative image paths work
         Requirements::set_combined_files_folder($themeFolder . '/combinedfiles');
 
+
+        //code.jquery.com/jquery-3.2.1.min.js"
+
+//        Requirements::javascript('https://code.jquery.com/jquery-3.2.1.min.js');
+//        Requirements::javascript('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js');
+        //Requirements::javascript('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js');
+
         Requirements::javascript('https://unpkg.com/vue');
         Requirements::javascript('https://unpkg.com/axios/dist/axios.min.js');
 

@@ -5,8 +5,8 @@
  * Created by Heath on 24/05/16.
  */
 
-
 export default function CalendarNavigation() {
+
     var xmlHttp = createXmlHttpRequestObject(),
         ajaxPageLoad = $('.ajax-page-load'),
         searchModal = $('#SearchModal'),
