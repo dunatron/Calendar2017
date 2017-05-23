@@ -33,9 +33,9 @@ export default new Vue({
             this.address = addressData;
         },
 
-        placechanged: {
-
-        }
+        // placechanged: {
+        //
+        // }
     }
 
 

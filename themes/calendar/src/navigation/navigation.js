@@ -497,8 +497,8 @@ export default function CalendarNavigation() {
                 viewFactor: 0.3
             };
 
-            window.sr = ScrollReveal();
-            sr.reveal('.event-btn', mobileEventReveal);
+            //window.sr = ScrollReveal();
+            window.sr.reveal('.event-btn', mobileEventReveal);
         } else {
             // if larger
 

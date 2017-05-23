@@ -22,6 +22,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyBWVd4651hNv8mOn-RaHZdC166O82S-BbY&sensor=false&libraries=places"></script>
 
+    <style>
+        .pac-container {
+            z-index: 9999999999!important;
+        }
+    </style>
+
     <%--<% include InlineAppColors %>--%>
 </head>
 

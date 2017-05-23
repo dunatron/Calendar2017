@@ -141,7 +141,7 @@ export default function AddEventForm() {
 
 
     function showMap() {
-        $('#addEventMap').locationpicker('autosize');
+        //$('#addEventMap').locationpicker('autosize');
     }
 
 // Continue overlay functions
@@ -195,7 +195,7 @@ export default function AddEventForm() {
     });
 
     $(addEventModal).on('shown.bs.modal', function () {
-        $('#eventMap1').locationpicker('autosize');
+        //$('#eventMap1').locationpicker('autosize');
         $('html').addClass('modal-open');
     });
 

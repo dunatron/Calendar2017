@@ -47,8 +47,8 @@ class Page_Controller extends ContentController {
 //        Requirements::javascript('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js');
         //Requirements::javascript('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js');
 
-        Requirements::javascript('https://unpkg.com/vue');
-        Requirements::javascript('https://unpkg.com/axios/dist/axios.min.js');
+//        Requirements::javascript('https://unpkg.com/vue');
+//        Requirements::javascript('https://unpkg.com/axios/dist/axios.min.js');
 
 
         // Add all our css files to combine into an array
@@ -145,21 +145,33 @@ class Page_Controller extends ContentController {
         $ticketWebNext = LiteralField::create('ticketWebNext', '<div id="ticketWebNext" class="add-event-next"><span>next</span></div></div>');
         $ticWebEnd = LiteralField::create('TicWebEnd', '</div>');
 
-        //--> Location Step
-        $vueMap = LiteralField::create('vueMap', '<vue-google-autocomplete
-    id="map"
-    classname="form-control"
-    placeholder="Start typing"
-    v-on:placechanged="getAddressData"
->
-</vue-google-autocomplete>
-');
         $locationStart = LiteralField::create('LocationStart', '<div id="location-step" class="form-step field-hidden">');
         $locationField = TextField::create('LocationText')->setAttribute('id', 'addEventAddress');
         $locLat = HiddenField::create('LocationLat', 'Location Latitude')->setAttribute('id', 'addEventLat');
         $locLong = HiddenField::create('LocationLon', 'Location Longitude')->setAttribute('id', 'addEventLon');
         $locRadius = HiddenField::create('LocationRadius', 'Radius of the event')->setAttribute('id', 'addEventRadius');
         $map = LiteralField::create('googleMap', '<div id="addEventMap" style="width: 100%; height: 400px;"></div>');
+
+        $vueGoogleMap = LiteralField::create('VueMap', ' <vue-google-autocomplete
+                    id="map"
+                    classname="input"
+                    placeholder="Start typing"
+                    v-on:placechanged="getAddressData"
+                    country="NZ"
+                    style="width: 100%"
+                >
+                </vue-google-autocomplete>');
+//        $vueGoogleMap = LiteralField::create('VueMap', ' <vue-google-autocomplete
+//                    id="map"
+//                    classname="input"
+//                    placeholder="Start typing"
+//                    v-on:placechanged="getAddressData"
+//                    style="width: 100%"
+//                >
+//                </vue-google-autocomplete>');
+
+        $mapData = LiteralField::create('MapData', '<h1 v-text="address"></h1>');
+
         $locationBack = LiteralField::create('LocationBack', '<div class="add-event-controls"><div id="locationBack" class="add-event-back"><span>back</span></div>');
         $locationNext = LiteralField::create('LocationNext', '<div id="locationNext" class="add-event-next"><span>next</span></div></div>');
         $locationEnd = LiteralField::create('LocationEnd', '</div>');
@@ -177,7 +189,7 @@ class Page_Controller extends ContentController {
             $detailsStart, $Title,
             $desc, $ticket, $detailsNext, $detailsEnd, $ticketStart, $restrictions,
             $access, $ticketBack, $ticketNext, $ticketEnd, $ticWebStart, $website, $phone, $ticketWebBack, $ticketWebNext,
-            $ticWebEnd, $locationStart,$vueMap, $locationField, $locLat, $locLong, $locRadius, $map, $locationBack,
+            $ticWebEnd, $locationStart,$vueGoogleMap,$mapData, $locationBack,
             $locationNext, $locationEnd, $dateStart, $date, $startTime, $finishTime, $dateBack, $dateEnd
         );
 
