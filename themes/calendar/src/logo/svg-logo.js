@@ -394,7 +394,9 @@ export default function ApprovedEvent() {
                                         animateLetP2(function() {
                                             fillColor(function(){
                                                 if ($(window).width() < 880) {
-                                                    animateToDay('.current-day');
+                                                    if ( $( '.current-day' ).length ) {
+                                                        animateToDay('.current-day');
+                                                    }
                                                 }
                                             })
                                         })

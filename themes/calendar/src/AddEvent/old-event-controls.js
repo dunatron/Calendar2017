@@ -21,6 +21,9 @@ export default function AddEventForm() {
         LocationNext = $('#locationNext'),
         DateWrapper = $('#date-step'),
         DateBack = $('#dateBack'),
+        DateNext = $('#dateNext'),
+        FinishWrapper = $('#finish-step'),
+        FinishBackBtn = $('#finishBack'),
         SubmitBtn = $('#submitHappEvent'),
         addEventModal = $('#AddHappEventModal'),
         continueAddEventOverlay = $('.continue-add-event-overlay'),
@@ -81,7 +84,7 @@ export default function AddEventForm() {
     $(LocationNext).on('click', function () {
         hideLocationStep();
         showDateStep();
-        showSubmitBtn();
+
     });
 
     $(DateBack).on('click', function () {
@@ -89,6 +92,19 @@ export default function AddEventForm() {
         hideDateStep();
         showLocationStep();
     });
+
+    $(DateNext).on('click', function () {
+        showSubmitBtn();
+        hideDateStep();
+        showFinalStep();
+    });
+
+    $(FinishBackBtn).on('click', function () {
+        hideSubmitBtn()
+        hideFinalStep();
+        showDateStep();
+    });
+
 
     function showDetailsStep() {
         $(DetailsWrapper).removeClass('field-hidden');
@@ -119,6 +135,10 @@ export default function AddEventForm() {
         showMap();
     }
 
+    function showFinalStep(){
+        $(FinishWrapper).removeClass('field-hidden');
+    }
+
     function hideLocationStep() {
         $(LocationWrapper).addClass('field-hidden');
     }
@@ -130,6 +150,12 @@ export default function AddEventForm() {
     function hideDateStep() {
         $(DateWrapper).addClass('field-hidden');
     }
+
+    function hideFinalStep(){
+        $(FinishWrapper).addClass('field-hidden');
+    }
+
+
 
     function hideSubmitBtn() {
         $(SubmitBtn).addClass('field-hidden');
@@ -176,6 +202,7 @@ export default function AddEventForm() {
         hideTicketWebsiteStep();
         showDetailsStep();
         hideContinueOverlay();
+        hideFinalStep();
     }
 
 
@@ -202,5 +229,15 @@ export default function AddEventForm() {
     $(addEventModal).on('hidden.bs.modal', function () {
         $('html').removeClass('modal-open');
         showContinueOverlay();
+    });
+
+
+    // Scroll to top of modal
+    $('.add-event-back').on('click', function(){
+        $('#AddHappEventModal').animate({ scrollTop: 0 }, 'slow');
+    });
+
+    $('.add-event-next').on('click', function(){
+        $('#AddHappEventModal').animate({ scrollTop: 0 }, 'slow');
     });
 }

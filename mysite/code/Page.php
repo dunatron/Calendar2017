@@ -35,21 +35,11 @@ class Page_Controller extends ContentController {
 	public function init() {
 		parent::init();
         Requirements::clear();
+        /*
         $themeFolder = $this->ThemeDir();
 
         // Set the folder to our theme so that relative image paths work
         Requirements::set_combined_files_folder($themeFolder . '/combinedfiles');
-
-
-        //code.jquery.com/jquery-3.2.1.min.js"
-
-//        Requirements::javascript('https://code.jquery.com/jquery-3.2.1.min.js');
-//        Requirements::javascript('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js');
-        //Requirements::javascript('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js');
-
-//        Requirements::javascript('https://unpkg.com/vue');
-//        Requirements::javascript('https://unpkg.com/axios/dist/axios.min.js');
-
 
         // Add all our css files to combine into an array
         $CSSFiles = array(
@@ -59,19 +49,8 @@ class Page_Controller extends ContentController {
             $themeFolder . '/css/main.css'
         );
 
-
-//        Requirements::javascript('http://maps.google.com/maps/api/js?key=AIzaSyBWVd4651hNv8mOn-RaHZdC166O82S-BbY&sensor=false&libraries=places');
-        //Requirements::javascript($this->ThemeDir() . "/js/scripts/locationpicker.jquery.min.js");
-
         // Add all our files to combine into an array
         $JSFiles = array(
-//            $themeFolder . '/js/scripts/vendor/jquery-3.2.1.min.js',
-//            $themeFolder . '/js/scripts/vendor/bootstrap3.3.7.min.js',
-//            $themeFolder . '/js/scripts/vendor/svg-core.min.js',
-//            $themeFolder . '/js/scripts/vendor/select2.min.js',
-//            $themeFolder . '/js/scripts/vendor/locationpicker.jquery.min.js',
-//            $themeFolder . '/js/scripts/vendor/jquery.bxslider.min.js',
-//            $themeFolder . '/js/scripts/all.js',
                 $themeFolder . '/dist/app.bundle.js'
         );
         // Combine css files
@@ -79,6 +58,7 @@ class Page_Controller extends ContentController {
 
         // Combine js files
         Requirements::combine_files('scripts.js', $JSFiles);
+        */
 	}
 
     public function HappEventForm()
@@ -93,8 +73,8 @@ class Page_Controller extends ContentController {
         $Title = TextField::create('Title', 'Event Title')
             ->setAttribute('required', true)
             ->setAttribute('v-model', 'Title')
-            ->setAttribute('v-validate', 'Title')
-            ->setAttribute('data-vv-rules', 'required|min:5|max:80')
+            ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:80", arg: "Title", scope: "validate-add-event" }')
+//            ->setAttribute('data-vv-rules', 'required|min:5|max:80')
             ->setRightTitle('Title');
 
         //$titleError = LiteralField::create('titleError', '<p class="text-danger" v-if="errors.has(\'Title\')">{{ errors.first(\'Title\') }}</p>');
@@ -103,15 +83,15 @@ class Page_Controller extends ContentController {
         $desc = TextareaField::create('Description', 'Event Description')
             ->setAttribute('required', true)
             ->setAttribute('v-model', 'Description')
-            ->setAttribute('v-validate', 'Description')
-            ->setAttribute('data-vv-rules', 'required|min:10')
+            ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:500", arg: "Description", scope: "validate-add-event" }')
+//            ->setAttribute('data-vv-rules', 'required|min:10')
             ->setRightTitle('Description');
         //$descError = LiteralField::create('descError', '<p class="text-danger" v-if="errors.has(\'Description\')">{{ errors.first(\'Description\') }}</p>');
         $ticket = CheckboxField::create('HasTickets', 'Check if event has tickets')
             ->setAttribute('id', 'hasTickets')
             ->setAttribute('v-model', 'HasTickets');
 
-        $detailsNext = LiteralField::create('detailsNextBtn', '<div v-show="!errors.has(\'Title\') && !errors.has(\'Description\')" class="add-event-controls"><div id="detailsNextBtn" class="add-event-next"><span>next</span></div></div>');
+        $detailsNext = LiteralField::create('detailsNextBtn', '<div @click="detailsForwardProgress" v-show="!errors.has(\'validate-add-event.Title\') && !errors.has(\'validate-add-event.Description\') " class="add-event-controls"><div id="detailsNextBtn" class="add-event-next"><span>next</span></div></div>');
         $detailsEnd = LiteralField::create('DetailsEnd', '</div>');
 
         //--> Ticket Step
@@ -124,15 +104,16 @@ class Page_Controller extends ContentController {
             true
         )
             ->setAttribute('v-model', 'Restriction')
-            ->setAttribute('v-validate', 'Restriction')
-            ->setAttribute('data-vv-rules', 'required')
-            ->setRightTitle('Restriction');
+            ->setAttribute('v-validate.initial', '{ rules: "required", arg: "Restriction", scope: "validate-add-event" }')
+//            ->setAttribute('data-vv-rules', 'required')
+            ->setRightTitle('Restriction')
+            ->setEmptyString('Select Age Restriction');
         //$restrictionError = LiteralField::create('restrictionError', '<p class="text-danger" v-if="errors.has(\'Restriction\')">{{ errors.first(\'Restriction\') }}</p>');
 
         $acc = new AccessTypeArray();
         $acc->getAccessValues();
-        $ticketBack = LiteralField::create('ticketBackBtn', '<div class="add-event-controls"> <div id="ticketBackBtn" class="add-event-back"><span>back</span></div>');
-        $ticketNext = LiteralField::create('ticketNextBtn', '<div v-show="!errors.has(\'Restriction\')" id="ticketNextBtn" class="add-event-next"><span>next</span></div></div>');
+        $ticketBack = LiteralField::create('ticketBackBtn', '<div class="add-event-controls"> <div id="ticketBackBtn"  @click="ticketBackProgress" class="add-event-back"><span>back</span></div>');
+        $ticketNext = LiteralField::create('ticketNextBtn', '<div v-show="!errors.has(\'validate-add-event.Restriction\')" id="ticketNextBtn" @click="ticketForwardProgress" class="add-event-next"><span>next</span></div></div>');
 
         $access = $acc->getAccessValues();
         $ticketEnd = LiteralField::create('TicketEnd', '</div>');
@@ -141,8 +122,8 @@ class Page_Controller extends ContentController {
         $ticWebStart = LiteralField::create('TicWebStart', '<div id="ticket-web-step" class="form-step field-hidden">');
         $website = TextField::create('TicketWebsite', 'Ticket website');
         $phone = TextField::create('TicketPhone', 'Ticket provider phone number');
-        $ticketWebBack = LiteralField::create('ticketWebBack', '<div class="add-event-controls"><div id="ticketWebBack" class="add-event-back"><span>back</span></div>');
-        $ticketWebNext = LiteralField::create('ticketWebNext', '<div id="ticketWebNext" class="add-event-next"><span>next</span></div></div>');
+        $ticketWebBack = LiteralField::create('ticketWebBack', '<div class="add-event-controls"><div @click="websiteBackProgress" id="ticketWebBack" class="add-event-back"><span>back</span></div>');
+        $ticketWebNext = LiteralField::create('ticketWebNext', '<div @click="websiteForwardProgress" id="ticketWebNext" class="add-event-next"><span>next</span></div></div>');
         $ticWebEnd = LiteralField::create('TicWebEnd', '</div>');
 
         $locationStart = LiteralField::create('LocationStart', '<div id="location-step" class="form-step field-hidden">');
@@ -161,19 +142,11 @@ class Page_Controller extends ContentController {
                     style="width: 100%"
                 >
                 </vue-google-autocomplete>');
-//        $vueGoogleMap = LiteralField::create('VueMap', ' <vue-google-autocomplete
-//                    id="map"
-//                    classname="input"
-//                    placeholder="Start typing"
-//                    v-on:placechanged="getAddressData"
-//                    style="width: 100%"
-//                >
-//                </vue-google-autocomplete>');
 
         $mapData = LiteralField::create('MapData', '<h1 v-text="address"></h1>');
 
-        $locationBack = LiteralField::create('LocationBack', '<div class="add-event-controls"><div id="locationBack" class="add-event-back"><span>back</span></div>');
-        $locationNext = LiteralField::create('LocationNext', '<div id="locationNext" class="add-event-next"><span>next</span></div></div>');
+        $locationBack = LiteralField::create('LocationBack', '<div class="add-event-controls"><div @click="locationBackProgress" id="locationBack" class="add-event-back"><span>back</span></div>');
+        $locationNext = LiteralField::create('LocationNext', '<div @click="locationForwardProgress" id="locationNext" class="add-event-next"><span>next</span></div></div>');
         $locationEnd = LiteralField::create('LocationEnd', '</div>');
 
         //--> Date Step
@@ -181,16 +154,39 @@ class Page_Controller extends ContentController {
         $date = DateField::create('EventDate', 'Date of the event')->setConfig('dateformat', 'dd-MM-yyyy')->setAttribute('type', 'date');
         $startTime = TextField::create('StartTime', 'Event start time')->addExtraClass('timepicker');
         $finishTime = TextField::create('FinishTime', 'Event finish time')->addExtraClass('timepicker');
-        $dateBack = LiteralField::create('DateBack', '<div class="add-event-controls"><div id="dateBack" class="add-event-back"><span>back</span></div></div>');
-
+        $dateBack = LiteralField::create('DateBack', '<div class="add-event-controls"><div id="dateBack" @click="dateBackProgress" class="add-event-back"><span>back</span></div>');
+        $dateNext = LiteralField::create('LocationNext', '<div @click="dateForwardProgress" id="dateNext" class="add-event-next"><span>next</span></div></div>');
         $dateEnd = LiteralField::create('DateEnd', '</div>');
+
+        //--> Finish Step
+        $finishStepStart = LiteralField::create('finishStepStart', '<div id="finish-step" class="form-step field-hidden">');
+
+        $evaluateData = LiteralField::create('EvaluateFormData', '<h1>Hello Tron</h1>');
+
+        $finishBack = LiteralField::create('FinishBack', '<div class="add-event-controls"><div id="finishBack" @click="finishBackProgress" class="add-event-back"><span>back</span></div></div>');
+
+        $finishStepEnd = LiteralField::create('finishStepEnd', '</div>');
+
+        //--> Global elements
+        $formProgress = LiteralField::create('formProgress', '<radial-progress-bar :diameter="100"
+                       :completed-steps="completedSteps"
+                       :total-steps="totalSteps"
+                       :animate-speed="animateSpeed"
+                       :stroke-width="strokeWidth"
+                       :start-color="startColor"
+                       :stop-color="stopColor"
+                       :inner-stroke-color="innerStrokeColor"
+                       >
+<p>{{ completedSteps }}/{{ totalSteps }}</p>
+<p>Steps</p>
+  </radial-progress-bar>');
 
         $fields = new FieldList(
             $detailsStart, $Title,
             $desc, $ticket, $detailsNext, $detailsEnd, $ticketStart, $restrictions,
             $access, $ticketBack, $ticketNext, $ticketEnd, $ticWebStart, $website, $phone, $ticketWebBack, $ticketWebNext,
             $ticWebEnd, $locationStart,$vueGoogleMap,$mapData, $locationBack,
-            $locationNext, $locationEnd, $dateStart, $date, $startTime, $finishTime, $dateBack, $dateEnd
+            $locationNext, $locationEnd, $dateStart, $date, $startTime, $finishTime, $dateBack, $dateNext, $dateEnd, $finishStepStart,$evaluateData,$finishBack, $finishStepEnd, $formProgress
         );
 
 
@@ -208,6 +204,7 @@ class Page_Controller extends ContentController {
 
         $form = Form::create($this, 'HappEventForm', $fields, $actions, $required)->addExtraClass('happ-add-event-form');
         $form->setTemplate('AddEventTemplate');
+        $form->setAttribute('data-vv-scope', 'validate-add-event');
 //        return $form;
         $data = Session::get("FormData.{$form->getName()}.data");
 

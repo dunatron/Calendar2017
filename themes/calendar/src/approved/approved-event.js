@@ -7,15 +7,15 @@ export default function HappLogoAnimation() {
         var RADIUS = $(this).attr("radius");
         // ToDO Create AJAX Call To Database to get different elements
         // eventMap | div element
-        $('#eventMap1').locationpicker({
-            location: {
-                latitude: LATITUE,
-                longitude: LONGITUDE
-            },
-            radius: RADIUS,
-            enableAutocomplete: true,
-            markerIcon: 'mysite/images/svg/location.svg'
-        });
+        // $('#eventMap1').locationpicker({
+        //     location: {
+        //         latitude: LATITUE,
+        //         longitude: LONGITUDE
+        //     },
+        //     radius: RADIUS,
+        //     enableAutocomplete: true,
+        //     markerIcon: 'mysite/images/svg/location.svg'
+        // });
 
         var EVENTID = $(this).attr("eid");
 
@@ -42,7 +42,7 @@ export default function HappLogoAnimation() {
         });
         // Modal Dialog control | reference
         $('#ApprovedEventModal').on('shown.bs.modal', function () {
-            $('#eventMap1').locationpicker('autosize');
+            //$('#eventMap1').locationpicker('autosize');
             modalIsOpen();
         });
 

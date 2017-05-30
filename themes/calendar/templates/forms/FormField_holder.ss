@@ -2,7 +2,7 @@
     <% if $Title %><label class="left" for="$ID">$Title</label><% end_if %>
     <div class="middleColumn">
         $Field
-        <p class="text-danger" v-if="errors.has('$RightTitle')">{{ errors.first('$RightTitle') }}
+        <p class="text-danger" v-if="errors.has('validate-add-event.$RightTitle')">{{ errors.first('validate-add-event.$RightTitle') }}
     </div>
     <%--<% if $RightTitle %><label class="right" for="$ID">$RightTitle</label><% end_if %>--%>
     <% if $Message %><span class="message $MessageType">$Message</span><% end_if %>

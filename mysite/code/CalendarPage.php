@@ -40,9 +40,38 @@ class CalendarPage_Controller extends Page_Controller
     public function init()
     {
         parent::init();
-        //CSS ASSETS
-        //Requirements::css($this->ThemeDir() . "/css/calendar.css"); // Not really needed
-        //Requirements::css($this->ThemeDir() . "/css/homepage.css");
+
+        $themeFolder = $this->ThemeDir();
+
+        // Set the folder to our theme so that relative image paths work
+        Requirements::set_combined_files_folder($themeFolder . '/combinedfiles');
+
+        $JSFiles = array(
+            //$themeFolder . '/dist/bootstrap.bundle.js',
+            $themeFolder . '/dist/app.bundle.js'
+        );
+
+//        $CSSFiles = array(
+//            //$themeFolder . '/css/base-styles.css',
+//            $themeFolder . '/css/Calendar-Core.css',
+//            $themeFolder . '/css/homepage.css',
+//            $themeFolder . '/css/main.css'
+//        );
+
+        // Combine css files
+        //Requirements::combine_files('styles.css', $CSSFiles);
+
+        Requirements::combine_files('scripts.js', $JSFiles);
+
+        /**
+         * Because I am using webpack, we want this script in the head to style our document before the elements load.
+         * Because of this make sure we are doing best practise and load our selectors etc after document ready.
+         * This means exporting our javascript and vue modules etc properly as functions. meaning we import in our entry js file,
+         * and the call the function in document ready
+         */
+
+        Requirements::set_write_js_to_body(false);
+
 
         // If session is not set, get today's date and set year and month
         if (!isset($_SESSION['Month'])) {

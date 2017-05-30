@@ -482,6 +482,8 @@ export default function CalendarNavigation() {
     function happEventReveal(){
         // Scroll Reveal | https://github.com/jlmakes/scrollreveal
 
+
+
         if($(window).width() <= 880) {
             // if smaller or equal
             // window.sr = ScrollReveal({duration: 750});
@@ -498,7 +500,10 @@ export default function CalendarNavigation() {
             };
 
             //window.sr = ScrollReveal();
-            window.sr.reveal('.event-btn', mobileEventReveal);
+            if ( $( '.event-btn' ).length ) {
+                window.sr.reveal('.event-btn', mobileEventReveal);
+            }
+
         } else {
             // if larger
 

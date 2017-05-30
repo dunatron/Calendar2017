@@ -6,6 +6,12 @@
                 <div class="close-event-btn" data-dismiss="modal" aria-label="Close">
                     $getCloseSVG
                 </div>
+                <%--<radial-progress-bar :diameter="100"--%>
+                                     <%--:completed-steps="completedSteps"--%>
+                                     <%--:total-steps="totalSteps">--%>
+                    <%--<p>{{ completedSteps }}/{{ totalSteps }}</p>--%>
+                    <%--<p>Steps</p>--%>
+                <%--</radial-progress-bar>--%>
                 <h4 class="modal-title">Add Happ Event</h4>
             </div>
             <div class="modal-body" id="VueAddEvent">
