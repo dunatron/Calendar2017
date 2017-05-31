@@ -1,0 +1,70 @@
+.ticket-restrict-strip {
+  border-bottom: @color-border;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  min-height: 60px;
+  .ticket-strip {
+    padding: @event-modal-strip-padd;
+    border-right: @color-border;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    @media @min865 {
+      flex-direction: row;
+    }
+    .ticket-svg {
+      height: 40px;
+      padding-right: 20px;
+    }
+    .ticket-price {
+      font-size: 16px;
+      flex-grow: 2;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      @media @min865 {
+        font-size: 20px;
+      }
+    }
+    .buy-ticket-btn {
+      font-size: 11px;
+      padding: 2px 5px;
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      border: @color-border;
+      .ticket-svg {
+        height: 20px;
+        padding-right: 5px;
+      }
+    }
+  }
+  .restriction-strip {
+    padding: @event-modal-strip-padd;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    @media @min865 {
+      flex-direction: row;
+    }
+    .restrict-svg {
+      height: 30px;
+      padding-right: 20px;
+    }
+    .restriction-type {
+      font-size: 16px;
+      @media @min865 {
+        font-size: 20px;
+      }
+    }
+  }
+}

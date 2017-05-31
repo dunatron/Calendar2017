@@ -1,0 +1,122 @@
+.events-control-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+
+  @include breakpoint($min865) {
+    position: relative;
+    height: 60px;
+    width: 23.3333%;
+    display: inline-block;
+    float: left;
+  }
+  @include breakpoint($min1100) {
+    width: 33.3333%;
+  }
+  @include breakpoint($min1400) {
+    width: 33.3333%;
+    display: inline-block;
+    float: left;
+  }
+
+  .events-inner-wrap {
+    height: 100%;
+    @include breakpoint($min865) {
+
+    }
+    @include breakpoint($min1100) {
+
+    }
+    @include breakpoint($min1400) {
+
+    }
+  }
+
+  .add-event {
+    width: 33.33333%;
+    float: left;
+    display: inline-block;
+    background-color: $c_orange_main;
+
+    height: 100%;
+    @include breakpoint($min865) {
+      height: 100%;
+      margin-top: 0;
+      background-color: transparent;
+    }
+    @include breakpoint($min1100) {
+
+    }
+    @include breakpoint($min1400) {
+
+    }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+      .add-event-svg {
+        height: 36px;
+      }
+    }
+  }
+
+  .search-event {
+    width: 33.33333%;
+    float: left;
+    display: inline-block;
+    background-color: #FFF;
+    height: 100%;
+    @include breakpoint($min865) {
+      height: 100%;
+      margin-top: 0;
+      background-color: transparent;
+    }
+    @include breakpoint($min1100) {
+
+    }
+    @include breakpoint($min1400) {
+
+    }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      .search-svg {
+        height: 36px;
+      }
+    }
+  }
+
+  .filter-events {
+    width: 33.33333%;
+    float: left;
+    display: inline-block;
+    background-color: $c_orange_main;
+    height: 100%;
+    @include breakpoint($min865) {
+      height: 100%;
+      margin-top: 0;
+      background-color: transparent;
+    }
+    @include breakpoint($min1100) {
+
+    }
+    @include breakpoint($min1400) {
+
+    }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100%;
+      .filter-svg {
+        height: 36px;
+      }
+    }
+  }
+
+}

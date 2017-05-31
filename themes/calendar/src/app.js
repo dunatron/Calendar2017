@@ -9,19 +9,18 @@ import $ from 'jquery'
 //
 // import './sass/app.scss'
 
-require('bootstrap-loader');
 
-
-
-
-import './sass/app.scss'
 
 //import './bootstrap/customizations.scss'
 
 // Import custom css
 import './../css/Calendar-Core.css'
 
-import './../css/homepage.css'
+require('bootstrap-loader');
+
+import './sass/app.scss'
+
+// import './../css/homepage.css'
 
 
 

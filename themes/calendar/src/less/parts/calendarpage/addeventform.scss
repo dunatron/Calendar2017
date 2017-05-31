@@ -1,0 +1,83 @@
+
+
+.modal-dialog {
+
+
+
+}
+
+.modal-content {
+
+}
+
+// Modal Header
+.modal-header {
+
+  .close {
+    color: $color-happ-orange;
+
+  }
+
+  .modal-title {
+    text-align: center;
+    font-size: 24px;
+    color: $color-happ-orange;
+
+  }
+
+}
+
+// Modal Body
+.modal-body {
+  max-height: 500px;
+  overflow-y: scroll;
+  @include breakpoint($min960) {
+    overflow-y: hidden;
+    max-height: 800px;
+  }
+
+}
+
+// Modal Footer
+.modal-footer {
+  text-align: center;
+  .powered-by-happ {
+    margin-left: auto;
+    //margin-right: auto;
+  }
+
+}
+
+// Event Form
+.add-event-form {
+
+  // Form Fields
+  fieldset {
+    .add-event-form-element {
+      padding: 10px 10px 10px 10px;
+      width: 100%;
+      font-size: 20px;
+      text-align: center;
+      content: "hello";
+    }
+  }
+
+  // Form Actions
+  .Actions {
+    text-align: center;
+    #Form_AddEventForm_action_processAddEvent{
+      border-radius: 0;
+      padding: 10px 50px 10px 50px;
+      font-size: 20px;
+      border-color: $color-happ-orange;
+      border-width: 4.166666666666667px;
+      border-style: solid;
+      background: transparent;
+      &:hover, &:focus {
+        background-color: $color-happ-orange;
+        color: #FFF;
+      }
+    }
+  }
+
+}

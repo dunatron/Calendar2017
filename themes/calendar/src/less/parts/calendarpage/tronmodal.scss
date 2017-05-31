@@ -1,0 +1,102 @@
+//@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400);
+//
+//.font-roboto {
+//  font-family: 'roboto condensed';
+//}
+
+* {
+  box-sizing: border-box;
+}
+.fc-calendar-container {
+
+  .fc-calendar {
+
+
+    #addEventModal.modal {
+      display: none;
+    }
+
+    .modal {
+      overflow: hidden;
+      margin-top: 0 !important;
+      z-index: 9999999999;
+      display: none;
+    }
+
+    .modal-dialog {
+      width: 80%;
+      height: 80%;
+      padding: 0;
+      z-index: 9999999999;
+
+
+    }
+
+    .modal-content {
+      border: 2px solid #3c7dcf;
+      border-radius: 0;
+      box-shadow: none;
+      z-index: 999999999999;
+    }
+
+    .modal-header {
+      height: 50px;
+      padding: 10px;
+      background: #6598d9;
+      border: 0;
+    }
+
+    .modal-title {
+      font-weight: 300;
+      font-size: 2em;
+      color: #fff;
+      line-height: 30px;
+    }
+
+    .modal-body {
+
+      width: 100%;
+      font-weight: 300;
+
+      z-index: 9999999999;
+      overflow: auto;
+      @include breakpoint($min1100) {
+        overflow: hidden;
+      }
+    }
+
+    .modal-footer {
+      height: 60px;
+      padding: 10px;
+      background: #f1f3f5;
+    }
+
+    //.modal-backdrop {
+    //  position: fixed;
+    //  z-index: 1040;
+    //  //  background-color: rgba(252, 103, 60, 0.6);
+    //  background-color: rgba(255, 255, 255, 0.6);
+    //
+    //  opacity: 0.6;
+    //}
+
+
+
+    ::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 10px;
+      background: #f1f3f5;
+      border-left: 1px solid darken(#f1f3f5, 10%);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: darken(#f1f3f5, 20%);
+    }
+
+
+
+  }
+
+}
+
+

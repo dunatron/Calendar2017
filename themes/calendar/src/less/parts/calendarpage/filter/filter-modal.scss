@@ -1,0 +1,55 @@
+#FilterModal {
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  @include breakpoint($min865) {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  .modal-dialog {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    border: none;
+
+    .modal-content {
+      border-radius: 0;
+      height: 100%;
+      //border-bottom: 1px solid $c_orange_main;
+      border: none;
+    }
+
+    .modal-head{
+      height: 60px;
+      position: relative;
+      .search-wrapper {
+        padding-left: 60px;
+        height: 60px;
+        border: none;
+        @include breakpoint($min865) {
+          padding-left: 60px;
+          height: 60px;
+          border: none;
+        }
+      }
+    }
+
+    .modal-body {
+      height: 100%;
+      padding: 0;
+      overflow: hidden;
+    }
+  }
+  .close-btn {
+    background-color: $c_orange_main;
+    position: absolute;
+    //top:0;
+    left: 0;
+    z-index: 9999;
+    height: 60px;
+    @include breakpoint($min865) {
+      height: 60px;
+      //top:10px;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+#MemberLoginForm_LoginForm {
+  text-align: left;
+  max-width: 280px;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: $font_GustanLight;
+  fieldset{
+    border: none;
+    .field {
+      padding-bottom: 30px;
+      label {
+        text-align: left;
+        font-weight: 100;
+        font-size: 16px;
+      }
+      .middleColumn {
+        input {
+          width:100%;
+          font-size: 20px;
+          padding: 8px 15px;
+          color: $color-happ-orange;
+          border: 1px solid $color-gray;
+        }
+      }
+      .checkbox{margin-left: 0;
+      }
+    }
+    #MemberLoginForm_LoginForm_Remember_Holder {
+      text-align: center;
+    }
+  }
+  .Actions {
+    text-align: center;
+    #MemberLoginForm_LoginForm_action_dologin {
+      @include btn_centre_out();
+      margin-bottom: 30px
+    }
+  }
+}

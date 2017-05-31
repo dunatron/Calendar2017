@@ -1,0 +1,60 @@
+#ui-timepicker-div  {
+  font-size: 20px;
+  padding: 20px;
+  &:before {
+    top: -3px;
+    left: 6px;
+    content: '';
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #FFF;
+    border-top: 0;
+    border-bottom-color: rgba(255,255,255,1);
+    position: absolute;
+  }
+  .ui-timepicker-table {
+    line-height: 1.8em;
+    @media @min768 {
+      border-spacing: 20px;
+    }
+    border-collapse: separate;
+    display: table;
+    tbody {
+      tr {
+        padding: 10px 15px;
+        display: table-row;
+        td {
+          .ui-timepicker-title {
+            line-height: 0;
+            background: transparent;
+          }
+
+          .ui-timepicker {
+            tbody {
+              tr {
+                .periods {
+
+                }
+              }
+              td { //OR use td
+                .ui-state-default {
+                  padding: 1.0em 2.0em;
+                  &:hover, &.ui-state-active {
+                    background: @color-happ-orange;
+                    color: #FFF;
+                  }
+                }
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+
+.ui-timepicker-standard {
+  z-index: 9999999999999 !important;
+}

@@ -1,0 +1,172 @@
+// Animation effect and speed
+.animation_animation(@animation: all 0.3s ease-in) {
+  -o-transition: @animation;
+  -ms-transition: @animation;
+  -moz-transition: @animation;
+  -webkit-transition: @animation;
+  transition: @animation;
+}
+
+// Beats typing these rules out each time
+.show_psuedo() {
+  content: '';
+  display: block;
+}
+
+// Clearfix.
+.cf() {
+  &:after {
+    .show_psuedo();
+    clear: both;
+  }
+}
+
+.happ_modal_header() {
+  padding: 0;
+  background-color: #000;
+  border-bottom: none;
+  .close-event-btn {
+    float: right;
+    position: absolute;
+    right:0;
+    top:0;
+    background-color: #000;
+    &:hover {
+      cursor: pointer;
+    }
+    .close-svg {
+      height: 42px;
+      width: 42px;
+    }
+  }
+  .close-add-btn {
+    float: right;
+    position: absolute;
+    right:0;
+    top:0;
+    background-color: #000;
+    &:hover {
+      cursor: pointer;
+    }
+    .close-svg {
+      height: 42px;
+      width: 42px;
+    }
+  }
+  .modal-title {
+    padding: 30px;
+    font-family: @happ_base_ff;
+    font-size: 30px;
+    color: #FFF;
+    text-align: center;
+  }
+}
+
+.link_animation() {
+  .animation_animation();
+}
+
+.button_animation() {
+  .animation_animation();
+}
+
+.transform_transform(@transform) {
+  -webkit-transform: @transform;
+  -ms-transform: @transform; // IE9 only
+  -o-transform: @transform;
+  -moz-transform: @transform;
+  transform: @transform;
+}
+
+.transform_style(@transform) {
+  -webkit-transform-style: @transform;
+  -moz-transform-style: @transform;
+  -ms-transform-style: @transform;
+  -o-transform-style: @transform;
+  transform-style: @transform;
+}
+
+// Style for p tag or general text
+.text() {
+  font-family: GustanMedium;
+  color: @color-p-job-details;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+  text-transform: none;
+}
+
+.link(@bg, @front, @border, @hoverBg, @hoverFront, @hoverBorder) {
+  background-color: @bg;
+  border-color: @border;
+  color: @front;
+
+  &:visited {
+    background-color: @bg;
+    border-color: @border;
+    color: @front;
+  }
+
+  &:hover, &:focus {
+    background-color: @hoverBg;
+    border-color: @hoverBorder;
+    color: @hoverFront;
+  }
+}
+
+// Buttons
+.btn_centre_out() {
+  text-align: center;
+  position: relative;
+  padding: 10px 20px;
+  border: 3px solid @c_happ_orange;
+  border-radius: 0;
+  font-size: 18px;
+  font-family: @happ_base_ff;
+  background-color: #FFF;
+  color: @c_happ_orange;
+  background-image: linear-gradient(@c_happ_orange, @c_happ_orange);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size .5s, color .5s;
+  display: inline-block;
+  max-width: 240px;
+  text-decoration: none;
+  &:hover {
+    background-size: 100% 100%;
+    color: @color-black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+// Content
+.content() {
+  h1 {
+    font-size: 18px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  h4 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 18px;
+  }
+  a {
+    font-size: 18px;
+  }
+  li {
+    font-size: 18px;
+  }
+}

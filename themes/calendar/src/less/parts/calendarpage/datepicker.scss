@@ -1,0 +1,78 @@
+.datepicker.datepicker-dropdown.dropdown-menu {
+  z-index:9999999999999 !important;
+
+  .datepicker-days {
+    .table-condensed {
+
+      @include breakpoint($min768) {
+        border-spacing: 20px;
+      }
+      border-collapse: separate;
+      display: table;
+      thead {
+        tr {
+          display: table-row;
+          th {
+            padding: 10px 15px;
+            &:hover, &:focus {
+              background-color: $color-happ-orange;
+              color: #FFF;
+            }
+            @include breakpoint($min768) {
+              padding: 20px 31px;
+              margin: 20px 31px;
+            }
+          }
+
+          .datepicker-switch {
+            @include breakpoint($min768) {
+              padding: 20px 31px;
+              font-size: 22px;
+            }
+          }
+          .prev {
+            @include breakpoint($min768) {
+              padding: 20px 31px;
+              font-size: 26px;
+              font-family: GustanBlack;
+            }
+          }
+          .next {
+            @include breakpoint($min768) {
+              padding: 20px 31px;
+              font-size: 26px;
+              font-family: GustanBlack;
+            }
+          }
+        }
+      }
+
+      tbody {
+        tr{
+          td {
+            padding: 10px 15px;
+            &:hover, &:focus, &.active {
+              background-color: $color-happ-orange;
+              color: #FFF;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .datepicker-months {
+    .active {
+      background-color: $color-happ-orange;
+      color: #FFF;
+    }
+
+    .month {
+      &:hover {
+        background-color: $color-happ-orange;
+        color: #FFF;
+      }
+    }
+  }
+
+}

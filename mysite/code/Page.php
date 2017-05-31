@@ -44,14 +44,15 @@ class Page_Controller extends ContentController {
         // Add all our css files to combine into an array
         $CSSFiles = array(
             //$themeFolder . '/css/base-styles.css',
-            $themeFolder . '/css/Calendar-Core.css',
-            $themeFolder . '/css/homepage.css',
-            $themeFolder . '/css/main.css'
+//            $themeFolder . '/css/Calendar-Core.css',
+//            $themeFolder . '/css/homepage.css',
+//            $themeFolder . '/css/main.css'
+            $themeFolder . '/dist/styles.css'
         );
 
         // Add all our files to combine into an array
         $JSFiles = array(
-                $themeFolder . '/dist/app.bundle.js'
+//                $themeFolder . '/dist/app.bundle.js'
         );
         // Combine css files
         Requirements::combine_files('styles.css', $CSSFiles);

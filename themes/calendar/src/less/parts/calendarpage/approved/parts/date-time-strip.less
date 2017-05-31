@@ -1,0 +1,63 @@
+.date-time-strip {
+  border-top: @color-border;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  min-height: 60px;
+  .date-strip {
+    padding: @event-modal-strip-padd;
+    border-right: @color-border;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    @media @min865 {
+      flex-direction: row;
+    }
+    .calendar-svg {
+      height: 30px;
+      @media @min865 {
+        padding-right: 20px;
+      }
+    }
+    .date-text {
+      flex-grow: 2;
+      text-align: left;
+      font-size: 16px;
+      padding: 15px 0 0 0;
+      @media @min865 {
+        font-size: 20px;
+        padding: 0;
+      }
+    }
+  }
+  .time-strip {
+    padding: @event-modal-strip-padd;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    @media @min865 {
+      flex-direction: row;
+    }
+    .clock-svg {
+      height: 30px;
+      @media @min865 {
+        padding-right: 20px;
+      }
+    }
+    .time-text {
+      flex-grow: 2;
+      text-align: left;
+      font-size: 16px;
+      padding: 15px 0 0 0;
+      @media @min865 {
+        font-size: 20px;
+        padding: 0;
+      }
+    }
+  }
+}

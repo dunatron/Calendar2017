@@ -1,0 +1,37 @@
+// Home page classes
+@import "parts/base/base.scss";
+
+// Calendar page
+@import "parts/calendarpage/base";
+@import "parts/calendarpage/topbar.scss";
+@import "parts/calendarpage/nav.scss";
+// Happ Logo
+@import "parts/calendarpage/svglogo/logo";
+@import "parts/calendarpage/calendar.scss";
+@import "parts/calendarpage/tronmodal.scss";
+@import "parts/calendarpage/addeventform";
+@import "parts/calendarpage/datepicker";
+@import "parts/calendarpage/timepicker";
+
+// Happ-time-picker
+@import "parts/calendarpage/timepicker/happ-timepicker-base.scss";
+@import "parts/calendarpage/timepicker/timepicker";
+
+// Happ addevent
+@import "parts/addevent";
+
+//Happ Event Modal
+@import "parts/calendarpage/approved/eventmodal.scss";
+
+// Hap filter events
+@import "parts/calendarpage/filter/filter";
+
+// Happ search
+@import "parts/calendarpage/search/search.scss";
+
+// Login form
+@import "parts/loginform.scss";
+
+
+
+

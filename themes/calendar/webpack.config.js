@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const jquery = require('jquery');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
 var isProd = process.env.NODE_ENV === 'production'; // true or false
@@ -21,6 +22,7 @@ module.exports = {
 
     output: {
         path: path.resolve(__dirname, './dist'),
+        publicPath: '/themes/calendar/dist/',
         filename: '[name].bundle.js',
         library: 'jquery'
     },
@@ -71,30 +73,24 @@ module.exports = {
                 ]
             },
 
-            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000&name=fonts/[name].[ext]' },
-
-            {
-                test: /\.svg$/,
-                use: [
-                    'svg-loader',
-                ]
-            },
+            // {
+            //     test: /\.svg$/,
+            //     use: [
+            //         'svg-loader',
+            //     ]
+            // },
 
             // Loaders for other file types go here
-            { test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000&name=fonts/[name].[ext]' },
-            { test: /\.(ttf|eot)$/, loader: 'file-loader?name=fonts/[name].[ext]' },
-
-
+            { test: /\.(woff|woff2|ttf|eot|svg)(\?v=[a-z0-9]\.[a-z0-9]\.[a-z0-9])?$/, loader: 'url-loader?limit=100000&name=fonts/[name].[ext]' },
         ],
 
         loaders: [
-            // Use one of these to serve jQuery for Bootstrap scripts:
-
             // Bootstrap 3
             { test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/, loader: 'imports-loader?jQuery=jquery' },
 
         ],
 
-    }
+
+    },
 
 };

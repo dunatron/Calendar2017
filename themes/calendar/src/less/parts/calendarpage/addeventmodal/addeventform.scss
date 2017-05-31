@@ -1,0 +1,128 @@
+.happ-add-event-form {
+  font-family: $happ_base_ff;
+  //border: 1px dashed rebeccapurple;
+
+  fieldset {
+
+  }
+
+  .Actions {
+    text-align: center;
+    .action {
+
+    }
+  }
+
+  .form-step {
+
+    .field {
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid lightgray;
+      input {
+        width: 100%;
+        max-width: 336px;
+        height: 60px;
+        font-size: 20px;
+        padding: 15px;
+        font-family: $font_GustanLight;
+      }
+
+      textarea {
+        width: 100%;
+        max-width: 336px;
+        height: 200px;
+        font-size: 20px;
+        padding: 15px;
+        font-family: $font_GustanLight;
+      }
+
+      label {
+        font-family: $font_GustanLight;
+        font-weight: 100;
+        font-size: 18px;
+      }
+    }
+
+    .add-event-controls {
+      margin-top: 20px;
+      text-align: right;
+    }
+    .add-event-next {
+      padding-left: 15px;
+      margin-top: 20px;
+      size: 0.2em;
+      position: relative;
+      height: 50px;
+      width: 100px;
+      display: inline-block;
+      margin-left: 15px;
+      &:after {
+        @include show_psuedo();
+        @include animation_animation($animation: all 0.3s ease-out);
+        border-top: 1px solid $c_happ_orange;
+        border-right: 1px solid $c_happ_orange;
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        top: 8px;
+        right: 50px;
+        transform: rotate(45deg);
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      &:hover:after {
+        right: 30px;
+        @include animation_animation($animation: all 0.3s ease-out);
+      }
+      span {
+        position: absolute;
+        bottom: 15px;
+        left: 0;
+      }
+
+    }
+    .add-event-back {
+      padding-left: 15px;
+      margin-top: 20px;
+      size: 0.2em;
+      position: relative;
+      height: 50px;
+      width: 100px;
+      display: inline-block;
+      margin-right: 15px;
+      &:after {
+        @include show_psuedo();
+        @include animation_animation($animation: all 0.3s ease-out);
+        border-top: 1px solid $c_happ_orange;
+        border-left: 1px solid $c_happ_orange;
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        top: 8px;
+        left: 50px;
+        transform: rotate(-45deg);
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      &:hover:after {
+        left: 30px;
+        @include animation_animation($animation: all 0.3s ease-out);
+      }
+      span {
+        position: absolute;
+        bottom: 15px;
+        right: 0;
+      }
+    }
+  }
+
+  @import "steps/details-step";
+  @import "steps/ticket-step";
+  @import "steps/ticket-web-step";
+  @import "steps/location-step";
+  @import "steps/date-step";
+
+}

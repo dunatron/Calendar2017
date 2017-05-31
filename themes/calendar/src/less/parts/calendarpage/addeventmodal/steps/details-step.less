@@ -1,0 +1,104 @@
+#details-step {
+
+  .field {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid lightgray;
+    input {
+      width: 100%;
+      max-width: 336px;
+      height: 60px;
+      font-size: 20px;
+      padding: 15px;
+      font-family: @font_GustanLight;
+    }
+
+    textarea {
+      width: 100%;
+      max-width: 336px;
+      height: 200px;
+      font-size: 20px;
+      padding: 15px;
+      font-family: @font_GustanLight;
+    }
+
+    label {
+      font-family: @font_GustanLight;
+      font-weight: 100;
+      font-size: 18px;
+    }
+  }
+
+  .tag-selected {
+    background-color: @c_happ_orange;
+    label {
+      color: white;
+    }
+  }
+
+  #Form_HappEventForm_EventDescription_Holder {
+
+  }
+
+  #EventTags {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #d3d3d3;
+    .middleColumn {
+      #Form_HappEventForm_EventTags {
+        padding: 0;
+        li {
+          display: inline-block;
+          height: 100px;
+          width: 166px;
+          border: 1px solid lightgrey;
+          margin-bottom: 5px;
+          margin-right: 0px;
+          .checkbox {
+            display: none;
+          }
+          label {
+            padding-top: 20px;
+            text-align: center;
+            display: block;
+            height: 100%;
+            width: 100%;
+          }
+        }
+        .tag-selected {
+          background-color: @c_happ_orange;
+          label {
+            color: white;
+          }
+        }
+      }
+    }
+
+  }
+
+  #Form_HappEventForm_HasTickets_Holder {
+
+    border: 1px solid grey;
+    position: relative;
+    padding: 20px;
+    max-width: 336px;
+    input {
+      top: 0;
+      position: absolute;
+      display: inline-block;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      border: 1px solid lightgrey;
+
+    }
+    label {
+      padding: 0 0 0 30px;
+      text-align: left;
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+}

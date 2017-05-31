@@ -1,0 +1,108 @@
+
+.footer {
+  padding: 30px 0;
+  margin-top: 44px;
+  background: #303031 url(../images/dark-line.png) repeat;
+
+  .container {
+    padding: 0;
+    overflow: hidden;
+
+    @media $min992 {
+      width: 930px;
+    }
+
+    img {
+      margin: auto;
+      width: 394px;
+
+      @media $normal {
+        margin: 0;
+      }
+    }
+    @media $min992 {
+      #nzic {
+        float: left;
+      }
+    }
+    #nz-govt {
+      width: 240px;
+      margin-top: 26px;
+    }
+    @media $min992 {
+      #nz-govt {
+        float: right;
+      }
+    }
+
+    .footer-menu {
+      //width: 40%;
+
+      ul {
+        margin: 25px 0;
+        width: 100%;
+
+        @media $tablet {
+          margin: 7px auto;
+          text-align: center;
+        }
+        @media $normal {
+          margin: 7px;
+          text-align: left;
+        }
+      }
+    }
+
+    li {
+      display: block;
+      margin: 15px 0;
+      padding-right: 0;
+      text-align: center;
+
+      @media $tablet {
+        display: inline;
+        padding-right: 14px;
+        text-align: left;
+      }
+
+      a, a:visited {
+        display: inline;
+        color: $color-primary;
+        text-decoration: none;
+        font-family: GustanExtraBlack;
+        font-size: 15px;
+        //font-weight: 900;
+        line-height: 18px;
+
+        &:hover, &:focus {
+          color: $color-menu-title-bg;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .bottom {
+      text-align: center;
+      padding: 25px 0;
+
+      @media $min992 {
+        text-align: center;
+      }
+
+      a, a:visited {
+        font-family: GustanExtraBlack;
+        color: #fffffe;
+        font-size: 15px;
+        //font-weight: 900;
+        line-height: 18px;
+        text-align: center;
+
+        &:hover, &:focus {
+          color: darken($color-primary, 40%);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
