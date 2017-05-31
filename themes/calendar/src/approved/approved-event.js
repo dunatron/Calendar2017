@@ -5,6 +5,8 @@ export default function HappLogoAnimation() {
         var LATITUE = $(this).attr("lat");
         var LONGITUDE = $(this).attr("lon");
         var RADIUS = $(this).attr("radius");
+
+        console.log('becaue we need to setup click listner');
         // ToDO Create AJAX Call To Database to get different elements
         // eventMap | div element
         // $('#eventMap1').locationpicker({
