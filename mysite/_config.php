@@ -1,16 +1,6 @@
 <?php
-
 global $project;
 $project = 'mysite';
-
-global $database;
-$database = '';
-
-require_once('conf/ConfigureFromEnv.php');
-
-// Set the site locale
-i18n::set_locale('en_US');
-
 // Define DB Name
 if(defined('SS_DATABASE_NAME') && SS_DATABASE_NAME) {
     $database = SS_DATABASE_NAME;
@@ -39,7 +29,6 @@ if(defined('SS_DATABASE_PORT') && SS_DATABASE_PORT) {
 else {
     $DBPort = '8889';
 }
-
 // Set Database credentials
 global $databaseConfig;
 $databaseConfig = array(
@@ -51,20 +40,16 @@ $databaseConfig = array(
     'port' => $DBPort,
     'path' => ''
 );
-
 /* OLD config, may have to play with location of require_once('conf/ConfigureFromEnv.php');
 global $database;
 $database = '';
 require_once('conf/ConfigureFromEnv.php');
 */
 require_once('conf/ConfigureFromEnv.php');
-
 // Set the site locale
 i18n::set_locale('en_US');
-
 FulltextSearchable::enable();
 Event::add_extension("FulltextSearchable('EventTitle','EventDescription')");
-
 Solr::configure_server(array(
     'host' => 'localhost',
     'indexstore' => array(
