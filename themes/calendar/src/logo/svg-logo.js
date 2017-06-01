@@ -4,7 +4,8 @@
 /**
  * Created by admin on 8/02/17.
  */
-export default function ApprovedEvent() {
+export default function HappLogoAnimation() {
+
     var drawHapp = SVG('happSVGLogo').size('100%', '100%').attr({position:'relative', fill: 'none', stroke: '#231f20', 'stroke-width': '3px'});
 
 

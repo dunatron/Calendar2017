@@ -5,11 +5,17 @@ import RadialProgressBar from 'vue-radial-progress'
 
 Vue.use(VeeValidate);
 
+import Carousel3d from 'vue-carousel-3d';
+Vue.use(Carousel3d);
+
 export default function VueAddEvent() {
 
  new Vue({
         el: '#site-wrapper',
-        components: {VueGoogleAutocomplete, RadialProgressBar},
+        components: {
+            VueGoogleAutocomplete,
+            RadialProgressBar
+        },
         name: 'Add-Event',
         data: ({
             Title: '',
@@ -27,7 +33,9 @@ export default function VueAddEvent() {
             startColor: '#429321',
             stopColor: '#FF6733',
             innerStrokeColor: '#323232',
-            timingFunc: 'linear'
+            timingFunc: 'linear',
+            // 3d slider
+            slides: 7
 
         }),
 

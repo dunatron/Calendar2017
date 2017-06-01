@@ -1,4 +1,4 @@
-export default function HappLogoAnimation() {
+export default function ApprovedEvent() {
 
     $('.event-btn').on("click", function () {
         var target = $(this).attr("data-target");

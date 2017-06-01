@@ -81,7 +81,7 @@ module.exports = {
             // },
 
             // Loaders for other file types go here
-            { test: /\.(woff|woff2|ttf|eot|svg)(\?v=[a-z0-9]\.[a-z0-9]\.[a-z0-9])?$/, loader: 'url-loader?limit=100000&name=fonts/[name].[ext]' },
+            { test: /\.(woff|woff2|ttf|eot|svg|gif|png)(\?v=[a-z0-9]\.[a-z0-9]\.[a-z0-9])?$/, loader: 'url-loader?limit=100000&name=fonts/[name].[ext]' },
         ],
 
         loaders: [
