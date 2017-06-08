@@ -28,7 +28,7 @@
         }
     </style>
 
-    <%--<% include InlineAppColors %>--%>
+    <% include InlineAppColors %>
 </head>
 
 <body class="$ClassName.LowerCase">
