@@ -40,3 +40,6 @@ Event:
 File:
   extensions:
     - MyISAMExtension
+
+#### Possibly the solution I have been looking for
+Page_Controller::$search_index_class = 'HappIndex';
