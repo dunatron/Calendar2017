@@ -64,7 +64,7 @@ var jquery =
 /******/ 	__webpack_require__.p = "/themes/calendar/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 47);
+/******/ 	return __webpack_require__(__webpack_require__.s = 50);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10581,10 +10581,10 @@ function insertStyleElement (options, style) {
 }
 
 function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
 	style.parentNode.removeChild(style);
 
 	var idx = stylesInsertedAtTop.indexOf(style);
-
 	if(idx >= 0) {
 		stylesInsertedAtTop.splice(idx, 1);
 	}
@@ -13287,8 +13287,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../css-loader/index.js!../resolve-url-loader/index.js!../sass-loader/lib/loader.js?sourceMap!./lib/bootstrap.styles.loader.js?{\"bootstrapVersion\":3,\"useCustomIconFontPath\":false,\"extractStyles\":false,\"styleLoaders\":[\"style\",\"css\",\"sass\"],\"styles\":[\"mixins\",\"normalize\",\"print\",\"glyphicons\",\"scaffolding\",\"type\",\"code\",\"grid\",\"tables\",\"forms\",\"buttons\",\"component-animations\",\"dropdowns\",\"button-groups\",\"input-groups\",\"navs\",\"navbar\",\"breadcrumbs\",\"pagination\",\"pager\",\"labels\",\"badges\",\"jumbotron\",\"thumbnails\",\"alerts\",\"progress-bars\",\"media\",\"list-group\",\"panels\",\"wells\",\"responsive-embed\",\"close\",\"modals\",\"tooltip\",\"popovers\",\"carousel\",\"utilities\",\"responsive-utilities\"],\"scripts\":[\"transition\",\"alert\",\"button\",\"carousel\",\"collapse\",\"dropdown\",\"modal\",\"tooltip\",\"popover\",\"scrollspy\",\"tab\",\"affix\"],\"configFilePath\":\"/Applications/MAMP/htdocs/home/calendar2017/themes/calendar/.bootstraprc\",\"bootstrapPath\":\"/Applications/MAMP/htdocs/home/calendar2017/themes/calendar/node_modules/bootstrap-sass\",\"bootstrapRelPath\":\"../bootstrap-sass\"}!./no-op.js", function() {
-			var newContent = require("!!../css-loader/index.js!../resolve-url-loader/index.js!../sass-loader/lib/loader.js?sourceMap!./lib/bootstrap.styles.loader.js?{\"bootstrapVersion\":3,\"useCustomIconFontPath\":false,\"extractStyles\":false,\"styleLoaders\":[\"style\",\"css\",\"sass\"],\"styles\":[\"mixins\",\"normalize\",\"print\",\"glyphicons\",\"scaffolding\",\"type\",\"code\",\"grid\",\"tables\",\"forms\",\"buttons\",\"component-animations\",\"dropdowns\",\"button-groups\",\"input-groups\",\"navs\",\"navbar\",\"breadcrumbs\",\"pagination\",\"pager\",\"labels\",\"badges\",\"jumbotron\",\"thumbnails\",\"alerts\",\"progress-bars\",\"media\",\"list-group\",\"panels\",\"wells\",\"responsive-embed\",\"close\",\"modals\",\"tooltip\",\"popovers\",\"carousel\",\"utilities\",\"responsive-utilities\"],\"scripts\":[\"transition\",\"alert\",\"button\",\"carousel\",\"collapse\",\"dropdown\",\"modal\",\"tooltip\",\"popover\",\"scrollspy\",\"tab\",\"affix\"],\"configFilePath\":\"/Applications/MAMP/htdocs/home/calendar2017/themes/calendar/.bootstraprc\",\"bootstrapPath\":\"/Applications/MAMP/htdocs/home/calendar2017/themes/calendar/node_modules/bootstrap-sass\",\"bootstrapRelPath\":\"../bootstrap-sass\"}!./no-op.js");
+		module.hot.accept("!!../css-loader/index.js!../resolve-url-loader/index.js!../sass-loader/lib/loader.js?sourceMap!./lib/bootstrap.styles.loader.js?{\"bootstrapVersion\":3,\"useCustomIconFontPath\":false,\"extractStyles\":false,\"styleLoaders\":[\"style\",\"css\",\"sass\"],\"styles\":[\"mixins\",\"normalize\",\"print\",\"glyphicons\",\"scaffolding\",\"type\",\"code\",\"grid\",\"tables\",\"forms\",\"buttons\",\"component-animations\",\"dropdowns\",\"button-groups\",\"input-groups\",\"navs\",\"navbar\",\"breadcrumbs\",\"pagination\",\"pager\",\"labels\",\"badges\",\"jumbotron\",\"thumbnails\",\"alerts\",\"progress-bars\",\"media\",\"list-group\",\"panels\",\"wells\",\"responsive-embed\",\"close\",\"modals\",\"tooltip\",\"popovers\",\"carousel\",\"utilities\",\"responsive-utilities\"],\"scripts\":[\"transition\",\"alert\",\"button\",\"carousel\",\"collapse\",\"dropdown\",\"modal\",\"tooltip\",\"popover\",\"scrollspy\",\"tab\",\"affix\"],\"configFilePath\":\"/data/site/docroot/themes/calendar/.bootstraprc\",\"bootstrapPath\":\"/data/site/docroot/themes/calendar/node_modules/bootstrap-sass\",\"bootstrapRelPath\":\"../bootstrap-sass\"}!./no-op.js", function() {
+			var newContent = require("!!../css-loader/index.js!../resolve-url-loader/index.js!../sass-loader/lib/loader.js?sourceMap!./lib/bootstrap.styles.loader.js?{\"bootstrapVersion\":3,\"useCustomIconFontPath\":false,\"extractStyles\":false,\"styleLoaders\":[\"style\",\"css\",\"sass\"],\"styles\":[\"mixins\",\"normalize\",\"print\",\"glyphicons\",\"scaffolding\",\"type\",\"code\",\"grid\",\"tables\",\"forms\",\"buttons\",\"component-animations\",\"dropdowns\",\"button-groups\",\"input-groups\",\"navs\",\"navbar\",\"breadcrumbs\",\"pagination\",\"pager\",\"labels\",\"badges\",\"jumbotron\",\"thumbnails\",\"alerts\",\"progress-bars\",\"media\",\"list-group\",\"panels\",\"wells\",\"responsive-embed\",\"close\",\"modals\",\"tooltip\",\"popovers\",\"carousel\",\"utilities\",\"responsive-utilities\"],\"scripts\":[\"transition\",\"alert\",\"button\",\"carousel\",\"collapse\",\"dropdown\",\"modal\",\"tooltip\",\"popover\",\"scrollspy\",\"tab\",\"affix\"],\"configFilePath\":\"/data/site/docroot/themes/calendar/.bootstraprc\",\"bootstrapPath\":\"/data/site/docroot/themes/calendar/node_modules/bootstrap-sass\",\"bootstrapRelPath\":\"../bootstrap-sass\"}!./no-op.js");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -13561,23 +13561,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = VueAddEvent;
 
-var _vue = __webpack_require__(75);
+var _vue = __webpack_require__(81);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _veeValidate = __webpack_require__(65);
+var _veeValidate = __webpack_require__(71);
 
 var _veeValidate2 = _interopRequireDefault(_veeValidate);
 
-var _vueGoogleAutocomplete = __webpack_require__(67);
+var _vueGoogleAutocomplete = __webpack_require__(73);
 
 var _vueGoogleAutocomplete2 = _interopRequireDefault(_vueGoogleAutocomplete);
 
-var _vueRadialProgress = __webpack_require__(71);
+var _vueRadialProgress = __webpack_require__(77);
 
 var _vueRadialProgress2 = _interopRequireDefault(_vueRadialProgress);
 
-var _vueCarousel3d = __webpack_require__(66);
+var _vueCarousel3d = __webpack_require__(72);
 
 var _vueCarousel3d2 = _interopRequireDefault(_vueCarousel3d);
 
@@ -13731,6 +13731,132 @@ function AddEventForm() {
         clearFormBtn = $('#Form_HappEventForm_action_ClearAction'),
         resetFormBtn = $('#reset-add-event'),
         continueFormBtn = $('#continue-add-event');
+
+    /**
+     * Setup DatePicker
+     */
+    $('.Bootstrap__DatePicker').datepicker({
+        multidate: true,
+        format: "mm/dd/yyy"
+    });
+
+    function removeHighlightOption($option) {
+        $($option).removeClass('Higlight__Option');
+    }
+
+    function addHighlightOption($option) {
+        $($option).addClass('Higlight__Option');
+    }
+
+    $('#CalendarSingle').on('click', function () {
+        console.log($(date_input).datepicker('getDates'));
+        addHighlightOption($(this));
+        removeHighlightOption('#CalendarReccuring');
+        removeHighlightOption('#CalendarMultiDay');
+    });
+
+    $('#CalendarReccuring').on('click', function () {
+        $('.Bootstrap__DatePicker').replaceWith('<div class="Bootstrap__DatePicker">' + '<div class="range-start"></div>' + '<div class="range-end"></div>' + '</div>');
+        $('.Bootstrap__DatePicker').datepicker({
+            inputs: $('.range-start, .range-end'),
+            format: "mm/dd/yyy"
+        });
+        addHighlightOption($(this));
+        removeHighlightOption('#CalendarSingle');
+        removeHighlightOption('#CalendarMultiDay');
+    });
+
+    $('#CalendarMultiDay').on('click', function () {
+        $('.Bootstrap__DatePicker').replaceWith('<div class="Bootstrap__DatePicker"></div>');
+        $('.Bootstrap__DatePicker').datepicker({
+            multidate: true,
+            format: "mm/dd/yyy"
+        });
+        addHighlightOption($(this));
+        removeHighlightOption('#CalendarReccuring');
+        removeHighlightOption('#CalendarSingle');
+    });
+
+    /**
+     * TimePicker
+     */
+    $('#Form_HappEventForm_StartTime').timepicker({
+        disableMousewheel: false,
+        template: "dropdown",
+        disableFocus: true,
+        modalBackdrop: true,
+        minuteStep: 1
+    });
+
+    $('#timepicker1').timepicker();
+
+    $('.Generate__Dates').on('click', function () {
+        var Dates = $(date_input).datepicker('getDates');
+        console.log(Dates);
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = Dates[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var value = _step.value;
+
+                value.setHours(15);
+                value.setMinutes(20);
+                console.log(value.getMonth());
+                $('.Generate__Dates').append('<input type="date" class="Start__Date">');
+                var now = new Date();
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0!
+                if (dd < 10) {
+                    dd = '0' + dd;
+                }
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
+                var yyyy = today.getFullYear();
+                today = yyyy + '-' + mm + '-' + dd;
+
+                $('.Start__Date').val(today);
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+
+        console.log('time to try generate some dates');
+    });
+
+    //var date_input=$('input[name="date"]'); //our date input has the name "date"
+    var date_input = $('.Bootstrap__DatePicker');
+    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    var options = {
+        format: 'dd/mm/yyyy',
+        template: "modal",
+        //container: container,
+        todayHighlight: true,
+        autoclose: false,
+        multidate: true
+    };
+    var optionsTwo = {
+        format: 'dd/mm/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: false,
+        multidate: false
+    };
+    date_input.datepicker(options);
 
     $(DetailsNext).on('click', function () {
         if ($(TicketCheck).is(':checked')) {
@@ -15077,6 +15203,3229 @@ function CalendarNavigation() {
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * Datepicker for Bootstrap v1.7.0 (https://github.com/uxsolutions/bootstrap-datepicker)
+ *
+ * Licensed under the Apache License v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+ */
+
+(function(factory){
+    if (true) {
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } else if (typeof exports === 'object') {
+        factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+}(function($, undefined){
+	function UTCDate(){
+		return new Date(Date.UTC.apply(Date, arguments));
+	}
+	function UTCToday(){
+		var today = new Date();
+		return UTCDate(today.getFullYear(), today.getMonth(), today.getDate());
+	}
+	function isUTCEquals(date1, date2) {
+		return (
+			date1.getUTCFullYear() === date2.getUTCFullYear() &&
+			date1.getUTCMonth() === date2.getUTCMonth() &&
+			date1.getUTCDate() === date2.getUTCDate()
+		);
+	}
+	function alias(method, deprecationMsg){
+		return function(){
+			if (deprecationMsg !== undefined) {
+				$.fn.datepicker.deprecated(deprecationMsg);
+			}
+
+			return this[method].apply(this, arguments);
+		};
+	}
+	function isValidDate(d) {
+		return d && !isNaN(d.getTime());
+	}
+
+	var DateArray = (function(){
+		var extras = {
+			get: function(i){
+				return this.slice(i)[0];
+			},
+			contains: function(d){
+				// Array.indexOf is not cross-browser;
+				// $.inArray doesn't work with Dates
+				var val = d && d.valueOf();
+				for (var i=0, l=this.length; i < l; i++)
+          // Use date arithmetic to allow dates with different times to match
+          if (0 <= this[i].valueOf() - val && this[i].valueOf() - val < 1000*60*60*24)
+						return i;
+				return -1;
+			},
+			remove: function(i){
+				this.splice(i,1);
+			},
+			replace: function(new_array){
+				if (!new_array)
+					return;
+				if (!$.isArray(new_array))
+					new_array = [new_array];
+				this.clear();
+				this.push.apply(this, new_array);
+			},
+			clear: function(){
+				this.length = 0;
+			},
+			copy: function(){
+				var a = new DateArray();
+				a.replace(this);
+				return a;
+			}
+		};
+
+		return function(){
+			var a = [];
+			a.push.apply(a, arguments);
+			$.extend(a, extras);
+			return a;
+		};
+	})();
+
+
+	// Picker object
+
+	var Datepicker = function(element, options){
+		$.data(element, 'datepicker', this);
+		this._process_options(options);
+
+		this.dates = new DateArray();
+		this.viewDate = this.o.defaultViewDate;
+		this.focusDate = null;
+
+		this.element = $(element);
+		this.isInput = this.element.is('input');
+		this.inputField = this.isInput ? this.element : this.element.find('input');
+		this.component = this.element.hasClass('date') ? this.element.find('.add-on, .input-group-addon, .btn') : false;
+		if (this.component && this.component.length === 0)
+			this.component = false;
+		this.isInline = !this.component && this.element.is('div');
+
+		this.picker = $(DPGlobal.template);
+
+		// Checking templates and inserting
+		if (this._check_template(this.o.templates.leftArrow)) {
+			this.picker.find('.prev').html(this.o.templates.leftArrow);
+		}
+
+		if (this._check_template(this.o.templates.rightArrow)) {
+			this.picker.find('.next').html(this.o.templates.rightArrow);
+		}
+
+		this._buildEvents();
+		this._attachEvents();
+
+		if (this.isInline){
+			this.picker.addClass('datepicker-inline').appendTo(this.element);
+		}
+		else {
+			this.picker.addClass('datepicker-dropdown dropdown-menu');
+		}
+
+		if (this.o.rtl){
+			this.picker.addClass('datepicker-rtl');
+		}
+
+		if (this.o.calendarWeeks) {
+			this.picker.find('.datepicker-days .datepicker-switch, thead .datepicker-title, tfoot .today, tfoot .clear')
+				.attr('colspan', function(i, val){
+					return Number(val) + 1;
+				});
+		}
+
+		this._process_options({
+			startDate: this._o.startDate,
+			endDate: this._o.endDate,
+			daysOfWeekDisabled: this.o.daysOfWeekDisabled,
+			daysOfWeekHighlighted: this.o.daysOfWeekHighlighted,
+			datesDisabled: this.o.datesDisabled
+		});
+
+		this._allow_update = false;
+		this.setViewMode(this.o.startView);
+		this._allow_update = true;
+
+		this.fillDow();
+		this.fillMonths();
+
+		this.update();
+
+		if (this.isInline){
+			this.show();
+		}
+	};
+
+	Datepicker.prototype = {
+		constructor: Datepicker,
+
+		_resolveViewName: function(view){
+			$.each(DPGlobal.viewModes, function(i, viewMode){
+				if (view === i || $.inArray(view, viewMode.names) !== -1){
+					view = i;
+					return false;
+				}
+			});
+
+			return view;
+		},
+
+		_resolveDaysOfWeek: function(daysOfWeek){
+			if (!$.isArray(daysOfWeek))
+				daysOfWeek = daysOfWeek.split(/[,\s]*/);
+			return $.map(daysOfWeek, Number);
+		},
+
+		_check_template: function(tmp){
+			try {
+				// If empty
+				if (tmp === undefined || tmp === "") {
+					return false;
+				}
+				// If no html, everything ok
+				if ((tmp.match(/[<>]/g) || []).length <= 0) {
+					return true;
+				}
+				// Checking if html is fine
+				var jDom = $(tmp);
+				return jDom.length > 0;
+			}
+			catch (ex) {
+				return false;
+			}
+		},
+
+		_process_options: function(opts){
+			// Store raw options for reference
+			this._o = $.extend({}, this._o, opts);
+			// Processed options
+			var o = this.o = $.extend({}, this._o);
+
+			// Check if "de-DE" style date is available, if not language should
+			// fallback to 2 letter code eg "de"
+			var lang = o.language;
+			if (!dates[lang]){
+				lang = lang.split('-')[0];
+				if (!dates[lang])
+					lang = defaults.language;
+			}
+			o.language = lang;
+
+			// Retrieve view index from any aliases
+			o.startView = this._resolveViewName(o.startView);
+			o.minViewMode = this._resolveViewName(o.minViewMode);
+			o.maxViewMode = this._resolveViewName(o.maxViewMode);
+
+			// Check view is between min and max
+			o.startView = Math.max(this.o.minViewMode, Math.min(this.o.maxViewMode, o.startView));
+
+			// true, false, or Number > 0
+			if (o.multidate !== true){
+				o.multidate = Number(o.multidate) || false;
+				if (o.multidate !== false)
+					o.multidate = Math.max(0, o.multidate);
+			}
+			o.multidateSeparator = String(o.multidateSeparator);
+
+			o.weekStart %= 7;
+			o.weekEnd = (o.weekStart + 6) % 7;
+
+			var format = DPGlobal.parseFormat(o.format);
+			if (o.startDate !== -Infinity){
+				if (!!o.startDate){
+					if (o.startDate instanceof Date)
+						o.startDate = this._local_to_utc(this._zero_time(o.startDate));
+					else
+						o.startDate = DPGlobal.parseDate(o.startDate, format, o.language, o.assumeNearbyYear);
+				}
+				else {
+					o.startDate = -Infinity;
+				}
+			}
+			if (o.endDate !== Infinity){
+				if (!!o.endDate){
+					if (o.endDate instanceof Date)
+						o.endDate = this._local_to_utc(this._zero_time(o.endDate));
+					else
+						o.endDate = DPGlobal.parseDate(o.endDate, format, o.language, o.assumeNearbyYear);
+				}
+				else {
+					o.endDate = Infinity;
+				}
+			}
+
+			o.daysOfWeekDisabled = this._resolveDaysOfWeek(o.daysOfWeekDisabled||[]);
+			o.daysOfWeekHighlighted = this._resolveDaysOfWeek(o.daysOfWeekHighlighted||[]);
+
+			o.datesDisabled = o.datesDisabled||[];
+			if (!$.isArray(o.datesDisabled)) {
+				o.datesDisabled = o.datesDisabled.split(',');
+			}
+			o.datesDisabled = $.map(o.datesDisabled, function(d){
+				return DPGlobal.parseDate(d, format, o.language, o.assumeNearbyYear);
+			});
+
+			var plc = String(o.orientation).toLowerCase().split(/\s+/g),
+				_plc = o.orientation.toLowerCase();
+			plc = $.grep(plc, function(word){
+				return /^auto|left|right|top|bottom$/.test(word);
+			});
+			o.orientation = {x: 'auto', y: 'auto'};
+			if (!_plc || _plc === 'auto')
+				; // no action
+			else if (plc.length === 1){
+				switch (plc[0]){
+					case 'top':
+					case 'bottom':
+						o.orientation.y = plc[0];
+						break;
+					case 'left':
+					case 'right':
+						o.orientation.x = plc[0];
+						break;
+				}
+			}
+			else {
+				_plc = $.grep(plc, function(word){
+					return /^left|right$/.test(word);
+				});
+				o.orientation.x = _plc[0] || 'auto';
+
+				_plc = $.grep(plc, function(word){
+					return /^top|bottom$/.test(word);
+				});
+				o.orientation.y = _plc[0] || 'auto';
+			}
+			if (o.defaultViewDate instanceof Date || typeof o.defaultViewDate === 'string') {
+				o.defaultViewDate = DPGlobal.parseDate(o.defaultViewDate, format, o.language, o.assumeNearbyYear);
+			} else if (o.defaultViewDate) {
+				var year = o.defaultViewDate.year || new Date().getFullYear();
+				var month = o.defaultViewDate.month || 0;
+				var day = o.defaultViewDate.day || 1;
+				o.defaultViewDate = UTCDate(year, month, day);
+			} else {
+				o.defaultViewDate = UTCToday();
+			}
+		},
+		_events: [],
+		_secondaryEvents: [],
+		_applyEvents: function(evs){
+			for (var i=0, el, ch, ev; i < evs.length; i++){
+				el = evs[i][0];
+				if (evs[i].length === 2){
+					ch = undefined;
+					ev = evs[i][1];
+				} else if (evs[i].length === 3){
+					ch = evs[i][1];
+					ev = evs[i][2];
+				}
+				el.on(ev, ch);
+			}
+		},
+		_unapplyEvents: function(evs){
+			for (var i=0, el, ev, ch; i < evs.length; i++){
+				el = evs[i][0];
+				if (evs[i].length === 2){
+					ch = undefined;
+					ev = evs[i][1];
+				} else if (evs[i].length === 3){
+					ch = evs[i][1];
+					ev = evs[i][2];
+				}
+				el.off(ev, ch);
+			}
+		},
+		_buildEvents: function(){
+            var events = {
+                keyup: $.proxy(function(e){
+                    if ($.inArray(e.keyCode, [27, 37, 39, 38, 40, 32, 13, 9]) === -1)
+                        this.update();
+                }, this),
+                keydown: $.proxy(this.keydown, this),
+                paste: $.proxy(this.paste, this)
+            };
+
+            if (this.o.showOnFocus === true) {
+                events.focus = $.proxy(this.show, this);
+            }
+
+            if (this.isInput) { // single input
+                this._events = [
+                    [this.element, events]
+                ];
+            }
+            // component: input + button
+            else if (this.component && this.inputField.length) {
+                this._events = [
+                    // For components that are not readonly, allow keyboard nav
+                    [this.inputField, events],
+                    [this.component, {
+                        click: $.proxy(this.show, this)
+                    }]
+                ];
+            }
+			else {
+				this._events = [
+					[this.element, {
+						click: $.proxy(this.show, this),
+						keydown: $.proxy(this.keydown, this)
+					}]
+				];
+			}
+			this._events.push(
+				// Component: listen for blur on element descendants
+				[this.element, '*', {
+					blur: $.proxy(function(e){
+						this._focused_from = e.target;
+					}, this)
+				}],
+				// Input: listen for blur on element
+				[this.element, {
+					blur: $.proxy(function(e){
+						this._focused_from = e.target;
+					}, this)
+				}]
+			);
+
+			if (this.o.immediateUpdates) {
+				// Trigger input updates immediately on changed year/month
+				this._events.push([this.element, {
+					'changeYear changeMonth': $.proxy(function(e){
+						this.update(e.date);
+					}, this)
+				}]);
+			}
+
+			this._secondaryEvents = [
+				[this.picker, {
+					click: $.proxy(this.click, this)
+				}],
+				[this.picker, '.prev, .next', {
+					click: $.proxy(this.navArrowsClick, this)
+				}],
+				[this.picker, '.day:not(.disabled)', {
+					click: $.proxy(this.dayCellClick, this)
+				}],
+				[$(window), {
+					resize: $.proxy(this.place, this)
+				}],
+				[$(document), {
+					'mousedown touchstart': $.proxy(function(e){
+						// Clicked outside the datepicker, hide it
+						if (!(
+							this.element.is(e.target) ||
+							this.element.find(e.target).length ||
+							this.picker.is(e.target) ||
+							this.picker.find(e.target).length ||
+							this.isInline
+						)){
+							this.hide();
+						}
+					}, this)
+				}]
+			];
+		},
+		_attachEvents: function(){
+			this._detachEvents();
+			this._applyEvents(this._events);
+		},
+		_detachEvents: function(){
+			this._unapplyEvents(this._events);
+		},
+		_attachSecondaryEvents: function(){
+			this._detachSecondaryEvents();
+			this._applyEvents(this._secondaryEvents);
+		},
+		_detachSecondaryEvents: function(){
+			this._unapplyEvents(this._secondaryEvents);
+		},
+		_trigger: function(event, altdate){
+			var date = altdate || this.dates.get(-1),
+				local_date = this._utc_to_local(date);
+
+			this.element.trigger({
+				type: event,
+				date: local_date,
+				viewMode: this.viewMode,
+				dates: $.map(this.dates, this._utc_to_local),
+				format: $.proxy(function(ix, format){
+					if (arguments.length === 0){
+						ix = this.dates.length - 1;
+						format = this.o.format;
+					} else if (typeof ix === 'string'){
+						format = ix;
+						ix = this.dates.length - 1;
+					}
+					format = format || this.o.format;
+					var date = this.dates.get(ix);
+					return DPGlobal.formatDate(date, format, this.o.language);
+				}, this)
+			});
+		},
+
+		show: function(){
+			if (this.inputField.prop('disabled') || (this.inputField.prop('readonly') && this.o.enableOnReadonly === false))
+				return;
+			if (!this.isInline)
+				this.picker.appendTo(this.o.container);
+			this.place();
+			this.picker.show();
+			this._attachSecondaryEvents();
+			this._trigger('show');
+			if ((window.navigator.msMaxTouchPoints || 'ontouchstart' in document) && this.o.disableTouchKeyboard) {
+				$(this.element).blur();
+			}
+			return this;
+		},
+
+		hide: function(){
+			if (this.isInline || !this.picker.is(':visible'))
+				return this;
+			this.focusDate = null;
+			this.picker.hide().detach();
+			this._detachSecondaryEvents();
+			this.setViewMode(this.o.startView);
+
+			if (this.o.forceParse && this.inputField.val())
+				this.setValue();
+			this._trigger('hide');
+			return this;
+		},
+
+		destroy: function(){
+			this.hide();
+			this._detachEvents();
+			this._detachSecondaryEvents();
+			this.picker.remove();
+			delete this.element.data().datepicker;
+			if (!this.isInput){
+				delete this.element.data().date;
+			}
+			return this;
+		},
+
+		paste: function(e){
+			var dateString;
+			if (e.originalEvent.clipboardData && e.originalEvent.clipboardData.types
+				&& $.inArray('text/plain', e.originalEvent.clipboardData.types) !== -1) {
+				dateString = e.originalEvent.clipboardData.getData('text/plain');
+			} else if (window.clipboardData) {
+				dateString = window.clipboardData.getData('Text');
+			} else {
+				return;
+			}
+			this.setDate(dateString);
+			this.update();
+			e.preventDefault();
+		},
+
+		_utc_to_local: function(utc){
+			if (!utc) {
+				return utc;
+			}
+
+			var local = new Date(utc.getTime() + (utc.getTimezoneOffset() * 60000));
+
+			if (local.getTimezoneOffset() !== utc.getTimezoneOffset()) {
+				local = new Date(utc.getTime() + (local.getTimezoneOffset() * 60000));
+			}
+
+			return local;
+		},
+		_local_to_utc: function(local){
+			return local && new Date(local.getTime() - (local.getTimezoneOffset()*60000));
+		},
+		_zero_time: function(local){
+			return local && new Date(local.getFullYear(), local.getMonth(), local.getDate());
+		},
+		_zero_utc_time: function(utc){
+			return utc && UTCDate(utc.getUTCFullYear(), utc.getUTCMonth(), utc.getUTCDate());
+		},
+
+		getDates: function(){
+			return $.map(this.dates, this._utc_to_local);
+		},
+
+		getUTCDates: function(){
+			return $.map(this.dates, function(d){
+				return new Date(d);
+			});
+		},
+
+		getDate: function(){
+			return this._utc_to_local(this.getUTCDate());
+		},
+
+		getUTCDate: function(){
+			var selected_date = this.dates.get(-1);
+			if (selected_date !== undefined) {
+				return new Date(selected_date);
+			} else {
+				return null;
+			}
+		},
+
+		clearDates: function(){
+			this.inputField.val('');
+			this.update();
+			this._trigger('changeDate');
+
+			if (this.o.autoclose) {
+				this.hide();
+			}
+		},
+
+		setDates: function(){
+			var args = $.isArray(arguments[0]) ? arguments[0] : arguments;
+			this.update.apply(this, args);
+			this._trigger('changeDate');
+			this.setValue();
+			return this;
+		},
+
+		setUTCDates: function(){
+			var args = $.isArray(arguments[0]) ? arguments[0] : arguments;
+			this.setDates.apply(this, $.map(args, this._utc_to_local));
+			return this;
+		},
+
+		setDate: alias('setDates'),
+		setUTCDate: alias('setUTCDates'),
+		remove: alias('destroy', 'Method `remove` is deprecated and will be removed in version 2.0. Use `destroy` instead'),
+
+		setValue: function(){
+			var formatted = this.getFormattedDate();
+			this.inputField.val(formatted);
+			return this;
+		},
+
+		getFormattedDate: function(format){
+			if (format === undefined)
+				format = this.o.format;
+
+			var lang = this.o.language;
+			return $.map(this.dates, function(d){
+				return DPGlobal.formatDate(d, format, lang);
+			}).join(this.o.multidateSeparator);
+		},
+
+		getStartDate: function(){
+			return this.o.startDate;
+		},
+
+		setStartDate: function(startDate){
+			this._process_options({startDate: startDate});
+			this.update();
+			this.updateNavArrows();
+			return this;
+		},
+
+		getEndDate: function(){
+			return this.o.endDate;
+		},
+
+		setEndDate: function(endDate){
+			this._process_options({endDate: endDate});
+			this.update();
+			this.updateNavArrows();
+			return this;
+		},
+
+		setDaysOfWeekDisabled: function(daysOfWeekDisabled){
+			this._process_options({daysOfWeekDisabled: daysOfWeekDisabled});
+			this.update();
+			return this;
+		},
+
+		setDaysOfWeekHighlighted: function(daysOfWeekHighlighted){
+			this._process_options({daysOfWeekHighlighted: daysOfWeekHighlighted});
+			this.update();
+			return this;
+		},
+
+		setDatesDisabled: function(datesDisabled){
+			this._process_options({datesDisabled: datesDisabled});
+			this.update();
+			return this;
+		},
+
+		place: function(){
+			if (this.isInline)
+				return this;
+			var calendarWidth = this.picker.outerWidth(),
+				calendarHeight = this.picker.outerHeight(),
+				visualPadding = 10,
+				container = $(this.o.container),
+				windowWidth = container.width(),
+				scrollTop = this.o.container === 'body' ? $(document).scrollTop() : container.scrollTop(),
+				appendOffset = container.offset();
+
+			var parentsZindex = [0];
+			this.element.parents().each(function(){
+				var itemZIndex = $(this).css('z-index');
+				if (itemZIndex !== 'auto' && Number(itemZIndex) !== 0) parentsZindex.push(Number(itemZIndex));
+			});
+			var zIndex = Math.max.apply(Math, parentsZindex) + this.o.zIndexOffset;
+			var offset = this.component ? this.component.parent().offset() : this.element.offset();
+			var height = this.component ? this.component.outerHeight(true) : this.element.outerHeight(false);
+			var width = this.component ? this.component.outerWidth(true) : this.element.outerWidth(false);
+			var left = offset.left - appendOffset.left;
+			var top = offset.top - appendOffset.top;
+
+			if (this.o.container !== 'body') {
+				top += scrollTop;
+			}
+
+			this.picker.removeClass(
+				'datepicker-orient-top datepicker-orient-bottom '+
+				'datepicker-orient-right datepicker-orient-left'
+			);
+
+			if (this.o.orientation.x !== 'auto'){
+				this.picker.addClass('datepicker-orient-' + this.o.orientation.x);
+				if (this.o.orientation.x === 'right')
+					left -= calendarWidth - width;
+			}
+			// auto x orientation is best-placement: if it crosses a window
+			// edge, fudge it sideways
+			else {
+				if (offset.left < 0) {
+					// component is outside the window on the left side. Move it into visible range
+					this.picker.addClass('datepicker-orient-left');
+					left -= offset.left - visualPadding;
+				} else if (left + calendarWidth > windowWidth) {
+					// the calendar passes the widow right edge. Align it to component right side
+					this.picker.addClass('datepicker-orient-right');
+					left += width - calendarWidth;
+				} else {
+					if (this.o.rtl) {
+						// Default to right
+						this.picker.addClass('datepicker-orient-right');
+					} else {
+						// Default to left
+						this.picker.addClass('datepicker-orient-left');
+					}
+				}
+			}
+
+			// auto y orientation is best-situation: top or bottom, no fudging,
+			// decision based on which shows more of the calendar
+			var yorient = this.o.orientation.y,
+				top_overflow;
+			if (yorient === 'auto'){
+				top_overflow = -scrollTop + top - calendarHeight;
+				yorient = top_overflow < 0 ? 'bottom' : 'top';
+			}
+
+			this.picker.addClass('datepicker-orient-' + yorient);
+			if (yorient === 'top')
+				top -= calendarHeight + parseInt(this.picker.css('padding-top'));
+			else
+				top += height;
+
+			if (this.o.rtl) {
+				var right = windowWidth - (left + width);
+				this.picker.css({
+					top: top,
+					right: right,
+					zIndex: zIndex
+				});
+			} else {
+				this.picker.css({
+					top: top,
+					left: left,
+					zIndex: zIndex
+				});
+			}
+			return this;
+		},
+
+		_allow_update: true,
+		update: function(){
+			if (!this._allow_update)
+				return this;
+
+			var oldDates = this.dates.copy(),
+				dates = [],
+				fromArgs = false;
+			if (arguments.length){
+				$.each(arguments, $.proxy(function(i, date){
+					if (date instanceof Date)
+						date = this._local_to_utc(date);
+					dates.push(date);
+				}, this));
+				fromArgs = true;
+			} else {
+				dates = this.isInput
+						? this.element.val()
+						: this.element.data('date') || this.inputField.val();
+				if (dates && this.o.multidate)
+					dates = dates.split(this.o.multidateSeparator);
+				else
+					dates = [dates];
+				delete this.element.data().date;
+			}
+
+			dates = $.map(dates, $.proxy(function(date){
+				return DPGlobal.parseDate(date, this.o.format, this.o.language, this.o.assumeNearbyYear);
+			}, this));
+			dates = $.grep(dates, $.proxy(function(date){
+				return (
+					!this.dateWithinRange(date) ||
+					!date
+				);
+			}, this), true);
+			this.dates.replace(dates);
+
+			if (this.o.updateViewDate) {
+				if (this.dates.length)
+					this.viewDate = new Date(this.dates.get(-1));
+				else if (this.viewDate < this.o.startDate)
+					this.viewDate = new Date(this.o.startDate);
+				else if (this.viewDate > this.o.endDate)
+					this.viewDate = new Date(this.o.endDate);
+				else
+					this.viewDate = this.o.defaultViewDate;
+			}
+
+			if (fromArgs){
+				// setting date by clicking
+				this.setValue();
+				this.element.change();
+			}
+			else if (this.dates.length){
+				// setting date by typing
+				if (String(oldDates) !== String(this.dates) && fromArgs) {
+					this._trigger('changeDate');
+					this.element.change();
+				}
+			}
+			if (!this.dates.length && oldDates.length) {
+				this._trigger('clearDate');
+				this.element.change();
+			}
+
+			this.fill();
+			return this;
+		},
+
+		fillDow: function(){
+      if (this.o.showWeekDays) {
+			var dowCnt = this.o.weekStart,
+				html = '<tr>';
+			if (this.o.calendarWeeks){
+				html += '<th class="cw">&#160;</th>';
+			}
+			while (dowCnt < this.o.weekStart + 7){
+				html += '<th class="dow';
+        if ($.inArray(dowCnt, this.o.daysOfWeekDisabled) !== -1)
+          html += ' disabled';
+        html += '">'+dates[this.o.language].daysMin[(dowCnt++)%7]+'</th>';
+			}
+			html += '</tr>';
+			this.picker.find('.datepicker-days thead').append(html);
+      }
+		},
+
+		fillMonths: function(){
+      var localDate = this._utc_to_local(this.viewDate);
+			var html = '';
+			var focused;
+			for (var i = 0; i < 12; i++){
+				focused = localDate && localDate.getMonth() === i ? ' focused' : '';
+				html += '<span class="month' + focused + '">' + dates[this.o.language].monthsShort[i] + '</span>';
+			}
+			this.picker.find('.datepicker-months td').html(html);
+		},
+
+		setRange: function(range){
+			if (!range || !range.length)
+				delete this.range;
+			else
+				this.range = $.map(range, function(d){
+					return d.valueOf();
+				});
+			this.fill();
+		},
+
+		getClassNames: function(date){
+			var cls = [],
+				year = this.viewDate.getUTCFullYear(),
+				month = this.viewDate.getUTCMonth(),
+				today = UTCToday();
+			if (date.getUTCFullYear() < year || (date.getUTCFullYear() === year && date.getUTCMonth() < month)){
+				cls.push('old');
+			} else if (date.getUTCFullYear() > year || (date.getUTCFullYear() === year && date.getUTCMonth() > month)){
+				cls.push('new');
+			}
+			if (this.focusDate && date.valueOf() === this.focusDate.valueOf())
+				cls.push('focused');
+			// Compare internal UTC date with UTC today, not local today
+			if (this.o.todayHighlight && isUTCEquals(date, today)) {
+				cls.push('today');
+			}
+			if (this.dates.contains(date) !== -1)
+				cls.push('active');
+			if (!this.dateWithinRange(date)){
+				cls.push('disabled');
+			}
+			if (this.dateIsDisabled(date)){
+				cls.push('disabled', 'disabled-date');
+			}
+			if ($.inArray(date.getUTCDay(), this.o.daysOfWeekHighlighted) !== -1){
+				cls.push('highlighted');
+			}
+
+			if (this.range){
+				if (date > this.range[0] && date < this.range[this.range.length-1]){
+					cls.push('range');
+				}
+				if ($.inArray(date.valueOf(), this.range) !== -1){
+					cls.push('selected');
+				}
+				if (date.valueOf() === this.range[0]){
+          cls.push('range-start');
+        }
+        if (date.valueOf() === this.range[this.range.length-1]){
+          cls.push('range-end');
+        }
+			}
+			return cls;
+		},
+
+		_fill_yearsView: function(selector, cssClass, factor, year, startYear, endYear, beforeFn){
+			var html = '';
+			var step = factor / 10;
+			var view = this.picker.find(selector);
+			var startVal = Math.floor(year / factor) * factor;
+			var endVal = startVal + step * 9;
+			var focusedVal = Math.floor(this.viewDate.getFullYear() / step) * step;
+			var selected = $.map(this.dates, function(d){
+				return Math.floor(d.getUTCFullYear() / step) * step;
+			});
+
+			var classes, tooltip, before;
+			for (var currVal = startVal - step; currVal <= endVal + step; currVal += step) {
+				classes = [cssClass];
+				tooltip = null;
+
+				if (currVal === startVal - step) {
+					classes.push('old');
+				} else if (currVal === endVal + step) {
+					classes.push('new');
+				}
+				if ($.inArray(currVal, selected) !== -1) {
+					classes.push('active');
+				}
+				if (currVal < startYear || currVal > endYear) {
+					classes.push('disabled');
+				}
+				if (currVal === focusedVal) {
+				  classes.push('focused');
+        }
+
+				if (beforeFn !== $.noop) {
+					before = beforeFn(new Date(currVal, 0, 1));
+					if (before === undefined) {
+						before = {};
+					} else if (typeof before === 'boolean') {
+						before = {enabled: before};
+					} else if (typeof before === 'string') {
+						before = {classes: before};
+					}
+					if (before.enabled === false) {
+						classes.push('disabled');
+					}
+					if (before.classes) {
+						classes = classes.concat(before.classes.split(/\s+/));
+					}
+					if (before.tooltip) {
+						tooltip = before.tooltip;
+					}
+				}
+
+				html += '<span class="' + classes.join(' ') + '"' + (tooltip ? ' title="' + tooltip + '"' : '') + '>' + currVal + '</span>';
+			}
+
+			view.find('.datepicker-switch').text(startVal + '-' + endVal);
+			view.find('td').html(html);
+		},
+
+		fill: function(){
+			var d = new Date(this.viewDate),
+				year = d.getUTCFullYear(),
+				month = d.getUTCMonth(),
+				startYear = this.o.startDate !== -Infinity ? this.o.startDate.getUTCFullYear() : -Infinity,
+				startMonth = this.o.startDate !== -Infinity ? this.o.startDate.getUTCMonth() : -Infinity,
+				endYear = this.o.endDate !== Infinity ? this.o.endDate.getUTCFullYear() : Infinity,
+				endMonth = this.o.endDate !== Infinity ? this.o.endDate.getUTCMonth() : Infinity,
+				todaytxt = dates[this.o.language].today || dates['en'].today || '',
+				cleartxt = dates[this.o.language].clear || dates['en'].clear || '',
+				titleFormat = dates[this.o.language].titleFormat || dates['en'].titleFormat,
+				tooltip,
+				before;
+			if (isNaN(year) || isNaN(month))
+				return;
+			this.picker.find('.datepicker-days .datepicker-switch')
+						.text(DPGlobal.formatDate(d, titleFormat, this.o.language));
+			this.picker.find('tfoot .today')
+						.text(todaytxt)
+						.css('display', this.o.todayBtn === true || this.o.todayBtn === 'linked' ? 'table-cell' : 'none');
+			this.picker.find('tfoot .clear')
+						.text(cleartxt)
+						.css('display', this.o.clearBtn === true ? 'table-cell' : 'none');
+			this.picker.find('thead .datepicker-title')
+						.text(this.o.title)
+						.css('display', typeof this.o.title === 'string' && this.o.title !== '' ? 'table-cell' : 'none');
+			this.updateNavArrows();
+			this.fillMonths();
+			var prevMonth = UTCDate(year, month, 0),
+				day = prevMonth.getUTCDate();
+			prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.o.weekStart + 7)%7);
+			var nextMonth = new Date(prevMonth);
+			if (prevMonth.getUTCFullYear() < 100){
+        nextMonth.setUTCFullYear(prevMonth.getUTCFullYear());
+      }
+			nextMonth.setUTCDate(nextMonth.getUTCDate() + 42);
+			nextMonth = nextMonth.valueOf();
+			var html = [];
+			var weekDay, clsName;
+			while (prevMonth.valueOf() < nextMonth){
+				weekDay = prevMonth.getUTCDay();
+				if (weekDay === this.o.weekStart){
+					html.push('<tr>');
+					if (this.o.calendarWeeks){
+						// ISO 8601: First week contains first thursday.
+						// ISO also states week starts on Monday, but we can be more abstract here.
+						var
+							// Start of current week: based on weekstart/current date
+							ws = new Date(+prevMonth + (this.o.weekStart - weekDay - 7) % 7 * 864e5),
+							// Thursday of this week
+							th = new Date(Number(ws) + (7 + 4 - ws.getUTCDay()) % 7 * 864e5),
+							// First Thursday of year, year from thursday
+							yth = new Date(Number(yth = UTCDate(th.getUTCFullYear(), 0, 1)) + (7 + 4 - yth.getUTCDay()) % 7 * 864e5),
+							// Calendar week: ms between thursdays, div ms per day, div 7 days
+							calWeek = (th - yth) / 864e5 / 7 + 1;
+						html.push('<td class="cw">'+ calWeek +'</td>');
+					}
+				}
+				clsName = this.getClassNames(prevMonth);
+				clsName.push('day');
+
+				var content = prevMonth.getUTCDate();
+
+				if (this.o.beforeShowDay !== $.noop){
+					before = this.o.beforeShowDay(this._utc_to_local(prevMonth));
+					if (before === undefined)
+						before = {};
+					else if (typeof before === 'boolean')
+						before = {enabled: before};
+					else if (typeof before === 'string')
+						before = {classes: before};
+					if (before.enabled === false)
+						clsName.push('disabled');
+					if (before.classes)
+						clsName = clsName.concat(before.classes.split(/\s+/));
+					if (before.tooltip)
+						tooltip = before.tooltip;
+					if (before.content)
+						content = before.content;
+				}
+
+				//Check if uniqueSort exists (supported by jquery >=1.12 and >=2.2)
+				//Fallback to unique function for older jquery versions
+				if ($.isFunction($.uniqueSort)) {
+					clsName = $.uniqueSort(clsName);
+				} else {
+					clsName = $.unique(clsName);
+				}
+
+				html.push('<td class="'+clsName.join(' ')+'"' + (tooltip ? ' title="'+tooltip+'"' : '') + ' data-date="' + prevMonth.getTime().toString() + '">' + content + '</td>');
+				tooltip = null;
+				if (weekDay === this.o.weekEnd){
+					html.push('</tr>');
+				}
+				prevMonth.setUTCDate(prevMonth.getUTCDate() + 1);
+			}
+			this.picker.find('.datepicker-days tbody').html(html.join(''));
+
+			var monthsTitle = dates[this.o.language].monthsTitle || dates['en'].monthsTitle || 'Months';
+			var months = this.picker.find('.datepicker-months')
+						.find('.datepicker-switch')
+							.text(this.o.maxViewMode < 2 ? monthsTitle : year)
+							.end()
+						.find('tbody span').removeClass('active');
+
+			$.each(this.dates, function(i, d){
+				if (d.getUTCFullYear() === year)
+					months.eq(d.getUTCMonth()).addClass('active');
+			});
+
+			if (year < startYear || year > endYear){
+				months.addClass('disabled');
+			}
+			if (year === startYear){
+				months.slice(0, startMonth).addClass('disabled');
+			}
+			if (year === endYear){
+				months.slice(endMonth+1).addClass('disabled');
+			}
+
+			if (this.o.beforeShowMonth !== $.noop){
+				var that = this;
+				$.each(months, function(i, month){
+          var moDate = new Date(year, i, 1);
+          var before = that.o.beforeShowMonth(moDate);
+					if (before === undefined)
+						before = {};
+					else if (typeof before === 'boolean')
+						before = {enabled: before};
+					else if (typeof before === 'string')
+						before = {classes: before};
+					if (before.enabled === false && !$(month).hasClass('disabled'))
+					    $(month).addClass('disabled');
+					if (before.classes)
+					    $(month).addClass(before.classes);
+					if (before.tooltip)
+					    $(month).prop('title', before.tooltip);
+				});
+			}
+
+			// Generating decade/years picker
+			this._fill_yearsView(
+				'.datepicker-years',
+				'year',
+				10,
+				year,
+				startYear,
+				endYear,
+				this.o.beforeShowYear
+			);
+
+			// Generating century/decades picker
+			this._fill_yearsView(
+				'.datepicker-decades',
+				'decade',
+				100,
+				year,
+				startYear,
+				endYear,
+				this.o.beforeShowDecade
+			);
+
+			// Generating millennium/centuries picker
+			this._fill_yearsView(
+				'.datepicker-centuries',
+				'century',
+				1000,
+				year,
+				startYear,
+				endYear,
+				this.o.beforeShowCentury
+			);
+		},
+
+		updateNavArrows: function(){
+			if (!this._allow_update)
+				return;
+
+			var d = new Date(this.viewDate),
+				year = d.getUTCFullYear(),
+				month = d.getUTCMonth(),
+				startYear = this.o.startDate !== -Infinity ? this.o.startDate.getUTCFullYear() : -Infinity,
+				startMonth = this.o.startDate !== -Infinity ? this.o.startDate.getUTCMonth() : -Infinity,
+				endYear = this.o.endDate !== Infinity ? this.o.endDate.getUTCFullYear() : Infinity,
+				endMonth = this.o.endDate !== Infinity ? this.o.endDate.getUTCMonth() : Infinity,
+				prevIsDisabled,
+				nextIsDisabled,
+				factor = 1;
+			switch (this.viewMode){
+				case 0:
+					prevIsDisabled = year <= startYear && month <= startMonth;
+					nextIsDisabled = year >= endYear && month >= endMonth;
+					break;
+				case 4:
+					factor *= 10;
+					/* falls through */
+				case 3:
+					factor *= 10;
+					/* falls through */
+				case 2:
+					factor *= 10;
+					/* falls through */
+				case 1:
+					prevIsDisabled = Math.floor(year / factor) * factor <= startYear;
+					nextIsDisabled = Math.floor(year / factor) * factor + factor >= endYear;
+					break;
+			}
+
+			this.picker.find('.prev').toggleClass('disabled', prevIsDisabled);
+			this.picker.find('.next').toggleClass('disabled', nextIsDisabled);
+		},
+
+		click: function(e){
+			e.preventDefault();
+			e.stopPropagation();
+
+			var target, dir, day, year, month;
+			target = $(e.target);
+
+			// Clicked on the switch
+			if (target.hasClass('datepicker-switch') && this.viewMode !== this.o.maxViewMode){
+				this.setViewMode(this.viewMode + 1);
+			}
+
+			// Clicked on today button
+			if (target.hasClass('today') && !target.hasClass('day')){
+				this.setViewMode(0);
+				this._setDate(UTCToday(), this.o.todayBtn === 'linked' ? null : 'view');
+			}
+
+			// Clicked on clear button
+			if (target.hasClass('clear')){
+				this.clearDates();
+			}
+
+			if (!target.hasClass('disabled')){
+				// Clicked on a month, year, decade, century
+				if (target.hasClass('month')
+						|| target.hasClass('year')
+						|| target.hasClass('decade')
+						|| target.hasClass('century')) {
+					this.viewDate.setUTCDate(1);
+
+					day = 1;
+					if (this.viewMode === 1){
+						month = target.parent().find('span').index(target);
+						year = this.viewDate.getUTCFullYear();
+						this.viewDate.setUTCMonth(month);
+					} else {
+						month = 0;
+						year = Number(target.text());
+						this.viewDate.setUTCFullYear(year);
+					}
+
+					this._trigger(DPGlobal.viewModes[this.viewMode - 1].e, this.viewDate);
+
+					if (this.viewMode === this.o.minViewMode){
+						this._setDate(UTCDate(year, month, day));
+					} else {
+						this.setViewMode(this.viewMode - 1);
+						this.fill();
+					}
+				}
+			}
+
+			if (this.picker.is(':visible') && this._focused_from){
+				this._focused_from.focus();
+			}
+			delete this._focused_from;
+		},
+
+		dayCellClick: function(e){
+			var $target = $(e.currentTarget);
+			var timestamp = $target.data('date');
+			var date = new Date(timestamp);
+
+			if (this.o.updateViewDate) {
+				if (date.getUTCFullYear() !== this.viewDate.getUTCFullYear()) {
+					this._trigger('changeYear', this.viewDate);
+				}
+
+				if (date.getUTCMonth() !== this.viewDate.getUTCMonth()) {
+					this._trigger('changeMonth', this.viewDate);
+				}
+			}
+			this._setDate(date);
+		},
+
+		// Clicked on prev or next
+		navArrowsClick: function(e){
+			var $target = $(e.currentTarget);
+			var dir = $target.hasClass('prev') ? -1 : 1;
+			if (this.viewMode !== 0){
+				dir *= DPGlobal.viewModes[this.viewMode].navStep * 12;
+			}
+			this.viewDate = this.moveMonth(this.viewDate, dir);
+			this._trigger(DPGlobal.viewModes[this.viewMode].e, this.viewDate);
+			this.fill();
+		},
+
+		_toggle_multidate: function(date){
+			var ix = this.dates.contains(date);
+			if (!date){
+				this.dates.clear();
+			}
+
+			if (ix !== -1){
+				if (this.o.multidate === true || this.o.multidate > 1 || this.o.toggleActive){
+					this.dates.remove(ix);
+				}
+			} else if (this.o.multidate === false) {
+				this.dates.clear();
+				this.dates.push(date);
+			}
+			else {
+				this.dates.push(date);
+			}
+
+			if (typeof this.o.multidate === 'number')
+				while (this.dates.length > this.o.multidate)
+					this.dates.remove(0);
+		},
+
+		_setDate: function(date, which){
+			if (!which || which === 'date')
+				this._toggle_multidate(date && new Date(date));
+			if ((!which && this.o.updateViewDate) || which === 'view')
+				this.viewDate = date && new Date(date);
+
+			this.fill();
+			this.setValue();
+			if (!which || which !== 'view') {
+				this._trigger('changeDate');
+			}
+			this.inputField.trigger('change');
+			if (this.o.autoclose && (!which || which === 'date')){
+				this.hide();
+			}
+		},
+
+		moveDay: function(date, dir){
+			var newDate = new Date(date);
+			newDate.setUTCDate(date.getUTCDate() + dir);
+
+			return newDate;
+		},
+
+		moveWeek: function(date, dir){
+			return this.moveDay(date, dir * 7);
+		},
+
+		moveMonth: function(date, dir){
+			if (!isValidDate(date))
+				return this.o.defaultViewDate;
+			if (!dir)
+				return date;
+			var new_date = new Date(date.valueOf()),
+				day = new_date.getUTCDate(),
+				month = new_date.getUTCMonth(),
+				mag = Math.abs(dir),
+				new_month, test;
+			dir = dir > 0 ? 1 : -1;
+			if (mag === 1){
+				test = dir === -1
+					// If going back one month, make sure month is not current month
+					// (eg, Mar 31 -> Feb 31 == Feb 28, not Mar 02)
+					? function(){
+						return new_date.getUTCMonth() === month;
+					}
+					// If going forward one month, make sure month is as expected
+					// (eg, Jan 31 -> Feb 31 == Feb 28, not Mar 02)
+					: function(){
+						return new_date.getUTCMonth() !== new_month;
+					};
+				new_month = month + dir;
+				new_date.setUTCMonth(new_month);
+				// Dec -> Jan (12) or Jan -> Dec (-1) -- limit expected date to 0-11
+				new_month = (new_month + 12) % 12;
+			}
+			else {
+				// For magnitudes >1, move one month at a time...
+				for (var i=0; i < mag; i++)
+					// ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
+					new_date = this.moveMonth(new_date, dir);
+				// ...then reset the day, keeping it in the new month
+				new_month = new_date.getUTCMonth();
+				new_date.setUTCDate(day);
+				test = function(){
+					return new_month !== new_date.getUTCMonth();
+				};
+			}
+			// Common date-resetting loop -- if date is beyond end of month, make it
+			// end of month
+			while (test()){
+				new_date.setUTCDate(--day);
+				new_date.setUTCMonth(new_month);
+			}
+			return new_date;
+		},
+
+		moveYear: function(date, dir){
+			return this.moveMonth(date, dir*12);
+		},
+
+		moveAvailableDate: function(date, dir, fn){
+			do {
+				date = this[fn](date, dir);
+
+				if (!this.dateWithinRange(date))
+					return false;
+
+				fn = 'moveDay';
+			}
+			while (this.dateIsDisabled(date));
+
+			return date;
+		},
+
+		weekOfDateIsDisabled: function(date){
+			return $.inArray(date.getUTCDay(), this.o.daysOfWeekDisabled) !== -1;
+		},
+
+		dateIsDisabled: function(date){
+			return (
+				this.weekOfDateIsDisabled(date) ||
+				$.grep(this.o.datesDisabled, function(d){
+					return isUTCEquals(date, d);
+				}).length > 0
+			);
+		},
+
+		dateWithinRange: function(date){
+			return date >= this.o.startDate && date <= this.o.endDate;
+		},
+
+		keydown: function(e){
+			if (!this.picker.is(':visible')){
+				if (e.keyCode === 40 || e.keyCode === 27) { // allow down to re-show picker
+					this.show();
+					e.stopPropagation();
+        }
+				return;
+			}
+			var dateChanged = false,
+				dir, newViewDate,
+				focusDate = this.focusDate || this.viewDate;
+			switch (e.keyCode){
+				case 27: // escape
+					if (this.focusDate){
+						this.focusDate = null;
+						this.viewDate = this.dates.get(-1) || this.viewDate;
+						this.fill();
+					}
+					else
+						this.hide();
+					e.preventDefault();
+					e.stopPropagation();
+					break;
+				case 37: // left
+				case 38: // up
+				case 39: // right
+				case 40: // down
+					if (!this.o.keyboardNavigation || this.o.daysOfWeekDisabled.length === 7)
+						break;
+					dir = e.keyCode === 37 || e.keyCode === 38 ? -1 : 1;
+          if (this.viewMode === 0) {
+  					if (e.ctrlKey){
+  						newViewDate = this.moveAvailableDate(focusDate, dir, 'moveYear');
+
+  						if (newViewDate)
+  							this._trigger('changeYear', this.viewDate);
+  					} else if (e.shiftKey){
+  						newViewDate = this.moveAvailableDate(focusDate, dir, 'moveMonth');
+
+  						if (newViewDate)
+  							this._trigger('changeMonth', this.viewDate);
+  					} else if (e.keyCode === 37 || e.keyCode === 39){
+  						newViewDate = this.moveAvailableDate(focusDate, dir, 'moveDay');
+  					} else if (!this.weekOfDateIsDisabled(focusDate)){
+  						newViewDate = this.moveAvailableDate(focusDate, dir, 'moveWeek');
+  					}
+          } else if (this.viewMode === 1) {
+            if (e.keyCode === 38 || e.keyCode === 40) {
+              dir = dir * 4;
+            }
+            newViewDate = this.moveAvailableDate(focusDate, dir, 'moveMonth');
+          } else if (this.viewMode === 2) {
+            if (e.keyCode === 38 || e.keyCode === 40) {
+              dir = dir * 4;
+            }
+            newViewDate = this.moveAvailableDate(focusDate, dir, 'moveYear');
+          }
+					if (newViewDate){
+						this.focusDate = this.viewDate = newViewDate;
+						this.setValue();
+						this.fill();
+						e.preventDefault();
+					}
+					break;
+				case 13: // enter
+					if (!this.o.forceParse)
+						break;
+					focusDate = this.focusDate || this.dates.get(-1) || this.viewDate;
+					if (this.o.keyboardNavigation) {
+						this._toggle_multidate(focusDate);
+						dateChanged = true;
+					}
+					this.focusDate = null;
+					this.viewDate = this.dates.get(-1) || this.viewDate;
+					this.setValue();
+					this.fill();
+					if (this.picker.is(':visible')){
+						e.preventDefault();
+						e.stopPropagation();
+						if (this.o.autoclose)
+							this.hide();
+					}
+					break;
+				case 9: // tab
+					this.focusDate = null;
+					this.viewDate = this.dates.get(-1) || this.viewDate;
+					this.fill();
+					this.hide();
+					break;
+			}
+			if (dateChanged){
+				if (this.dates.length)
+					this._trigger('changeDate');
+				else
+					this._trigger('clearDate');
+				this.inputField.trigger('change');
+			}
+		},
+
+		setViewMode: function(viewMode){
+			this.viewMode = viewMode;
+			this.picker
+				.children('div')
+				.hide()
+				.filter('.datepicker-' + DPGlobal.viewModes[this.viewMode].clsName)
+					.show();
+			this.updateNavArrows();
+      this._trigger('changeViewMode', new Date(this.viewDate));
+		}
+	};
+
+	var DateRangePicker = function(element, options){
+		$.data(element, 'datepicker', this);
+		this.element = $(element);
+		this.inputs = $.map(options.inputs, function(i){
+			return i.jquery ? i[0] : i;
+		});
+		delete options.inputs;
+
+		this.keepEmptyValues = options.keepEmptyValues;
+		delete options.keepEmptyValues;
+
+		datepickerPlugin.call($(this.inputs), options)
+			.on('changeDate', $.proxy(this.dateUpdated, this));
+
+		this.pickers = $.map(this.inputs, function(i){
+			return $.data(i, 'datepicker');
+		});
+		this.updateDates();
+	};
+	DateRangePicker.prototype = {
+		updateDates: function(){
+			this.dates = $.map(this.pickers, function(i){
+				return i.getUTCDate();
+			});
+			this.updateRanges();
+		},
+		updateRanges: function(){
+			var range = $.map(this.dates, function(d){
+				return d.valueOf();
+			});
+			$.each(this.pickers, function(i, p){
+				p.setRange(range);
+			});
+		},
+		dateUpdated: function(e){
+			// `this.updating` is a workaround for preventing infinite recursion
+			// between `changeDate` triggering and `setUTCDate` calling.  Until
+			// there is a better mechanism.
+			if (this.updating)
+				return;
+			this.updating = true;
+
+			var dp = $.data(e.target, 'datepicker');
+
+			if (dp === undefined) {
+				return;
+			}
+
+			var new_date = dp.getUTCDate(),
+				keep_empty_values = this.keepEmptyValues,
+				i = $.inArray(e.target, this.inputs),
+				j = i - 1,
+				k = i + 1,
+				l = this.inputs.length;
+			if (i === -1)
+				return;
+
+			$.each(this.pickers, function(i, p){
+				if (!p.getUTCDate() && (p === dp || !keep_empty_values))
+					p.setUTCDate(new_date);
+			});
+
+			if (new_date < this.dates[j]){
+				// Date being moved earlier/left
+				while (j >= 0 && new_date < this.dates[j]){
+					this.pickers[j--].setUTCDate(new_date);
+				}
+			} else if (new_date > this.dates[k]){
+				// Date being moved later/right
+				while (k < l && new_date > this.dates[k]){
+					this.pickers[k++].setUTCDate(new_date);
+				}
+			}
+			this.updateDates();
+
+			delete this.updating;
+		},
+		destroy: function(){
+			$.map(this.pickers, function(p){ p.destroy(); });
+			$(this.inputs).off('changeDate', this.dateUpdated);
+			delete this.element.data().datepicker;
+		},
+		remove: alias('destroy', 'Method `remove` is deprecated and will be removed in version 2.0. Use `destroy` instead')
+	};
+
+	function opts_from_el(el, prefix){
+		// Derive options from element data-attrs
+		var data = $(el).data(),
+			out = {}, inkey,
+			replace = new RegExp('^' + prefix.toLowerCase() + '([A-Z])');
+		prefix = new RegExp('^' + prefix.toLowerCase());
+		function re_lower(_,a){
+			return a.toLowerCase();
+		}
+		for (var key in data)
+			if (prefix.test(key)){
+				inkey = key.replace(replace, re_lower);
+				out[inkey] = data[key];
+			}
+		return out;
+	}
+
+	function opts_from_locale(lang){
+		// Derive options from locale plugins
+		var out = {};
+		// Check if "de-DE" style date is available, if not language should
+		// fallback to 2 letter code eg "de"
+		if (!dates[lang]){
+			lang = lang.split('-')[0];
+			if (!dates[lang])
+				return;
+		}
+		var d = dates[lang];
+		$.each(locale_opts, function(i,k){
+			if (k in d)
+				out[k] = d[k];
+		});
+		return out;
+	}
+
+	var old = $.fn.datepicker;
+	var datepickerPlugin = function(option){
+		var args = Array.apply(null, arguments);
+		args.shift();
+		var internal_return;
+		this.each(function(){
+			var $this = $(this),
+				data = $this.data('datepicker'),
+				options = typeof option === 'object' && option;
+			if (!data){
+				var elopts = opts_from_el(this, 'date'),
+					// Preliminary otions
+					xopts = $.extend({}, defaults, elopts, options),
+					locopts = opts_from_locale(xopts.language),
+					// Options priority: js args, data-attrs, locales, defaults
+					opts = $.extend({}, defaults, locopts, elopts, options);
+				if ($this.hasClass('input-daterange') || opts.inputs){
+					$.extend(opts, {
+						inputs: opts.inputs || $this.find('input').toArray()
+					});
+					data = new DateRangePicker(this, opts);
+				}
+				else {
+					data = new Datepicker(this, opts);
+				}
+				$this.data('datepicker', data);
+			}
+			if (typeof option === 'string' && typeof data[option] === 'function'){
+				internal_return = data[option].apply(data, args);
+			}
+		});
+
+		if (
+			internal_return === undefined ||
+			internal_return instanceof Datepicker ||
+			internal_return instanceof DateRangePicker
+		)
+			return this;
+
+		if (this.length > 1)
+			throw new Error('Using only allowed for the collection of a single element (' + option + ' function)');
+		else
+			return internal_return;
+	};
+	$.fn.datepicker = datepickerPlugin;
+
+	var defaults = $.fn.datepicker.defaults = {
+		assumeNearbyYear: false,
+		autoclose: false,
+		beforeShowDay: $.noop,
+		beforeShowMonth: $.noop,
+		beforeShowYear: $.noop,
+		beforeShowDecade: $.noop,
+		beforeShowCentury: $.noop,
+		calendarWeeks: false,
+		clearBtn: false,
+		toggleActive: false,
+		daysOfWeekDisabled: [],
+		daysOfWeekHighlighted: [],
+		datesDisabled: [],
+		endDate: Infinity,
+		forceParse: true,
+		format: 'mm/dd/yyyy',
+		keepEmptyValues: false,
+		keyboardNavigation: true,
+		language: 'en',
+		minViewMode: 0,
+		maxViewMode: 4,
+		multidate: false,
+		multidateSeparator: ',',
+		orientation: "auto",
+		rtl: false,
+		startDate: -Infinity,
+		startView: 0,
+		todayBtn: false,
+		todayHighlight: false,
+		updateViewDate: true,
+		weekStart: 0,
+		disableTouchKeyboard: false,
+		enableOnReadonly: true,
+		showOnFocus: true,
+		zIndexOffset: 10,
+		container: 'body',
+		immediateUpdates: false,
+		title: '',
+		templates: {
+			leftArrow: '&#x00AB;',
+			rightArrow: '&#x00BB;'
+		},
+    showWeekDays: true
+	};
+	var locale_opts = $.fn.datepicker.locale_opts = [
+		'format',
+		'rtl',
+		'weekStart'
+	];
+	$.fn.datepicker.Constructor = Datepicker;
+	var dates = $.fn.datepicker.dates = {
+		en: {
+			days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+			daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+			daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+			months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+			monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+			today: "Today",
+			clear: "Clear",
+			titleFormat: "MM yyyy"
+		}
+	};
+
+	var DPGlobal = {
+		viewModes: [
+			{
+				names: ['days', 'month'],
+				clsName: 'days',
+				e: 'changeMonth'
+			},
+			{
+				names: ['months', 'year'],
+				clsName: 'months',
+				e: 'changeYear',
+				navStep: 1
+			},
+			{
+				names: ['years', 'decade'],
+				clsName: 'years',
+				e: 'changeDecade',
+				navStep: 10
+			},
+			{
+				names: ['decades', 'century'],
+				clsName: 'decades',
+				e: 'changeCentury',
+				navStep: 100
+			},
+			{
+				names: ['centuries', 'millennium'],
+				clsName: 'centuries',
+				e: 'changeMillennium',
+				navStep: 1000
+			}
+		],
+		validParts: /dd?|DD?|mm?|MM?|yy(?:yy)?/g,
+		nonpunctuation: /[^ -\/:-@\u5e74\u6708\u65e5\[-`{-~\t\n\r]+/g,
+		parseFormat: function(format){
+			if (typeof format.toValue === 'function' && typeof format.toDisplay === 'function')
+                return format;
+            // IE treats \0 as a string end in inputs (truncating the value),
+			// so it's a bad format delimiter, anyway
+			var separators = format.replace(this.validParts, '\0').split('\0'),
+				parts = format.match(this.validParts);
+			if (!separators || !separators.length || !parts || parts.length === 0){
+				throw new Error("Invalid date format.");
+			}
+			return {separators: separators, parts: parts};
+		},
+		parseDate: function(date, format, language, assumeNearby){
+			if (!date)
+				return undefined;
+			if (date instanceof Date)
+				return date;
+			if (typeof format === 'string')
+				format = DPGlobal.parseFormat(format);
+			if (format.toValue)
+				return format.toValue(date, format, language);
+			var fn_map = {
+					d: 'moveDay',
+					m: 'moveMonth',
+					w: 'moveWeek',
+					y: 'moveYear'
+				},
+				dateAliases = {
+					yesterday: '-1d',
+					today: '+0d',
+					tomorrow: '+1d'
+				},
+				parts, part, dir, i, fn;
+			if (date in dateAliases){
+				date = dateAliases[date];
+			}
+			if (/^[\-+]\d+[dmwy]([\s,]+[\-+]\d+[dmwy])*$/i.test(date)){
+				parts = date.match(/([\-+]\d+)([dmwy])/gi);
+				date = new Date();
+				for (i=0; i < parts.length; i++){
+					part = parts[i].match(/([\-+]\d+)([dmwy])/i);
+					dir = Number(part[1]);
+					fn = fn_map[part[2].toLowerCase()];
+					date = Datepicker.prototype[fn](date, dir);
+				}
+				return Datepicker.prototype._zero_utc_time(date);
+			}
+
+			parts = date && date.match(this.nonpunctuation) || [];
+
+			function applyNearbyYear(year, threshold){
+				if (threshold === true)
+					threshold = 10;
+
+				// if year is 2 digits or less, than the user most likely is trying to get a recent century
+				if (year < 100){
+					year += 2000;
+					// if the new year is more than threshold years in advance, use last century
+					if (year > ((new Date()).getFullYear()+threshold)){
+						year -= 100;
+					}
+				}
+
+				return year;
+			}
+
+			var parsed = {},
+				setters_order = ['yyyy', 'yy', 'M', 'MM', 'm', 'mm', 'd', 'dd'],
+				setters_map = {
+					yyyy: function(d,v){
+						return d.setUTCFullYear(assumeNearby ? applyNearbyYear(v, assumeNearby) : v);
+					},
+					m: function(d,v){
+						if (isNaN(d))
+							return d;
+						v -= 1;
+						while (v < 0) v += 12;
+						v %= 12;
+						d.setUTCMonth(v);
+						while (d.getUTCMonth() !== v)
+							d.setUTCDate(d.getUTCDate()-1);
+						return d;
+					},
+					d: function(d,v){
+						return d.setUTCDate(v);
+					}
+				},
+				val, filtered;
+			setters_map['yy'] = setters_map['yyyy'];
+			setters_map['M'] = setters_map['MM'] = setters_map['mm'] = setters_map['m'];
+			setters_map['dd'] = setters_map['d'];
+			date = UTCToday();
+			var fparts = format.parts.slice();
+			// Remove noop parts
+			if (parts.length !== fparts.length){
+				fparts = $(fparts).filter(function(i,p){
+					return $.inArray(p, setters_order) !== -1;
+				}).toArray();
+			}
+			// Process remainder
+			function match_part(){
+				var m = this.slice(0, parts[i].length),
+					p = parts[i].slice(0, m.length);
+				return m.toLowerCase() === p.toLowerCase();
+			}
+			if (parts.length === fparts.length){
+				var cnt;
+				for (i=0, cnt = fparts.length; i < cnt; i++){
+					val = parseInt(parts[i], 10);
+					part = fparts[i];
+					if (isNaN(val)){
+						switch (part){
+							case 'MM':
+								filtered = $(dates[language].months).filter(match_part);
+								val = $.inArray(filtered[0], dates[language].months) + 1;
+								break;
+							case 'M':
+								filtered = $(dates[language].monthsShort).filter(match_part);
+								val = $.inArray(filtered[0], dates[language].monthsShort) + 1;
+								break;
+						}
+					}
+					parsed[part] = val;
+				}
+				var _date, s;
+				for (i=0; i < setters_order.length; i++){
+					s = setters_order[i];
+					if (s in parsed && !isNaN(parsed[s])){
+						_date = new Date(date);
+						setters_map[s](_date, parsed[s]);
+						if (!isNaN(_date))
+							date = _date;
+					}
+				}
+			}
+			return date;
+		},
+		formatDate: function(date, format, language){
+			if (!date)
+				return '';
+			if (typeof format === 'string')
+				format = DPGlobal.parseFormat(format);
+			if (format.toDisplay)
+                return format.toDisplay(date, format, language);
+            var val = {
+				d: date.getUTCDate(),
+				D: dates[language].daysShort[date.getUTCDay()],
+				DD: dates[language].days[date.getUTCDay()],
+				m: date.getUTCMonth() + 1,
+				M: dates[language].monthsShort[date.getUTCMonth()],
+				MM: dates[language].months[date.getUTCMonth()],
+				yy: date.getUTCFullYear().toString().substring(2),
+				yyyy: date.getUTCFullYear()
+			};
+			val.dd = (val.d < 10 ? '0' : '') + val.d;
+			val.mm = (val.m < 10 ? '0' : '') + val.m;
+			date = [];
+			var seps = $.extend([], format.separators);
+			for (var i=0, cnt = format.parts.length; i <= cnt; i++){
+				if (seps.length)
+					date.push(seps.shift());
+				date.push(val[format.parts[i]]);
+			}
+			return date.join('');
+		},
+		headTemplate: '<thead>'+
+			              '<tr>'+
+			                '<th colspan="7" class="datepicker-title"></th>'+
+			              '</tr>'+
+							'<tr>'+
+								'<th class="prev">'+defaults.templates.leftArrow+'</th>'+
+								'<th colspan="5" class="datepicker-switch"></th>'+
+								'<th class="next">'+defaults.templates.rightArrow+'</th>'+
+							'</tr>'+
+						'</thead>',
+		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',
+		footTemplate: '<tfoot>'+
+							'<tr>'+
+								'<th colspan="7" class="today"></th>'+
+							'</tr>'+
+							'<tr>'+
+								'<th colspan="7" class="clear"></th>'+
+							'</tr>'+
+						'</tfoot>'
+	};
+	DPGlobal.template = '<div class="datepicker">'+
+							'<div class="datepicker-days">'+
+								'<table class="table-condensed">'+
+									DPGlobal.headTemplate+
+									'<tbody></tbody>'+
+									DPGlobal.footTemplate+
+								'</table>'+
+							'</div>'+
+							'<div class="datepicker-months">'+
+								'<table class="table-condensed">'+
+									DPGlobal.headTemplate+
+									DPGlobal.contTemplate+
+									DPGlobal.footTemplate+
+								'</table>'+
+							'</div>'+
+							'<div class="datepicker-years">'+
+								'<table class="table-condensed">'+
+									DPGlobal.headTemplate+
+									DPGlobal.contTemplate+
+									DPGlobal.footTemplate+
+								'</table>'+
+							'</div>'+
+							'<div class="datepicker-decades">'+
+								'<table class="table-condensed">'+
+									DPGlobal.headTemplate+
+									DPGlobal.contTemplate+
+									DPGlobal.footTemplate+
+								'</table>'+
+							'</div>'+
+							'<div class="datepicker-centuries">'+
+								'<table class="table-condensed">'+
+									DPGlobal.headTemplate+
+									DPGlobal.contTemplate+
+									DPGlobal.footTemplate+
+								'</table>'+
+							'</div>'+
+						'</div>';
+
+	$.fn.datepicker.DPGlobal = DPGlobal;
+
+
+	/* DATEPICKER NO CONFLICT
+	* =================== */
+
+	$.fn.datepicker.noConflict = function(){
+		$.fn.datepicker = old;
+		return this;
+	};
+
+	/* DATEPICKER VERSION
+	 * =================== */
+	$.fn.datepicker.version = '1.7.0';
+
+	$.fn.datepicker.deprecated = function(msg){
+		var console = window.console;
+		if (console && console.warn) {
+			console.warn('DEPRECATED: ' + msg);
+		}
+	};
+
+
+	/* DATEPICKER DATA-API
+	* ================== */
+
+	$(document).on(
+		'focus.datepicker.data-api click.datepicker.data-api',
+		'[data-provide="datepicker"]',
+		function(e){
+			var $this = $(this);
+			if ($this.data('datepicker'))
+				return;
+			e.preventDefault();
+			// component click requires us to explicitly show it
+			datepickerPlugin.call($this, 'show');
+		}
+	);
+	$(function(){
+		datepickerPlugin.call($('[data-provide="datepicker-inline"]'));
+	});
+
+}));
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(jQuery) {/*!
+ * Timepicker Component for Twitter Bootstrap
+ *
+ * Copyright 2013 Joris de Wit and bootstrap-timepicker contributors
+ *
+ * Contributors https://github.com/jdewit/bootstrap-timepicker/graphs/contributors
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+(function($, window, document) {
+  'use strict';
+
+  // TIMEPICKER PUBLIC CLASS DEFINITION
+  var Timepicker = function(element, options) {
+    this.widget = '';
+    this.$element = $(element);
+    this.defaultTime = options.defaultTime;
+    this.disableFocus = options.disableFocus;
+    this.disableMousewheel = options.disableMousewheel;
+    this.isOpen = options.isOpen;
+    this.minuteStep = options.minuteStep;
+    this.modalBackdrop = options.modalBackdrop;
+    this.orientation = options.orientation;
+    this.secondStep = options.secondStep;
+    this.snapToStep = options.snapToStep;
+    this.showInputs = options.showInputs;
+    this.showMeridian = options.showMeridian;
+    this.showSeconds = options.showSeconds;
+    this.template = options.template;
+    this.appendWidgetTo = options.appendWidgetTo;
+    this.showWidgetOnAddonClick = options.showWidgetOnAddonClick;
+    this.icons = options.icons;
+    this.maxHours = options.maxHours;
+    this.explicitMode = options.explicitMode; // If true 123 = 1:23, 12345 = 1:23:45, else invalid.
+
+    this.handleDocumentClick = function (e) {
+      var self = e.data.scope;
+      // This condition was inspired by bootstrap-datepicker.
+      // The element the timepicker is invoked on is the input but it has a sibling for addon/button.
+      if (!(self.$element.parent().find(e.target).length ||
+          self.$widget.is(e.target) ||
+          self.$widget.find(e.target).length)) {
+        self.hideWidget();
+      }
+    };
+
+    this._init();
+  };
+
+  Timepicker.prototype = {
+
+    constructor: Timepicker,
+    _init: function() {
+      var self = this;
+
+      if (this.showWidgetOnAddonClick && (this.$element.parent().hasClass('input-group') && this.$element.parent().hasClass('bootstrap-timepicker'))) {
+        this.$element.parent('.input-group.bootstrap-timepicker').find('.input-group-addon').on({
+          'click.timepicker': $.proxy(this.showWidget, this)
+        });
+        this.$element.on({
+          'focus.timepicker': $.proxy(this.highlightUnit, this),
+          'click.timepicker': $.proxy(this.highlightUnit, this),
+          'keydown.timepicker': $.proxy(this.elementKeydown, this),
+          'blur.timepicker': $.proxy(this.blurElement, this),
+          'mousewheel.timepicker DOMMouseScroll.timepicker': $.proxy(this.mousewheel, this)
+        });
+      } else {
+        if (this.template) {
+          this.$element.on({
+            'focus.timepicker': $.proxy(this.showWidget, this),
+            'click.timepicker': $.proxy(this.showWidget, this),
+            'blur.timepicker': $.proxy(this.blurElement, this),
+            'mousewheel.timepicker DOMMouseScroll.timepicker': $.proxy(this.mousewheel, this)
+          });
+        } else {
+          this.$element.on({
+            'focus.timepicker': $.proxy(this.highlightUnit, this),
+            'click.timepicker': $.proxy(this.highlightUnit, this),
+            'keydown.timepicker': $.proxy(this.elementKeydown, this),
+            'blur.timepicker': $.proxy(this.blurElement, this),
+            'mousewheel.timepicker DOMMouseScroll.timepicker': $.proxy(this.mousewheel, this)
+          });
+        }
+      }
+
+      if (this.template !== false) {
+        this.$widget = $(this.getTemplate()).on('click', $.proxy(this.widgetClick, this));
+      } else {
+        this.$widget = false;
+      }
+
+      if (this.showInputs && this.$widget !== false) {
+        this.$widget.find('input').each(function() {
+          $(this).on({
+            'click.timepicker': function() { $(this).select(); },
+            'keydown.timepicker': $.proxy(self.widgetKeydown, self),
+            'keyup.timepicker': $.proxy(self.widgetKeyup, self)
+          });
+        });
+      }
+
+      this.setDefaultTime(this.defaultTime);
+    },
+
+    blurElement: function() {
+      this.highlightedUnit = null;
+      this.updateFromElementVal();
+    },
+
+    clear: function() {
+      this.hour = '';
+      this.minute = '';
+      this.second = '';
+      this.meridian = '';
+
+      this.$element.val('');
+    },
+
+    decrementHour: function() {
+      if (this.showMeridian) {
+        if (this.hour === 1) {
+          this.hour = 12;
+        } else if (this.hour === 12) {
+          this.hour--;
+
+          return this.toggleMeridian();
+        } else if (this.hour === 0) {
+          this.hour = 11;
+
+          return this.toggleMeridian();
+        } else {
+          this.hour--;
+        }
+      } else {
+        if (this.hour <= 0) {
+          this.hour = this.maxHours - 1;
+        } else {
+          this.hour--;
+        }
+      }
+    },
+
+    decrementMinute: function(step) {
+      var newVal;
+
+      if (step) {
+        newVal = this.minute - step;
+      } else {
+        newVal = this.minute - this.minuteStep;
+      }
+
+      if (newVal < 0) {
+        this.decrementHour();
+        this.minute = newVal + 60;
+      } else {
+        this.minute = newVal;
+      }
+    },
+
+    decrementSecond: function() {
+      var newVal = this.second - this.secondStep;
+
+      if (newVal < 0) {
+        this.decrementMinute(true);
+        this.second = newVal + 60;
+      } else {
+        this.second = newVal;
+      }
+    },
+
+    elementKeydown: function(e) {
+      switch (e.which) {
+      case 9: //tab
+        if (e.shiftKey) {
+          if (this.highlightedUnit === 'hour') {
+            this.hideWidget();
+            break;
+          }
+          this.highlightPrevUnit();
+        } else if ((this.showMeridian && this.highlightedUnit === 'meridian') || (this.showSeconds && this.highlightedUnit === 'second') || (!this.showMeridian && !this.showSeconds && this.highlightedUnit ==='minute')) {
+          this.hideWidget();
+          break;
+        } else {
+          this.highlightNextUnit();
+        }
+        e.preventDefault();
+        this.updateFromElementVal();
+        break;
+      case 27: // escape
+        this.updateFromElementVal();
+        break;
+      case 37: // left arrow
+        e.preventDefault();
+        this.highlightPrevUnit();
+        this.updateFromElementVal();
+        break;
+      case 38: // up arrow
+        e.preventDefault();
+        switch (this.highlightedUnit) {
+        case 'hour':
+          this.incrementHour();
+          this.highlightHour();
+          break;
+        case 'minute':
+          this.incrementMinute();
+          this.highlightMinute();
+          break;
+        case 'second':
+          this.incrementSecond();
+          this.highlightSecond();
+          break;
+        case 'meridian':
+          this.toggleMeridian();
+          this.highlightMeridian();
+          break;
+        }
+        this.update();
+        break;
+      case 39: // right arrow
+        e.preventDefault();
+        this.highlightNextUnit();
+        this.updateFromElementVal();
+        break;
+      case 40: // down arrow
+        e.preventDefault();
+        switch (this.highlightedUnit) {
+        case 'hour':
+          this.decrementHour();
+          this.highlightHour();
+          break;
+        case 'minute':
+          this.decrementMinute();
+          this.highlightMinute();
+          break;
+        case 'second':
+          this.decrementSecond();
+          this.highlightSecond();
+          break;
+        case 'meridian':
+          this.toggleMeridian();
+          this.highlightMeridian();
+          break;
+        }
+
+        this.update();
+        break;
+      }
+    },
+
+    getCursorPosition: function() {
+      var input = this.$element.get(0);
+
+      if ('selectionStart' in input) {// Standard-compliant browsers
+
+        return input.selectionStart;
+      } else if (document.selection) {// IE fix
+        input.focus();
+        var sel = document.selection.createRange(),
+          selLen = document.selection.createRange().text.length;
+
+        sel.moveStart('character', - input.value.length);
+
+        return sel.text.length - selLen;
+      }
+    },
+
+    getTemplate: function() {
+      var template,
+        hourTemplate,
+        minuteTemplate,
+        secondTemplate,
+        meridianTemplate,
+        templateContent;
+
+      if (this.showInputs) {
+        hourTemplate = '<input type="text" class="bootstrap-timepicker-hour" maxlength="2"/>';
+        minuteTemplate = '<input type="text" class="bootstrap-timepicker-minute" maxlength="2"/>';
+        secondTemplate = '<input type="text" class="bootstrap-timepicker-second" maxlength="2"/>';
+        meridianTemplate = '<input type="text" class="bootstrap-timepicker-meridian" maxlength="2"/>';
+      } else {
+        hourTemplate = '<span class="bootstrap-timepicker-hour"></span>';
+        minuteTemplate = '<span class="bootstrap-timepicker-minute"></span>';
+        secondTemplate = '<span class="bootstrap-timepicker-second"></span>';
+        meridianTemplate = '<span class="bootstrap-timepicker-meridian"></span>';
+      }
+
+      templateContent = '<table>'+
+         '<tr>'+
+           '<td><a href="#" data-action="incrementHour"><span class="'+ this.icons.up +'"></span></a></td>'+
+           '<td class="separator">&nbsp;</td>'+
+           '<td><a href="#" data-action="incrementMinute"><span class="'+ this.icons.up +'"></span></a></td>'+
+           (this.showSeconds ?
+             '<td class="separator">&nbsp;</td>'+
+             '<td><a href="#" data-action="incrementSecond"><span class="'+ this.icons.up +'"></span></a></td>'
+           : '') +
+           (this.showMeridian ?
+             '<td class="separator">&nbsp;</td>'+
+             '<td class="meridian-column"><a href="#" data-action="toggleMeridian"><span class="'+ this.icons.up +'"></span></a></td>'
+           : '') +
+         '</tr>'+
+         '<tr>'+
+           '<td>'+ hourTemplate +'</td> '+
+           '<td class="separator">:</td>'+
+           '<td>'+ minuteTemplate +'</td> '+
+           (this.showSeconds ?
+            '<td class="separator">:</td>'+
+            '<td>'+ secondTemplate +'</td>'
+           : '') +
+           (this.showMeridian ?
+            '<td class="separator">&nbsp;</td>'+
+            '<td>'+ meridianTemplate +'</td>'
+           : '') +
+         '</tr>'+
+         '<tr>'+
+           '<td><a href="#" data-action="decrementHour"><span class="'+ this.icons.down +'"></span></a></td>'+
+           '<td class="separator"></td>'+
+           '<td><a href="#" data-action="decrementMinute"><span class="'+ this.icons.down +'"></span></a></td>'+
+           (this.showSeconds ?
+            '<td class="separator">&nbsp;</td>'+
+            '<td><a href="#" data-action="decrementSecond"><span class="'+ this.icons.down +'"></span></a></td>'
+           : '') +
+           (this.showMeridian ?
+            '<td class="separator">&nbsp;</td>'+
+            '<td><a href="#" data-action="toggleMeridian"><span class="'+ this.icons.down +'"></span></a></td>'
+           : '') +
+         '</tr>'+
+       '</table>';
+
+      switch(this.template) {
+      case 'modal':
+        template = '<div class="bootstrap-timepicker-widget modal hide fade in" data-backdrop="'+ (this.modalBackdrop ? 'true' : 'false') +'">'+
+          '<div class="modal-header">'+
+            '<a href="#" class="close" data-dismiss="modal">&times;</a>'+
+            '<h3>Pick a Time</h3>'+
+          '</div>'+
+          '<div class="modal-content">'+
+            templateContent +
+          '</div>'+
+          '<div class="modal-footer">'+
+            '<a href="#" class="btn btn-primary" data-dismiss="modal">OK</a>'+
+          '</div>'+
+        '</div>';
+        break;
+      case 'dropdown':
+        template = '<div class="bootstrap-timepicker-widget dropdown-menu">'+ templateContent +'</div>';
+        break;
+      }
+
+      return template;
+    },
+
+    getTime: function() {
+      if (this.hour === '') {
+        return '';
+      }
+
+      return this.hour + ':' + (this.minute.toString().length === 1 ? '0' + this.minute : this.minute) + (this.showSeconds ? ':' + (this.second.toString().length === 1 ? '0' + this.second : this.second) : '') + (this.showMeridian ? ' ' + this.meridian : '');
+    },
+
+    hideWidget: function() {
+      if (this.isOpen === false) {
+        return;
+      }
+
+      this.$element.trigger({
+        'type': 'hide.timepicker',
+        'time': {
+          'value': this.getTime(),
+          'hours': this.hour,
+          'minutes': this.minute,
+          'seconds': this.second,
+          'meridian': this.meridian
+        }
+      });
+
+      if (this.template === 'modal' && this.$widget.modal) {
+        this.$widget.modal('hide');
+      } else {
+        this.$widget.removeClass('open');
+      }
+
+      $(document).off('mousedown.timepicker, touchend.timepicker', this.handleDocumentClick);
+
+      this.isOpen = false;
+      // show/hide approach taken by datepicker
+      this.$widget.detach();
+    },
+
+    highlightUnit: function() {
+      this.position = this.getCursorPosition();
+      if (this.position >= 0 && this.position <= 2) {
+        this.highlightHour();
+      } else if (this.position >= 3 && this.position <= 5) {
+        this.highlightMinute();
+      } else if (this.position >= 6 && this.position <= 8) {
+        if (this.showSeconds) {
+          this.highlightSecond();
+        } else {
+          this.highlightMeridian();
+        }
+      } else if (this.position >= 9 && this.position <= 11) {
+        this.highlightMeridian();
+      }
+    },
+
+    highlightNextUnit: function() {
+      switch (this.highlightedUnit) {
+      case 'hour':
+        this.highlightMinute();
+        break;
+      case 'minute':
+        if (this.showSeconds) {
+          this.highlightSecond();
+        } else if (this.showMeridian){
+          this.highlightMeridian();
+        } else {
+          this.highlightHour();
+        }
+        break;
+      case 'second':
+        if (this.showMeridian) {
+          this.highlightMeridian();
+        } else {
+          this.highlightHour();
+        }
+        break;
+      case 'meridian':
+        this.highlightHour();
+        break;
+      }
+    },
+
+    highlightPrevUnit: function() {
+      switch (this.highlightedUnit) {
+      case 'hour':
+        if(this.showMeridian){
+          this.highlightMeridian();
+        } else if (this.showSeconds) {
+          this.highlightSecond();
+        } else {
+          this.highlightMinute();
+        }
+        break;
+      case 'minute':
+        this.highlightHour();
+        break;
+      case 'second':
+        this.highlightMinute();
+        break;
+      case 'meridian':
+        if (this.showSeconds) {
+          this.highlightSecond();
+        } else {
+          this.highlightMinute();
+        }
+        break;
+      }
+    },
+
+    highlightHour: function() {
+      var $element = this.$element.get(0),
+          self = this;
+
+      this.highlightedUnit = 'hour';
+
+      if ($element.setSelectionRange) {
+        setTimeout(function() {
+          if (self.hour < 10) {
+            $element.setSelectionRange(0,1);
+          } else {
+            $element.setSelectionRange(0,2);
+          }
+        }, 0);
+      }
+    },
+
+    highlightMinute: function() {
+      var $element = this.$element.get(0),
+          self = this;
+
+      this.highlightedUnit = 'minute';
+
+      if ($element.setSelectionRange) {
+        setTimeout(function() {
+          if (self.hour < 10) {
+            $element.setSelectionRange(2,4);
+          } else {
+            $element.setSelectionRange(3,5);
+          }
+        }, 0);
+      }
+    },
+
+    highlightSecond: function() {
+      var $element = this.$element.get(0),
+          self = this;
+
+      this.highlightedUnit = 'second';
+
+      if ($element.setSelectionRange) {
+        setTimeout(function() {
+          if (self.hour < 10) {
+            $element.setSelectionRange(5,7);
+          } else {
+            $element.setSelectionRange(6,8);
+          }
+        }, 0);
+      }
+    },
+
+    highlightMeridian: function() {
+      var $element = this.$element.get(0),
+          self = this;
+
+      this.highlightedUnit = 'meridian';
+
+      if ($element.setSelectionRange) {
+        if (this.showSeconds) {
+          setTimeout(function() {
+            if (self.hour < 10) {
+              $element.setSelectionRange(8,10);
+            } else {
+              $element.setSelectionRange(9,11);
+            }
+          }, 0);
+        } else {
+          setTimeout(function() {
+            if (self.hour < 10) {
+              $element.setSelectionRange(5,7);
+            } else {
+              $element.setSelectionRange(6,8);
+            }
+          }, 0);
+        }
+      }
+    },
+
+    incrementHour: function() {
+      if (this.showMeridian) {
+        if (this.hour === 11) {
+          this.hour++;
+          return this.toggleMeridian();
+        } else if (this.hour === 12) {
+          this.hour = 0;
+        }
+      }
+      if (this.hour === this.maxHours - 1) {
+        this.hour = 0;
+
+        return;
+      }
+      this.hour++;
+    },
+
+    incrementMinute: function(step) {
+      var newVal;
+
+      if (step) {
+        newVal = this.minute + step;
+      } else {
+        newVal = this.minute + this.minuteStep - (this.minute % this.minuteStep);
+      }
+
+      if (newVal > 59) {
+        this.incrementHour();
+        this.minute = newVal - 60;
+      } else {
+        this.minute = newVal;
+      }
+    },
+
+    incrementSecond: function() {
+      var newVal = this.second + this.secondStep - (this.second % this.secondStep);
+
+      if (newVal > 59) {
+        this.incrementMinute(true);
+        this.second = newVal - 60;
+      } else {
+        this.second = newVal;
+      }
+    },
+
+    mousewheel: function(e) {
+      if (this.disableMousewheel) {
+        return;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail,
+          scrollTo = null;
+
+      if (e.type === 'mousewheel') {
+        scrollTo = (e.originalEvent.wheelDelta * -1);
+      }
+      else if (e.type === 'DOMMouseScroll') {
+        scrollTo = 40 * e.originalEvent.detail;
+      }
+
+      if (scrollTo) {
+        e.preventDefault();
+        $(this).scrollTop(scrollTo + $(this).scrollTop());
+      }
+
+      switch (this.highlightedUnit) {
+      case 'minute':
+        if (delta > 0) {
+          this.incrementMinute();
+        } else {
+          this.decrementMinute();
+        }
+        this.highlightMinute();
+        break;
+      case 'second':
+        if (delta > 0) {
+          this.incrementSecond();
+        } else {
+          this.decrementSecond();
+        }
+        this.highlightSecond();
+        break;
+      case 'meridian':
+        this.toggleMeridian();
+        this.highlightMeridian();
+        break;
+      default:
+        if (delta > 0) {
+          this.incrementHour();
+        } else {
+          this.decrementHour();
+        }
+        this.highlightHour();
+        break;
+      }
+
+      return false;
+    },
+
+    /**
+     * Given a segment value like 43, will round and snap the segment
+     * to the nearest "step", like 45 if step is 15. Segment will
+     * "overflow" to 0 if it's larger than 59 or would otherwise
+     * round up to 60.
+     */
+    changeToNearestStep: function (segment, step) {
+      if (segment % step === 0) {
+        return segment;
+      }
+      if (Math.round((segment % step) / step)) {
+        return (segment + (step - segment % step)) % 60;
+      } else {
+        return segment - segment % step;
+      }
+    },
+
+    // This method was adapted from bootstrap-datepicker.
+    place : function() {
+      if (this.isInline) {
+        return;
+      }
+      var widgetWidth = this.$widget.outerWidth(), widgetHeight = this.$widget.outerHeight(), visualPadding = 10, windowWidth =
+        $(window).width(), windowHeight = $(window).height(), scrollTop = $(window).scrollTop();
+
+      var zIndex = parseInt(this.$element.parents().filter(function() { return $(this).css('z-index') !== 'auto'; }).first().css('z-index'), 10) + 10;
+      var offset = this.component ? this.component.parent().offset() : this.$element.offset();
+      var height = this.component ? this.component.outerHeight(true) : this.$element.outerHeight(false);
+      var width = this.component ? this.component.outerWidth(true) : this.$element.outerWidth(false);
+      var left = offset.left, top = offset.top;
+
+      this.$widget.removeClass('timepicker-orient-top timepicker-orient-bottom timepicker-orient-right timepicker-orient-left');
+
+      if (this.orientation.x !== 'auto') {
+        this.$widget.addClass('timepicker-orient-' + this.orientation.x);
+        if (this.orientation.x === 'right') {
+          left -= widgetWidth - width;
+        }
+      } else{
+        // auto x orientation is best-placement: if it crosses a window edge, fudge it sideways
+        // Default to left
+        this.$widget.addClass('timepicker-orient-left');
+        if (offset.left < 0) {
+          left -= offset.left - visualPadding;
+        } else if (offset.left + widgetWidth > windowWidth) {
+          left = windowWidth - widgetWidth - visualPadding;
+        }
+      }
+      // auto y orientation is best-situation: top or bottom, no fudging, decision based on which shows more of the widget
+      var yorient = this.orientation.y, topOverflow, bottomOverflow;
+      if (yorient === 'auto') {
+        topOverflow = -scrollTop + offset.top - widgetHeight;
+        bottomOverflow = scrollTop + windowHeight - (offset.top + height + widgetHeight);
+        if (Math.max(topOverflow, bottomOverflow) === bottomOverflow) {
+          yorient = 'top';
+        } else {
+          yorient = 'bottom';
+        }
+      }
+      this.$widget.addClass('timepicker-orient-' + yorient);
+      if (yorient === 'top'){
+        top += height;
+      } else{
+        top -= widgetHeight + parseInt(this.$widget.css('padding-top'), 10);
+      }
+
+      this.$widget.css({
+        top : top,
+        left : left,
+        zIndex : zIndex
+      });
+    },
+
+    remove: function() {
+      $('document').off('.timepicker');
+      if (this.$widget) {
+        this.$widget.remove();
+      }
+      delete this.$element.data().timepicker;
+    },
+
+    setDefaultTime: function(defaultTime) {
+      if (!this.$element.val()) {
+        if (defaultTime === 'current') {
+          var dTime = new Date(),
+            hours = dTime.getHours(),
+            minutes = dTime.getMinutes(),
+            seconds = dTime.getSeconds(),
+            meridian = 'AM';
+
+          if (seconds !== 0) {
+            seconds = Math.ceil(dTime.getSeconds() / this.secondStep) * this.secondStep;
+            if (seconds === 60) {
+              minutes += 1;
+              seconds = 0;
+            }
+          }
+
+          if (minutes !== 0) {
+            minutes = Math.ceil(dTime.getMinutes() / this.minuteStep) * this.minuteStep;
+            if (minutes === 60) {
+              hours += 1;
+              minutes = 0;
+            }
+          }
+
+          if (this.showMeridian) {
+            if (hours === 0) {
+              hours = 12;
+            } else if (hours >= 12) {
+              if (hours > 12) {
+                hours = hours - 12;
+              }
+              meridian = 'PM';
+            } else {
+              meridian = 'AM';
+            }
+          }
+
+          this.hour = hours;
+          this.minute = minutes;
+          this.second = seconds;
+          this.meridian = meridian;
+
+          this.update();
+
+        } else if (defaultTime === false) {
+          this.hour = 0;
+          this.minute = 0;
+          this.second = 0;
+          this.meridian = 'AM';
+        } else {
+          this.setTime(defaultTime);
+        }
+      } else {
+        this.updateFromElementVal();
+      }
+    },
+
+    setTime: function(time, ignoreWidget) {
+      if (!time) {
+        this.clear();
+        return;
+      }
+
+      var timeMode,
+          timeArray,
+          hour,
+          minute,
+          second,
+          meridian;
+
+      if (typeof time === 'object' && time.getMonth){
+        // this is a date object
+        hour    = time.getHours();
+        minute  = time.getMinutes();
+        second  = time.getSeconds();
+
+        if (this.showMeridian){
+          meridian = 'AM';
+          if (hour > 12){
+            meridian = 'PM';
+            hour = hour % 12;
+          }
+
+          if (hour === 12){
+            meridian = 'PM';
+          }
+        }
+      } else {
+        timeMode = ((/a/i).test(time) ? 1 : 0) + ((/p/i).test(time) ? 2 : 0); // 0 = none, 1 = AM, 2 = PM, 3 = BOTH.
+        if (timeMode > 2) { // If both are present, fail.
+          this.clear();
+          return;
+        }
+
+        timeArray = time.replace(/[^0-9\:]/g, '').split(':');
+
+        hour = timeArray[0] ? timeArray[0].toString() : timeArray.toString();
+
+        if(this.explicitMode && hour.length > 2 && (hour.length % 2) !== 0 ) {
+          this.clear();
+          return;
+        }
+
+        minute = timeArray[1] ? timeArray[1].toString() : '';
+        second = timeArray[2] ? timeArray[2].toString() : '';
+
+        // adaptive time parsing
+        if (hour.length > 4) {
+          second = hour.slice(-2);
+          hour = hour.slice(0, -2);
+        }
+
+        if (hour.length > 2) {
+          minute = hour.slice(-2);
+          hour = hour.slice(0, -2);
+        }
+
+        if (minute.length > 2) {
+          second = minute.slice(-2);
+          minute = minute.slice(0, -2);
+        }
+
+        hour = parseInt(hour, 10);
+        minute = parseInt(minute, 10);
+        second = parseInt(second, 10);
+
+        if (isNaN(hour)) {
+          hour = 0;
+        }
+        if (isNaN(minute)) {
+          minute = 0;
+        }
+        if (isNaN(second)) {
+          second = 0;
+        }
+
+        // Adjust the time based upon unit boundary.
+        // NOTE: Negatives will never occur due to time.replace() above.
+        if (second > 59) {
+          second = 59;
+        }
+
+        if (minute > 59) {
+          minute = 59;
+        }
+
+        if (hour >= this.maxHours) {
+          // No day/date handling.
+          hour = this.maxHours - 1;
+        }
+
+        if (this.showMeridian) {
+          if (hour > 12) {
+            // Force PM.
+            timeMode = 2;
+            hour -= 12;
+          }
+          if (!timeMode) {
+            timeMode = 1;
+          }
+          if (hour === 0) {
+            hour = 12; // AM or PM, reset to 12.  0 AM = 12 AM.  0 PM = 12 PM, etc.
+          }
+          meridian = timeMode === 1 ? 'AM' : 'PM';
+        } else if (hour < 12 && timeMode === 2) {
+          hour += 12;
+        } else {
+          if (hour >= this.maxHours) {
+            hour = this.maxHours - 1;
+          } else if ((hour < 0) || (hour === 12 && timeMode === 1)){
+            hour = 0;
+          }
+        }
+      }
+
+      this.hour = hour;
+      if (this.snapToStep) {
+        this.minute = this.changeToNearestStep(minute, this.minuteStep);
+        this.second = this.changeToNearestStep(second, this.secondStep);
+      } else {
+        this.minute = minute;
+        this.second = second;
+      }
+      this.meridian = meridian;
+
+      this.update(ignoreWidget);
+    },
+
+    showWidget: function() {
+      if (this.isOpen) {
+        return;
+      }
+
+      if (this.$element.is(':disabled')) {
+        return;
+      }
+
+      // show/hide approach taken by datepicker
+      this.$widget.appendTo(this.appendWidgetTo);
+      $(document).on('mousedown.timepicker, touchend.timepicker', {scope: this}, this.handleDocumentClick);
+
+      this.$element.trigger({
+        'type': 'show.timepicker',
+        'time': {
+          'value': this.getTime(),
+          'hours': this.hour,
+          'minutes': this.minute,
+          'seconds': this.second,
+          'meridian': this.meridian
+        }
+      });
+
+      this.place();
+      if (this.disableFocus) {
+        this.$element.blur();
+      }
+
+      // widget shouldn't be empty on open
+      if (this.hour === '') {
+        if (this.defaultTime) {
+          this.setDefaultTime(this.defaultTime);
+        } else {
+          this.setTime('0:0:0');
+        }
+      }
+
+      if (this.template === 'modal' && this.$widget.modal) {
+        this.$widget.modal('show').on('hidden', $.proxy(this.hideWidget, this));
+      } else {
+        if (this.isOpen === false) {
+          this.$widget.addClass('open');
+        }
+      }
+
+      this.isOpen = true;
+    },
+
+    toggleMeridian: function() {
+      this.meridian = this.meridian === 'AM' ? 'PM' : 'AM';
+    },
+
+    update: function(ignoreWidget) {
+      this.updateElement();
+      if (!ignoreWidget) {
+        this.updateWidget();
+      }
+
+      this.$element.trigger({
+        'type': 'changeTime.timepicker',
+        'time': {
+          'value': this.getTime(),
+          'hours': this.hour,
+          'minutes': this.minute,
+          'seconds': this.second,
+          'meridian': this.meridian
+        }
+      });
+    },
+
+    updateElement: function() {
+      this.$element.val(this.getTime()).change();
+    },
+
+    updateFromElementVal: function() {
+      this.setTime(this.$element.val());
+    },
+
+    updateWidget: function() {
+      if (this.$widget === false) {
+        return;
+      }
+
+      var hour = this.hour,
+          minute = this.minute.toString().length === 1 ? '0' + this.minute : this.minute,
+          second = this.second.toString().length === 1 ? '0' + this.second : this.second;
+
+      if (this.showInputs) {
+        this.$widget.find('input.bootstrap-timepicker-hour').val(hour);
+        this.$widget.find('input.bootstrap-timepicker-minute').val(minute);
+
+        if (this.showSeconds) {
+          this.$widget.find('input.bootstrap-timepicker-second').val(second);
+        }
+        if (this.showMeridian) {
+          this.$widget.find('input.bootstrap-timepicker-meridian').val(this.meridian);
+        }
+      } else {
+        this.$widget.find('span.bootstrap-timepicker-hour').text(hour);
+        this.$widget.find('span.bootstrap-timepicker-minute').text(minute);
+
+        if (this.showSeconds) {
+          this.$widget.find('span.bootstrap-timepicker-second').text(second);
+        }
+        if (this.showMeridian) {
+          this.$widget.find('span.bootstrap-timepicker-meridian').text(this.meridian);
+        }
+      }
+    },
+
+    updateFromWidgetInputs: function() {
+      if (this.$widget === false) {
+        return;
+      }
+
+      var t = this.$widget.find('input.bootstrap-timepicker-hour').val() + ':' +
+              this.$widget.find('input.bootstrap-timepicker-minute').val() +
+              (this.showSeconds ? ':' + this.$widget.find('input.bootstrap-timepicker-second').val() : '') +
+              (this.showMeridian ? this.$widget.find('input.bootstrap-timepicker-meridian').val() : '')
+      ;
+
+      this.setTime(t, true);
+    },
+
+    widgetClick: function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+
+      var $input = $(e.target),
+          action = $input.closest('a').data('action');
+
+      if (action) {
+        this[action]();
+      }
+      this.update();
+
+      if ($input.is('input')) {
+        $input.get(0).setSelectionRange(0,2);
+      }
+    },
+
+    widgetKeydown: function(e) {
+      var $input = $(e.target),
+          name = $input.attr('class').replace('bootstrap-timepicker-', '');
+
+      switch (e.which) {
+      case 9: //tab
+        if (e.shiftKey) {
+          if (name === 'hour') {
+            return this.hideWidget();
+          }
+        } else if ((this.showMeridian && name === 'meridian') || (this.showSeconds && name === 'second') || (!this.showMeridian && !this.showSeconds && name === 'minute')) {
+          return this.hideWidget();
+        }
+        break;
+      case 27: // escape
+        this.hideWidget();
+        break;
+      case 38: // up arrow
+        e.preventDefault();
+        switch (name) {
+        case 'hour':
+          this.incrementHour();
+          break;
+        case 'minute':
+          this.incrementMinute();
+          break;
+        case 'second':
+          this.incrementSecond();
+          break;
+        case 'meridian':
+          this.toggleMeridian();
+          break;
+        }
+        this.setTime(this.getTime());
+        $input.get(0).setSelectionRange(0,2);
+        break;
+      case 40: // down arrow
+        e.preventDefault();
+        switch (name) {
+        case 'hour':
+          this.decrementHour();
+          break;
+        case 'minute':
+          this.decrementMinute();
+          break;
+        case 'second':
+          this.decrementSecond();
+          break;
+        case 'meridian':
+          this.toggleMeridian();
+          break;
+        }
+        this.setTime(this.getTime());
+        $input.get(0).setSelectionRange(0,2);
+        break;
+      }
+    },
+
+    widgetKeyup: function(e) {
+      if ((e.which === 65) || (e.which === 77) || (e.which === 80) || (e.which === 46) || (e.which === 8) || (e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105)) {
+        this.updateFromWidgetInputs();
+      }
+    }
+  };
+
+  //TIMEPICKER PLUGIN DEFINITION
+  $.fn.timepicker = function(option) {
+    var args = Array.apply(null, arguments);
+    args.shift();
+    return this.each(function() {
+      var $this = $(this),
+        data = $this.data('timepicker'),
+        options = typeof option === 'object' && option;
+
+      if (!data) {
+        $this.data('timepicker', (data = new Timepicker(this, $.extend({}, $.fn.timepicker.defaults, options, $(this).data()))));
+      }
+
+      if (typeof option === 'string') {
+        data[option].apply(data, args);
+      }
+    });
+  };
+
+  $.fn.timepicker.defaults = {
+    defaultTime: 'current',
+    disableFocus: false,
+    disableMousewheel: false,
+    isOpen: false,
+    minuteStep: 15,
+    modalBackdrop: false,
+    orientation: { x: 'auto', y: 'auto'},
+    secondStep: 15,
+    snapToStep: false,
+    showSeconds: false,
+    showInputs: true,
+    showMeridian: true,
+    template: 'dropdown',
+    appendWidgetTo: 'body',
+    showWidgetOnAddonClick: true,
+    icons: {
+      up: 'glyphicon glyphicon-chevron-up',
+      down: 'glyphicon glyphicon-chevron-down'
+    },
+    maxHours: 24,
+    explicitMode: false
+  };
+
+  $.fn.timepicker.Constructor = Timepicker;
+
+  $(document).on(
+    'focus.timepicker.data-api click.timepicker.data-api',
+    '[data-provide="timepicker"]',
+    function(e){
+      var $this = $(this);
+      if ($this.data('timepicker')) {
+        return;
+      }
+      e.preventDefault();
+      // component click requires us to explicitly show it
+      $this.timepicker();
+    }
+  );
+
+})(jQuery, window, document);
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
 /* WEBPACK VAR INJECTION */(function(jQuery) {/**
  * bxSlider v4.2.11
  * Copyright 2013-2015 Steven Wanderski
@@ -15087,7 +18436,749 @@ function CalendarNavigation() {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 40 */
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * jQuery UI Widget 1.12.1
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ */
+
+//>>label: Widget
+//>>group: Core
+//>>description: Provides a factory for creating stateful widgets with a common API.
+//>>docs: http://api.jqueryui.com/jQuery.widget/
+//>>demos: http://jqueryui.com/widget/
+
+( function( factory ) {
+	if ( true ) {
+
+		// AMD. Register as an anonymous module.
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(0), __webpack_require__(57) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {
+
+		// Browser globals
+		factory( jQuery );
+	}
+}( function( $ ) {
+
+var widgetUuid = 0;
+var widgetSlice = Array.prototype.slice;
+
+$.cleanData = ( function( orig ) {
+	return function( elems ) {
+		var events, elem, i;
+		for ( i = 0; ( elem = elems[ i ] ) != null; i++ ) {
+			try {
+
+				// Only trigger remove when necessary to save time
+				events = $._data( elem, "events" );
+				if ( events && events.remove ) {
+					$( elem ).triggerHandler( "remove" );
+				}
+
+			// Http://bugs.jquery.com/ticket/8235
+			} catch ( e ) {}
+		}
+		orig( elems );
+	};
+} )( $.cleanData );
+
+$.widget = function( name, base, prototype ) {
+	var existingConstructor, constructor, basePrototype;
+
+	// ProxiedPrototype allows the provided prototype to remain unmodified
+	// so that it can be used as a mixin for multiple widgets (#8876)
+	var proxiedPrototype = {};
+
+	var namespace = name.split( "." )[ 0 ];
+	name = name.split( "." )[ 1 ];
+	var fullName = namespace + "-" + name;
+
+	if ( !prototype ) {
+		prototype = base;
+		base = $.Widget;
+	}
+
+	if ( $.isArray( prototype ) ) {
+		prototype = $.extend.apply( null, [ {} ].concat( prototype ) );
+	}
+
+	// Create selector for plugin
+	$.expr[ ":" ][ fullName.toLowerCase() ] = function( elem ) {
+		return !!$.data( elem, fullName );
+	};
+
+	$[ namespace ] = $[ namespace ] || {};
+	existingConstructor = $[ namespace ][ name ];
+	constructor = $[ namespace ][ name ] = function( options, element ) {
+
+		// Allow instantiation without "new" keyword
+		if ( !this._createWidget ) {
+			return new constructor( options, element );
+		}
+
+		// Allow instantiation without initializing for simple inheritance
+		// must use "new" keyword (the code above always passes args)
+		if ( arguments.length ) {
+			this._createWidget( options, element );
+		}
+	};
+
+	// Extend with the existing constructor to carry over any static properties
+	$.extend( constructor, existingConstructor, {
+		version: prototype.version,
+
+		// Copy the object used to create the prototype in case we need to
+		// redefine the widget later
+		_proto: $.extend( {}, prototype ),
+
+		// Track widgets that inherit from this widget in case this widget is
+		// redefined after a widget inherits from it
+		_childConstructors: []
+	} );
+
+	basePrototype = new base();
+
+	// We need to make the options hash a property directly on the new instance
+	// otherwise we'll modify the options hash on the prototype that we're
+	// inheriting from
+	basePrototype.options = $.widget.extend( {}, basePrototype.options );
+	$.each( prototype, function( prop, value ) {
+		if ( !$.isFunction( value ) ) {
+			proxiedPrototype[ prop ] = value;
+			return;
+		}
+		proxiedPrototype[ prop ] = ( function() {
+			function _super() {
+				return base.prototype[ prop ].apply( this, arguments );
+			}
+
+			function _superApply( args ) {
+				return base.prototype[ prop ].apply( this, args );
+			}
+
+			return function() {
+				var __super = this._super;
+				var __superApply = this._superApply;
+				var returnValue;
+
+				this._super = _super;
+				this._superApply = _superApply;
+
+				returnValue = value.apply( this, arguments );
+
+				this._super = __super;
+				this._superApply = __superApply;
+
+				return returnValue;
+			};
+		} )();
+	} );
+	constructor.prototype = $.widget.extend( basePrototype, {
+
+		// TODO: remove support for widgetEventPrefix
+		// always use the name + a colon as the prefix, e.g., draggable:start
+		// don't prefix for widgets that aren't DOM-based
+		widgetEventPrefix: existingConstructor ? ( basePrototype.widgetEventPrefix || name ) : name
+	}, proxiedPrototype, {
+		constructor: constructor,
+		namespace: namespace,
+		widgetName: name,
+		widgetFullName: fullName
+	} );
+
+	// If this widget is being redefined then we need to find all widgets that
+	// are inheriting from it and redefine all of them so that they inherit from
+	// the new version of this widget. We're essentially trying to replace one
+	// level in the prototype chain.
+	if ( existingConstructor ) {
+		$.each( existingConstructor._childConstructors, function( i, child ) {
+			var childPrototype = child.prototype;
+
+			// Redefine the child widget using the same prototype that was
+			// originally used, but inherit from the new version of the base
+			$.widget( childPrototype.namespace + "." + childPrototype.widgetName, constructor,
+				child._proto );
+		} );
+
+		// Remove the list of existing child constructors from the old constructor
+		// so the old child constructors can be garbage collected
+		delete existingConstructor._childConstructors;
+	} else {
+		base._childConstructors.push( constructor );
+	}
+
+	$.widget.bridge( name, constructor );
+
+	return constructor;
+};
+
+$.widget.extend = function( target ) {
+	var input = widgetSlice.call( arguments, 1 );
+	var inputIndex = 0;
+	var inputLength = input.length;
+	var key;
+	var value;
+
+	for ( ; inputIndex < inputLength; inputIndex++ ) {
+		for ( key in input[ inputIndex ] ) {
+			value = input[ inputIndex ][ key ];
+			if ( input[ inputIndex ].hasOwnProperty( key ) && value !== undefined ) {
+
+				// Clone objects
+				if ( $.isPlainObject( value ) ) {
+					target[ key ] = $.isPlainObject( target[ key ] ) ?
+						$.widget.extend( {}, target[ key ], value ) :
+
+						// Don't extend strings, arrays, etc. with objects
+						$.widget.extend( {}, value );
+
+				// Copy everything else by reference
+				} else {
+					target[ key ] = value;
+				}
+			}
+		}
+	}
+	return target;
+};
+
+$.widget.bridge = function( name, object ) {
+	var fullName = object.prototype.widgetFullName || name;
+	$.fn[ name ] = function( options ) {
+		var isMethodCall = typeof options === "string";
+		var args = widgetSlice.call( arguments, 1 );
+		var returnValue = this;
+
+		if ( isMethodCall ) {
+
+			// If this is an empty collection, we need to have the instance method
+			// return undefined instead of the jQuery instance
+			if ( !this.length && options === "instance" ) {
+				returnValue = undefined;
+			} else {
+				this.each( function() {
+					var methodValue;
+					var instance = $.data( this, fullName );
+
+					if ( options === "instance" ) {
+						returnValue = instance;
+						return false;
+					}
+
+					if ( !instance ) {
+						return $.error( "cannot call methods on " + name +
+							" prior to initialization; " +
+							"attempted to call method '" + options + "'" );
+					}
+
+					if ( !$.isFunction( instance[ options ] ) || options.charAt( 0 ) === "_" ) {
+						return $.error( "no such method '" + options + "' for " + name +
+							" widget instance" );
+					}
+
+					methodValue = instance[ options ].apply( instance, args );
+
+					if ( methodValue !== instance && methodValue !== undefined ) {
+						returnValue = methodValue && methodValue.jquery ?
+							returnValue.pushStack( methodValue.get() ) :
+							methodValue;
+						return false;
+					}
+				} );
+			}
+		} else {
+
+			// Allow multiple hashes to be passed on init
+			if ( args.length ) {
+				options = $.widget.extend.apply( null, [ options ].concat( args ) );
+			}
+
+			this.each( function() {
+				var instance = $.data( this, fullName );
+				if ( instance ) {
+					instance.option( options || {} );
+					if ( instance._init ) {
+						instance._init();
+					}
+				} else {
+					$.data( this, fullName, new object( options, this ) );
+				}
+			} );
+		}
+
+		return returnValue;
+	};
+};
+
+$.Widget = function( /* options, element */ ) {};
+$.Widget._childConstructors = [];
+
+$.Widget.prototype = {
+	widgetName: "widget",
+	widgetEventPrefix: "",
+	defaultElement: "<div>",
+
+	options: {
+		classes: {},
+		disabled: false,
+
+		// Callbacks
+		create: null
+	},
+
+	_createWidget: function( options, element ) {
+		element = $( element || this.defaultElement || this )[ 0 ];
+		this.element = $( element );
+		this.uuid = widgetUuid++;
+		this.eventNamespace = "." + this.widgetName + this.uuid;
+
+		this.bindings = $();
+		this.hoverable = $();
+		this.focusable = $();
+		this.classesElementLookup = {};
+
+		if ( element !== this ) {
+			$.data( element, this.widgetFullName, this );
+			this._on( true, this.element, {
+				remove: function( event ) {
+					if ( event.target === element ) {
+						this.destroy();
+					}
+				}
+			} );
+			this.document = $( element.style ?
+
+				// Element within the document
+				element.ownerDocument :
+
+				// Element is window or document
+				element.document || element );
+			this.window = $( this.document[ 0 ].defaultView || this.document[ 0 ].parentWindow );
+		}
+
+		this.options = $.widget.extend( {},
+			this.options,
+			this._getCreateOptions(),
+			options );
+
+		this._create();
+
+		if ( this.options.disabled ) {
+			this._setOptionDisabled( this.options.disabled );
+		}
+
+		this._trigger( "create", null, this._getCreateEventData() );
+		this._init();
+	},
+
+	_getCreateOptions: function() {
+		return {};
+	},
+
+	_getCreateEventData: $.noop,
+
+	_create: $.noop,
+
+	_init: $.noop,
+
+	destroy: function() {
+		var that = this;
+
+		this._destroy();
+		$.each( this.classesElementLookup, function( key, value ) {
+			that._removeClass( value, key );
+		} );
+
+		// We can probably remove the unbind calls in 2.0
+		// all event bindings should go through this._on()
+		this.element
+			.off( this.eventNamespace )
+			.removeData( this.widgetFullName );
+		this.widget()
+			.off( this.eventNamespace )
+			.removeAttr( "aria-disabled" );
+
+		// Clean up events and states
+		this.bindings.off( this.eventNamespace );
+	},
+
+	_destroy: $.noop,
+
+	widget: function() {
+		return this.element;
+	},
+
+	option: function( key, value ) {
+		var options = key;
+		var parts;
+		var curOption;
+		var i;
+
+		if ( arguments.length === 0 ) {
+
+			// Don't return a reference to the internal hash
+			return $.widget.extend( {}, this.options );
+		}
+
+		if ( typeof key === "string" ) {
+
+			// Handle nested keys, e.g., "foo.bar" => { foo: { bar: ___ } }
+			options = {};
+			parts = key.split( "." );
+			key = parts.shift();
+			if ( parts.length ) {
+				curOption = options[ key ] = $.widget.extend( {}, this.options[ key ] );
+				for ( i = 0; i < parts.length - 1; i++ ) {
+					curOption[ parts[ i ] ] = curOption[ parts[ i ] ] || {};
+					curOption = curOption[ parts[ i ] ];
+				}
+				key = parts.pop();
+				if ( arguments.length === 1 ) {
+					return curOption[ key ] === undefined ? null : curOption[ key ];
+				}
+				curOption[ key ] = value;
+			} else {
+				if ( arguments.length === 1 ) {
+					return this.options[ key ] === undefined ? null : this.options[ key ];
+				}
+				options[ key ] = value;
+			}
+		}
+
+		this._setOptions( options );
+
+		return this;
+	},
+
+	_setOptions: function( options ) {
+		var key;
+
+		for ( key in options ) {
+			this._setOption( key, options[ key ] );
+		}
+
+		return this;
+	},
+
+	_setOption: function( key, value ) {
+		if ( key === "classes" ) {
+			this._setOptionClasses( value );
+		}
+
+		this.options[ key ] = value;
+
+		if ( key === "disabled" ) {
+			this._setOptionDisabled( value );
+		}
+
+		return this;
+	},
+
+	_setOptionClasses: function( value ) {
+		var classKey, elements, currentElements;
+
+		for ( classKey in value ) {
+			currentElements = this.classesElementLookup[ classKey ];
+			if ( value[ classKey ] === this.options.classes[ classKey ] ||
+					!currentElements ||
+					!currentElements.length ) {
+				continue;
+			}
+
+			// We are doing this to create a new jQuery object because the _removeClass() call
+			// on the next line is going to destroy the reference to the current elements being
+			// tracked. We need to save a copy of this collection so that we can add the new classes
+			// below.
+			elements = $( currentElements.get() );
+			this._removeClass( currentElements, classKey );
+
+			// We don't use _addClass() here, because that uses this.options.classes
+			// for generating the string of classes. We want to use the value passed in from
+			// _setOption(), this is the new value of the classes option which was passed to
+			// _setOption(). We pass this value directly to _classes().
+			elements.addClass( this._classes( {
+				element: elements,
+				keys: classKey,
+				classes: value,
+				add: true
+			} ) );
+		}
+	},
+
+	_setOptionDisabled: function( value ) {
+		this._toggleClass( this.widget(), this.widgetFullName + "-disabled", null, !!value );
+
+		// If the widget is becoming disabled, then nothing is interactive
+		if ( value ) {
+			this._removeClass( this.hoverable, null, "ui-state-hover" );
+			this._removeClass( this.focusable, null, "ui-state-focus" );
+		}
+	},
+
+	enable: function() {
+		return this._setOptions( { disabled: false } );
+	},
+
+	disable: function() {
+		return this._setOptions( { disabled: true } );
+	},
+
+	_classes: function( options ) {
+		var full = [];
+		var that = this;
+
+		options = $.extend( {
+			element: this.element,
+			classes: this.options.classes || {}
+		}, options );
+
+		function processClassString( classes, checkOption ) {
+			var current, i;
+			for ( i = 0; i < classes.length; i++ ) {
+				current = that.classesElementLookup[ classes[ i ] ] || $();
+				if ( options.add ) {
+					current = $( $.unique( current.get().concat( options.element.get() ) ) );
+				} else {
+					current = $( current.not( options.element ).get() );
+				}
+				that.classesElementLookup[ classes[ i ] ] = current;
+				full.push( classes[ i ] );
+				if ( checkOption && options.classes[ classes[ i ] ] ) {
+					full.push( options.classes[ classes[ i ] ] );
+				}
+			}
+		}
+
+		this._on( options.element, {
+			"remove": "_untrackClassesElement"
+		} );
+
+		if ( options.keys ) {
+			processClassString( options.keys.match( /\S+/g ) || [], true );
+		}
+		if ( options.extra ) {
+			processClassString( options.extra.match( /\S+/g ) || [] );
+		}
+
+		return full.join( " " );
+	},
+
+	_untrackClassesElement: function( event ) {
+		var that = this;
+		$.each( that.classesElementLookup, function( key, value ) {
+			if ( $.inArray( event.target, value ) !== -1 ) {
+				that.classesElementLookup[ key ] = $( value.not( event.target ).get() );
+			}
+		} );
+	},
+
+	_removeClass: function( element, keys, extra ) {
+		return this._toggleClass( element, keys, extra, false );
+	},
+
+	_addClass: function( element, keys, extra ) {
+		return this._toggleClass( element, keys, extra, true );
+	},
+
+	_toggleClass: function( element, keys, extra, add ) {
+		add = ( typeof add === "boolean" ) ? add : extra;
+		var shift = ( typeof element === "string" || element === null ),
+			options = {
+				extra: shift ? keys : extra,
+				keys: shift ? element : keys,
+				element: shift ? this.element : element,
+				add: add
+			};
+		options.element.toggleClass( this._classes( options ), add );
+		return this;
+	},
+
+	_on: function( suppressDisabledCheck, element, handlers ) {
+		var delegateElement;
+		var instance = this;
+
+		// No suppressDisabledCheck flag, shuffle arguments
+		if ( typeof suppressDisabledCheck !== "boolean" ) {
+			handlers = element;
+			element = suppressDisabledCheck;
+			suppressDisabledCheck = false;
+		}
+
+		// No element argument, shuffle and use this.element
+		if ( !handlers ) {
+			handlers = element;
+			element = this.element;
+			delegateElement = this.widget();
+		} else {
+			element = delegateElement = $( element );
+			this.bindings = this.bindings.add( element );
+		}
+
+		$.each( handlers, function( event, handler ) {
+			function handlerProxy() {
+
+				// Allow widgets to customize the disabled handling
+				// - disabled as an array instead of boolean
+				// - disabled class as method for disabling individual parts
+				if ( !suppressDisabledCheck &&
+						( instance.options.disabled === true ||
+						$( this ).hasClass( "ui-state-disabled" ) ) ) {
+					return;
+				}
+				return ( typeof handler === "string" ? instance[ handler ] : handler )
+					.apply( instance, arguments );
+			}
+
+			// Copy the guid so direct unbinding works
+			if ( typeof handler !== "string" ) {
+				handlerProxy.guid = handler.guid =
+					handler.guid || handlerProxy.guid || $.guid++;
+			}
+
+			var match = event.match( /^([\w:-]*)\s*(.*)$/ );
+			var eventName = match[ 1 ] + instance.eventNamespace;
+			var selector = match[ 2 ];
+
+			if ( selector ) {
+				delegateElement.on( eventName, selector, handlerProxy );
+			} else {
+				element.on( eventName, handlerProxy );
+			}
+		} );
+	},
+
+	_off: function( element, eventName ) {
+		eventName = ( eventName || "" ).split( " " ).join( this.eventNamespace + " " ) +
+			this.eventNamespace;
+		element.off( eventName ).off( eventName );
+
+		// Clear the stack to avoid memory leaks (#10056)
+		this.bindings = $( this.bindings.not( element ).get() );
+		this.focusable = $( this.focusable.not( element ).get() );
+		this.hoverable = $( this.hoverable.not( element ).get() );
+	},
+
+	_delay: function( handler, delay ) {
+		function handlerProxy() {
+			return ( typeof handler === "string" ? instance[ handler ] : handler )
+				.apply( instance, arguments );
+		}
+		var instance = this;
+		return setTimeout( handlerProxy, delay || 0 );
+	},
+
+	_hoverable: function( element ) {
+		this.hoverable = this.hoverable.add( element );
+		this._on( element, {
+			mouseenter: function( event ) {
+				this._addClass( $( event.currentTarget ), null, "ui-state-hover" );
+			},
+			mouseleave: function( event ) {
+				this._removeClass( $( event.currentTarget ), null, "ui-state-hover" );
+			}
+		} );
+	},
+
+	_focusable: function( element ) {
+		this.focusable = this.focusable.add( element );
+		this._on( element, {
+			focusin: function( event ) {
+				this._addClass( $( event.currentTarget ), null, "ui-state-focus" );
+			},
+			focusout: function( event ) {
+				this._removeClass( $( event.currentTarget ), null, "ui-state-focus" );
+			}
+		} );
+	},
+
+	_trigger: function( type, event, data ) {
+		var prop, orig;
+		var callback = this.options[ type ];
+
+		data = data || {};
+		event = $.Event( event );
+		event.type = ( type === this.widgetEventPrefix ?
+			type :
+			this.widgetEventPrefix + type ).toLowerCase();
+
+		// The original event may come from any element
+		// so we need to reset the target on the new event
+		event.target = this.element[ 0 ];
+
+		// Copy original event properties over to the new event
+		orig = event.originalEvent;
+		if ( orig ) {
+			for ( prop in orig ) {
+				if ( !( prop in event ) ) {
+					event[ prop ] = orig[ prop ];
+				}
+			}
+		}
+
+		this.element.trigger( event, data );
+		return !( $.isFunction( callback ) &&
+			callback.apply( this.element[ 0 ], [ event ].concat( data ) ) === false ||
+			event.isDefaultPrevented() );
+	}
+};
+
+$.each( { show: "fadeIn", hide: "fadeOut" }, function( method, defaultEffect ) {
+	$.Widget.prototype[ "_" + method ] = function( element, options, callback ) {
+		if ( typeof options === "string" ) {
+			options = { effect: options };
+		}
+
+		var hasOptions;
+		var effectName = !options ?
+			method :
+			options === true || typeof options === "number" ?
+				defaultEffect :
+				options.effect || defaultEffect;
+
+		options = options || {};
+		if ( typeof options === "number" ) {
+			options = { duration: options };
+		}
+
+		hasOptions = !$.isEmptyObject( options );
+		options.complete = callback;
+
+		if ( options.delay ) {
+			element.delay( options.delay );
+		}
+
+		if ( hasOptions && $.effects && $.effects.effect[ effectName ] ) {
+			element[ method ]( options );
+		} else if ( effectName !== method && element[ effectName ] ) {
+			element[ effectName ]( options.duration, options.easing, callback );
+		} else {
+			element.queue( function( next ) {
+				$( this )[ method ]();
+				if ( callback ) {
+					callback.call( element[ 0 ] );
+				}
+				next();
+			} );
+		}
+	};
+} );
+
+return $.widget;
+
+} ) );
+
+
+/***/ }),
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/////    /////    /////    /////
@@ -15954,7 +20045,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/////    /////    /////    /////
 
 
 /***/ }),
-/* 41 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;/*!
@@ -21689,13 +25780,13 @@ S2.define('jquery.select2',[
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 42 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(48);
+var content = __webpack_require__(51);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -21720,13 +25811,13 @@ if(false) {
 }
 
 /***/ }),
-/* 43 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(50);
+var content = __webpack_require__(55);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -21751,18 +25842,18 @@ if(false) {
 }
 
 /***/ }),
-/* 44 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 * svg.js - A lightweight library for manipulating and animating SVG.
-* @version 2.6.1
+* @version 2.6.2
 * https://svgdotjs.github.io/
 *
 * @copyright Wout Fierens <wout@mick-wout.com>
 * @license MIT
 *
-* BUILT: Tue Apr 25 2017 11:58:09 GMT+0200 (Mitteleuropäische Sommerzeit)
+* BUILT: Mon Jun 05 2017 11:33:23 GMT+0200 (Mitteleuropäische Sommerzeit)
 */;
 (function(root, factory) {
   /* istanbul ignore next */
@@ -23259,7 +27350,7 @@ SVG.FX = SVG.invent({
     // updates all animations to the current state of the element
     // this is important when one property could be changed from another property
   , initAnimations: function() {
-      var i, source
+      var i, j, source
       var s = this.situation
 
       if(s.init) return this
@@ -23267,12 +27358,26 @@ SVG.FX = SVG.invent({
       for(i in s.animations){
         source = this.target()[i]()
 
-        // The condition is because some methods return a normal number instead
-        // of a SVG.Number
-        if(s.animations[i] instanceof SVG.Number)
-          source = new SVG.Number(source)
+        if(!Array.isArray(source)) {
+          source = [source]
+        }
 
-        s.animations[i] = source.morph(s.animations[i])
+        if(!Array.isArray(s.animations[i])) {
+          s.animations[i] = [s.animations[i]]
+        }
+
+        //if(s.animations[i].length > source.length) {
+        //  source.concat = source.concat(s.animations[i].slice(source.length, s.animations[i].length))
+        //}
+
+        for(j = source.length; j--;) {
+          // The condition is because some methods return a normal number instead
+          // of a SVG.Number
+          if(s.animations[i][j] instanceof SVG.Number)
+            source[j] = new SVG.Number(source[j])
+
+          s.animations[i][j] = source[j].morph(s.animations[i][j])
+        }
       }
 
       for(i in s.attrs){
@@ -23608,8 +27713,12 @@ SVG.FX = SVG.invent({
 
         if(!this.situations.length){
           this.target().fire('allfinished')
-          this.target().off('.fx') // there shouldnt be any binding left, but to make sure...
-          this.active = false
+
+          // Recheck the length since the user may call animate in the afterAll callback
+          if(!this.situations.length){
+            this.target().off('.fx') // there shouldnt be any binding left, but to make sure...
+            this.active = false
+          }
         }
 
         // start next animation
@@ -23705,10 +27814,10 @@ SVG.FX = SVG.invent({
 
     // adds an once-callback which is called at a specific position and never again
   , once: function(pos, fn, isEased){
+      var c = this.last()
+      if(!isEased) pos = c.ease(pos)
 
-      if(!isEased)pos = this.situation.ease(pos)
-
-      this.situation.once[pos] = fn
+      c.once[pos] = fn
 
       return this
     }
@@ -23889,10 +27998,22 @@ SVG.extend(SVG.FX, {
 
     return this
   }
+  // Add animatable width
+, width: function(width) {
+    return this.add('width', new SVG.Number(width))
+  }
+  // Add animatable height
+, height: function(height) {
+    return this.add('height', new SVG.Number(height))
+  }
   // Add animatable plot
-, plot: function() {
-    // We use arguments here since SVG.Line's plot method can be passed 4 parameters
-    return this.add('plot', arguments.length > 1 ? [].slice.call(arguments) : arguments[0])
+, plot: function(a, b, c, d) {
+    // Lines can be plotted with 4 arguments
+    if(arguments.length == 4) {
+      return this.plot([a, b, c, d])
+    }
+
+    return this.add('plot', new (this.target().morphArray)(a))
   }
   // Add leading method
 , leading: function(value) {
@@ -24115,7 +28236,7 @@ SVG.Matrix = SVG.invent({
 
     // merge source
     for (i = abcdef.length - 1; i >= 0; --i)
-      this[abcdef[i]] = source && typeof source[abcdef[i]] === 'number' ?
+      this[abcdef[i]] = source[abcdef[i]] != null ?
         source[abcdef[i]] : base[abcdef[i]]
   }
 
@@ -26507,8 +30628,9 @@ SVG.TextPath = SVG.invent({
 
   // Add parent method
 , construct: {
+    morphArray: SVG.PathArray
     // Create path for text to run on
-    path: function(d) {
+  , path: function(d) {
       // create textPath element
       var path  = new SVG.TextPath
         , track = this.doc().defs().path(d)
@@ -27275,7 +31397,7 @@ return SVG
 }));
 
 /***/ }),
-/* 45 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27284,6 +31406,8 @@ return SVG
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
 //
 //
 //
@@ -27440,6 +31564,39 @@ exports.default = {
     },
 
 
+    /**
+     * Clear the input
+     */
+    clear: function clear() {
+      this.autocompleteText = '';
+    },
+
+
+    /**
+     * Focus the input
+     */
+    focus: function focus() {
+      this.$refs.autocomplete.focus();
+    },
+
+
+    /**
+     * Blur the input
+     */
+    blur: function blur() {
+      this.$refs.autocomplete.blur();
+    },
+
+
+    /**
+     * Update the value of the input
+     * @param  {String} value
+     */
+    update: function update(value) {
+      this.autocompleteText = value;
+    },
+
+
     // Bias the autocomplete object to the user's geographical location,
     // as supplied by the browser's 'navigator.geolocation' object.
     geolocate: function geolocate() {
@@ -27465,7 +31622,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27697,7 +31854,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 47 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27709,17 +31866,23 @@ var _jquery2 = _interopRequireDefault(_jquery);
 
 __webpack_require__(42);
 
-__webpack_require__(43);
+__webpack_require__(45);
+
+__webpack_require__(46);
+
+__webpack_require__(44);
 
 __webpack_require__(41);
 
 __webpack_require__(39);
 
-var _scrollreveal = __webpack_require__(40);
+__webpack_require__(40);
+
+var _scrollreveal = __webpack_require__(43);
 
 var _scrollreveal2 = _interopRequireDefault(_scrollreveal);
 
-__webpack_require__(44);
+__webpack_require__(47);
 
 var _navigation = __webpack_require__(38);
 
@@ -27739,13 +31902,20 @@ var _addEvent2 = _interopRequireDefault(_addEvent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// jquery is required for bootstrap
+// jquery UI
 __webpack_require__(7);
 
 // Import custom css
+// jquery is required for bootstrap
 
 
 // BxSlider
+
+
+// Bootstrap DatePicker
+
+
+// Bootstrap TimePicker
 
 
 // scroll reveal
@@ -27769,7 +31939,7 @@ window.sr = (0, _scrollreveal2.default)();
 });
 
 /***/ }),
-/* 48 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -27783,7 +31953,7 @@ exports.push([module.i, "/*@font-face {*/\n    /*font-family: 'fontawesome-selec
 
 
 /***/ }),
-/* 49 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -27791,27 +31961,57 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".bx-wrapper{position:relative;margin-bottom:60px;padding:0;-ms-touch-action:pan-y;touch-action:pan-y;-moz-box-shadow:0 0 5px #ccc;-webkit-box-shadow:0 0 5px #ccc;box-shadow:0 0 5px #ccc;border:5px solid #fff;background:#fff}.bx-wrapper img{max-width:100%;display:block}.bxslider{margin:0;padding:0}ul.bxslider{list-style:none}.bx-viewport{-webkit-transform:translatez(0)}.bx-wrapper .bx-controls-auto,.bx-wrapper .bx-pager{position:absolute;bottom:-30px;width:100%}.bx-wrapper .bx-loading{min-height:50px;background:url(" + __webpack_require__(53) + ") center center no-repeat #fff;height:100%;width:100%;position:absolute;top:0;left:0;z-index:2000}.bx-wrapper .bx-pager{text-align:center;font-size:.85em;font-family:Arial;font-weight:700;color:#666;padding-top:20px}.bx-wrapper .bx-pager.bx-default-pager a{background:#666;text-indent:-9999px;display:block;width:10px;height:10px;margin:0 5px;outline:0;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}.bx-wrapper .bx-pager.bx-default-pager a.active,.bx-wrapper .bx-pager.bx-default-pager a:focus,.bx-wrapper .bx-pager.bx-default-pager a:hover{background:#000}.bx-wrapper .bx-controls-auto .bx-controls-auto-item,.bx-wrapper .bx-pager-item{display:inline-block}.bx-wrapper .bx-pager-item{font-size:0;line-height:0}.bx-wrapper .bx-prev{left:10px;background:url(" + __webpack_require__(4) + ") 0 -32px no-repeat}.bx-wrapper .bx-prev:focus,.bx-wrapper .bx-prev:hover{background-position:0 0}.bx-wrapper .bx-next{right:10px;background:url(" + __webpack_require__(4) + ") -43px -32px no-repeat}.bx-wrapper .bx-next:focus,.bx-wrapper .bx-next:hover{background-position:-43px 0}.bx-wrapper .bx-controls-direction a{position:absolute;top:50%;margin-top:-16px;outline:0;width:32px;height:32px;text-indent:-9999px;z-index:9999}.bx-wrapper .bx-controls-direction a.disabled{display:none}.bx-wrapper .bx-controls-auto{text-align:center}.bx-wrapper .bx-controls-auto .bx-start{display:block;text-indent:-9999px;width:10px;height:11px;outline:0;background:url(" + __webpack_require__(4) + ") -86px -11px no-repeat;margin:0 3px}.bx-wrapper .bx-controls-auto .bx-start.active,.bx-wrapper .bx-controls-auto .bx-start:focus,.bx-wrapper .bx-controls-auto .bx-start:hover{background-position:-86px 0}.bx-wrapper .bx-controls-auto .bx-stop{display:block;text-indent:-9999px;width:9px;height:11px;outline:0;background:url(" + __webpack_require__(4) + ") -86px -44px no-repeat;margin:0 3px}.bx-wrapper .bx-controls-auto .bx-stop.active,.bx-wrapper .bx-controls-auto .bx-stop:focus,.bx-wrapper .bx-controls-auto .bx-stop:hover{background-position:-86px -33px}.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager{text-align:left;width:80%}.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto{right:0;width:35px}.bx-wrapper .bx-caption{position:absolute;bottom:0;left:0;background:#666;background:rgba(80,80,80,.75);width:100%}.bx-wrapper .bx-caption span{color:#fff;font-family:Arial;display:block;font-size:.85em;padding:10px}", ""]);
+exports.push([module.i, "/*!\n * Datepicker for Bootstrap v1.7.0 (https://github.com/uxsolutions/bootstrap-datepicker)\n *\n * Licensed under the Apache License v2.0 (http://www.apache.org/licenses/LICENSE-2.0)\n */\n\n.datepicker{padding:4px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;direction:ltr}.datepicker-inline{width:220px}.datepicker-rtl{direction:rtl}.datepicker-rtl.dropdown-menu{left:auto}.datepicker-rtl table tr td span{float:right}.datepicker-dropdown{top:0;left:0}.datepicker-dropdown:before{content:'';display:inline-block;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid #999;border-top:0;border-bottom-color:rgba(0,0,0,.2);position:absolute}.datepicker-dropdown:after{content:'';display:inline-block;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:6px solid #fff;border-top:0;position:absolute}.datepicker-dropdown.datepicker-orient-left:before{left:6px}.datepicker-dropdown.datepicker-orient-left:after{left:7px}.datepicker-dropdown.datepicker-orient-right:before{right:6px}.datepicker-dropdown.datepicker-orient-right:after{right:7px}.datepicker-dropdown.datepicker-orient-bottom:before{top:-7px}.datepicker-dropdown.datepicker-orient-bottom:after{top:-6px}.datepicker-dropdown.datepicker-orient-top:before{bottom:-7px;border-bottom:0;border-top:7px solid #999}.datepicker-dropdown.datepicker-orient-top:after{bottom:-6px;border-bottom:0;border-top:6px solid #fff}.datepicker table{margin:0;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.datepicker td,.datepicker th{text-align:center;width:20px;height:20px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;border:none}.table-striped .datepicker table tr td,.table-striped .datepicker table tr th{background-color:transparent}.datepicker table tr td.day.focused,.datepicker table tr td.day:hover{background:#eee;cursor:pointer}.datepicker table tr td.new,.datepicker table tr td.old{color:#999}.datepicker table tr td.disabled,.datepicker table tr td.disabled:hover{background:0 0;color:#999;cursor:default}.datepicker table tr td.highlighted{background:#d9edf7;border-radius:0}.datepicker table tr td.today,.datepicker table tr td.today.disabled,.datepicker table tr td.today.disabled:hover,.datepicker table tr td.today:hover{background-color:#fde19a;background-image:-moz-linear-gradient(to bottom,#fdd49a,#fdf59a);background-image:-ms-linear-gradient(to bottom,#fdd49a,#fdf59a);background-image:-webkit-gradient(linear,0 0,0 100%,from(#fdd49a),to(#fdf59a));background-image:-webkit-linear-gradient(to bottom,#fdd49a,#fdf59a);background-image:-o-linear-gradient(to bottom,#fdd49a,#fdf59a);background-image:linear-gradient(to bottom,#fdd49a,#fdf59a);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdd49a', endColorstr='#fdf59a', GradientType=0);border-color:#fdf59a #fdf59a #fbed50;border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);color:#000}.datepicker table tr td.today.active,.datepicker table tr td.today.disabled,.datepicker table tr td.today.disabled.active,.datepicker table tr td.today.disabled.disabled,.datepicker table tr td.today.disabled:active,.datepicker table tr td.today.disabled:hover,.datepicker table tr td.today.disabled:hover.active,.datepicker table tr td.today.disabled:hover.disabled,.datepicker table tr td.today.disabled:hover:active,.datepicker table tr td.today.disabled:hover:hover,.datepicker table tr td.today.disabled:hover[disabled],.datepicker table tr td.today.disabled[disabled],.datepicker table tr td.today:active,.datepicker table tr td.today:hover,.datepicker table tr td.today:hover.active,.datepicker table tr td.today:hover.disabled,.datepicker table tr td.today:hover:active,.datepicker table tr td.today:hover:hover,.datepicker table tr td.today:hover[disabled],.datepicker table tr td.today[disabled]{background-color:#fdf59a}.datepicker table tr td.today.active,.datepicker table tr td.today.disabled.active,.datepicker table tr td.today.disabled:active,.datepicker table tr td.today.disabled:hover.active,.datepicker table tr td.today.disabled:hover:active,.datepicker table tr td.today:active,.datepicker table tr td.today:hover.active,.datepicker table tr td.today:hover:active{background-color:#fbf069\\9}.datepicker table tr td.today:hover:hover{color:#000}.datepicker table tr td.today.active:hover{color:#fff}.datepicker table tr td.range,.datepicker table tr td.range.disabled,.datepicker table tr td.range.disabled:hover,.datepicker table tr td.range:hover{background:#eee;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0}.datepicker table tr td.range.today,.datepicker table tr td.range.today.disabled,.datepicker table tr td.range.today.disabled:hover,.datepicker table tr td.range.today:hover{background-color:#f3d17a;background-image:-moz-linear-gradient(to bottom,#f3c17a,#f3e97a);background-image:-ms-linear-gradient(to bottom,#f3c17a,#f3e97a);background-image:-webkit-gradient(linear,0 0,0 100%,from(#f3c17a),to(#f3e97a));background-image:-webkit-linear-gradient(to bottom,#f3c17a,#f3e97a);background-image:-o-linear-gradient(to bottom,#f3c17a,#f3e97a);background-image:linear-gradient(to bottom,#f3c17a,#f3e97a);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3c17a', endColorstr='#f3e97a', GradientType=0);border-color:#f3e97a #f3e97a #edde34;border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);-webkit-border-radius:0;-moz-border-radius:0;border-radius:0}.datepicker table tr td.range.today.active,.datepicker table tr td.range.today.disabled,.datepicker table tr td.range.today.disabled.active,.datepicker table tr td.range.today.disabled.disabled,.datepicker table tr td.range.today.disabled:active,.datepicker table tr td.range.today.disabled:hover,.datepicker table tr td.range.today.disabled:hover.active,.datepicker table tr td.range.today.disabled:hover.disabled,.datepicker table tr td.range.today.disabled:hover:active,.datepicker table tr td.range.today.disabled:hover:hover,.datepicker table tr td.range.today.disabled:hover[disabled],.datepicker table tr td.range.today.disabled[disabled],.datepicker table tr td.range.today:active,.datepicker table tr td.range.today:hover,.datepicker table tr td.range.today:hover.active,.datepicker table tr td.range.today:hover.disabled,.datepicker table tr td.range.today:hover:active,.datepicker table tr td.range.today:hover:hover,.datepicker table tr td.range.today:hover[disabled],.datepicker table tr td.range.today[disabled]{background-color:#f3e97a}.datepicker table tr td.range.today.active,.datepicker table tr td.range.today.disabled.active,.datepicker table tr td.range.today.disabled:active,.datepicker table tr td.range.today.disabled:hover.active,.datepicker table tr td.range.today.disabled:hover:active,.datepicker table tr td.range.today:active,.datepicker table tr td.range.today:hover.active,.datepicker table tr td.range.today:hover:active{background-color:#efe24b\\9}.datepicker table tr td.selected,.datepicker table tr td.selected.disabled,.datepicker table tr td.selected.disabled:hover,.datepicker table tr td.selected:hover{background-color:#9e9e9e;background-image:-moz-linear-gradient(to bottom,#b3b3b3,grey);background-image:-ms-linear-gradient(to bottom,#b3b3b3,grey);background-image:-webkit-gradient(linear,0 0,0 100%,from(#b3b3b3),to(grey));background-image:-webkit-linear-gradient(to bottom,#b3b3b3,grey);background-image:-o-linear-gradient(to bottom,#b3b3b3,grey);background-image:linear-gradient(to bottom,#b3b3b3,grey);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b3b3b3', endColorstr='#808080', GradientType=0);border-color:grey grey #595959;border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,.25)}.datepicker table tr td.selected.active,.datepicker table tr td.selected.disabled,.datepicker table tr td.selected.disabled.active,.datepicker table tr td.selected.disabled.disabled,.datepicker table tr td.selected.disabled:active,.datepicker table tr td.selected.disabled:hover,.datepicker table tr td.selected.disabled:hover.active,.datepicker table tr td.selected.disabled:hover.disabled,.datepicker table tr td.selected.disabled:hover:active,.datepicker table tr td.selected.disabled:hover:hover,.datepicker table tr td.selected.disabled:hover[disabled],.datepicker table tr td.selected.disabled[disabled],.datepicker table tr td.selected:active,.datepicker table tr td.selected:hover,.datepicker table tr td.selected:hover.active,.datepicker table tr td.selected:hover.disabled,.datepicker table tr td.selected:hover:active,.datepicker table tr td.selected:hover:hover,.datepicker table tr td.selected:hover[disabled],.datepicker table tr td.selected[disabled]{background-color:grey}.datepicker table tr td.selected.active,.datepicker table tr td.selected.disabled.active,.datepicker table tr td.selected.disabled:active,.datepicker table tr td.selected.disabled:hover.active,.datepicker table tr td.selected.disabled:hover:active,.datepicker table tr td.selected:active,.datepicker table tr td.selected:hover.active,.datepicker table tr td.selected:hover:active{background-color:#666\\9}.datepicker table tr td.active,.datepicker table tr td.active.disabled,.datepicker table tr td.active.disabled:hover,.datepicker table tr td.active:hover{background-color:#006dcc;background-image:-moz-linear-gradient(to bottom,#08c,#04c);background-image:-ms-linear-gradient(to bottom,#08c,#04c);background-image:-webkit-gradient(linear,0 0,0 100%,from(#08c),to(#04c));background-image:-webkit-linear-gradient(to bottom,#08c,#04c);background-image:-o-linear-gradient(to bottom,#08c,#04c);background-image:linear-gradient(to bottom,#08c,#04c);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#08c', endColorstr='#0044cc', GradientType=0);border-color:#04c #04c #002a80;border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,.25)}.datepicker table tr td.active.active,.datepicker table tr td.active.disabled,.datepicker table tr td.active.disabled.active,.datepicker table tr td.active.disabled.disabled,.datepicker table tr td.active.disabled:active,.datepicker table tr td.active.disabled:hover,.datepicker table tr td.active.disabled:hover.active,.datepicker table tr td.active.disabled:hover.disabled,.datepicker table tr td.active.disabled:hover:active,.datepicker table tr td.active.disabled:hover:hover,.datepicker table tr td.active.disabled:hover[disabled],.datepicker table tr td.active.disabled[disabled],.datepicker table tr td.active:active,.datepicker table tr td.active:hover,.datepicker table tr td.active:hover.active,.datepicker table tr td.active:hover.disabled,.datepicker table tr td.active:hover:active,.datepicker table tr td.active:hover:hover,.datepicker table tr td.active:hover[disabled],.datepicker table tr td.active[disabled]{background-color:#04c}.datepicker table tr td.active.active,.datepicker table tr td.active.disabled.active,.datepicker table tr td.active.disabled:active,.datepicker table tr td.active.disabled:hover.active,.datepicker table tr td.active.disabled:hover:active,.datepicker table tr td.active:active,.datepicker table tr td.active:hover.active,.datepicker table tr td.active:hover:active{background-color:#039\\9}.datepicker table tr td span{display:block;width:23%;height:54px;line-height:54px;float:left;margin:1%;cursor:pointer;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}.datepicker table tr td span.focused,.datepicker table tr td span:hover{background:#eee}.datepicker table tr td span.disabled,.datepicker table tr td span.disabled:hover{background:0 0;color:#999;cursor:default}.datepicker table tr td span.active,.datepicker table tr td span.active.disabled,.datepicker table tr td span.active.disabled:hover,.datepicker table tr td span.active:hover{background-color:#006dcc;background-image:-moz-linear-gradient(to bottom,#08c,#04c);background-image:-ms-linear-gradient(to bottom,#08c,#04c);background-image:-webkit-gradient(linear,0 0,0 100%,from(#08c),to(#04c));background-image:-webkit-linear-gradient(to bottom,#08c,#04c);background-image:-o-linear-gradient(to bottom,#08c,#04c);background-image:linear-gradient(to bottom,#08c,#04c);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#08c', endColorstr='#0044cc', GradientType=0);border-color:#04c #04c #002a80;border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,.25)}.datepicker table tr td span.active.active,.datepicker table tr td span.active.disabled,.datepicker table tr td span.active.disabled.active,.datepicker table tr td span.active.disabled.disabled,.datepicker table tr td span.active.disabled:active,.datepicker table tr td span.active.disabled:hover,.datepicker table tr td span.active.disabled:hover.active,.datepicker table tr td span.active.disabled:hover.disabled,.datepicker table tr td span.active.disabled:hover:active,.datepicker table tr td span.active.disabled:hover:hover,.datepicker table tr td span.active.disabled:hover[disabled],.datepicker table tr td span.active.disabled[disabled],.datepicker table tr td span.active:active,.datepicker table tr td span.active:hover,.datepicker table tr td span.active:hover.active,.datepicker table tr td span.active:hover.disabled,.datepicker table tr td span.active:hover:active,.datepicker table tr td span.active:hover:hover,.datepicker table tr td span.active:hover[disabled],.datepicker table tr td span.active[disabled]{background-color:#04c}.datepicker table tr td span.active.active,.datepicker table tr td span.active.disabled.active,.datepicker table tr td span.active.disabled:active,.datepicker table tr td span.active.disabled:hover.active,.datepicker table tr td span.active.disabled:hover:active,.datepicker table tr td span.active:active,.datepicker table tr td span.active:hover.active,.datepicker table tr td span.active:hover:active{background-color:#039\\9}.datepicker table tr td span.new,.datepicker table tr td span.old{color:#999}.datepicker .datepicker-switch{width:145px}.datepicker .datepicker-switch,.datepicker .next,.datepicker .prev,.datepicker tfoot tr th{cursor:pointer}.datepicker .datepicker-switch:hover,.datepicker .next:hover,.datepicker .prev:hover,.datepicker tfoot tr th:hover{background:#eee}.datepicker .next.disabled,.datepicker .prev.disabled{visibility:hidden}.datepicker .cw{font-size:10px;width:12px;padding:0 2px 0 5px;vertical-align:middle}.input-append.date .add-on,.input-prepend.date .add-on{cursor:pointer}.input-append.date .add-on i,.input-prepend.date .add-on i{margin-top:3px}.input-daterange input{text-align:center}.input-daterange input:first-child{-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px}.input-daterange input:last-child{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0}.input-daterange .add-on{display:inline-block;width:auto;min-width:16px;height:18px;padding:4px 5px;font-weight:400;line-height:18px;text-align:center;text-shadow:0 1px 0 #fff;vertical-align:middle;background-color:#eee;border:1px solid #ccc;margin-left:-5px;margin-right:-5px}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 50 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
 // imports
-exports.i(__webpack_require__(49), "");
+
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: 'GustanExtraBlack';\n  src: url(" + __webpack_require__(29) + ");\n  /* IE9 Compat Modes */\n  src: url(" + __webpack_require__(29) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(59) + ") format(\"woff\"), url(" + __webpack_require__(58) + ") format(\"truetype\"), url(" + __webpack_require__(57) + "#ef7d172b8931fe8869f98304ff6066f8) format(\"svg\");\n  /* Legacy iOS */\n  font-style: normal;\n  font-weight: 400; }\n\n@font-face {\n  font-family: 'GustanLight';\n  src: url(" + __webpack_require__(30) + ");\n  /* IE9 Compat Modes */\n  src: url(" + __webpack_require__(30) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(62) + ") format(\"woff\"), url(" + __webpack_require__(61) + ") format(\"truetype\"), url(" + __webpack_require__(60) + "#9d512dae6aa2a2ee232766b663faffd9) format(\"svg\");\n  /* Legacy iOS */\n  font-style: normal;\n  font-weight: 200; }\n\n@font-face {\n  font-family: 'GustanMedium';\n  src: url(" + __webpack_require__(5) + ");\n  /* IE9 Compat Modes */\n  src: url(" + __webpack_require__(5) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(33) + ") format(\"woff\"), url(" + __webpack_require__(32) + ") format(\"truetype\"), url(" + __webpack_require__(31) + "#030fa3b6f6a5b4326fcb463078ac66e3) format(\"svg\");\n  /* Legacy iOS */\n  font-style: normal;\n  font-weight: 400; }\n\n@font-face {\n  font-family: 'GustanMediumD';\n  src: url(" + __webpack_require__(5) + ");\n  /* IE9 Compat Modes */\n  src: url(" + __webpack_require__(5) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(33) + ") format(\"woff\"), url(" + __webpack_require__(32) + ") format(\"truetype\"), url(" + __webpack_require__(31) + "#030fa3b6f6a5b4326fcb463078ac66e3) format(\"svg\");\n  /* Legacy iOS */ }\n\n@font-face {\n  font-family: 'GustanBold';\n  src: url(" + __webpack_require__(28) + ");\n  /* IE9 Compat Modes */\n  src: url(" + __webpack_require__(28) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(56) + ") format(\"woff\"), url(" + __webpack_require__(55) + ") format(\"truetype\"), url(" + __webpack_require__(54) + "#80e9b74cb0db71e7cd1b07c8182605f1) format(\"svg\");\n  /* Legacy iOS */\n  font-style: normal;\n  font-weight: 700; }\n\nhtml {\n  overflow: auto; }\n  @media (min-width: 1000px) {\n    html {\n      overflow: hidden; } }\n\nhtml.modal-open {\n  overflow: hidden; }\n\nbody {\n  background-color: #FFF;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cebe29', endColorstr='#89b4ff',GradientType=1 );\n  -webkit-background-size: 100% 100%;\n  -moz-background-size: 100% 100%;\n  background-size: 100% 100%;\n  outline: none;\n  overflow: auto;\n  font-family: GustanLight; }\n  body .modal-backdrop {\n    z-index: 100; }\n  body .modal-body {\n    overflow-y: scroll;\n    overflow-x: hidden; }\n\n.btn {\n  outline: none; }\n\n.happ_btn {\n  text-align: center;\n  position: relative;\n  padding: 10px 20px;\n  border: 3px solid #FC6636;\n  border-radius: 0;\n  font-size: 18px;\n  font-family: GustanLight;\n  background-color: #FFF;\n  color: #FC6636;\n  background-image: linear-gradient(#FC6636, #FC6636);\n  background-position: 50% 50%;\n  background-repeat: no-repeat;\n  background-size: 0% 100%;\n  transition: background-size .5s, color .5s;\n  display: inline-block;\n  max-width: 240px;\n  text-decoration: none; }\n  .happ_btn:hover {\n    background-size: 100% 100%;\n    color: #040508;\n    text-decoration: none;\n    cursor: pointer; }\n  .happ_btn:focus {\n    outline: none;\n    text-decoration: none; }\n\n.event-btn {\n  visibility: hidden;\n  opacity: 0;\n  transition: visibility 1s, opacity .70s linear;\n  font-family: GustanLight;\n  margin: 0 0 5px 0;\n  border: none;\n  background-color: rgba(255, 171, 142, 0.3); }\n  .event-btn:hover, .event-btn:focus {\n    text-decoration: none;\n    background-color: #FC6636;\n    outline: none;\n    cursor: pointer; }\n    .event-btn:hover .happ_e_button, .event-btn:focus .happ_e_button {\n      text-decoration: none;\n      background-color: #FC6636;\n      outline: none;\n      transition: font-size 0.5s ease;\n      font-size: 16px !important; }\n\n.hide-event {\n  visibility: hidden !important;\n  opacity: 0 !important;\n  transition: visibility 1s, opacity .70s linear; }\n\n.show-event {\n  display: block;\n  visibility: visible !important;\n  opacity: 1 !important;\n  height: auto;\n  transition: visibility 1s, opacity .70s linear; }\n\n.fully-hide-event {\n  visibility: hidden;\n  opacity: 0;\n  transition: visibility 1s, opacity .70s linear;\n  display: none; }\n\n.modal-backdrop {\n  position: fixed;\n  z-index: 1040;\n  background-color: rgba(0, 0, 0, 0.6);\n  opacity: 0.8; }\n\n.modal-backdrop .in {\n  opacity: 0.8; }\n\n.modal-backdrop.in.filter-modal-backdrop {\n  background-color: transparent; }\n\n.ajax-loader .ajax-load-icon {\n  background: url(" + __webpack_require__(64) + ") no-repeat;\n  height: 175px;\n  width: 175px;\n  margin-left: auto;\n  margin-right: auto; }\n\n.ajax-page-load {\n  z-index: 99999;\n  background-color: rgba(255, 255, 255, 0.92);\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  padding-top: 25%;\n  opacity: 1;\n  transition: all 0.5s; }\n\n.ajax-not-loading {\n  z-index: -9999;\n  opacity: 0;\n  transition: all 0.5s; }\n\n.ajax-load-message {\n  text-align: center;\n  top: -30px;\n  position: relative; }\n\n.custom-calendar-full {\n  position: absolute;\n  top: 0px;\n  bottom: 0px;\n  left: 0px;\n  width: 100%;\n  height: auto; }\n\n.fc-calendar-container {\n  height: auto;\n  bottom: 0px;\n  width: 100%;\n  top: 50px;\n  position: absolute; }\n\n.custom-header {\n  padding: 20px 20px 10px 30px;\n  height: 50px;\n  position: relative;\n  z-index: 99999; }\n\n.custom-header h2,\n.custom-header h3 {\n  float: left;\n  font-weight: 300;\n  text-transform: uppercase;\n  letter-spacing: 4px;\n  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1); }\n\n.custom-header h2 {\n  color: #fff;\n  width: 60%; }\n\n.custom-header h2 a,\n.custom-header h2 span {\n  color: rgba(255, 255, 255, 0.3);\n  font-size: 18px;\n  letter-spacing: 3px;\n  white-space: nowrap; }\n\n.custom-header h2 a {\n  color: rgba(255, 255, 255, 0.5); }\n\n.no-touch .custom-header h2 a:hover {\n  color: rgba(255, 255, 255, 0.9); }\n\n.custom-header h3 {\n  width: 40%;\n  color: #ddd;\n  color: rgba(255, 255, 255, 0.6);\n  font-weight: 300;\n  line-height: 30px;\n  text-align: right;\n  padding-right: 125px; }\n\n.custom-header nav {\n  position: absolute;\n  right: 20px;\n  top: 20px;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n.custom-header nav span {\n  float: left;\n  width: 30px;\n  height: 30px;\n  position: relative;\n  color: transparent;\n  cursor: pointer;\n  background: rgba(255, 255, 255, 0.3);\n  margin: 0 1px;\n  font-size: 20px;\n  border-radius: 0 3px 3px 0;\n  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2); }\n\n.custom-header nav span:first-child {\n  border-radius: 3px 0 0 3px; }\n\n.custom-header nav span:hover {\n  background: rgba(255, 255, 255, 0.5); }\n\n.custom-header span:before {\n  font-family: 'fontawesome-selected';\n  color: #fff;\n  display: inline-block;\n  text-align: center;\n  width: 100%;\n  text-indent: 4px; }\n\n.custom-header nav span.custom-prev:before {\n  content: '\\25C2'; }\n\n.custom-header nav span.custom-next:before {\n  content: '\\25B8'; }\n\n.custom-header nav span:last-child {\n  margin-left: 20px;\n  border-radius: 3px; }\n\n.custom-header nav span.custom-current:before {\n  content: '\\27A6'; }\n\n.fc-calendar {\n  background: rgba(255, 255, 255, 0.1);\n  width: auto;\n  top: 10px;\n  bottom: 20px;\n  left: 20px;\n  right: 20px;\n  height: auto;\n  border-radius: 20px;\n  position: absolute; }\n\n.fc-calendar .fc-head {\n  background: #042C5C;\n  color: rgba(255, 255, 255, 0.9);\n  box-shadow: inset 0 1px 0 #042C5C;\n  border-radius: 20px 20px 0 0;\n  height: 40px;\n  line-height: 40px;\n  padding: 0; }\n\n.fc-calendar .fc-head > div {\n  font-weight: 300;\n  text-transform: uppercase;\n  font-size: 14px;\n  letter-spacing: 3px;\n  text-shadow: 0 1px 1px #042C5C; }\n\n.fc-calendar .fc-row > div > span.fc-date {\n  color: rgba(255, 255, 255, 0.9);\n  text-shadow: none;\n  font-size: 26px;\n  font-weight: 300;\n  bottom: auto;\n  right: auto;\n  top: 10px;\n  left: 10px;\n  text-align: left;\n  text-shadow: 0 1px 1px #042C5C; }\n\n.fc-calendar .fc-body {\n  border: none;\n  padding: 20px; }\n\n.fc-calendar .fc-row {\n  box-shadow: inset 0 -1px 0 #042C5C;\n  border: none; }\n\n.fc-calendar .fc-row:last-child {\n  box-shadow: none; }\n\n.fc-calendar .fc-row:first-child > div:first-child {\n  border-radius: 10px 0 0 0; }\n\n.fc-calendar .fc-row:first-child > div:last-child {\n  border-radius: 0 10px 0 0; }\n\n.fc-calendar .fc-row:last-child > div:first-child {\n  border-radius: 0 0 0 10px; }\n\n.fc-calendar .fc-row:last-child > div:last-child {\n  border-radius: 0 0 10px 0; }\n\n.fc-calendar .fc-row > div {\n  box-shadow: -1px 0 0 #042C5C;\n  border: none;\n  padding: 10px;\n  cursor: pointer; }\n\n.fc-calendar .fc-row > div:first-child {\n  box-shadow: none; }\n\n.fc-calendar .fc-row > div.fc-today {\n  background: transparent;\n  box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.1); }\n\n.fc-calendar .fc-row > div.fc-today:after {\n  content: '';\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  opacity: 0.2;\n  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0.15)), to(rgba(0, 0, 0, 0.25))), -webkit-gradient(linear, left top, right bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.501, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0)));\n  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.25)), -moz-linear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));\n  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.25)), -o-llinear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));\n  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.25)), -ms-linear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));\n  background: linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.25)), linear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0)); }\n\n.fc-calendar .fc-row > div > div {\n  margin-top: 35px; }\n\n.fc-calendar .fc-row > div > div a,\n.fc-calendar .fc-row > div > div span {\n  color: rgba(255, 255, 255, 0.7);\n  font-size: 12px;\n  text-transform: uppercase;\n  display: inline-block;\n  padding: 3px 5px;\n  border-radius: 3px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  max-width: 100%;\n  margin-bottom: 1px;\n  background: rgba(255, 255, 255, 0.1); }\n\n.no-touch .fc-calendar .fc-row > div > div a:hover {\n  background: rgba(255, 255, 255, 0.3); }\n\n@media screen and (max-width: 880px), screen and (max-height: 450px) {\n  html, body, .container {\n    height: auto; }\n  .custom-header,\n  .custom-header nav,\n  .custom-calendar-full,\n  .fc-calendar-container,\n  .fc-calendar,\n  .fc-calendar .fc-head,\n  .fc-calendar .fc-row > div > span.fc-date {\n    position: relative;\n    top: auto;\n    left: auto;\n    bottom: auto;\n    right: auto;\n    height: auto;\n    width: auto; }\n  .fc-calendar {\n    margin: 0 20px 20px; }\n  .custom-header h2,\n  .custom-header h3 {\n    float: none;\n    width: auto;\n    text-align: left;\n    padding-right: 100px; }\n  .fc-calendar .fc-row,\n  .ie9 .fc-calendar .fc-row > div,\n  .fc-calendar .fc-row > div {\n    height: auto;\n    width: 100%;\n    border: none; }\n  .fc-calendar .fc-row > div {\n    float: none;\n    min-height: 50px;\n    box-shadow: inset 0 -1px rgba(255, 255, 255, 0.2) !important;\n    border-radius: 0px !important; }\n  .fc-calendar .fc-row > div:empty {\n    min-height: 0;\n    height: 0;\n    box-shadow: none !important;\n    padding: 0; }\n  .fc-calendar .fc-row {\n    box-shadow: none; }\n  .fc-calendar .fc-head {\n    display: none; }\n  .fc-calendar .fc-row > div > div {\n    margin-top: 0px;\n    padding-left: 10px;\n    max-width: 70%;\n    display: inline-block; }\n  .fc-calendar .fc-row > div.fc-today {\n    background: rgba(255, 255, 255, 0.2); }\n  .fc-calendar .fc-row > div.fc-today:after {\n    display: none; }\n  .fc-calendar .fc-row > div > span.fc-date {\n    width: 30px;\n    display: inline-block;\n    text-align: right; }\n  .fc-calendar .fc-row > div > span.fc-weekday {\n    display: inline-block;\n    width: 40px;\n    color: #fff;\n    color: rgba(255, 255, 255, 0.7);\n    font-size: 10px;\n    text-transform: uppercase; } }\n\n/* Style For the top bar which will be the link to\nour site Tron and Wayne Enterprises\n*/\n.calendarpage #site-wrapper {\n  padding: 0; }\n\n/* Header Style */\n.codrops-top {\n  line-height: 24px;\n  font-size: 11px;\n  background: #fff;\n  background: rgba(255, 255, 255, 0.5);\n  text-transform: uppercase;\n  z-index: 100;\n  position: relative;\n  box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.2); }\n\n.codrops-top a {\n  padding: 0px 10px;\n  letter-spacing: 1px;\n  color: #333;\n  display: inline-block; }\n\n.codrops-top a:hover {\n  background: rgba(255, 255, 255, 0.8);\n  color: #000; }\n\n.codrops-top span.right {\n  float: right; }\n\n.codrops-top span.right a {\n  float: left;\n  display: block; }\n\n/* Demo Buttons Style */\n.codrops-demos {\n  float: right; }\n\n.codrops-demos a {\n  display: inline-block;\n  margin: 10px;\n  color: #fff;\n  font-weight: 700;\n  line-height: 30px;\n  border-bottom: 4px solid transparent; }\n\n.codrops-demos a:hover {\n  color: #000;\n  border-color: #000; }\n\n.codrops-demos a.current-demo,\n.codrops-demos a.current-demo:hover {\n  color: rgba(255, 255, 255, 0.5);\n  border-color: rgba(255, 255, 255, 0.5); }\n\n.nav-bar-wrapper {\n  height: 350px;\n  background: #333;\n  overflow: hidden;\n  position: relative;\n  z-index: 100; }\n  @media (min-width: 400px) {\n    .nav-bar-wrapper {\n      height: 320px; } }\n  @media (min-width: 460px) {\n    .nav-bar-wrapper {\n      height: 320px; } }\n  @media (min-width: 525px) {\n    .nav-bar-wrapper {\n      height: 320px; } }\n  @media (min-width: 600px) {\n    .nav-bar-wrapper {\n      height: 250px; } }\n  @media (min-width: 865px) {\n    .nav-bar-wrapper {\n      max-height: 60px; } }\n  .nav-bar-wrapper .date-wrapper {\n    z-index: 100;\n    text-align: center;\n    padding: 0 5px;\n    font-family: GustanLight;\n    display: inline-block;\n    position: relative;\n    min-width: 0;\n    top: 5px; }\n    @media (min-width: 865px) {\n      .nav-bar-wrapper .date-wrapper {\n        min-width: 0;\n        top: 5px; } }\n    .nav-bar-wrapper .date-wrapper .full-date {\n      position: relative; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .date-wrapper .full-date {\n          top: 0;\n          margin: 0; } }\n    .nav-bar-wrapper .date-wrapper .theMonth {\n      padding: 0 20px 0 0;\n      font-family: GustanLight;\n      color: #FFF;\n      font-size: 32px; }\n    .nav-bar-wrapper .date-wrapper .theYear {\n      font-family: GustanLight;\n      color: #FFF;\n      font-size: 32px; }\n  .nav-bar-wrapper .filter-wrapper {\n    display: inline-block; }\n    .nav-bar-wrapper .filter-wrapper .filter-modal-btn {\n      position: absolute;\n      top: 170px; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .filter-wrapper .filter-modal-btn {\n          top: 17px;\n          left: 450px; } }\n      .nav-bar-wrapper .filter-wrapper .filter-modal-btn:hover {\n        cursor: pointer; }\n  .nav-bar-wrapper .logos-wrapper {\n    display: inline-block;\n    width: 100%;\n    float: left;\n    margin-top: 20px; }\n    @media (min-width: 460px) {\n      .nav-bar-wrapper .logos-wrapper {\n        width: 100%; } }\n    @media (min-width: 865px) {\n      .nav-bar-wrapper .logos-wrapper {\n        margin-top: 0;\n        display: inline-block;\n        width: 33.333%;\n        float: left; } }\n  .nav-bar-wrapper .logo-wrapper {\n    z-index: 500;\n    text-align: center;\n    display: inline-block;\n    padding: 0;\n    width: 100%;\n    float: left; }\n    .nav-bar-wrapper .logo-wrapper img {\n      margin-top: 15px;\n      margin-right: auto;\n      margin-left: auto; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .logo-wrapper img {\n          max-height: 50px;\n          margin-top: 5px;\n          margin-left: 30px; } }\n      .nav-bar-wrapper .logo-wrapper img:hover {\n        cursor: pointer; }\n    @media (min-width: 600px) {\n      .nav-bar-wrapper .logo-wrapper {\n        width: 50%; } }\n    @media (min-width: 865px) {\n      .nav-bar-wrapper .logo-wrapper {\n        display: inline-block;\n        width: 50%;\n        float: left; } }\n  .nav-bar-wrapper .happ-logo {\n    height: 60px;\n    position: relative;\n    width: 220px; }\n    .nav-bar-wrapper .happ-logo img {\n      position: absolute;\n      margin: auto;\n      top: 0;\n      left: 20px;\n      bottom: 0; }\n    @media (min-width: 865px) {\n      .nav-bar-wrapper .happ-logo {\n        width: 33.333%; }\n        .nav-bar-wrapper .happ-logo img {\n          position: absolute;\n          margin: auto;\n          top: 0;\n          left: 10px;\n          bottom: 0; } }\n    @media (min-width: 1100px) {\n      .nav-bar-wrapper .happ-logo {\n        width: 185px; } }\n    @media (min-width: 1500px) {\n      .nav-bar-wrapper .happ-logo {\n        width: 220px; } }\n  .nav-bar-wrapper .controls-wrapper {\n    z-index: 50;\n    margin-top: 8px;\n    margin-right: auto;\n    margin-left: auto;\n    display: inline-block;\n    padding: 0;\n    text-align: center;\n    width: 100%; }\n    @media (min-width: 865px) {\n      .nav-bar-wrapper .controls-wrapper {\n        width: 43.3333%;\n        display: inline-block;\n        float: left;\n        text-align: center; } }\n    @media (min-width: 1100px) {\n      .nav-bar-wrapper .controls-wrapper {\n        width: 33.3333%; } }\n    @media (min-width: 1500px) {\n      .nav-bar-wrapper .controls-wrapper {\n        width: 33.3333%;\n        display: inline-block;\n        float: left;\n        text-align: center; } }\n    .nav-bar-wrapper .controls-wrapper .controls-prev-next {\n      display: inline-block;\n      padding: 0 20px 0 20px;\n      color: #FFF;\n      font-family: GustanLight; }\n      @media (min-width: 1500px) {\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next {\n          float: none; } }\n      .nav-bar-wrapper .controls-wrapper .controls-prev-next a {\n        width: 150px;\n        color: #FFF;\n        padding: 0;\n        margin: 5px;\n        position: relative; }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next a:hover, .nav-bar-wrapper .controls-wrapper .controls-prev-next a:focus {\n          text-decoration: none; }\n      .nav-bar-wrapper .controls-wrapper .controls-prev-next #previous-month {\n        border-bottom-left-radius: 10px;\n        border-top-left-radius: 10px;\n        top: 0; }\n        @media (min-width: 865px) {\n          .nav-bar-wrapper .controls-wrapper .controls-prev-next #previous-month {\n            top: 0; } }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next #previous-month span {\n          padding: 0 0 0 15px;\n          size: 0.2em;\n          position: relative;\n          font-size: 14px;\n          font-weight: 100; }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next #previous-month span:before {\n          content: '';\n          display: block;\n          top: 50%;\n          margin-top: -7px;\n          border-top: 1px solid #FF6733;\n          border-right: 1px solid #FF6733;\n          height: 15px;\n          width: 15px;\n          position: absolute;\n          left: 0;\n          transition: left 0.25s;\n          transform: rotate(225deg); }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next #previous-month span:hover:before {\n          content: '';\n          display: block;\n          top: 50%;\n          margin-top: -7px;\n          border-top: 1px solid #FF6733;\n          border-right: 1px solid #FF6733;\n          height: 15px;\n          width: 15px;\n          position: absolute;\n          transition: left 0.25s;\n          left: -5px;\n          transform: rotate(225deg); }\n      .nav-bar-wrapper .controls-wrapper .controls-prev-next #next-month {\n        border-bottom-right-radius: 10px;\n        border-top-right-radius: 10px;\n        top: 0; }\n        @media (min-width: 865px) {\n          .nav-bar-wrapper .controls-wrapper .controls-prev-next #next-month {\n            top: 0; } }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next #next-month span {\n          padding: 0 15px 0 0;\n          size: 0.2em;\n          position: relative;\n          font-size: 14px;\n          font-weight: 100; }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next #next-month span:before {\n          content: '';\n          display: block;\n          top: 50%;\n          margin-top: -7px;\n          border-top: 1px solid #FF6733;\n          border-right: 1px solid #FF6733;\n          height: 15px;\n          width: 15px;\n          position: absolute;\n          right: 0;\n          transform: rotate(45deg);\n          transition: right 0.25s; }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next #next-month span:hover:before {\n          content: '';\n          display: block;\n          top: 50%;\n          margin-top: -7px;\n          border-top: 1px solid #FF6733;\n          border-right: 1px solid #FF6733;\n          height: 15px;\n          width: 15px;\n          position: absolute;\n          transition: right 0.25s;\n          right: -5px;\n          transform: rotate(45deg); }\n    .nav-bar-wrapper .controls-wrapper .add-event {\n      display: inline-block;\n      padding: 0 20px 0 20px; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .controls-wrapper .add-event {\n          float: right; } }\n      .nav-bar-wrapper .controls-wrapper .add-event img {\n        margin: 2px 0 0 0; }\n      .nav-bar-wrapper .controls-wrapper .add-event a {\n        color: #042C5C;\n        top: 16px;\n        position: absolute;\n        right: 16px; }\n        @media (min-width: 865px) {\n          .nav-bar-wrapper .controls-wrapper .add-event a {\n            top: 16px; } }\n        .nav-bar-wrapper .controls-wrapper .add-event a:hover {\n          cursor: pointer; }\n  .nav-bar-wrapper .events-control-wrapper {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    height: 70px; }\n    @media (min-width: 865px) {\n      .nav-bar-wrapper .events-control-wrapper {\n        position: relative;\n        height: 60px;\n        width: 23.3333%;\n        display: inline-block;\n        float: left; } }\n    @media (min-width: 1100px) {\n      .nav-bar-wrapper .events-control-wrapper {\n        width: 33.3333%; } }\n    @media (min-width: 1500px) {\n      .nav-bar-wrapper .events-control-wrapper {\n        width: 33.3333%;\n        display: inline-block;\n        float: left; } }\n    .nav-bar-wrapper .events-control-wrapper .events-inner-wrap {\n      height: 100%; }\n    .nav-bar-wrapper .events-control-wrapper .add-event {\n      width: 33.33333%;\n      float: left;\n      display: inline-block;\n      background-color: #FF6733;\n      height: 100%; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .events-control-wrapper .add-event {\n          height: 100%;\n          margin-top: 0;\n          background-color: transparent; } }\n      .nav-bar-wrapper .events-control-wrapper .add-event a {\n        display: flex;\n        align-items: center;\n        justify-content: flex-end;\n        height: 100%; }\n        .nav-bar-wrapper .events-control-wrapper .add-event a .add-event-svg {\n          height: 36px; }\n    .nav-bar-wrapper .events-control-wrapper .search-event {\n      width: 33.33333%;\n      float: left;\n      display: inline-block;\n      background-color: #FFF;\n      height: 100%; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .events-control-wrapper .search-event {\n          height: 100%;\n          margin-top: 0;\n          background-color: transparent; } }\n      .nav-bar-wrapper .events-control-wrapper .search-event a {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        height: 100%; }\n        .nav-bar-wrapper .events-control-wrapper .search-event a .search-svg {\n          height: 36px; }\n    .nav-bar-wrapper .events-control-wrapper .filter-events {\n      width: 33.33333%;\n      float: left;\n      display: inline-block;\n      background-color: #FF6733;\n      height: 100%; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .events-control-wrapper .filter-events {\n          height: 100%;\n          margin-top: 0;\n          background-color: transparent; } }\n      .nav-bar-wrapper .events-control-wrapper .filter-events a {\n        display: flex;\n        align-items: center;\n        justify-content: flex-start;\n        height: 100%; }\n        .nav-bar-wrapper .events-control-wrapper .filter-events a .filter-svg {\n          height: 36px; }\n\n#happSVGLogo {\n  height: 60px;\n  padding: 5px; }\n\n.container-calendar-wrapper .custom-calendar-wrap {\n  z-index: 100; }\n  @media (min-width: 880px) {\n    .container-calendar-wrapper .custom-calendar-wrap {\n      z-index: -50; } }\n  @media (min-width: 880px) {\n    .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar {\n      bottom: 0;\n      left: 0;\n      right: 0; } }\n  .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-head {\n    font-weight: 900;\n    border-radius: 0;\n    font-family: GustanLight;\n    background: #FF6733;\n    box-shadow: none; }\n  .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body {\n    padding: 0; }\n    @media (min-width: 880px) {\n      .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body {\n        padding: 10px 0 20px 0; } }\n    .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row {\n      overflow: hidden; }\n      .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .happ_e_button {\n        background-color: transparent;\n        margin: 1px;\n        outline: none;\n        text-decoration: none;\n        padding: 6px 4px 0 4px;\n        font-size: 16px;\n        text-transform: none;\n        white-space: normal;\n        transition: font-size 0.5s ease; }\n        .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .happ_e_button:hover, .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .happ_e_button:focus {\n          text-decoration: none;\n          background-color: transparent;\n          outline: none; }\n        @media (min-width: 880px) {\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .happ_e_button {\n            font-size: 14px; } }\n      .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square {\n        overflow: hidden;\n        z-index: 100;\n        padding: 10px 10px 40px 10px; }\n        @media (min-width: 880px) {\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square {\n            border-bottom: 1px solid #042C5C;\n            padding: 10px 10px 10px 10px; } }\n        .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square:hover {\n          cursor: default; }\n        .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square {\n          max-width: 100%; }\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .events-day-wrapper {\n            padding: 0; }\n            @media (min-width: 880px) {\n              .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .events-day-wrapper {\n                padding: 0; } }\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .opaque-head {\n            display: none; }\n            @media (min-width: 880px) {\n              .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .opaque-head {\n                display: block;\n                padding: 20px 0 0 0;\n                height: 30px;\n                width: 100%;\n                position: fixed;\n                background-color: rgba(255, 255, 255, 0.8);\n                z-index: 10; } }\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .number-wrap {\n            height: 60px; }\n            @media (min-width: 880px) {\n              .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .number-wrap {\n                position: fixed;\n                height: 33px;\n                width: 33px;\n                z-index: 99999; } }\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .day-number {\n            color: fade(#042C5C, 100%);\n            font-size: 36px;\n            height: 60px;\n            width: 60px;\n            border-radius: 0;\n            text-align: center;\n            padding: 0;\n            z-index: 50; }\n            @media (min-width: 880px) {\n              .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .day-number {\n                font-size: 22px;\n                height: 33px;\n                width: 33px;\n                margin: 0;\n                border: none;\n                position: absolute;\n                top: 0;\n                background-color: rgba(255, 255, 255, 0.95);\n                border-radius: 0;\n                transition: opacity 0.5s ease; } }\n          @media (min-width: 880px) {\n            .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square {\n              overflow-y: scroll;\n              position: absolute;\n              margin-top: 0;\n              height: inherit;\n              right: -10px;\n              width: 100%;\n              padding-right: 10px; }\n              .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square:hover .day-number {\n                opacity: 0; } }\n        .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .modal {\n          display: none;\n          z-index: 99999999999;\n          max-width: 100%; }\n      .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .last-month-wrap {\n        display: none;\n        opacity: 0.4; }\n        @media (min-width: 880px) {\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .last-month-wrap {\n            display: block; } }\n      .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .next-month-wrap {\n        display: none;\n        opacity: 0.4; }\n        @media (min-width: 880px) {\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .next-month-wrap {\n            display: block; } }\n\n.fc-row:last-of-type .day-square {\n  border: none !important; }\n\n* {\n  box-sizing: border-box; }\n\n.fc-calendar-container .fc-calendar #addEventModal.modal {\n  display: none; }\n\n.fc-calendar-container .fc-calendar .modal {\n  overflow: hidden;\n  margin-top: 0 !important;\n  z-index: 9999999999;\n  display: none; }\n\n.fc-calendar-container .fc-calendar .modal-dialog {\n  width: 80%;\n  height: 80%;\n  padding: 0;\n  z-index: 9999999999; }\n\n.fc-calendar-container .fc-calendar .modal-content {\n  border: 2px solid #3c7dcf;\n  border-radius: 0;\n  box-shadow: none;\n  z-index: 999999999999; }\n\n.fc-calendar-container .fc-calendar .modal-header {\n  height: 50px;\n  padding: 10px;\n  background: #6598d9;\n  border: 0; }\n\n.fc-calendar-container .fc-calendar .modal-title {\n  font-weight: 300;\n  font-size: 2em;\n  color: #fff;\n  line-height: 30px; }\n\n.fc-calendar-container .fc-calendar .modal-body {\n  width: 100%;\n  font-weight: 300;\n  z-index: 9999999999;\n  overflow: auto; }\n  @media (min-width: 1100px) {\n    .fc-calendar-container .fc-calendar .modal-body {\n      overflow: hidden; } }\n\n.fc-calendar-container .fc-calendar .modal-footer {\n  height: 60px;\n  padding: 10px;\n  background: #f1f3f5; }\n\n.fc-calendar-container .fc-calendar ::-webkit-scrollbar {\n  -webkit-appearance: none;\n  width: 10px;\n  background: #f1f3f5;\n  border-left: 1px solid #d3dae0; }\n\n.fc-calendar-container .fc-calendar ::-webkit-scrollbar-thumb {\n  background: #b6c0cb; }\n\n.modal-header .close {\n  color: #FC6636; }\n\n.modal-header .modal-title {\n  text-align: center;\n  font-size: 24px;\n  color: #FC6636; }\n\n.modal-body {\n  max-height: 500px;\n  overflow-y: scroll; }\n  @media (min-width: 960px) {\n    .modal-body {\n      overflow-y: hidden;\n      max-height: 800px; } }\n\n.modal-footer {\n  text-align: center; }\n  .modal-footer .powered-by-happ {\n    margin-left: auto; }\n\n.add-event-form fieldset .add-event-form-element {\n  padding: 10px 10px 10px 10px;\n  width: 100%;\n  font-size: 20px;\n  text-align: center;\n  content: \"hello\"; }\n\n.add-event-form .Actions {\n  text-align: center; }\n  .add-event-form .Actions #Form_AddEventForm_action_processAddEvent {\n    border-radius: 0;\n    padding: 10px 50px 10px 50px;\n    font-size: 20px;\n    border-color: #FC6636;\n    border-width: 4.166666666666667px;\n    border-style: solid;\n    background: transparent; }\n    .add-event-form .Actions #Form_AddEventForm_action_processAddEvent:hover, .add-event-form .Actions #Form_AddEventForm_action_processAddEvent:focus {\n      background-color: #FC6636;\n      color: #FFF; }\n\n.datepicker.datepicker-dropdown.dropdown-menu {\n  z-index: 9999999999999 !important; }\n  .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed {\n    border-collapse: separate;\n    display: table; }\n    @media (min-width: 768px) {\n      .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed {\n        border-spacing: 20px; } }\n    .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr {\n      display: table-row; }\n      .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr th {\n        padding: 10px 15px; }\n        .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr th:hover, .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr th:focus {\n          background-color: #FC6636;\n          color: #FFF; }\n        @media (min-width: 768px) {\n          .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr th {\n            padding: 20px 31px;\n            margin: 20px 31px; } }\n      @media (min-width: 768px) {\n        .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr .datepicker-switch {\n          padding: 20px 31px;\n          font-size: 22px; } }\n      @media (min-width: 768px) {\n        .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr .prev {\n          padding: 20px 31px;\n          font-size: 26px;\n          font-family: GustanBlack; } }\n      @media (min-width: 768px) {\n        .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr .next {\n          padding: 20px 31px;\n          font-size: 26px;\n          font-family: GustanBlack; } }\n    .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed tbody tr td {\n      padding: 10px 15px; }\n      .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed tbody tr td:hover, .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed tbody tr td:focus, .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed tbody tr td.active {\n        background-color: #FC6636;\n        color: #FFF; }\n  .datepicker.datepicker-dropdown.dropdown-menu .datepicker-months .active {\n    background-color: #FC6636;\n    color: #FFF; }\n  .datepicker.datepicker-dropdown.dropdown-menu .datepicker-months .month:hover {\n    background-color: #FC6636;\n    color: #FFF; }\n\n#ui-timepicker-div {\n  font-size: 20px;\n  padding: 20px; }\n  #ui-timepicker-div:before {\n    top: -3px;\n    left: 6px;\n    content: '';\n    display: inline-block;\n    border-left: 7px solid transparent;\n    border-right: 7px solid transparent;\n    border-bottom: 7px solid #FFF;\n    border-top: 0;\n    border-bottom-color: white;\n    position: absolute; }\n  #ui-timepicker-div .ui-timepicker-table {\n    line-height: 1.8em;\n    border-collapse: separate;\n    display: table; }\n    @media (min-width: 768px) {\n      #ui-timepicker-div .ui-timepicker-table {\n        border-spacing: 20px; } }\n    #ui-timepicker-div .ui-timepicker-table tbody tr {\n      padding: 10px 15px;\n      display: table-row; }\n      #ui-timepicker-div .ui-timepicker-table tbody tr td .ui-timepicker-title {\n        line-height: 0;\n        background: transparent; }\n      #ui-timepicker-div .ui-timepicker-table tbody tr td .ui-timepicker tbody td .ui-state-default {\n        padding: 1.0em 2.0em; }\n        #ui-timepicker-div .ui-timepicker-table tbody tr td .ui-timepicker tbody td .ui-state-default:hover, #ui-timepicker-div .ui-timepicker-table tbody tr td .ui-timepicker tbody td .ui-state-default.ui-state-active {\n          background: #FC6636;\n          color: #FFF; }\n\n.ui-timepicker-standard {\n  z-index: 9999999999999 !important; }\n\n/*\n * JTSage-DateBox : the full featured Date and Time Picker\n * Date: 2016-01-11T11:09:29-05:00\n * http://dev.jtsage.com/DateBox/\n * https://github.com/jtsage/jquery-mobile-datebox\n *\n * Copyright 2010, 2015 JTSage. and other contributors\n * Released under the MIT license.\n * https://github.com/jtsage/jquery-mobile-datebox/blob/master/LICENSE.txt\n *\n */\n/*\n * Shared Styles\n *\n * These styles are used for the basic control,\n * and are not specific to any one mode.\n */\n.ui-datebox-container {\n  width: 290px;\n  -webkit-transform: translate3d(0, 0, 0); }\n\n.ui-datebox-container .modal-header {\n  padding: 8px 15px; }\n\n.ui-datebox-collapse {\n  text-align: center; }\n\ndiv.ui-datebox-inline.ui-datebox-inline-has-input {\n  float: none;\n  clear: both;\n  position: relative;\n  top: 5px; }\n\ndiv.ui-datebox-container.ui-datebox-inline {\n  width: 290px; }\n\n/*\n * Calendar Mode Styles\n *\n * These are specific to CalBox\n */\n.ui-datebox-gridheader {\n  text-align: center; }\n\n.ui-datebox-gridheader a {\n  margin: 3px; }\n\n.ui-datebox-gridheader h4 {\n  display: inline-block; }\n\n.ui-datebox-grid {\n  clear: both;\n  margin-bottom: 5px; }\n\n.ui-datebox-inline .ui-datebox-gridrow .ui-controlgroup-controls {\n  width: 100%;\n  text-align: center; }\n\n.ui-datebox-inline .ui-datebox-gridrow .ui-controlgroup-controls .ui-btn {\n  float: none;\n  clear: both; }\n\n.ui-datebox-gridrow {\n  margin-left: auto;\n  margin-right: auto;\n  display: table;\n  margin-bottom: 0px; }\n\n.ui-datebox-gridrow-last {\n  margin-bottom: 5px; }\n\n.ui-datebox-controls {\n  padding: 0px 3px;\n  width: 100%; }\n\n.ui-datebox-griddate {\n  width: 40px;\n  height: 30px;\n  line-height: 30px;\n  padding: 0;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n  font-weight: bold;\n  font-size: 12px;\n  zoom: 1;\n  *display: inline; }\n\n.ui-datebox-griddate-week {\n  width: 35px;\n  height: 30px;\n  line-height: 30px;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n  font-weight: bold;\n  font-size: 12px;\n  zoom: 1;\n  *display: inline; }\n\n.ui-datebox-gridrow div.ui-datebox-griddate-empty {\n  border: 1px solid transparent;\n  color: #888888; }\n\n.ui-datebox-griddate.ui-datebox-griddate-label {\n  border: 1px solid transparent;\n  height: 15px;\n  line-height: 15px; }\n\n/*\n * Android Mode Styles\n *\n * These are specific to datebox, timebox, and durationbox\n */\n.ui-datebox-datebox-groups.row {\n  margin-right: 5px;\n  margin-left: 5px;\n  margin-bottom: 10px; }\n\n.ui-datebox-datebox-group.col-xs-3, .ui-datebox-datebox-group.col-xs-4 {\n  padding-left: 0px;\n  padding-right: 0px; }\n\ndiv.ui-datebox-datebox-button {\n  width: 100%;\n  margin: 0; }\n\n.ui-datebox-datebox-groups input {\n  text-align: center; }\n\n.ui-datebox-datebox-groups label {\n  text-align: center;\n  width: 100%;\n  margin-bottom: 0px;\n  border: 1px solid #ccc; }\n\ndiv.ui-datebox-datebox-button.glyphicon-plus {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n  -webkit-border-bottom-right-radius: 0;\n  -webkit-border-bottom-left-radius: 0;\n  top: 0px; }\n\ndiv.ui-datebox-datebox-button.glyphicon-minus {\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n  -webkit-border-top-right-radius: 0;\n  -webkit-border-top-left-radius: 0;\n  top: 0px; }\n\n.ui-datebox-header h4 {\n  text-align: center; }\n\n/*\n * Flip Mode Styles\n *\n * These are specific to flipbox, timeflipbox, durationflipbox, and\n * customflip\n */\n.ui-datebox-fliplab {\n  text-align: center; }\n\n.ui-datebox-flipcenter {\n  width: 260px;\n  height: 40px;\n  border: 1px solid #EEEEEE;\n  margin-right: auto;\n  margin-left: auto;\n  position: relative;\n  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);\n  -moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);\n  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6); }\n\n.ui-datebox-flipcontent {\n  text-align: center;\n  height: 125px;\n  margin-bottom: -40px; }\n\n.ui-datebox-flipcontent li {\n  border: 1px solid #ccc; }\n\n.ui-datebox-flipcontent div {\n  margin-left: 3px;\n  margin-right: 3px;\n  width: 77px;\n  height: 120px;\n  display: inline-block;\n  text-align: center;\n  zoom: 1;\n  *display: inline;\n  overflow: hidden; }\n\n.ui-datebox-flipcontentd div {\n  width: 60px; }\n\n.ui-datebox-flipcontent ul {\n  list-style-type: none;\n  display: inline;\n  border: 1px solid transparent; }\n\n.ui-datebox-flipcontent li {\n  height: 30px; }\n\n.ui-datebox-flipcontent li span {\n  margin-top: 7px;\n  display: block; }\n\n/*\n * Slide Mode Styles\n *\n * Used solely for SlideBox.  Damn this is a lot of extra CSS.\n */\n.ui-datebox-slide {\n  width: 290px;\n  margin-left: auto;\n  margin-right: auto; }\n\n.ui-datebox-sliderow-int {\n  display: inline-block;\n  white-space: nowrap; }\n\n.ui-datebox-sliderow {\n  margin-bottom: 5px;\n  text-align: center;\n  overflow: hidden;\n  width: 290px; }\n\n.ui-datebox-slide .ui-btn {\n  margin: 0;\n  padding: 0px 1em; }\n\n.ui-datebox-slidebox {\n  text-align: center;\n  display: inline-block;\n  zoom: 1;\n  *display: inline;\n  vertical-align: middle;\n  font-weight: bold;\n  border: 1px solid #ccc;\n  box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box; }\n\n.ui-datebox-slideyear {\n  width: 84px;\n  line-height: 30px;\n  font-size: 14px; }\n\n.ui-datebox-slidemonth {\n  width: 51px;\n  line-height: 30px;\n  font-size: 12px; }\n\n.ui-datebox-slideday {\n  width: 40px;\n  line-height: 20px;\n  font-size: 14px; }\n\n.ui-datebox-slidehour {\n  width: 60px;\n  line-height: 22px;\n  font-size: 14px; }\n\n.ui-datebox-slidemins {\n  width: 40px;\n  line-height: 22px;\n  font-size: 14px; }\n\n.ui-datebox-slidewday {\n  font-size: 10px;\n  font-weight: normal; }\n\nspan.ui-datebox-nopad {\n  margin: 0; }\n\n/*\n * Custom Time Picker\n *\n */\n.ui-datebox-container {\n  width: 290px;\n  -webkit-transform: translate3d(0, 0, 0); }\n\n.ui-datebox-container .modal-header {\n  padding: 8px 15px; }\n\n.ui-datebox-collapse {\n  text-align: center; }\n\ndiv.ui-datebox-inline.ui-datebox-inline-has-input {\n  float: none;\n  clear: both;\n  position: relative;\n  top: 5px; }\n\ndiv.ui-datebox-container.ui-datebox-inline {\n  width: 290px; }\n\n/*\n * Calendar Mode Styles\n *\n * These are specific to CalBox\n */\n.ui-datebox-gridheader {\n  text-align: center; }\n\n.ui-datebox-gridheader a {\n  margin: 3px; }\n\n.ui-datebox-gridheader h4 {\n  display: inline-block; }\n\n.ui-datebox-grid {\n  clear: both;\n  margin-bottom: 5px; }\n\n.ui-datebox-inline .ui-datebox-gridrow .ui-controlgroup-controls {\n  width: 100%;\n  text-align: center; }\n\n.ui-datebox-inline .ui-datebox-gridrow .ui-controlgroup-controls .ui-btn {\n  float: none;\n  clear: both; }\n\n.ui-datebox-gridrow {\n  margin-left: auto;\n  margin-right: auto;\n  display: table;\n  margin-bottom: 0px; }\n\n.ui-datebox-gridrow-last {\n  margin-bottom: 5px; }\n\n.ui-datebox-controls {\n  padding: 0px 3px;\n  width: 100%; }\n\n.ui-datebox-griddate {\n  width: 40px;\n  height: 30px;\n  line-height: 30px;\n  padding: 0;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n  font-weight: bold;\n  font-size: 12px;\n  zoom: 1;\n  *display: inline; }\n\n.ui-datebox-griddate-week {\n  width: 35px;\n  height: 30px;\n  line-height: 30px;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n  font-weight: bold;\n  font-size: 12px;\n  zoom: 1;\n  *display: inline; }\n\n.ui-datebox-gridrow div.ui-datebox-griddate-empty {\n  border: 1px solid transparent;\n  color: #888888; }\n\n.ui-datebox-griddate.ui-datebox-griddate-label {\n  border: 1px solid transparent;\n  height: 15px;\n  line-height: 15px; }\n\n/*\n * Android Mode Styles\n *\n * These are specific to datebox, timebox, and durationbox\n */\n.ui-datebox-datebox-groups.row {\n  margin-right: 5px;\n  margin-left: 5px;\n  margin-bottom: 10px; }\n\n.ui-datebox-datebox-group.col-xs-3, .ui-datebox-datebox-group.col-xs-4 {\n  padding-left: 0px;\n  padding-right: 0px; }\n\ndiv.ui-datebox-datebox-button {\n  width: 100%;\n  margin: 0; }\n\n.ui-datebox-datebox-groups input {\n  text-align: center; }\n\n.ui-datebox-datebox-groups label {\n  text-align: center;\n  width: 100%;\n  margin-bottom: 0px;\n  border: 1px solid #ccc; }\n\ndiv.ui-datebox-datebox-button.glyphicon-plus {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n  -webkit-border-bottom-right-radius: 0;\n  -webkit-border-bottom-left-radius: 0;\n  top: 0px; }\n\ndiv.ui-datebox-datebox-button.glyphicon-minus {\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n  -webkit-border-top-right-radius: 0;\n  -webkit-border-top-left-radius: 0;\n  top: 0px; }\n\n.ui-datebox-header h4 {\n  text-align: center; }\n\n/*\n * Flip Mode Styles\n *\n * These are specific to flipbox, timeflipbox, durationflipbox, and\n * customflip\n */\n.ui-datebox-fliplab {\n  text-align: center; }\n\n.ui-datebox-flipcenter {\n  width: 260px;\n  height: 40px;\n  border: 1px solid #EEEEEE;\n  margin-right: auto;\n  margin-left: auto;\n  position: relative;\n  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);\n  -moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);\n  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6); }\n\n.ui-datebox-flipcontent {\n  text-align: center;\n  height: 125px;\n  margin-bottom: -40px; }\n\n.ui-datebox-flipcontent li {\n  border: 1px solid #ccc; }\n\n.ui-datebox-flipcontent div {\n  margin-left: 3px;\n  margin-right: 3px;\n  width: 77px;\n  height: 120px;\n  display: inline-block;\n  text-align: center;\n  zoom: 1;\n  *display: inline;\n  overflow: hidden; }\n\n.ui-datebox-flipcontentd div {\n  width: 60px; }\n\n.ui-datebox-flipcontent ul {\n  list-style-type: none;\n  display: inline;\n  border: 1px solid transparent; }\n\n.ui-datebox-flipcontent li {\n  height: 30px; }\n\n.ui-datebox-flipcontent li span {\n  margin-top: 7px;\n  display: block; }\n\n/*\n * Slide Mode Styles\n *\n * Used solely for SlideBox.  Damn this is a lot of extra CSS.\n */\n.ui-datebox-slide {\n  width: 290px;\n  margin-left: auto;\n  margin-right: auto; }\n\n.ui-datebox-sliderow-int {\n  display: inline-block;\n  white-space: nowrap; }\n\n.ui-datebox-sliderow {\n  margin-bottom: 5px;\n  text-align: center;\n  overflow: hidden;\n  width: 290px; }\n\n.ui-datebox-slide .ui-btn {\n  margin: 0;\n  padding: 0px 1em; }\n\n.ui-datebox-slidebox {\n  text-align: center;\n  display: inline-block;\n  zoom: 1;\n  *display: inline;\n  vertical-align: middle;\n  font-weight: bold;\n  border: 1px solid #ccc;\n  box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box; }\n\n.ui-datebox-slideyear {\n  width: 84px;\n  line-height: 30px;\n  font-size: 14px; }\n\n.ui-datebox-slidemonth {\n  width: 51px;\n  line-height: 30px;\n  font-size: 12px; }\n\n.ui-datebox-slideday {\n  width: 40px;\n  line-height: 20px;\n  font-size: 14px; }\n\n.ui-datebox-slidehour {\n  width: 60px;\n  line-height: 22px;\n  font-size: 14px; }\n\n.ui-datebox-slidemins {\n  width: 40px;\n  line-height: 22px;\n  font-size: 14px; }\n\n.ui-datebox-slidewday {\n  font-size: 10px;\n  font-weight: normal; }\n\nspan.ui-datebox-nopad {\n  margin: 0; }\n\n#AddHappEventModal .modal-dialog {\n  max-width: 600px;\n  width: auto; }\n  #AddHappEventModal .modal-dialog .modal-content {\n    border-radius: 0; }\n    #AddHappEventModal .modal-dialog .modal-content .modal-header {\n      padding: 0;\n      background-color: #000;\n      border-bottom: none; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-header .close-event-btn {\n        float: right;\n        position: absolute;\n        right: 0;\n        top: 0;\n        background-color: #000; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-header .close-event-btn:hover {\n          cursor: pointer; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-header .close-event-btn .close-svg {\n          height: 42px;\n          width: 42px; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-header .close-add-btn {\n        float: right;\n        position: absolute;\n        right: 0;\n        top: 0;\n        background-color: #000; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-header .close-add-btn:hover {\n          cursor: pointer; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-header .close-add-btn .close-svg {\n          height: 42px;\n          width: 42px; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-header .modal-title {\n        padding: 30px;\n        font-family: GustanLight;\n        font-size: 30px;\n        color: #FFF;\n        text-align: center; }\n    #AddHappEventModal .modal-dialog .modal-content .modal-body {\n      padding: 30px; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-body .continue-add-event-overlay {\n        height: 100%;\n        width: 100%;\n        background-color: rgba(255, 255, 255, 0.8);\n        position: absolute;\n        left: 0;\n        top: 0; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-body .hide-continue-options {\n        visibility: hidden;\n        opacity: 0;\n        transition: visibility 1s, opacity .70s linear; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-body .show-continue-options {\n        visibility: visible;\n        opacity: 1;\n        transition: visibility 1s, opacity .70s linear; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-body #Form_HappEventForm_action_ClearAction {\n        display: none; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form {\n        font-family: GustanLight; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .Actions {\n          text-align: center; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .field {\n          padding-bottom: 15px;\n          margin-bottom: 15px;\n          border-bottom: 1px solid lightgray; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .field input {\n            width: 100%;\n            max-width: none;\n            height: 60px;\n            font-size: 20px;\n            padding: 15px;\n            font-family: GustanLight; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .field textarea {\n            width: 100%;\n            max-width: none;\n            height: 200px;\n            font-size: 20px;\n            padding: 15px;\n            font-family: GustanLight; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .field label {\n            font-family: GustanLight;\n            font-weight: 100;\n            font-size: 18px; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-controls {\n          margin-top: 20px;\n          text-align: right; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-next {\n          padding-left: 15px;\n          margin-top: 20px;\n          size: 0.2em;\n          position: relative;\n          height: 50px;\n          width: 100px;\n          display: inline-block;\n          margin-left: 15px; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-next:after {\n            content: '';\n            display: block;\n            -o-transition: all 0.3s ease-out;\n            -ms-transition: all 0.3s ease-out;\n            -moz-transition: all 0.3s ease-out;\n            -webkit-transition: all 0.3s ease-out;\n            transition: all 0.3s ease-out;\n            border-top: 1px solid #FC6636;\n            border-right: 1px solid #FC6636;\n            height: 30px;\n            width: 30px;\n            position: absolute;\n            top: 8px;\n            right: 50px;\n            transform: rotate(45deg); }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-next:hover {\n            cursor: pointer; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-next:hover:after {\n            right: 30px;\n            -o-transition: all 0.3s ease-out;\n            -ms-transition: all 0.3s ease-out;\n            -moz-transition: all 0.3s ease-out;\n            -webkit-transition: all 0.3s ease-out;\n            transition: all 0.3s ease-out; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-next span {\n            position: absolute;\n            bottom: 15px;\n            left: 0; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-back {\n          padding-left: 15px;\n          margin-top: 20px;\n          size: 0.2em;\n          position: relative;\n          height: 50px;\n          width: 100px;\n          display: inline-block;\n          margin-right: 15px; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-back:after {\n            content: '';\n            display: block;\n            -o-transition: all 0.3s ease-out;\n            -ms-transition: all 0.3s ease-out;\n            -moz-transition: all 0.3s ease-out;\n            -webkit-transition: all 0.3s ease-out;\n            transition: all 0.3s ease-out;\n            border-top: 1px solid #FC6636;\n            border-left: 1px solid #FC6636;\n            height: 30px;\n            width: 30px;\n            position: absolute;\n            top: 8px;\n            left: 50px;\n            transform: rotate(-45deg); }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-back:hover {\n            cursor: pointer; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-back:hover:after {\n            left: 30px;\n            -o-transition: all 0.3s ease-out;\n            -ms-transition: all 0.3s ease-out;\n            -moz-transition: all 0.3s ease-out;\n            -webkit-transition: all 0.3s ease-out;\n            transition: all 0.3s ease-out; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-back span {\n            position: absolute;\n            bottom: 15px;\n            right: 0; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step .field {\n          padding-bottom: 15px;\n          margin-bottom: 15px;\n          border-bottom: 1px solid lightgray; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step .field input {\n            width: 100%;\n            height: 60px;\n            font-size: 20px;\n            padding: 15px;\n            font-family: GustanLight; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step .field textarea {\n            width: 100%;\n            height: 200px;\n            font-size: 20px;\n            padding: 15px;\n            font-family: GustanLight; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step .field label {\n            font-family: GustanLight;\n            font-weight: 100;\n            font-size: 18px; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step .tag-selected {\n          background-color: #FC6636; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step .tag-selected label {\n            color: white; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step #Form_HappEventForm_HasTickets_Holder {\n          border: 1px solid grey;\n          position: relative;\n          padding: 20px;\n          max-width: 336px; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step #Form_HappEventForm_HasTickets_Holder input {\n            top: 0;\n            left: 15px;\n            position: absolute;\n            display: inline-block;\n            margin: 0;\n            height: 100%;\n            width: 100%;\n            border: 1px solid lightgrey; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step #Form_HappEventForm_HasTickets_Holder label {\n            padding: 0 0 0 30px;\n            text-align: left;\n            display: block;\n            height: 100%;\n            width: 100%; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #ticket-step #Form_HappEventForm_Restriction_Holder #Form_HappEventForm_Restriction {\n          -webkit-appearance: button;\n          -webkit-border-radius: 2px;\n          -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);\n          -webkit-padding-end: 20px;\n          -webkit-padding-start: 2px;\n          -webkit-user-select: none;\n          background-image: url(" + __webpack_require__(63) + "), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);\n          background-position: 97% center;\n          background-repeat: no-repeat;\n          border: 1px solid #AAA;\n          color: #555;\n          font-size: inherit;\n          margin: 20px 0;\n          overflow: hidden;\n          padding: 5px 10px;\n          text-overflow: ellipsis;\n          white-space: nowrap;\n          min-width: 300px; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-body .field-hidden {\n        display: none; }\n\n#ApprovedEventModal .modal-dialog {\n  max-width: 700px;\n  width: auto; }\n  #ApprovedEventModal .modal-dialog .modal-content {\n    border-radius: 0;\n    box-shadow: none;\n    border: 2px solid #000; }\n    #ApprovedEventModal .modal-dialog .modal-content .modal-header {\n      padding: 0;\n      background-color: #000;\n      border-bottom: none; }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-header .close-event-btn {\n        float: right;\n        position: absolute;\n        right: 0;\n        top: 0;\n        background-color: #000; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-header .close-event-btn:hover {\n          cursor: pointer; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-header .close-event-btn .close-svg {\n          height: 42px;\n          width: 42px; }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-header .close-add-btn {\n        float: right;\n        position: absolute;\n        right: 0;\n        top: 0;\n        background-color: #000; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-header .close-add-btn:hover {\n          cursor: pointer; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-header .close-add-btn .close-svg {\n          height: 42px;\n          width: 42px; }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-header .modal-title {\n        padding: 30px;\n        font-family: GustanLight;\n        font-size: 30px;\n        color: #FFF;\n        text-align: center; }\n    #ApprovedEventModal .modal-dialog .modal-content .modal-body {\n      overflow: hidden;\n      max-height: none;\n      padding: 0;\n      box-shadow: none;\n      border: none; }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-body .location-strip {\n        border-left: none;\n        border-top: 1px solid #040508;\n        border-right: none;\n        padding: 10px;\n        display: flex;\n        flex-wrap: wrap;\n        flex-direction: column;\n        align-items: center;\n        align-content: center;\n        min-height: 60px; }\n        @media (min-width: 865px) {\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .location-strip {\n            flex-direction: row; } }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-body .location-strip .location-svg {\n          width: 56px;\n          flex-grow: 0.2; }\n          @media (min-width: 865px) {\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .location-strip .location-svg {\n              width: 40px; } }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-body .location-strip .location-text {\n          margin: 0;\n          font-size: 20px;\n          display: inline-block;\n          flex-grow: 2;\n          text-align: center;\n          padding: 15px 0 5px 0; }\n          @media (min-width: 865px) {\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .location-strip .location-text {\n              padding: 0 30px 0 0; } }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip {\n        border-top: 1px solid #040508;\n        display: flex;\n        align-items: center;\n        align-content: center;\n        min-height: 60px; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .date-strip {\n          padding: 10px;\n          border-right: 1px solid #040508;\n          width: 50%;\n          display: flex;\n          flex-direction: column;\n          flex-wrap: wrap;\n          align-items: center;\n          align-content: center; }\n          @media (min-width: 865px) {\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .date-strip {\n              flex-direction: row; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .date-strip .calendar-svg {\n            height: 30px; }\n            @media (min-width: 865px) {\n              #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .date-strip .calendar-svg {\n                padding-right: 20px; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .date-strip .date-text {\n            flex-grow: 2;\n            text-align: left;\n            font-size: 16px;\n            padding: 15px 0 0 0; }\n            @media (min-width: 865px) {\n              #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .date-strip .date-text {\n                font-size: 20px;\n                padding: 0; } }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .time-strip {\n          padding: 10px;\n          width: 50%;\n          display: flex;\n          flex-direction: column;\n          align-items: center;\n          align-content: center; }\n          @media (min-width: 865px) {\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .time-strip {\n              flex-direction: row; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .time-strip .clock-svg {\n            height: 30px; }\n            @media (min-width: 865px) {\n              #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .time-strip .clock-svg {\n                padding-right: 20px; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .time-strip .time-text {\n            flex-grow: 2;\n            text-align: left;\n            font-size: 16px;\n            padding: 15px 0 0 0; }\n            @media (min-width: 865px) {\n              #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .time-strip .time-text {\n                font-size: 20px;\n                padding: 0; } }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-body .image-strip .bx-wrapper {\n        margin: 0;\n        border: none;\n        border-top: 1px solid #040508;\n        border-bottom: 1px solid #040508; }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip {\n        border-bottom: 1px solid #040508;\n        display: flex;\n        align-items: center;\n        align-content: center;\n        min-height: 60px; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip {\n          padding: 10px;\n          border-right: 1px solid #040508;\n          width: 50%;\n          display: flex;\n          flex-direction: column;\n          flex-wrap: wrap;\n          align-items: center;\n          align-content: center; }\n          @media (min-width: 865px) {\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip {\n              flex-direction: row; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip .ticket-svg {\n            height: 40px;\n            padding-right: 20px; }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip .ticket-price {\n            font-size: 16px;\n            flex-grow: 2;\n            text-align: center;\n            display: flex;\n            align-items: center;\n            align-content: center; }\n            @media (min-width: 865px) {\n              #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip .ticket-price {\n                font-size: 20px; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip .buy-ticket-btn {\n            font-size: 11px;\n            padding: 2px 5px;\n            margin-left: 20px;\n            display: flex;\n            align-items: center;\n            align-content: center;\n            border: 1px solid #040508; }\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip .buy-ticket-btn .ticket-svg {\n              height: 20px;\n              padding-right: 5px; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .restriction-strip {\n          padding: 10px;\n          width: 50%;\n          display: flex;\n          flex-direction: column;\n          flex-wrap: wrap;\n          align-items: center;\n          align-content: center; }\n          @media (min-width: 865px) {\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .restriction-strip {\n              flex-direction: row; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .restriction-strip .restrict-svg {\n            height: 30px;\n            padding-right: 20px; }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .restriction-strip .restriction-type {\n            font-size: 16px; }\n            @media (min-width: 865px) {\n              #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .restriction-strip .restriction-type {\n                font-size: 20px; } }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-body .description-strip {\n        padding: 20px; }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-body #eventMap1 {\n        height: 400px;\n        width: \"calc(100% - 40px)\";\n        margin: auto;\n        margin-bottom: 20px; }\n\n#FilterModal {\n  position: absolute;\n  overflow-x: hidden;\n  overflow-y: hidden; }\n  @media (min-width: 865px) {\n    #FilterModal {\n      overflow-x: hidden;\n      overflow-y: hidden; } }\n  #FilterModal .modal-dialog {\n    margin: 0;\n    height: 100%;\n    width: 100%;\n    border: none; }\n    #FilterModal .modal-dialog .modal-content {\n      border-radius: 0;\n      height: 100%;\n      border: none; }\n    #FilterModal .modal-dialog .modal-head {\n      height: 60px;\n      position: relative; }\n      #FilterModal .modal-dialog .modal-head .search-wrapper {\n        padding-left: 60px;\n        height: 60px;\n        border: none; }\n        @media (min-width: 865px) {\n          #FilterModal .modal-dialog .modal-head .search-wrapper {\n            padding-left: 60px;\n            height: 60px;\n            border: none; } }\n    #FilterModal .modal-dialog .modal-body {\n      height: 100%;\n      padding: 0;\n      overflow: hidden; }\n  #FilterModal .close-btn {\n    background-color: #FF6733;\n    position: absolute;\n    left: 0;\n    z-index: 9999;\n    height: 60px; }\n    @media (min-width: 865px) {\n      #FilterModal .close-btn {\n        height: 60px; } }\n\n.Event-Filter-Wrapper {\n  padding-left: 60px;\n  min-height: 60px; }\n  @media (min-width: 865px) {\n    .Event-Filter-Wrapper {\n      padding-left: 60px; } }\n  .Event-Filter-Wrapper form .form-group {\n    margin: 0; }\n  .Event-Filter-Wrapper form label {\n    display: none; }\n  .Event-Filter-Wrapper form .select2-container {\n    min-height: 60px; }\n    .Event-Filter-Wrapper form .select2-container .select2-selection {\n      font-size: 13px;\n      min-height: 60px;\n      border: none;\n      border-bottom: 3px solid #FF6733;\n      border-radius: 0; }\n      @media (min-width: 865px) {\n        .Event-Filter-Wrapper form .select2-container .select2-selection {\n          font-size: 14px;\n          border: none;\n          min-height: 60px; } }\n\n.select2-container--default {\n  width: 100% !important; }\n\n#SearchModal {\n  z-index: 200; }\n  @media (min-width: 865px) {\n    #SearchModal {\n      position: absolute; } }\n  #SearchModal .modal-dialog {\n    margin: auto;\n    height: 100%;\n    width: 100%;\n    border: none;\n    max-width: 842px; }\n    @media (min-width: 865px) {\n      #SearchModal .modal-dialog {\n        padding: 8%; } }\n    #SearchModal .modal-dialog .modal-content {\n      border-radius: 0;\n      height: 100%;\n      border: none;\n      overflow: hidden;\n      background: transparent; }\n    #SearchModal .modal-dialog .modal-head {\n      height: 60px;\n      position: relative; }\n    #SearchModal .modal-dialog .modal-body {\n      height: 100%;\n      padding: 0;\n      background-color: rgba(255, 255, 255, 0.95);\n      max-height: none;\n      overflow-x: hidden;\n      overflow-y: auto; }\n      @media (min-width: 865px) {\n        #SearchModal .modal-dialog .modal-body {\n          overflow-x: hidden;\n          overflow-y: auto;\n          padding: 0;\n          background-color: rgba(255, 255, 255, 0.95); } }\n      #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #Form_HappSearchForm_keyword_Holder {\n        height: 60px;\n        padding: 0 60px; }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #Form_HappSearchForm_keyword_Holder label {\n          display: none; }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #Form_HappSearchForm_keyword_Holder #Form_HappSearchForm_keyword {\n          height: 60px;\n          width: 100%;\n          padding: 0 10px;\n          font-size: 20px;\n          outline: none;\n          margin: 0;\n          border: 0; }\n          #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #Form_HappSearchForm_keyword_Holder #Form_HappSearchForm_keyword:hover, #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #Form_HappSearchForm_keyword_Holder #Form_HappSearchForm_keyword:focus {\n            outline: none !important; }\n      #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #advancedToggle {\n        width: 100%;\n        min-height: 40px;\n        height: 60px;\n        font-size: 18px;\n        outline: 0; }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #advancedToggle:focus, #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #advancedToggle:hover {\n          outline: none !important; }\n      #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture {\n        padding: 3% 3% 0 3%; }\n        @media (min-width: 865px) {\n          #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture {\n            padding: 20px 30px 0 30px; } }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture label {\n          margin: 0 0 10px 0;\n          font-size: 18px; }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture #Form_HappSearchForm_PastOrFuture {\n          display: flex;\n          align-items: center;\n          align-content: center;\n          padding: 0;\n          margin: 0; }\n          #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture #Form_HappSearchForm_PastOrFuture li {\n            width: 33.333%;\n            padding: 10px 0;\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            align-content: center; }\n            #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture #Form_HappSearchForm_PastOrFuture li input {\n              margin: 0; }\n            #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture #Form_HappSearchForm_PastOrFuture li label {\n              margin: 0;\n              font-size: 16px;\n              padding: 10px 10px 0 10px; }\n      #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText {\n        padding: 3% 3% 0 3%; }\n        @media (min-width: 865px) {\n          #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText {\n            padding: 20px 30px 0 30px; } }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText label {\n          margin: 0 0 10px 0;\n          font-size: 18px; }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText #Form_HappSearchForm_DateOrText {\n          display: flex;\n          align-items: center;\n          align-content: center;\n          padding: 0;\n          margin: 0; }\n          #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText #Form_HappSearchForm_DateOrText li {\n            width: 33.33333%;\n            padding: 10px 0;\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            align-content: center; }\n            #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText #Form_HappSearchForm_DateOrText li input {\n              margin: 0; }\n            #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText #Form_HappSearchForm_DateOrText li label {\n              margin: 0;\n              font-size: 16px;\n              padding: 10px 10px 0 10px; }\n      #SearchModal .modal-dialog .modal-body #Form_HappSearchForm .Actions {\n        display: none; }\n      #SearchModal .modal-dialog .modal-body .search-results-wrapper {\n        perspective: 1300px;\n        padding: 3%; }\n        @media (min-width: 865px) {\n          #SearchModal .modal-dialog .modal-body .search-results-wrapper {\n            padding: 30px; } }\n        #SearchModal .modal-dialog .modal-body .search-results-wrapper .keyword-searched {\n          display: inline-block;\n          border-bottom: 3px solid #FF6733;\n          padding: 0 0 5px 0; }\n        #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item {\n          transform-style: preserve-3d;\n          padding: 0 0 30px 0;\n          border-bottom: 1px solid #333;\n          display: block; }\n          #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item img {\n            padding: 20px 0;\n            flex-basis: 140px;\n            width: 100%; }\n            @media (min-width: 865px) {\n              #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item img {\n                width: 30%;\n                padding: 20px 20px 20px 0;\n                display: inline-block;\n                float: left; } }\n          #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content {\n            width: 100%; }\n            @media (min-width: 865px) {\n              #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content {\n                width: 70%;\n                float: left;\n                display: inline-block; } }\n            #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content .title {\n              font-size: 22px; }\n            #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content .date {\n              font-size: 16px;\n              display: block;\n              padding: 10px 0; }\n            #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content .venue {\n              font-size: 16px;\n              display: block;\n              padding: 0 0 10px 0; }\n            #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content .whats-happ-symbol {\n              color: #FF6733; }\n            #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content .event-btn {\n              width: 190px;\n              height: 40px;\n              text-align: center;\n              padding: 10px; }\n        #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item.animate {\n          transform: translateZ(400px) translateY(300px) rotateX(-90deg);\n          animation: fallPerspective .8s ease-in-out forwards; }\n\n@keyframes fallPerspective {\n  100% {\n    transform: translateZ(0px) translateY(0px) rotateX(0deg);\n    opacity: 1; } }\n  #SearchModal .close-search-btn {\n    background-color: #FF6733;\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 9999;\n    height: 60px; }\n    @media (min-width: 865px) {\n      #SearchModal .close-search-btn {\n        height: 60px; } }\n    #SearchModal .close-search-btn:hover {\n      cursor: pointer; }\n    #SearchModal .close-search-btn .close-svg {\n      height: 60px;\n      width: 60px; }\n  #SearchModal .search-btn {\n    background-color: #FF6733;\n    position: absolute;\n    top: 0;\n    right: 0;\n    z-index: 9999;\n    height: 60px;\n    width: 60px;\n    padding: 5px; }\n    @media (min-width: 865px) {\n      #SearchModal .search-btn {\n        height: 60px; } }\n    #SearchModal .search-btn:hover {\n      cursor: pointer; }\n\n#MemberLoginForm_LoginForm {\n  text-align: left;\n  max-width: 280px;\n  margin-right: auto;\n  margin-left: auto;\n  font-family: GustanLight; }\n  #MemberLoginForm_LoginForm fieldset {\n    border: none; }\n    #MemberLoginForm_LoginForm fieldset .field {\n      padding-bottom: 30px; }\n      #MemberLoginForm_LoginForm fieldset .field label {\n        text-align: left;\n        font-weight: 100;\n        font-size: 16px; }\n      #MemberLoginForm_LoginForm fieldset .field .middleColumn input {\n        width: 100%;\n        font-size: 20px;\n        padding: 8px 15px;\n        color: #FC6636;\n        border: 1px solid #a4a3a3; }\n      #MemberLoginForm_LoginForm fieldset .field .checkbox {\n        margin-left: 0; }\n    #MemberLoginForm_LoginForm fieldset #MemberLoginForm_LoginForm_Remember_Holder {\n      text-align: center; }\n  #MemberLoginForm_LoginForm .Actions {\n    text-align: center; }\n    #MemberLoginForm_LoginForm .Actions #MemberLoginForm_LoginForm_action_dologin {\n      text-align: center;\n      position: relative;\n      padding: 10px 20px;\n      border: 3px solid #FC6636;\n      border-radius: 0;\n      font-size: 18px;\n      font-family: GustanLight;\n      background-color: #FFF;\n      color: #FC6636;\n      background-image: linear-gradient(#FC6636, #FC6636);\n      background-position: 50% 50%;\n      background-repeat: no-repeat;\n      background-size: 0% 100%;\n      transition: background-size .5s, color .5s;\n      display: inline-block;\n      max-width: 240px;\n      text-decoration: none;\n      margin-bottom: 30px; }\n      #MemberLoginForm_LoginForm .Actions #MemberLoginForm_LoginForm_action_dologin:hover {\n        background-size: 100% 100%;\n        color: #040508;\n        text-decoration: none;\n        cursor: pointer; }\n      #MemberLoginForm_LoginForm .Actions #MemberLoginForm_LoginForm_action_dologin:focus {\n        outline: none;\n        text-decoration: none; }\n\n#site-wrapper {\n  background-color: rebeccapurple; }\n", ""]);
+exports.push([module.i, ".bx-wrapper{position:relative;margin-bottom:60px;padding:0;-ms-touch-action:pan-y;touch-action:pan-y;-moz-box-shadow:0 0 5px #ccc;-webkit-box-shadow:0 0 5px #ccc;box-shadow:0 0 5px #ccc;border:5px solid #fff;background:#fff}.bx-wrapper img{max-width:100%;display:block}.bxslider{margin:0;padding:0}ul.bxslider{list-style:none}.bx-viewport{-webkit-transform:translatez(0)}.bx-wrapper .bx-controls-auto,.bx-wrapper .bx-pager{position:absolute;bottom:-30px;width:100%}.bx-wrapper .bx-loading{min-height:50px;background:url(" + __webpack_require__(59) + ") center center no-repeat #fff;height:100%;width:100%;position:absolute;top:0;left:0;z-index:2000}.bx-wrapper .bx-pager{text-align:center;font-size:.85em;font-family:Arial;font-weight:700;color:#666;padding-top:20px}.bx-wrapper .bx-pager.bx-default-pager a{background:#666;text-indent:-9999px;display:block;width:10px;height:10px;margin:0 5px;outline:0;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}.bx-wrapper .bx-pager.bx-default-pager a.active,.bx-wrapper .bx-pager.bx-default-pager a:focus,.bx-wrapper .bx-pager.bx-default-pager a:hover{background:#000}.bx-wrapper .bx-controls-auto .bx-controls-auto-item,.bx-wrapper .bx-pager-item{display:inline-block}.bx-wrapper .bx-pager-item{font-size:0;line-height:0}.bx-wrapper .bx-prev{left:10px;background:url(" + __webpack_require__(4) + ") 0 -32px no-repeat}.bx-wrapper .bx-prev:focus,.bx-wrapper .bx-prev:hover{background-position:0 0}.bx-wrapper .bx-next{right:10px;background:url(" + __webpack_require__(4) + ") -43px -32px no-repeat}.bx-wrapper .bx-next:focus,.bx-wrapper .bx-next:hover{background-position:-43px 0}.bx-wrapper .bx-controls-direction a{position:absolute;top:50%;margin-top:-16px;outline:0;width:32px;height:32px;text-indent:-9999px;z-index:9999}.bx-wrapper .bx-controls-direction a.disabled{display:none}.bx-wrapper .bx-controls-auto{text-align:center}.bx-wrapper .bx-controls-auto .bx-start{display:block;text-indent:-9999px;width:10px;height:11px;outline:0;background:url(" + __webpack_require__(4) + ") -86px -11px no-repeat;margin:0 3px}.bx-wrapper .bx-controls-auto .bx-start.active,.bx-wrapper .bx-controls-auto .bx-start:focus,.bx-wrapper .bx-controls-auto .bx-start:hover{background-position:-86px 0}.bx-wrapper .bx-controls-auto .bx-stop{display:block;text-indent:-9999px;width:9px;height:11px;outline:0;background:url(" + __webpack_require__(4) + ") -86px -44px no-repeat;margin:0 3px}.bx-wrapper .bx-controls-auto .bx-stop.active,.bx-wrapper .bx-controls-auto .bx-stop:focus,.bx-wrapper .bx-controls-auto .bx-stop:hover{background-position:-86px -33px}.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager{text-align:left;width:80%}.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto{right:0;width:35px}.bx-wrapper .bx-caption{position:absolute;bottom:0;left:0;background:#666;background:rgba(80,80,80,.75);width:100%}.bx-wrapper .bx-caption span{color:#fff;font-family:Arial;display:block;font-size:.85em;padding:10px}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 51 */
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "/*! JTSage-DateBox-4.2.2 |2017-06-20T22:49:58Z | (c) 2010,  2017 JTSage | https://github.com/jtsage/jquery-mobile-datebox/blob/master/LICENSE.txt */\n\n.datebox-input,.datebox-input-icon{display:inline}.datebox-input-icon span{display:inline-block;margin-left:-1em;vertical-align:middle}.ui-datebox-container{width:290px;-webkit-transform:translate3d(0,0,0)}.ui-datebox-container .modal-header{padding:8px 15px}.ui-datebox-header{text-align:center}.ui-datebox-header h4{margin:0;padding:3px}.ui-datebox-collapse{text-align:center}div.ui-datebox-inline.ui-datebox-inline-has-input{float:none;clear:both;position:relative;top:5px}div.ui-datebox-container.ui-datebox-inline{width:290px}.ui-datebox-gridheader{text-align:center}.ui-datebox-gridheader a{margin:3px}.ui-datebox-gridheader h4{display:inline-block}.ui-datebox-gridlabel h4{margin:10px}.ui-datebox-gridminus,.ui-datebox-gridplus-rtl{margin-top:10px;width:38px;display:inline-block;float:left}.ui-datebox-gridminus-rtl,.ui-datebox-gridplus{margin-top:10px;width:38px;display:inline-block;float:right}.ui-datebox-cal-pickers fieldset{margin:0;padding:10px;border:none}.ui-datebox-grid{clear:both;margin-bottom:5px}.ui-datebox-inline .ui-datebox-gridrow .ui-controlgroup-controls{width:100%;text-align:center}.ui-datebox-inline .ui-datebox-gridrow .ui-controlgroup-controls .ui-btn{float:none;clear:both}.ui-datebox-gridrow{margin-left:auto;margin-right:auto;display:table;margin-bottom:0}.ui-datebox-gridrow-last{margin-bottom:5px}.ui-datebox-controls{padding:0 3px;width:100%;margin-bottom:10px;text-align:center}.ui-datebox-pickcontrol{text-align:center;margin-top:3px;margin-bottom:3px}.ui-datebox-griddate{width:39px;height:30px;line-height:30px;padding:0;margin:0;display:inline-block;vertical-align:middle;text-align:center;font-weight:700;font-size:12px;zoom:1}.ui-datebox-griddate-week{width:34px;height:30px;line-height:30px;display:inline-block;vertical-align:middle;text-align:center;font-weight:700;font-size:12px;zoom:1}.ui-datebox-gridrow div.ui-datebox-griddate-empty{border:1px solid transparent;color:#888}.ui-datebox-griddate.ui-datebox-griddate-label{border:1px solid transparent;height:15px;line-height:15px}.ui-datebox-datebox-groups{margin-right:5px;margin-left:5px;margin-bottom:10px}.ui-datebox-datebox-groups input{text-align:center;width:90%;margin-top:3px;margin-bottom:3px}.ui-datebox-datebox-button{width:80%;margin-right:auto;margin-left:auto;padding-top:.2em;padding-bottom:.2em}.ui-datebox-datebox-button span{margin-left:auto;margin-right:auto}.ui-datebox-datebox-groups label{text-align:center;width:90%;margin-bottom:0;border:1px solid #ccc}.ui-datebox-datebox-group{width:33.3333%;display:inline-block;text-align:center}.ui-datebox-fliplab,.ui-datebox-header h4{text-align:center}.ui-datebox-flipcenter{width:260px;height:40px;border:1px solid #EEE;background-color:rgba(255,255,255,.15);margin-right:auto;margin-left:auto;position:relative;-webkit-box-shadow:0 0 12px rgba(0,0,0,.6);*/ -moz-box-shadow:0 0 12px rgba(0,0,0,.6);box-shadow:0 0 12px rgba(0,0,0,.6)}.ui-datebox-flipcontent{text-align:center;height:125px;margin-bottom:-40px}.ui-datebox-flipcontent li{border:1px solid #ccc}.ui-datebox-flipcontent div{margin-left:3px;margin-right:3px;width:77px;height:120px;display:inline-block;text-align:center;zoom:1;overflow:hidden}.ui-datebox-flipcontentd div{width:60px}.ui-datebox-flipcontent ul{list-style-type:none;display:inline;border:1px solid transparent}.ui-datebox-flipcontent li{height:30px}.ui-datebox-flipcontent li span{margin-top:7px;display:block}.ui-datebox-slide{width:290px;margin-left:auto;margin-right:auto}.ui-datebox-sliderow-int{display:inline-block;white-space:nowrap}.ui-datebox-sliderow{margin-bottom:5px;text-align:center;overflow:hidden;width:290px}.ui-datebox-slide .ui-btn{margin:0;padding:0 1em}.ui-datebox-slidebox{text-align:center;display:inline-block;zoom:1;vertical-align:middle;font-weight:700;border:1px solid #ccc;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}.ui-datebox-slideyear{width:84px;line-height:30px;font-size:14px}.ui-datebox-slidemonth{width:51px;line-height:30px;font-size:12px}.ui-datebox-slideday{width:40px;line-height:20px;font-size:14px}.ui-datebox-slidehour{width:60px;line-height:22px;font-size:14px}.ui-datebox-slidemins{width:40px;line-height:22px;font-size:14px}.ui-datebox-slidewday{font-size:10px;font-weight:400}span.ui-datebox-nopad{margin:0}.ui-datebox-repad{margin:.5em .4375em}.ui-datebox-container .ui-datebox-theme-red{background-color:red;background-image:none;color:#000}.ui-datebox-container .ui-datebox-theme-green{background-color:green;background-image:none;color:#000}.ui-datebox-container .ui-datebox-theme-yellow{background-color:#ff0;background-image:none;color:#000}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+exports.i(__webpack_require__(53), "");
+exports.i(__webpack_require__(52), "");
+exports.i(__webpack_require__(54), "");
+
+// module
+exports.push([module.i, "@font-face {\n  font-family: 'GustanExtraBlack';\n  src: url(" + __webpack_require__(29) + ");\n  /* IE9 Compat Modes */\n  src: url(" + __webpack_require__(29) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(65) + ") format(\"woff\"), url(" + __webpack_require__(64) + ") format(\"truetype\"), url(" + __webpack_require__(63) + "#ef7d172b8931fe8869f98304ff6066f8) format(\"svg\");\n  /* Legacy iOS */\n  font-style: normal;\n  font-weight: 400; }\n\n@font-face {\n  font-family: 'GustanLight';\n  src: url(" + __webpack_require__(30) + ");\n  /* IE9 Compat Modes */\n  src: url(" + __webpack_require__(30) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(68) + ") format(\"woff\"), url(" + __webpack_require__(67) + ") format(\"truetype\"), url(" + __webpack_require__(66) + "#9d512dae6aa2a2ee232766b663faffd9) format(\"svg\");\n  /* Legacy iOS */\n  font-style: normal;\n  font-weight: 200; }\n\n@font-face {\n  font-family: 'GustanMedium';\n  src: url(" + __webpack_require__(5) + ");\n  /* IE9 Compat Modes */\n  src: url(" + __webpack_require__(5) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(33) + ") format(\"woff\"), url(" + __webpack_require__(32) + ") format(\"truetype\"), url(" + __webpack_require__(31) + "#030fa3b6f6a5b4326fcb463078ac66e3) format(\"svg\");\n  /* Legacy iOS */\n  font-style: normal;\n  font-weight: 400; }\n\n@font-face {\n  font-family: 'GustanMediumD';\n  src: url(" + __webpack_require__(5) + ");\n  /* IE9 Compat Modes */\n  src: url(" + __webpack_require__(5) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(33) + ") format(\"woff\"), url(" + __webpack_require__(32) + ") format(\"truetype\"), url(" + __webpack_require__(31) + "#030fa3b6f6a5b4326fcb463078ac66e3) format(\"svg\");\n  /* Legacy iOS */ }\n\n@font-face {\n  font-family: 'GustanBold';\n  src: url(" + __webpack_require__(28) + ");\n  /* IE9 Compat Modes */\n  src: url(" + __webpack_require__(28) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(62) + ") format(\"woff\"), url(" + __webpack_require__(61) + ") format(\"truetype\"), url(" + __webpack_require__(60) + "#80e9b74cb0db71e7cd1b07c8182605f1) format(\"svg\");\n  /* Legacy iOS */\n  font-style: normal;\n  font-weight: 700; }\n\nhtml {\n  overflow: auto; }\n  @media (min-width: 1000px) {\n    html {\n      overflow: hidden; } }\n\nhtml.modal-open {\n  overflow: hidden; }\n\nbody {\n  background-color: #FFF;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cebe29', endColorstr='#89b4ff',GradientType=1 );\n  -webkit-background-size: 100% 100%;\n  -moz-background-size: 100% 100%;\n  background-size: 100% 100%;\n  outline: none;\n  overflow: auto;\n  font-family: GustanLight; }\n  body .modal-backdrop {\n    z-index: 100; }\n  body .modal-body {\n    overflow-y: scroll;\n    overflow-x: hidden; }\n\n.btn {\n  outline: none; }\n\n.happ_btn {\n  text-align: center;\n  position: relative;\n  padding: 10px 20px;\n  border: 3px solid #FC6636;\n  border-radius: 0;\n  font-size: 18px;\n  font-family: GustanLight;\n  background-color: #FFF;\n  color: #FC6636;\n  background-image: linear-gradient(#FC6636, #FC6636);\n  background-position: 50% 50%;\n  background-repeat: no-repeat;\n  background-size: 0% 100%;\n  transition: background-size .5s, color .5s;\n  display: inline-block;\n  max-width: 240px;\n  text-decoration: none; }\n  .happ_btn:hover {\n    background-size: 100% 100%;\n    color: #040508;\n    text-decoration: none;\n    cursor: pointer; }\n  .happ_btn:focus {\n    outline: none;\n    text-decoration: none; }\n\n.bootstrap-timepicker-widget.dropdown-menu {\n  display: block; }\n\n.event-btn {\n  visibility: hidden;\n  opacity: 0;\n  transition: visibility 1s, opacity .70s linear;\n  font-family: GustanLight;\n  margin: 0 0 5px 0;\n  border: none;\n  background-color: rgba(255, 171, 142, 0.3); }\n  .event-btn:hover, .event-btn:focus {\n    text-decoration: none;\n    background-color: #FC6636;\n    outline: none;\n    cursor: pointer; }\n    .event-btn:hover .happ_e_button, .event-btn:focus .happ_e_button {\n      text-decoration: none;\n      background-color: #FC6636;\n      outline: none;\n      transition: font-size 0.5s ease;\n      font-size: 16px !important; }\n\n.hide-event {\n  visibility: hidden !important;\n  opacity: 0 !important;\n  transition: visibility 1s, opacity .70s linear; }\n\n.show-event {\n  display: block;\n  visibility: visible !important;\n  opacity: 1 !important;\n  height: auto;\n  transition: visibility 1s, opacity .70s linear; }\n\n.fully-hide-event {\n  visibility: hidden;\n  opacity: 0;\n  transition: visibility 1s, opacity .70s linear;\n  display: none; }\n\n.modal-backdrop {\n  position: fixed;\n  z-index: 1040;\n  background-color: rgba(0, 0, 0, 0.6);\n  opacity: 0.8; }\n\n.modal-backdrop .in {\n  opacity: 0.8; }\n\n.modal-backdrop.in.filter-modal-backdrop {\n  background-color: transparent; }\n\n.ajax-loader .ajax-load-icon {\n  background: url(" + __webpack_require__(70) + ") no-repeat;\n  height: 175px;\n  width: 175px;\n  margin-left: auto;\n  margin-right: auto; }\n\n.ajax-page-load {\n  z-index: 99999;\n  background-color: rgba(255, 255, 255, 0.92);\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  padding-top: 25%;\n  opacity: 1;\n  transition: all 0.5s; }\n\n.ajax-not-loading {\n  z-index: -9999;\n  opacity: 0;\n  transition: all 0.5s; }\n\n.ajax-load-message {\n  text-align: center;\n  top: -30px;\n  position: relative; }\n\n.custom-calendar-full {\n  position: absolute;\n  top: 0px;\n  bottom: 0px;\n  left: 0px;\n  width: 100%;\n  height: auto; }\n\n.fc-calendar-container {\n  height: auto;\n  bottom: 0px;\n  width: 100%;\n  top: 50px;\n  position: absolute; }\n\n.custom-header {\n  padding: 20px 20px 10px 30px;\n  height: 50px;\n  position: relative;\n  z-index: 99999; }\n\n.custom-header h2,\n.custom-header h3 {\n  float: left;\n  font-weight: 300;\n  text-transform: uppercase;\n  letter-spacing: 4px;\n  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1); }\n\n.custom-header h2 {\n  color: #fff;\n  width: 60%; }\n\n.custom-header h2 a,\n.custom-header h2 span {\n  color: rgba(255, 255, 255, 0.3);\n  font-size: 18px;\n  letter-spacing: 3px;\n  white-space: nowrap; }\n\n.custom-header h2 a {\n  color: rgba(255, 255, 255, 0.5); }\n\n.no-touch .custom-header h2 a:hover {\n  color: rgba(255, 255, 255, 0.9); }\n\n.custom-header h3 {\n  width: 40%;\n  color: #ddd;\n  color: rgba(255, 255, 255, 0.6);\n  font-weight: 300;\n  line-height: 30px;\n  text-align: right;\n  padding-right: 125px; }\n\n.custom-header nav {\n  position: absolute;\n  right: 20px;\n  top: 20px;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n.custom-header nav span {\n  float: left;\n  width: 30px;\n  height: 30px;\n  position: relative;\n  color: transparent;\n  cursor: pointer;\n  background: rgba(255, 255, 255, 0.3);\n  margin: 0 1px;\n  font-size: 20px;\n  border-radius: 0 3px 3px 0;\n  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2); }\n\n.custom-header nav span:first-child {\n  border-radius: 3px 0 0 3px; }\n\n.custom-header nav span:hover {\n  background: rgba(255, 255, 255, 0.5); }\n\n.custom-header span:before {\n  font-family: 'fontawesome-selected';\n  color: #fff;\n  display: inline-block;\n  text-align: center;\n  width: 100%;\n  text-indent: 4px; }\n\n.custom-header nav span.custom-prev:before {\n  content: '\\25C2'; }\n\n.custom-header nav span.custom-next:before {\n  content: '\\25B8'; }\n\n.custom-header nav span:last-child {\n  margin-left: 20px;\n  border-radius: 3px; }\n\n.custom-header nav span.custom-current:before {\n  content: '\\27A6'; }\n\n.fc-calendar {\n  background: rgba(255, 255, 255, 0.1);\n  width: auto;\n  top: 10px;\n  bottom: 20px;\n  left: 20px;\n  right: 20px;\n  height: auto;\n  border-radius: 20px;\n  position: absolute; }\n\n.fc-calendar .fc-head {\n  background: #042C5C;\n  color: rgba(255, 255, 255, 0.9);\n  box-shadow: inset 0 1px 0 #042C5C;\n  border-radius: 20px 20px 0 0;\n  height: 40px;\n  line-height: 40px;\n  padding: 0; }\n\n.fc-calendar .fc-head > div {\n  font-weight: 300;\n  text-transform: uppercase;\n  font-size: 14px;\n  letter-spacing: 3px;\n  text-shadow: 0 1px 1px #042C5C; }\n\n.fc-calendar .fc-row > div > span.fc-date {\n  color: rgba(255, 255, 255, 0.9);\n  text-shadow: none;\n  font-size: 26px;\n  font-weight: 300;\n  bottom: auto;\n  right: auto;\n  top: 10px;\n  left: 10px;\n  text-align: left;\n  text-shadow: 0 1px 1px #042C5C; }\n\n.fc-calendar .fc-body {\n  border: none;\n  padding: 20px; }\n\n.fc-calendar .fc-row {\n  box-shadow: inset 0 -1px 0 #042C5C;\n  border: none; }\n\n.fc-calendar .fc-row:last-child {\n  box-shadow: none; }\n\n.fc-calendar .fc-row:first-child > div:first-child {\n  border-radius: 10px 0 0 0; }\n\n.fc-calendar .fc-row:first-child > div:last-child {\n  border-radius: 0 10px 0 0; }\n\n.fc-calendar .fc-row:last-child > div:first-child {\n  border-radius: 0 0 0 10px; }\n\n.fc-calendar .fc-row:last-child > div:last-child {\n  border-radius: 0 0 10px 0; }\n\n.fc-calendar .fc-row > div {\n  box-shadow: -1px 0 0 #042C5C;\n  border: none;\n  padding: 10px;\n  cursor: pointer; }\n\n.fc-calendar .fc-row > div:first-child {\n  box-shadow: none; }\n\n.fc-calendar .fc-row > div.fc-today {\n  background: transparent;\n  box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.1); }\n\n.fc-calendar .fc-row > div.fc-today:after {\n  content: '';\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  opacity: 0.2;\n  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0.15)), to(rgba(0, 0, 0, 0.25))), -webkit-gradient(linear, left top, right bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.501, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0)));\n  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.25)), -moz-linear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));\n  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.25)), -o-llinear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));\n  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.25)), -ms-linear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));\n  background: linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.25)), linear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0)); }\n\n.fc-calendar .fc-row > div > div {\n  margin-top: 35px; }\n\n.fc-calendar .fc-row > div > div a,\n.fc-calendar .fc-row > div > div span {\n  color: rgba(255, 255, 255, 0.7);\n  font-size: 12px;\n  text-transform: uppercase;\n  display: inline-block;\n  padding: 3px 5px;\n  border-radius: 3px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  max-width: 100%;\n  margin-bottom: 1px;\n  background: rgba(255, 255, 255, 0.1); }\n\n.no-touch .fc-calendar .fc-row > div > div a:hover {\n  background: rgba(255, 255, 255, 0.3); }\n\n@media screen and (max-width: 880px), screen and (max-height: 450px) {\n  html, body, .container {\n    height: auto; }\n  .custom-header,\n  .custom-header nav,\n  .custom-calendar-full,\n  .fc-calendar-container,\n  .fc-calendar,\n  .fc-calendar .fc-head,\n  .fc-calendar .fc-row > div > span.fc-date {\n    position: relative;\n    top: auto;\n    left: auto;\n    bottom: auto;\n    right: auto;\n    height: auto;\n    width: auto; }\n  .fc-calendar {\n    margin: 0 20px 20px; }\n  .custom-header h2,\n  .custom-header h3 {\n    float: none;\n    width: auto;\n    text-align: left;\n    padding-right: 100px; }\n  .fc-calendar .fc-row,\n  .ie9 .fc-calendar .fc-row > div,\n  .fc-calendar .fc-row > div {\n    height: auto;\n    width: 100%;\n    border: none; }\n  .fc-calendar .fc-row > div {\n    float: none;\n    min-height: 50px;\n    box-shadow: inset 0 -1px rgba(255, 255, 255, 0.2) !important;\n    border-radius: 0px !important; }\n  .fc-calendar .fc-row > div:empty {\n    min-height: 0;\n    height: 0;\n    box-shadow: none !important;\n    padding: 0; }\n  .fc-calendar .fc-row {\n    box-shadow: none; }\n  .fc-calendar .fc-head {\n    display: none; }\n  .fc-calendar .fc-row > div > div {\n    margin-top: 0px;\n    padding-left: 10px;\n    max-width: 70%;\n    display: inline-block; }\n  .fc-calendar .fc-row > div.fc-today {\n    background: rgba(255, 255, 255, 0.2); }\n  .fc-calendar .fc-row > div.fc-today:after {\n    display: none; }\n  .fc-calendar .fc-row > div > span.fc-date {\n    width: 30px;\n    display: inline-block;\n    text-align: right; }\n  .fc-calendar .fc-row > div > span.fc-weekday {\n    display: inline-block;\n    width: 40px;\n    color: #fff;\n    color: rgba(255, 255, 255, 0.7);\n    font-size: 10px;\n    text-transform: uppercase; } }\n\n/* Style For the top bar which will be the link to\nour site Tron and Wayne Enterprises\n*/\n.calendarpage #site-wrapper {\n  padding: 0; }\n\n/* Header Style */\n.codrops-top {\n  line-height: 24px;\n  font-size: 11px;\n  background: #fff;\n  background: rgba(255, 255, 255, 0.5);\n  text-transform: uppercase;\n  z-index: 100;\n  position: relative;\n  box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.2); }\n\n.codrops-top a {\n  padding: 0px 10px;\n  letter-spacing: 1px;\n  color: #333;\n  display: inline-block; }\n\n.codrops-top a:hover {\n  background: rgba(255, 255, 255, 0.8);\n  color: #000; }\n\n.codrops-top span.right {\n  float: right; }\n\n.codrops-top span.right a {\n  float: left;\n  display: block; }\n\n/* Demo Buttons Style */\n.codrops-demos {\n  float: right; }\n\n.codrops-demos a {\n  display: inline-block;\n  margin: 10px;\n  color: #fff;\n  font-weight: 700;\n  line-height: 30px;\n  border-bottom: 4px solid transparent; }\n\n.codrops-demos a:hover {\n  color: #000;\n  border-color: #000; }\n\n.codrops-demos a.current-demo,\n.codrops-demos a.current-demo:hover {\n  color: rgba(255, 255, 255, 0.5);\n  border-color: rgba(255, 255, 255, 0.5); }\n\n.nav-bar-wrapper {\n  height: 350px;\n  background: #333;\n  overflow: hidden;\n  position: relative;\n  z-index: 100; }\n  @media (min-width: 400px) {\n    .nav-bar-wrapper {\n      height: 320px; } }\n  @media (min-width: 460px) {\n    .nav-bar-wrapper {\n      height: 320px; } }\n  @media (min-width: 525px) {\n    .nav-bar-wrapper {\n      height: 320px; } }\n  @media (min-width: 600px) {\n    .nav-bar-wrapper {\n      height: 250px; } }\n  @media (min-width: 865px) {\n    .nav-bar-wrapper {\n      max-height: 60px; } }\n  .nav-bar-wrapper .date-wrapper {\n    z-index: 100;\n    text-align: center;\n    padding: 0 5px;\n    font-family: GustanLight;\n    display: inline-block;\n    position: relative;\n    min-width: 0;\n    top: 5px; }\n    @media (min-width: 865px) {\n      .nav-bar-wrapper .date-wrapper {\n        min-width: 0;\n        top: 5px; } }\n    .nav-bar-wrapper .date-wrapper .full-date {\n      position: relative; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .date-wrapper .full-date {\n          top: 0;\n          margin: 0; } }\n    .nav-bar-wrapper .date-wrapper .theMonth {\n      padding: 0 20px 0 0;\n      font-family: GustanLight;\n      color: #FFF;\n      font-size: 32px; }\n    .nav-bar-wrapper .date-wrapper .theYear {\n      font-family: GustanLight;\n      color: #FFF;\n      font-size: 32px; }\n  .nav-bar-wrapper .filter-wrapper {\n    display: inline-block; }\n    .nav-bar-wrapper .filter-wrapper .filter-modal-btn {\n      position: absolute;\n      top: 170px; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .filter-wrapper .filter-modal-btn {\n          top: 17px;\n          left: 450px; } }\n      .nav-bar-wrapper .filter-wrapper .filter-modal-btn:hover {\n        cursor: pointer; }\n  .nav-bar-wrapper .logos-wrapper {\n    display: inline-block;\n    width: 100%;\n    float: left;\n    margin-top: 20px; }\n    @media (min-width: 460px) {\n      .nav-bar-wrapper .logos-wrapper {\n        width: 100%; } }\n    @media (min-width: 865px) {\n      .nav-bar-wrapper .logos-wrapper {\n        margin-top: 0;\n        display: inline-block;\n        width: 33.333%;\n        float: left; } }\n  .nav-bar-wrapper .logo-wrapper {\n    z-index: 500;\n    text-align: center;\n    display: inline-block;\n    padding: 0;\n    width: 100%;\n    float: left; }\n    .nav-bar-wrapper .logo-wrapper img {\n      margin-top: 15px;\n      margin-right: auto;\n      margin-left: auto; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .logo-wrapper img {\n          max-height: 50px;\n          margin-top: 5px;\n          margin-left: 30px; } }\n      .nav-bar-wrapper .logo-wrapper img:hover {\n        cursor: pointer; }\n    @media (min-width: 600px) {\n      .nav-bar-wrapper .logo-wrapper {\n        width: 50%; } }\n    @media (min-width: 865px) {\n      .nav-bar-wrapper .logo-wrapper {\n        display: inline-block;\n        width: 50%;\n        float: left; } }\n  .nav-bar-wrapper .happ-logo {\n    height: 60px;\n    position: relative;\n    width: 220px; }\n    .nav-bar-wrapper .happ-logo img {\n      position: absolute;\n      margin: auto;\n      top: 0;\n      left: 20px;\n      bottom: 0; }\n    @media (min-width: 865px) {\n      .nav-bar-wrapper .happ-logo {\n        width: 33.333%; }\n        .nav-bar-wrapper .happ-logo img {\n          position: absolute;\n          margin: auto;\n          top: 0;\n          left: 10px;\n          bottom: 0; } }\n    @media (min-width: 1100px) {\n      .nav-bar-wrapper .happ-logo {\n        width: 185px; } }\n    @media (min-width: 1500px) {\n      .nav-bar-wrapper .happ-logo {\n        width: 220px; } }\n  .nav-bar-wrapper .controls-wrapper {\n    z-index: 50;\n    margin-top: 8px;\n    margin-right: auto;\n    margin-left: auto;\n    display: inline-block;\n    padding: 0;\n    text-align: center;\n    width: 100%; }\n    @media (min-width: 865px) {\n      .nav-bar-wrapper .controls-wrapper {\n        width: 43.3333%;\n        display: inline-block;\n        float: left;\n        text-align: center; } }\n    @media (min-width: 1100px) {\n      .nav-bar-wrapper .controls-wrapper {\n        width: 33.3333%; } }\n    @media (min-width: 1500px) {\n      .nav-bar-wrapper .controls-wrapper {\n        width: 33.3333%;\n        display: inline-block;\n        float: left;\n        text-align: center; } }\n    .nav-bar-wrapper .controls-wrapper .controls-prev-next {\n      display: inline-block;\n      padding: 0 20px 0 20px;\n      color: #FFF;\n      font-family: GustanLight; }\n      @media (min-width: 1500px) {\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next {\n          float: none; } }\n      .nav-bar-wrapper .controls-wrapper .controls-prev-next a {\n        width: 150px;\n        color: #FFF;\n        padding: 0;\n        margin: 5px;\n        position: relative; }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next a:hover, .nav-bar-wrapper .controls-wrapper .controls-prev-next a:focus {\n          text-decoration: none; }\n      .nav-bar-wrapper .controls-wrapper .controls-prev-next #previous-month {\n        border-bottom-left-radius: 10px;\n        border-top-left-radius: 10px;\n        top: 0; }\n        @media (min-width: 865px) {\n          .nav-bar-wrapper .controls-wrapper .controls-prev-next #previous-month {\n            top: 0; } }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next #previous-month span {\n          padding: 0 0 0 15px;\n          size: 0.2em;\n          position: relative;\n          font-size: 14px;\n          font-weight: 100; }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next #previous-month span:before {\n          content: '';\n          display: block;\n          top: 50%;\n          margin-top: -7px;\n          border-top: 1px solid #FF6733;\n          border-right: 1px solid #FF6733;\n          height: 15px;\n          width: 15px;\n          position: absolute;\n          left: 0;\n          transition: left 0.25s;\n          transform: rotate(225deg); }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next #previous-month span:hover:before {\n          content: '';\n          display: block;\n          top: 50%;\n          margin-top: -7px;\n          border-top: 1px solid #FF6733;\n          border-right: 1px solid #FF6733;\n          height: 15px;\n          width: 15px;\n          position: absolute;\n          transition: left 0.25s;\n          left: -5px;\n          transform: rotate(225deg); }\n      .nav-bar-wrapper .controls-wrapper .controls-prev-next #next-month {\n        border-bottom-right-radius: 10px;\n        border-top-right-radius: 10px;\n        top: 0; }\n        @media (min-width: 865px) {\n          .nav-bar-wrapper .controls-wrapper .controls-prev-next #next-month {\n            top: 0; } }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next #next-month span {\n          padding: 0 15px 0 0;\n          size: 0.2em;\n          position: relative;\n          font-size: 14px;\n          font-weight: 100; }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next #next-month span:before {\n          content: '';\n          display: block;\n          top: 50%;\n          margin-top: -7px;\n          border-top: 1px solid #FF6733;\n          border-right: 1px solid #FF6733;\n          height: 15px;\n          width: 15px;\n          position: absolute;\n          right: 0;\n          transform: rotate(45deg);\n          transition: right 0.25s; }\n        .nav-bar-wrapper .controls-wrapper .controls-prev-next #next-month span:hover:before {\n          content: '';\n          display: block;\n          top: 50%;\n          margin-top: -7px;\n          border-top: 1px solid #FF6733;\n          border-right: 1px solid #FF6733;\n          height: 15px;\n          width: 15px;\n          position: absolute;\n          transition: right 0.25s;\n          right: -5px;\n          transform: rotate(45deg); }\n    .nav-bar-wrapper .controls-wrapper .add-event {\n      display: inline-block;\n      padding: 0 20px 0 20px; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .controls-wrapper .add-event {\n          float: right; } }\n      .nav-bar-wrapper .controls-wrapper .add-event img {\n        margin: 2px 0 0 0; }\n      .nav-bar-wrapper .controls-wrapper .add-event a {\n        color: #042C5C;\n        top: 16px;\n        position: absolute;\n        right: 16px; }\n        @media (min-width: 865px) {\n          .nav-bar-wrapper .controls-wrapper .add-event a {\n            top: 16px; } }\n        .nav-bar-wrapper .controls-wrapper .add-event a:hover {\n          cursor: pointer; }\n  .nav-bar-wrapper .events-control-wrapper {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    height: 70px; }\n    @media (min-width: 865px) {\n      .nav-bar-wrapper .events-control-wrapper {\n        position: relative;\n        height: 60px;\n        width: 23.3333%;\n        display: inline-block;\n        float: left; } }\n    @media (min-width: 1100px) {\n      .nav-bar-wrapper .events-control-wrapper {\n        width: 33.3333%; } }\n    @media (min-width: 1500px) {\n      .nav-bar-wrapper .events-control-wrapper {\n        width: 33.3333%;\n        display: inline-block;\n        float: left; } }\n    .nav-bar-wrapper .events-control-wrapper .events-inner-wrap {\n      height: 100%; }\n    .nav-bar-wrapper .events-control-wrapper .add-event {\n      width: 33.33333%;\n      float: left;\n      display: inline-block;\n      background-color: #FF6733;\n      height: 100%; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .events-control-wrapper .add-event {\n          height: 100%;\n          margin-top: 0;\n          background-color: transparent; } }\n      .nav-bar-wrapper .events-control-wrapper .add-event a {\n        display: flex;\n        align-items: center;\n        justify-content: flex-end;\n        height: 100%; }\n        .nav-bar-wrapper .events-control-wrapper .add-event a .add-event-svg {\n          height: 36px; }\n    .nav-bar-wrapper .events-control-wrapper .search-event {\n      width: 33.33333%;\n      float: left;\n      display: inline-block;\n      background-color: #FFF;\n      height: 100%; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .events-control-wrapper .search-event {\n          height: 100%;\n          margin-top: 0;\n          background-color: transparent; } }\n      .nav-bar-wrapper .events-control-wrapper .search-event a {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        height: 100%; }\n        .nav-bar-wrapper .events-control-wrapper .search-event a .search-svg {\n          height: 36px; }\n    .nav-bar-wrapper .events-control-wrapper .filter-events {\n      width: 33.33333%;\n      float: left;\n      display: inline-block;\n      background-color: #FF6733;\n      height: 100%; }\n      @media (min-width: 865px) {\n        .nav-bar-wrapper .events-control-wrapper .filter-events {\n          height: 100%;\n          margin-top: 0;\n          background-color: transparent; } }\n      .nav-bar-wrapper .events-control-wrapper .filter-events a {\n        display: flex;\n        align-items: center;\n        justify-content: flex-start;\n        height: 100%; }\n        .nav-bar-wrapper .events-control-wrapper .filter-events a .filter-svg {\n          height: 36px; }\n\n#happSVGLogo {\n  height: 60px;\n  padding: 5px; }\n\n.container-calendar-wrapper .custom-calendar-wrap {\n  z-index: 100; }\n  @media (min-width: 880px) {\n    .container-calendar-wrapper .custom-calendar-wrap {\n      z-index: -50; } }\n  @media (min-width: 880px) {\n    .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar {\n      bottom: 0;\n      left: 0;\n      right: 0; } }\n  .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-head {\n    font-weight: 900;\n    border-radius: 0;\n    font-family: GustanLight;\n    background: #FF6733;\n    box-shadow: none; }\n  .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body {\n    padding: 0; }\n    @media (min-width: 880px) {\n      .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body {\n        padding: 10px 0 20px 0; } }\n    .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row {\n      overflow: hidden; }\n      .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .happ_e_button {\n        background-color: transparent;\n        margin: 1px;\n        outline: none;\n        text-decoration: none;\n        padding: 6px 4px 0 4px;\n        font-size: 16px;\n        text-transform: none;\n        white-space: normal;\n        transition: font-size 0.5s ease; }\n        .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .happ_e_button:hover, .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .happ_e_button:focus {\n          text-decoration: none;\n          background-color: transparent;\n          outline: none; }\n        @media (min-width: 880px) {\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .happ_e_button {\n            font-size: 14px; } }\n      .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square {\n        overflow: hidden;\n        z-index: 100;\n        padding: 10px 10px 40px 10px; }\n        @media (min-width: 880px) {\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square {\n            border-bottom: 1px solid #042C5C;\n            padding: 10px 10px 10px 10px; } }\n        .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square:hover {\n          cursor: default; }\n        .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square {\n          max-width: 100%; }\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .events-day-wrapper {\n            padding: 0; }\n            @media (min-width: 880px) {\n              .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .events-day-wrapper {\n                padding: 0; } }\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .opaque-head {\n            display: none; }\n            @media (min-width: 880px) {\n              .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .opaque-head {\n                display: block;\n                padding: 20px 0 0 0;\n                height: 30px;\n                width: 100%;\n                position: fixed;\n                background-color: rgba(255, 255, 255, 0.8);\n                z-index: 10; } }\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .number-wrap {\n            height: 60px; }\n            @media (min-width: 880px) {\n              .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .number-wrap {\n                position: fixed;\n                height: 33px;\n                width: 33px;\n                z-index: 99999; } }\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .day-number {\n            color: fade(#042C5C, 100%);\n            font-size: 36px;\n            height: 60px;\n            width: 60px;\n            border-radius: 0;\n            text-align: center;\n            padding: 0;\n            z-index: 50; }\n            @media (min-width: 880px) {\n              .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square .day-number {\n                font-size: 22px;\n                height: 33px;\n                width: 33px;\n                margin: 0;\n                border: none;\n                position: absolute;\n                top: 0;\n                background-color: rgba(255, 255, 255, 0.95);\n                border-radius: 0;\n                transition: opacity 0.5s ease; } }\n          @media (min-width: 880px) {\n            .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square {\n              overflow-y: scroll;\n              position: absolute;\n              margin-top: 0;\n              height: inherit;\n              right: -10px;\n              width: 100%;\n              padding-right: 10px; }\n              .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .tron-inner-square:hover .day-number {\n                opacity: 0; } }\n        .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .day-square .modal {\n          display: none;\n          z-index: 99999999999;\n          max-width: 100%; }\n      .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .last-month-wrap {\n        display: none;\n        opacity: 0.4; }\n        @media (min-width: 880px) {\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .last-month-wrap {\n            display: block; } }\n      .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .next-month-wrap {\n        display: none;\n        opacity: 0.4; }\n        @media (min-width: 880px) {\n          .container-calendar-wrapper .custom-calendar-wrap .fc-calendar-container .fc-calendar .fc-body .fc-row .next-month-wrap {\n            display: block; } }\n\n.fc-row:last-of-type .day-square {\n  border: none !important; }\n\n* {\n  box-sizing: border-box; }\n\n.fc-calendar-container .fc-calendar #addEventModal.modal {\n  display: none; }\n\n.fc-calendar-container .fc-calendar .modal {\n  overflow: hidden;\n  margin-top: 0 !important;\n  z-index: 9999999999;\n  display: none; }\n\n.fc-calendar-container .fc-calendar .modal-dialog {\n  width: 80%;\n  height: 80%;\n  padding: 0;\n  z-index: 9999999999; }\n\n.fc-calendar-container .fc-calendar .modal-content {\n  border: 2px solid #3c7dcf;\n  border-radius: 0;\n  box-shadow: none;\n  z-index: 999999999999; }\n\n.fc-calendar-container .fc-calendar .modal-header {\n  height: 50px;\n  padding: 10px;\n  background: #6598d9;\n  border: 0; }\n\n.fc-calendar-container .fc-calendar .modal-title {\n  font-weight: 300;\n  font-size: 2em;\n  color: #fff;\n  line-height: 30px; }\n\n.fc-calendar-container .fc-calendar .modal-body {\n  width: 100%;\n  font-weight: 300;\n  z-index: 9999999999;\n  overflow: auto; }\n  @media (min-width: 1100px) {\n    .fc-calendar-container .fc-calendar .modal-body {\n      overflow: hidden; } }\n\n.fc-calendar-container .fc-calendar .modal-footer {\n  height: 60px;\n  padding: 10px;\n  background: #f1f3f5; }\n\n.fc-calendar-container .fc-calendar ::-webkit-scrollbar {\n  -webkit-appearance: none;\n  width: 10px;\n  background: #f1f3f5;\n  border-left: 1px solid #d3dae0; }\n\n.fc-calendar-container .fc-calendar ::-webkit-scrollbar-thumb {\n  background: #b6c0cb; }\n\n.modal-header .close {\n  color: #FC6636; }\n\n.modal-header .modal-title {\n  text-align: center;\n  font-size: 24px;\n  color: #FC6636; }\n\n.modal-body {\n  max-height: 500px;\n  overflow-y: scroll; }\n  @media (min-width: 960px) {\n    .modal-body {\n      overflow-y: hidden;\n      max-height: 800px; } }\n\n.modal-footer {\n  text-align: center; }\n  .modal-footer .powered-by-happ {\n    margin-left: auto; }\n\n.add-event-form fieldset .add-event-form-element {\n  padding: 10px 10px 10px 10px;\n  width: 100%;\n  font-size: 20px;\n  text-align: center;\n  content: \"hello\"; }\n\n.add-event-form .Actions {\n  text-align: center; }\n  .add-event-form .Actions #Form_AddEventForm_action_processAddEvent {\n    border-radius: 0;\n    padding: 10px 50px 10px 50px;\n    font-size: 20px;\n    border-color: #FC6636;\n    border-width: 4.166666666666667px;\n    border-style: solid;\n    background: transparent; }\n    .add-event-form .Actions #Form_AddEventForm_action_processAddEvent:hover, .add-event-form .Actions #Form_AddEventForm_action_processAddEvent:focus {\n      background-color: #FC6636;\n      color: #FFF; }\n\n.datepicker.datepicker-dropdown.dropdown-menu {\n  z-index: 9999999999999 !important; }\n  .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed {\n    border-collapse: separate;\n    display: table; }\n    @media (min-width: 768px) {\n      .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed {\n        border-spacing: 20px; } }\n    .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr {\n      display: table-row; }\n      .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr th {\n        padding: 10px 15px; }\n        .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr th:hover, .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr th:focus {\n          background-color: #FC6636;\n          color: #FFF; }\n        @media (min-width: 768px) {\n          .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr th {\n            padding: 20px 31px;\n            margin: 20px 31px; } }\n      @media (min-width: 768px) {\n        .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr .datepicker-switch {\n          padding: 20px 31px;\n          font-size: 22px; } }\n      @media (min-width: 768px) {\n        .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr .prev {\n          padding: 20px 31px;\n          font-size: 26px;\n          font-family: GustanBlack; } }\n      @media (min-width: 768px) {\n        .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed thead tr .next {\n          padding: 20px 31px;\n          font-size: 26px;\n          font-family: GustanBlack; } }\n    .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed tbody tr td {\n      padding: 10px 15px; }\n      .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed tbody tr td:hover, .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed tbody tr td:focus, .datepicker.datepicker-dropdown.dropdown-menu .datepicker-days .table-condensed tbody tr td.active {\n        background-color: #FC6636;\n        color: #FFF; }\n  .datepicker.datepicker-dropdown.dropdown-menu .datepicker-months .active {\n    background-color: #FC6636;\n    color: #FFF; }\n  .datepicker.datepicker-dropdown.dropdown-menu .datepicker-months .month:hover {\n    background-color: #FC6636;\n    color: #FFF; }\n\n#ui-timepicker-div {\n  font-size: 20px;\n  padding: 20px; }\n  #ui-timepicker-div:before {\n    top: -3px;\n    left: 6px;\n    content: '';\n    display: inline-block;\n    border-left: 7px solid transparent;\n    border-right: 7px solid transparent;\n    border-bottom: 7px solid #FFF;\n    border-top: 0;\n    border-bottom-color: white;\n    position: absolute; }\n  #ui-timepicker-div .ui-timepicker-table {\n    line-height: 1.8em;\n    border-collapse: separate;\n    display: table; }\n    @media (min-width: 768px) {\n      #ui-timepicker-div .ui-timepicker-table {\n        border-spacing: 20px; } }\n    #ui-timepicker-div .ui-timepicker-table tbody tr {\n      padding: 10px 15px;\n      display: table-row; }\n      #ui-timepicker-div .ui-timepicker-table tbody tr td .ui-timepicker-title {\n        line-height: 0;\n        background: transparent; }\n      #ui-timepicker-div .ui-timepicker-table tbody tr td .ui-timepicker tbody td .ui-state-default {\n        padding: 1.0em 2.0em; }\n        #ui-timepicker-div .ui-timepicker-table tbody tr td .ui-timepicker tbody td .ui-state-default:hover, #ui-timepicker-div .ui-timepicker-table tbody tr td .ui-timepicker tbody td .ui-state-default.ui-state-active {\n          background: #FC6636;\n          color: #FFF; }\n\n.ui-timepicker-standard {\n  z-index: 9999999999999 !important; }\n\n/*\n * JTSage-DateBox : the full featured Date and Time Picker\n * Date: 2016-01-11T11:09:29-05:00\n * http://dev.jtsage.com/DateBox/\n * https://github.com/jtsage/jquery-mobile-datebox\n *\n * Copyright 2010, 2015 JTSage. and other contributors\n * Released under the MIT license.\n * https://github.com/jtsage/jquery-mobile-datebox/blob/master/LICENSE.txt\n *\n */\n/*\n * Shared Styles\n *\n * These styles are used for the basic control,\n * and are not specific to any one mode.\n */\n.ui-datebox-container {\n  width: 290px;\n  -webkit-transform: translate3d(0, 0, 0); }\n\n.ui-datebox-container .modal-header {\n  padding: 8px 15px; }\n\n.ui-datebox-collapse {\n  text-align: center; }\n\ndiv.ui-datebox-inline.ui-datebox-inline-has-input {\n  float: none;\n  clear: both;\n  position: relative;\n  top: 5px; }\n\ndiv.ui-datebox-container.ui-datebox-inline {\n  width: 290px; }\n\n/*\n * Calendar Mode Styles\n *\n * These are specific to CalBox\n */\n.ui-datebox-gridheader {\n  text-align: center; }\n\n.ui-datebox-gridheader a {\n  margin: 3px; }\n\n.ui-datebox-gridheader h4 {\n  display: inline-block; }\n\n.ui-datebox-grid {\n  clear: both;\n  margin-bottom: 5px; }\n\n.ui-datebox-inline .ui-datebox-gridrow .ui-controlgroup-controls {\n  width: 100%;\n  text-align: center; }\n\n.ui-datebox-inline .ui-datebox-gridrow .ui-controlgroup-controls .ui-btn {\n  float: none;\n  clear: both; }\n\n.ui-datebox-gridrow {\n  margin-left: auto;\n  margin-right: auto;\n  display: table;\n  margin-bottom: 0px; }\n\n.ui-datebox-gridrow-last {\n  margin-bottom: 5px; }\n\n.ui-datebox-controls {\n  padding: 0px 3px;\n  width: 100%; }\n\n.ui-datebox-griddate {\n  width: 40px;\n  height: 30px;\n  line-height: 30px;\n  padding: 0;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n  font-weight: bold;\n  font-size: 12px;\n  zoom: 1;\n  *display: inline; }\n\n.ui-datebox-griddate-week {\n  width: 35px;\n  height: 30px;\n  line-height: 30px;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n  font-weight: bold;\n  font-size: 12px;\n  zoom: 1;\n  *display: inline; }\n\n.ui-datebox-gridrow div.ui-datebox-griddate-empty {\n  border: 1px solid transparent;\n  color: #888888; }\n\n.ui-datebox-griddate.ui-datebox-griddate-label {\n  border: 1px solid transparent;\n  height: 15px;\n  line-height: 15px; }\n\n/*\n * Android Mode Styles\n *\n * These are specific to datebox, timebox, and durationbox\n */\n.ui-datebox-datebox-groups.row {\n  margin-right: 5px;\n  margin-left: 5px;\n  margin-bottom: 10px; }\n\n.ui-datebox-datebox-group.col-xs-3, .ui-datebox-datebox-group.col-xs-4 {\n  padding-left: 0px;\n  padding-right: 0px; }\n\ndiv.ui-datebox-datebox-button {\n  width: 100%;\n  margin: 0; }\n\n.ui-datebox-datebox-groups input {\n  text-align: center; }\n\n.ui-datebox-datebox-groups label {\n  text-align: center;\n  width: 100%;\n  margin-bottom: 0px;\n  border: 1px solid #ccc; }\n\ndiv.ui-datebox-datebox-button.glyphicon-plus {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n  -webkit-border-bottom-right-radius: 0;\n  -webkit-border-bottom-left-radius: 0;\n  top: 0px; }\n\ndiv.ui-datebox-datebox-button.glyphicon-minus {\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n  -webkit-border-top-right-radius: 0;\n  -webkit-border-top-left-radius: 0;\n  top: 0px; }\n\n.ui-datebox-header h4 {\n  text-align: center; }\n\n/*\n * Flip Mode Styles\n *\n * These are specific to flipbox, timeflipbox, durationflipbox, and\n * customflip\n */\n.ui-datebox-fliplab {\n  text-align: center; }\n\n.ui-datebox-flipcenter {\n  width: 260px;\n  height: 40px;\n  border: 1px solid #EEEEEE;\n  margin-right: auto;\n  margin-left: auto;\n  position: relative;\n  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);\n  -moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);\n  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6); }\n\n.ui-datebox-flipcontent {\n  text-align: center;\n  height: 125px;\n  margin-bottom: -40px; }\n\n.ui-datebox-flipcontent li {\n  border: 1px solid #ccc; }\n\n.ui-datebox-flipcontent div {\n  margin-left: 3px;\n  margin-right: 3px;\n  width: 77px;\n  height: 120px;\n  display: inline-block;\n  text-align: center;\n  zoom: 1;\n  *display: inline;\n  overflow: hidden; }\n\n.ui-datebox-flipcontentd div {\n  width: 60px; }\n\n.ui-datebox-flipcontent ul {\n  list-style-type: none;\n  display: inline;\n  border: 1px solid transparent; }\n\n.ui-datebox-flipcontent li {\n  height: 30px; }\n\n.ui-datebox-flipcontent li span {\n  margin-top: 7px;\n  display: block; }\n\n/*\n * Slide Mode Styles\n *\n * Used solely for SlideBox.  Damn this is a lot of extra CSS.\n */\n.ui-datebox-slide {\n  width: 290px;\n  margin-left: auto;\n  margin-right: auto; }\n\n.ui-datebox-sliderow-int {\n  display: inline-block;\n  white-space: nowrap; }\n\n.ui-datebox-sliderow {\n  margin-bottom: 5px;\n  text-align: center;\n  overflow: hidden;\n  width: 290px; }\n\n.ui-datebox-slide .ui-btn {\n  margin: 0;\n  padding: 0px 1em; }\n\n.ui-datebox-slidebox {\n  text-align: center;\n  display: inline-block;\n  zoom: 1;\n  *display: inline;\n  vertical-align: middle;\n  font-weight: bold;\n  border: 1px solid #ccc;\n  box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box; }\n\n.ui-datebox-slideyear {\n  width: 84px;\n  line-height: 30px;\n  font-size: 14px; }\n\n.ui-datebox-slidemonth {\n  width: 51px;\n  line-height: 30px;\n  font-size: 12px; }\n\n.ui-datebox-slideday {\n  width: 40px;\n  line-height: 20px;\n  font-size: 14px; }\n\n.ui-datebox-slidehour {\n  width: 60px;\n  line-height: 22px;\n  font-size: 14px; }\n\n.ui-datebox-slidemins {\n  width: 40px;\n  line-height: 22px;\n  font-size: 14px; }\n\n.ui-datebox-slidewday {\n  font-size: 10px;\n  font-weight: normal; }\n\nspan.ui-datebox-nopad {\n  margin: 0; }\n\n/*\n * Custom Time Picker\n *\n */\n.ui-datebox-container {\n  width: 290px;\n  -webkit-transform: translate3d(0, 0, 0); }\n\n.ui-datebox-container .modal-header {\n  padding: 8px 15px; }\n\n.ui-datebox-collapse {\n  text-align: center; }\n\ndiv.ui-datebox-inline.ui-datebox-inline-has-input {\n  float: none;\n  clear: both;\n  position: relative;\n  top: 5px; }\n\ndiv.ui-datebox-container.ui-datebox-inline {\n  width: 290px; }\n\n/*\n * Calendar Mode Styles\n *\n * These are specific to CalBox\n */\n.ui-datebox-gridheader {\n  text-align: center; }\n\n.ui-datebox-gridheader a {\n  margin: 3px; }\n\n.ui-datebox-gridheader h4 {\n  display: inline-block; }\n\n.ui-datebox-grid {\n  clear: both;\n  margin-bottom: 5px; }\n\n.ui-datebox-inline .ui-datebox-gridrow .ui-controlgroup-controls {\n  width: 100%;\n  text-align: center; }\n\n.ui-datebox-inline .ui-datebox-gridrow .ui-controlgroup-controls .ui-btn {\n  float: none;\n  clear: both; }\n\n.ui-datebox-gridrow {\n  margin-left: auto;\n  margin-right: auto;\n  display: table;\n  margin-bottom: 0px; }\n\n.ui-datebox-gridrow-last {\n  margin-bottom: 5px; }\n\n.ui-datebox-controls {\n  padding: 0px 3px;\n  width: 100%; }\n\n.ui-datebox-griddate {\n  width: 40px;\n  height: 30px;\n  line-height: 30px;\n  padding: 0;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n  font-weight: bold;\n  font-size: 12px;\n  zoom: 1;\n  *display: inline; }\n\n.ui-datebox-griddate-week {\n  width: 35px;\n  height: 30px;\n  line-height: 30px;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n  font-weight: bold;\n  font-size: 12px;\n  zoom: 1;\n  *display: inline; }\n\n.ui-datebox-gridrow div.ui-datebox-griddate-empty {\n  border: 1px solid transparent;\n  color: #888888; }\n\n.ui-datebox-griddate.ui-datebox-griddate-label {\n  border: 1px solid transparent;\n  height: 15px;\n  line-height: 15px; }\n\n/*\n * Android Mode Styles\n *\n * These are specific to datebox, timebox, and durationbox\n */\n.ui-datebox-datebox-groups.row {\n  margin-right: 5px;\n  margin-left: 5px;\n  margin-bottom: 10px; }\n\n.ui-datebox-datebox-group.col-xs-3, .ui-datebox-datebox-group.col-xs-4 {\n  padding-left: 0px;\n  padding-right: 0px; }\n\ndiv.ui-datebox-datebox-button {\n  width: 100%;\n  margin: 0; }\n\n.ui-datebox-datebox-groups input {\n  text-align: center; }\n\n.ui-datebox-datebox-groups label {\n  text-align: center;\n  width: 100%;\n  margin-bottom: 0px;\n  border: 1px solid #ccc; }\n\ndiv.ui-datebox-datebox-button.glyphicon-plus {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n  -webkit-border-bottom-right-radius: 0;\n  -webkit-border-bottom-left-radius: 0;\n  top: 0px; }\n\ndiv.ui-datebox-datebox-button.glyphicon-minus {\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n  -webkit-border-top-right-radius: 0;\n  -webkit-border-top-left-radius: 0;\n  top: 0px; }\n\n.ui-datebox-header h4 {\n  text-align: center; }\n\n/*\n * Flip Mode Styles\n *\n * These are specific to flipbox, timeflipbox, durationflipbox, and\n * customflip\n */\n.ui-datebox-fliplab {\n  text-align: center; }\n\n.ui-datebox-flipcenter {\n  width: 260px;\n  height: 40px;\n  border: 1px solid #EEEEEE;\n  margin-right: auto;\n  margin-left: auto;\n  position: relative;\n  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);\n  -moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);\n  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6); }\n\n.ui-datebox-flipcontent {\n  text-align: center;\n  height: 125px;\n  margin-bottom: -40px; }\n\n.ui-datebox-flipcontent li {\n  border: 1px solid #ccc; }\n\n.ui-datebox-flipcontent div {\n  margin-left: 3px;\n  margin-right: 3px;\n  width: 77px;\n  height: 120px;\n  display: inline-block;\n  text-align: center;\n  zoom: 1;\n  *display: inline;\n  overflow: hidden; }\n\n.ui-datebox-flipcontentd div {\n  width: 60px; }\n\n.ui-datebox-flipcontent ul {\n  list-style-type: none;\n  display: inline;\n  border: 1px solid transparent; }\n\n.ui-datebox-flipcontent li {\n  height: 30px; }\n\n.ui-datebox-flipcontent li span {\n  margin-top: 7px;\n  display: block; }\n\n/*\n * Slide Mode Styles\n *\n * Used solely for SlideBox.  Damn this is a lot of extra CSS.\n */\n.ui-datebox-slide {\n  width: 290px;\n  margin-left: auto;\n  margin-right: auto; }\n\n.ui-datebox-sliderow-int {\n  display: inline-block;\n  white-space: nowrap; }\n\n.ui-datebox-sliderow {\n  margin-bottom: 5px;\n  text-align: center;\n  overflow: hidden;\n  width: 290px; }\n\n.ui-datebox-slide .ui-btn {\n  margin: 0;\n  padding: 0px 1em; }\n\n.ui-datebox-slidebox {\n  text-align: center;\n  display: inline-block;\n  zoom: 1;\n  *display: inline;\n  vertical-align: middle;\n  font-weight: bold;\n  border: 1px solid #ccc;\n  box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box; }\n\n.ui-datebox-slideyear {\n  width: 84px;\n  line-height: 30px;\n  font-size: 14px; }\n\n.ui-datebox-slidemonth {\n  width: 51px;\n  line-height: 30px;\n  font-size: 12px; }\n\n.ui-datebox-slideday {\n  width: 40px;\n  line-height: 20px;\n  font-size: 14px; }\n\n.ui-datebox-slidehour {\n  width: 60px;\n  line-height: 22px;\n  font-size: 14px; }\n\n.ui-datebox-slidemins {\n  width: 40px;\n  line-height: 22px;\n  font-size: 14px; }\n\n.ui-datebox-slidewday {\n  font-size: 10px;\n  font-weight: normal; }\n\nspan.ui-datebox-nopad {\n  margin: 0; }\n\n#AddHappEventModal .modal-dialog {\n  max-width: 800px;\n  width: auto; }\n  #AddHappEventModal .modal-dialog .modal-content {\n    border-radius: 0; }\n    #AddHappEventModal .modal-dialog .modal-content .modal-header {\n      padding: 0;\n      background-color: #000;\n      border-bottom: none; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-header .close-event-btn {\n        float: right;\n        position: absolute;\n        right: 0;\n        top: 0;\n        background-color: #000; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-header .close-event-btn:hover {\n          cursor: pointer; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-header .close-event-btn .close-svg {\n          height: 42px;\n          width: 42px; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-header .close-add-btn {\n        float: right;\n        position: absolute;\n        right: 0;\n        top: 0;\n        background-color: #000; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-header .close-add-btn:hover {\n          cursor: pointer; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-header .close-add-btn .close-svg {\n          height: 42px;\n          width: 42px; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-header .modal-title {\n        padding: 30px;\n        font-family: GustanLight;\n        font-size: 30px;\n        color: #FFF;\n        text-align: center; }\n    #AddHappEventModal .modal-dialog .modal-content .modal-body {\n      padding: 30px; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-body .continue-add-event-overlay {\n        height: 100%;\n        width: 100%;\n        background-color: rgba(255, 255, 255, 0.8);\n        position: absolute;\n        left: 0;\n        top: 0; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-body .hide-continue-options {\n        visibility: hidden;\n        opacity: 0;\n        transition: visibility 1s, opacity .70s linear; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-body .show-continue-options {\n        visibility: visible;\n        opacity: 1;\n        transition: visibility 1s, opacity .70s linear; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-body #Form_HappEventForm_action_ClearAction {\n        display: none; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form {\n        font-family: GustanLight; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .Actions {\n          text-align: center; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .field {\n          padding-bottom: 15px;\n          margin-bottom: 15px;\n          border-bottom: 1px solid lightgray; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .field input {\n            width: 100%;\n            max-width: none;\n            height: 60px;\n            font-size: 20px;\n            padding: 15px;\n            font-family: GustanLight; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .field textarea {\n            width: 100%;\n            max-width: none;\n            height: 200px;\n            font-size: 20px;\n            padding: 15px;\n            font-family: GustanLight; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .field label {\n            font-family: GustanLight;\n            font-weight: 100;\n            font-size: 18px; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-controls {\n          margin-top: 20px;\n          text-align: right; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-next {\n          padding-left: 15px;\n          margin-top: 20px;\n          size: 0.2em;\n          position: relative;\n          height: 50px;\n          width: 100px;\n          display: inline-block;\n          margin-left: 15px; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-next:after {\n            content: '';\n            display: block;\n            -o-transition: all 0.3s ease-out;\n            -ms-transition: all 0.3s ease-out;\n            -moz-transition: all 0.3s ease-out;\n            -webkit-transition: all 0.3s ease-out;\n            transition: all 0.3s ease-out;\n            border-top: 1px solid #FC6636;\n            border-right: 1px solid #FC6636;\n            height: 30px;\n            width: 30px;\n            position: absolute;\n            top: 8px;\n            right: 50px;\n            transform: rotate(45deg); }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-next:hover {\n            cursor: pointer; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-next:hover:after {\n            right: 30px;\n            -o-transition: all 0.3s ease-out;\n            -ms-transition: all 0.3s ease-out;\n            -moz-transition: all 0.3s ease-out;\n            -webkit-transition: all 0.3s ease-out;\n            transition: all 0.3s ease-out; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-next span {\n            position: absolute;\n            bottom: 15px;\n            left: 0; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-back {\n          padding-left: 15px;\n          margin-top: 20px;\n          size: 0.2em;\n          position: relative;\n          height: 50px;\n          width: 100px;\n          display: inline-block;\n          margin-right: 15px; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-back:after {\n            content: '';\n            display: block;\n            -o-transition: all 0.3s ease-out;\n            -ms-transition: all 0.3s ease-out;\n            -moz-transition: all 0.3s ease-out;\n            -webkit-transition: all 0.3s ease-out;\n            transition: all 0.3s ease-out;\n            border-top: 1px solid #FC6636;\n            border-left: 1px solid #FC6636;\n            height: 30px;\n            width: 30px;\n            position: absolute;\n            top: 8px;\n            left: 50px;\n            transform: rotate(-45deg); }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-back:hover {\n            cursor: pointer; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-back:hover:after {\n            left: 30px;\n            -o-transition: all 0.3s ease-out;\n            -ms-transition: all 0.3s ease-out;\n            -moz-transition: all 0.3s ease-out;\n            -webkit-transition: all 0.3s ease-out;\n            transition: all 0.3s ease-out; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form .form-step .add-event-back span {\n            position: absolute;\n            bottom: 15px;\n            right: 0; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #StepOne .Bootstrap__DatePicker .table-condensed > tbody > tr > td {\n          padding: 10px; }\n        @media (min-width: 865px) {\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #StepOne .Bootstrap__DatePicker {\n            width: 50%;\n            float: left;\n            display: inline-block; }\n            #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #StepOne .Bootstrap__DatePicker .table-condensed > tbody > tr > td {\n              padding: 15px; } }\n        @media (min-width: 865px) {\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #StepOne .Calendar__Options {\n            width: 50%;\n            float: left;\n            display: inline-block; } }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #StepOne .Calendar__Options span {\n          padding: 15px;\n          display: block;\n          border: 1px solid black; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #StepOne .Calendar__Options .Higlight__Option {\n          background-color: teal; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #StepOne .Generate__Dates {\n          height: 59px;\n          border: 1px solid black; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step .field {\n          padding-bottom: 15px;\n          margin-bottom: 15px;\n          border-bottom: 1px solid lightgray; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step .field input {\n            width: 100%;\n            height: 60px;\n            font-size: 20px;\n            padding: 15px;\n            font-family: GustanLight; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step .field textarea {\n            width: 100%;\n            height: 200px;\n            font-size: 20px;\n            padding: 15px;\n            font-family: GustanLight; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step .field label {\n            font-family: GustanLight;\n            font-weight: 100;\n            font-size: 18px; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step .tag-selected {\n          background-color: #FC6636; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step .tag-selected label {\n            color: white; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step #Form_HappEventForm_HasTickets_Holder {\n          border: 1px solid grey;\n          position: relative;\n          padding: 20px;\n          max-width: 336px; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step #Form_HappEventForm_HasTickets_Holder input {\n            top: 0;\n            left: 15px;\n            position: absolute;\n            display: inline-block;\n            margin: 0;\n            height: 100%;\n            width: 100%;\n            border: 1px solid lightgrey; }\n          #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #details-step #Form_HappEventForm_HasTickets_Holder label {\n            padding: 0 0 0 30px;\n            text-align: left;\n            display: block;\n            height: 100%;\n            width: 100%; }\n        #AddHappEventModal .modal-dialog .modal-content .modal-body .happ-add-event-form #ticket-step #Form_HappEventForm_Restriction_Holder #Form_HappEventForm_Restriction {\n          -webkit-appearance: button;\n          -webkit-border-radius: 2px;\n          -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);\n          -webkit-padding-end: 20px;\n          -webkit-padding-start: 2px;\n          -webkit-user-select: none;\n          background-image: url(" + __webpack_require__(69) + "), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);\n          background-position: 97% center;\n          background-repeat: no-repeat;\n          border: 1px solid #AAA;\n          color: #555;\n          font-size: inherit;\n          margin: 20px 0;\n          overflow: hidden;\n          padding: 5px 10px;\n          text-overflow: ellipsis;\n          white-space: nowrap;\n          min-width: 300px; }\n      #AddHappEventModal .modal-dialog .modal-content .modal-body .field-hidden {\n        display: none; }\n\n#ApprovedEventModal .modal-dialog {\n  max-width: 700px;\n  width: auto; }\n  #ApprovedEventModal .modal-dialog .modal-content {\n    border-radius: 0;\n    box-shadow: none;\n    border: 2px solid #000; }\n    #ApprovedEventModal .modal-dialog .modal-content .modal-header {\n      padding: 0;\n      background-color: #000;\n      border-bottom: none; }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-header .close-event-btn {\n        float: right;\n        position: absolute;\n        right: 0;\n        top: 0;\n        background-color: #000; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-header .close-event-btn:hover {\n          cursor: pointer; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-header .close-event-btn .close-svg {\n          height: 42px;\n          width: 42px; }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-header .close-add-btn {\n        float: right;\n        position: absolute;\n        right: 0;\n        top: 0;\n        background-color: #000; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-header .close-add-btn:hover {\n          cursor: pointer; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-header .close-add-btn .close-svg {\n          height: 42px;\n          width: 42px; }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-header .modal-title {\n        padding: 30px;\n        font-family: GustanLight;\n        font-size: 30px;\n        color: #FFF;\n        text-align: center; }\n    #ApprovedEventModal .modal-dialog .modal-content .modal-body {\n      overflow: hidden;\n      max-height: none;\n      padding: 0;\n      box-shadow: none;\n      border: none; }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-body .location-strip {\n        border-left: none;\n        border-top: 1px solid #040508;\n        border-right: none;\n        padding: 10px;\n        display: flex;\n        flex-wrap: wrap;\n        flex-direction: column;\n        align-items: center;\n        align-content: center;\n        min-height: 60px; }\n        @media (min-width: 865px) {\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .location-strip {\n            flex-direction: row; } }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-body .location-strip .location-svg {\n          width: 56px;\n          flex-grow: 0.2; }\n          @media (min-width: 865px) {\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .location-strip .location-svg {\n              width: 40px; } }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-body .location-strip .location-text {\n          margin: 0;\n          font-size: 20px;\n          display: inline-block;\n          flex-grow: 2;\n          text-align: center;\n          padding: 15px 0 5px 0; }\n          @media (min-width: 865px) {\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .location-strip .location-text {\n              padding: 0 30px 0 0; } }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip {\n        border-top: 1px solid #040508;\n        display: flex;\n        align-items: center;\n        align-content: center;\n        min-height: 60px; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .date-strip {\n          padding: 10px;\n          border-right: 1px solid #040508;\n          width: 50%;\n          display: flex;\n          flex-direction: column;\n          flex-wrap: wrap;\n          align-items: center;\n          align-content: center; }\n          @media (min-width: 865px) {\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .date-strip {\n              flex-direction: row; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .date-strip .calendar-svg {\n            height: 30px; }\n            @media (min-width: 865px) {\n              #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .date-strip .calendar-svg {\n                padding-right: 20px; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .date-strip .date-text {\n            flex-grow: 2;\n            text-align: left;\n            font-size: 16px;\n            padding: 15px 0 0 0; }\n            @media (min-width: 865px) {\n              #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .date-strip .date-text {\n                font-size: 20px;\n                padding: 0; } }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .time-strip {\n          padding: 10px;\n          width: 50%;\n          display: flex;\n          flex-direction: column;\n          align-items: center;\n          align-content: center; }\n          @media (min-width: 865px) {\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .time-strip {\n              flex-direction: row; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .time-strip .clock-svg {\n            height: 30px; }\n            @media (min-width: 865px) {\n              #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .time-strip .clock-svg {\n                padding-right: 20px; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .time-strip .time-text {\n            flex-grow: 2;\n            text-align: left;\n            font-size: 16px;\n            padding: 15px 0 0 0; }\n            @media (min-width: 865px) {\n              #ApprovedEventModal .modal-dialog .modal-content .modal-body .date-time-strip .time-strip .time-text {\n                font-size: 20px;\n                padding: 0; } }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-body .image-strip .bx-wrapper {\n        margin: 0;\n        border: none;\n        border-top: 1px solid #040508;\n        border-bottom: 1px solid #040508; }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip {\n        border-bottom: 1px solid #040508;\n        display: flex;\n        align-items: center;\n        align-content: center;\n        min-height: 60px; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip {\n          padding: 10px;\n          border-right: 1px solid #040508;\n          width: 50%;\n          display: flex;\n          flex-direction: column;\n          flex-wrap: wrap;\n          align-items: center;\n          align-content: center; }\n          @media (min-width: 865px) {\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip {\n              flex-direction: row; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip .ticket-svg {\n            height: 40px;\n            padding-right: 20px; }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip .ticket-price {\n            font-size: 16px;\n            flex-grow: 2;\n            text-align: center;\n            display: flex;\n            align-items: center;\n            align-content: center; }\n            @media (min-width: 865px) {\n              #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip .ticket-price {\n                font-size: 20px; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip .buy-ticket-btn {\n            font-size: 11px;\n            padding: 2px 5px;\n            margin-left: 20px;\n            display: flex;\n            align-items: center;\n            align-content: center;\n            border: 1px solid #040508; }\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .ticket-strip .buy-ticket-btn .ticket-svg {\n              height: 20px;\n              padding-right: 5px; }\n        #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .restriction-strip {\n          padding: 10px;\n          width: 50%;\n          display: flex;\n          flex-direction: column;\n          flex-wrap: wrap;\n          align-items: center;\n          align-content: center; }\n          @media (min-width: 865px) {\n            #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .restriction-strip {\n              flex-direction: row; } }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .restriction-strip .restrict-svg {\n            height: 30px;\n            padding-right: 20px; }\n          #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .restriction-strip .restriction-type {\n            font-size: 16px; }\n            @media (min-width: 865px) {\n              #ApprovedEventModal .modal-dialog .modal-content .modal-body .ticket-restrict-strip .restriction-strip .restriction-type {\n                font-size: 20px; } }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-body .description-strip {\n        padding: 20px; }\n      #ApprovedEventModal .modal-dialog .modal-content .modal-body #eventMap1 {\n        height: 400px;\n        width: \"calc(100% - 40px)\";\n        margin: auto;\n        margin-bottom: 20px; }\n\n#FilterModal {\n  position: absolute;\n  overflow-x: hidden;\n  overflow-y: hidden; }\n  @media (min-width: 865px) {\n    #FilterModal {\n      overflow-x: hidden;\n      overflow-y: hidden; } }\n  #FilterModal .modal-dialog {\n    margin: 0;\n    height: 100%;\n    width: 100%;\n    border: none; }\n    #FilterModal .modal-dialog .modal-content {\n      border-radius: 0;\n      height: 100%;\n      border: none; }\n    #FilterModal .modal-dialog .modal-head {\n      height: 60px;\n      position: relative; }\n      #FilterModal .modal-dialog .modal-head .search-wrapper {\n        padding-left: 60px;\n        height: 60px;\n        border: none; }\n        @media (min-width: 865px) {\n          #FilterModal .modal-dialog .modal-head .search-wrapper {\n            padding-left: 60px;\n            height: 60px;\n            border: none; } }\n    #FilterModal .modal-dialog .modal-body {\n      height: 100%;\n      padding: 0;\n      overflow: hidden; }\n  #FilterModal .close-btn {\n    background-color: #FF6733;\n    position: absolute;\n    left: 0;\n    z-index: 9999;\n    height: 60px; }\n    @media (min-width: 865px) {\n      #FilterModal .close-btn {\n        height: 60px; } }\n\n.Event-Filter-Wrapper {\n  padding-left: 60px;\n  min-height: 60px; }\n  @media (min-width: 865px) {\n    .Event-Filter-Wrapper {\n      padding-left: 60px; } }\n  .Event-Filter-Wrapper form .form-group {\n    margin: 0; }\n  .Event-Filter-Wrapper form label {\n    display: none; }\n  .Event-Filter-Wrapper form .select2-container {\n    min-height: 60px; }\n    .Event-Filter-Wrapper form .select2-container .select2-selection {\n      font-size: 13px;\n      min-height: 60px;\n      border: none;\n      border-bottom: 3px solid #FF6733;\n      border-radius: 0; }\n      @media (min-width: 865px) {\n        .Event-Filter-Wrapper form .select2-container .select2-selection {\n          font-size: 14px;\n          border: none;\n          min-height: 60px; } }\n\n.select2-container--default {\n  width: 100% !important; }\n\n#SearchModal {\n  z-index: 200; }\n  @media (min-width: 865px) {\n    #SearchModal {\n      position: absolute; } }\n  #SearchModal .modal-dialog {\n    margin: auto;\n    height: 100%;\n    width: 100%;\n    border: none;\n    max-width: 842px; }\n    @media (min-width: 865px) {\n      #SearchModal .modal-dialog {\n        padding: 8%; } }\n    #SearchModal .modal-dialog .modal-content {\n      border-radius: 0;\n      height: 100%;\n      border: none;\n      overflow: hidden;\n      background: transparent; }\n    #SearchModal .modal-dialog .modal-head {\n      height: 60px;\n      position: relative; }\n    #SearchModal .modal-dialog .modal-body {\n      height: 100%;\n      padding: 0;\n      background-color: rgba(255, 255, 255, 0.95);\n      max-height: none;\n      overflow-x: hidden;\n      overflow-y: auto; }\n      @media (min-width: 865px) {\n        #SearchModal .modal-dialog .modal-body {\n          overflow-x: hidden;\n          overflow-y: auto;\n          padding: 0;\n          background-color: rgba(255, 255, 255, 0.95); } }\n      #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #Form_HappSearchForm_keyword_Holder {\n        height: 60px;\n        padding: 0 60px; }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #Form_HappSearchForm_keyword_Holder label {\n          display: none; }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #Form_HappSearchForm_keyword_Holder #Form_HappSearchForm_keyword {\n          height: 60px;\n          width: 100%;\n          padding: 0 10px;\n          font-size: 20px;\n          outline: none;\n          margin: 0;\n          border: 0; }\n          #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #Form_HappSearchForm_keyword_Holder #Form_HappSearchForm_keyword:hover, #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #Form_HappSearchForm_keyword_Holder #Form_HappSearchForm_keyword:focus {\n            outline: none !important; }\n      #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #advancedToggle {\n        width: 100%;\n        min-height: 40px;\n        height: 60px;\n        font-size: 18px;\n        outline: 0; }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #advancedToggle:focus, #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #advancedToggle:hover {\n          outline: none !important; }\n      #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture {\n        padding: 3% 3% 0 3%; }\n        @media (min-width: 865px) {\n          #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture {\n            padding: 20px 30px 0 30px; } }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture label {\n          margin: 0 0 10px 0;\n          font-size: 18px; }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture #Form_HappSearchForm_PastOrFuture {\n          display: flex;\n          align-items: center;\n          align-content: center;\n          padding: 0;\n          margin: 0; }\n          #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture #Form_HappSearchForm_PastOrFuture li {\n            width: 33.333%;\n            padding: 10px 0;\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            align-content: center; }\n            #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture #Form_HappSearchForm_PastOrFuture li input {\n              margin: 0; }\n            #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #PastOrFuture #Form_HappSearchForm_PastOrFuture li label {\n              margin: 0;\n              font-size: 16px;\n              padding: 10px 10px 0 10px; }\n      #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText {\n        padding: 3% 3% 0 3%; }\n        @media (min-width: 865px) {\n          #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText {\n            padding: 20px 30px 0 30px; } }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText label {\n          margin: 0 0 10px 0;\n          font-size: 18px; }\n        #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText #Form_HappSearchForm_DateOrText {\n          display: flex;\n          align-items: center;\n          align-content: center;\n          padding: 0;\n          margin: 0; }\n          #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText #Form_HappSearchForm_DateOrText li {\n            width: 33.33333%;\n            padding: 10px 0;\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            align-content: center; }\n            #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText #Form_HappSearchForm_DateOrText li input {\n              margin: 0; }\n            #SearchModal .modal-dialog .modal-body #Form_HappSearchForm #DateOrText #Form_HappSearchForm_DateOrText li label {\n              margin: 0;\n              font-size: 16px;\n              padding: 10px 10px 0 10px; }\n      #SearchModal .modal-dialog .modal-body #Form_HappSearchForm .Actions {\n        display: none; }\n      #SearchModal .modal-dialog .modal-body .search-results-wrapper {\n        perspective: 1300px;\n        padding: 3%; }\n        @media (min-width: 865px) {\n          #SearchModal .modal-dialog .modal-body .search-results-wrapper {\n            padding: 30px; } }\n        #SearchModal .modal-dialog .modal-body .search-results-wrapper .keyword-searched {\n          display: inline-block;\n          border-bottom: 3px solid #FF6733;\n          padding: 0 0 5px 0; }\n        #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item {\n          transform-style: preserve-3d;\n          padding: 0 0 30px 0;\n          border-bottom: 1px solid #333;\n          display: block; }\n          #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item img {\n            padding: 20px 0;\n            flex-basis: 140px;\n            width: 100%; }\n            @media (min-width: 865px) {\n              #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item img {\n                width: 30%;\n                padding: 20px 20px 20px 0;\n                display: inline-block;\n                float: left; } }\n          #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content {\n            width: 100%; }\n            @media (min-width: 865px) {\n              #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content {\n                width: 70%;\n                float: left;\n                display: inline-block; } }\n            #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content .title {\n              font-size: 22px; }\n            #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content .date {\n              font-size: 16px;\n              display: block;\n              padding: 10px 0; }\n            #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content .venue {\n              font-size: 16px;\n              display: block;\n              padding: 0 0 10px 0; }\n            #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content .whats-happ-symbol {\n              color: #FF6733; }\n            #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item .search-event-content .event-btn {\n              width: 190px;\n              height: 40px;\n              text-align: center;\n              padding: 10px; }\n        #SearchModal .modal-dialog .modal-body .search-results-wrapper .result-item.animate {\n          transform: translateZ(400px) translateY(300px) rotateX(-90deg);\n          animation: fallPerspective .8s ease-in-out forwards; }\n\n@keyframes fallPerspective {\n  100% {\n    transform: translateZ(0px) translateY(0px) rotateX(0deg);\n    opacity: 1; } }\n  #SearchModal .close-search-btn {\n    background-color: #FF6733;\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 9999;\n    height: 60px; }\n    @media (min-width: 865px) {\n      #SearchModal .close-search-btn {\n        height: 60px; } }\n    #SearchModal .close-search-btn:hover {\n      cursor: pointer; }\n    #SearchModal .close-search-btn .close-svg {\n      height: 60px;\n      width: 60px; }\n  #SearchModal .search-btn {\n    background-color: #FF6733;\n    position: absolute;\n    top: 0;\n    right: 0;\n    z-index: 9999;\n    height: 60px;\n    width: 60px;\n    padding: 5px; }\n    @media (min-width: 865px) {\n      #SearchModal .search-btn {\n        height: 60px; } }\n    #SearchModal .search-btn:hover {\n      cursor: pointer; }\n\n#MemberLoginForm_LoginForm {\n  text-align: left;\n  max-width: 280px;\n  margin-right: auto;\n  margin-left: auto;\n  font-family: GustanLight; }\n  #MemberLoginForm_LoginForm fieldset {\n    border: none; }\n    #MemberLoginForm_LoginForm fieldset .field {\n      padding-bottom: 30px; }\n      #MemberLoginForm_LoginForm fieldset .field label {\n        text-align: left;\n        font-weight: 100;\n        font-size: 16px; }\n      #MemberLoginForm_LoginForm fieldset .field .middleColumn input {\n        width: 100%;\n        font-size: 20px;\n        padding: 8px 15px;\n        color: #FC6636;\n        border: 1px solid #a4a3a3; }\n      #MemberLoginForm_LoginForm fieldset .field .checkbox {\n        margin-left: 0; }\n    #MemberLoginForm_LoginForm fieldset #MemberLoginForm_LoginForm_Remember_Holder {\n      text-align: center; }\n  #MemberLoginForm_LoginForm .Actions {\n    text-align: center; }\n    #MemberLoginForm_LoginForm .Actions #MemberLoginForm_LoginForm_action_dologin {\n      text-align: center;\n      position: relative;\n      padding: 10px 20px;\n      border: 3px solid #FC6636;\n      border-radius: 0;\n      font-size: 18px;\n      font-family: GustanLight;\n      background-color: #FFF;\n      color: #FC6636;\n      background-image: linear-gradient(#FC6636, #FC6636);\n      background-position: 50% 50%;\n      background-repeat: no-repeat;\n      background-size: 0% 100%;\n      transition: background-size .5s, color .5s;\n      display: inline-block;\n      max-width: 240px;\n      text-decoration: none;\n      margin-bottom: 30px; }\n      #MemberLoginForm_LoginForm .Actions #MemberLoginForm_LoginForm_action_dologin:hover {\n        background-size: 100% 100%;\n        color: #040508;\n        text-decoration: none;\n        cursor: pointer; }\n      #MemberLoginForm_LoginForm .Actions #MemberLoginForm_LoginForm_action_dologin:focus {\n        outline: none;\n        text-decoration: none; }\n\n#site-wrapper {\n  background-color: rebeccapurple; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -27825,7 +32025,33 @@ exports.push([module.i, "\n.radial-progress-container {\r\n  position: relative;
 
 
 /***/ }),
-/* 52 */
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;( function( factory ) {
+	if ( true ) {
+
+		// AMD. Register as an anonymous module.
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(0) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {
+
+		// Browser globals
+		factory( jQuery );
+	}
+} ( function( $ ) {
+
+$.ui = $.ui || {};
+
+return $.ui.version = "1.12.1";
+
+} ) );
+
+
+/***/ }),
+/* 58 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -28015,79 +32241,79 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 53 */
+/* 59 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/gif;base64,R0lGODlhIAAgAKUAAAQCBISChMTCxERCROTi5GRiZKSipCQmJNTS1FRSVPTy9HRydLSytJSSlDQyNBQWFIyKjMzKzExKTOzq7GxqbKyqrNza3FxaXPz6/Hx6fLy6vAwKDCwuLJyanDw6PAQGBISGhMTGxERGROTm5GRmZKSmpCwqLNTW1FRWVPT29HR2dLS2tJSWlDQ2NBweHIyOjMzOzExOTOzu7GxubKyurNze3FxeXPz+/Hx+fLy+vP///wAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCQA6ACwAAAAAIAAgAAAG/kCdcEgkRloHWnHJJE5kxILL5SFiTpjmsuRwrIaXqWMoMwE4KS0xxnF4FEKUeLgA2BnqocrRhsQPLhxCFnYAHzV5QgR8XYhyLmM6IoULiUMNbRwUOmGQOgyFD1BMNxAXLHA6CiKZAp0tGAeFHUMKBARpOgIiIgMJNFkMmS8agB0EhRw3OhgENTUWBEIRA7zVBTA3JBwtMKrSOh6GIRgTFtDPI0MlErzWDRgh4EQpK7jP5+cEWUMTAb3uUmmZgO6cwCIIKPCysUyNDHQyGja5ocHAhEQ3FMjgR8QCiAwgQQYQYOnbrZMjMFC4wLIlChuj1GA49wxfDQIFXuq0wVJd8J6Z0CzkOwdjAYWjFEjM+GLpobObN3MVkRHhYp6MKSQ2ScFAxQIVB5mMgIZrYgQcC9Iu8KbmKbQJHBW9SDtjwQwQKTYyySpDKLoaEYVgyGA3rQoG9SA0uJhixDIEAgSksDW0RioZdr12UFcDAgQQAmRUKLECQ44cArzdeBjU6icVEE4IudHBc2wEJUoYoIo6x6hyN+NqjfAZgoEbuHNPmIBaQAiJWpcoeAHhBQh1uA2UiAhDAOp5eTR8fsE0eYmLCnoLiKuFBfUXqbJvH9TbtRoBniMMMf/bO7mSI/gkxAm5GSAVBnqVtAQGAtCAQElBAAAh+QQJCQA5ACwAAAAAIAAgAIUEAgSEgoTEwsREQkSkoqTk4uRkYmQkJiSUkpTU0tS0srT08vR0cnRUUlQ0NjQUEhSMiozMysysqqzs6uxsamycmpzc2ty8urz8+vx8enxcWlxMSkwsLiw8PjwMCgyEhoTExsRERkSkpqTk5uRkZmSUlpTU1tS0trT09vR0dnRUVlQ8OjwcHhyMjozMzsysrqzs7uxsbmycnpzc3ty8vrz8/vx8fnxcXlw0MjT///8AAAAAAAAAAAAAAAAAAAAAAAAG/sCccEgkugYrRXHJJE5gxBiOEyJiLJjm8hXa0IaGaWe4CLE2KC3RMAg1FkISBzcWBlgH1ldtD/lLQmEcdTN5eAV8QiMbbRszOSRigSyUAYlDMiFtGTkGc2M0lCw4cEw1FTEEpQsqmiEgFFMDNQOUBwRDEhwcEUIgGhoqJCc1ORd+GyU0ODgyBXhnxUcA1CtCCcE3wCkJGAwDGwk5MCNCDXgREwbU7FVCLwbAwCoyGC7lRRgCBREP7NQdHg2Z0CKbhhultKxjx0JEExMZgjEopqYFNQ82EpoCIWFCohoyAggkMqNCi5MnEbi4lGPBiAIwYY7AYIOBzZsMUkDhc2WG/oUZQH/OyGAzRoqiDHaqQeHT58+fBRJ8sBHABtUAexLBKAC0awGNQ2AkUKqlxoIFFLVgoNECQguwSyYALZDGVAIEEPJCsMAnqM8JWYiMIPChxQcIH0pgWBC4CIoaMJ42hUERA169LWhgACFCAhQMlHOMmFFgcQHJFlYVLvwCyggRsF2gEEDDBQan5SA3teBRCFsZAjEoICCCAFcBtBf4LYVhgoXSRNLmMAFbxIUaM2gkVw41rfQlGCQQJ+BxBm0BaLlasEBWDWfYIIQU0E4DDlOhjdUoKC6hrnntpcj1E1xMuAAbX0L8h54QtwH1nRYT9CbfeXXlUAMK+bE0RA0JBoCAyCVBAAAh+QQJCQA6ACwAAAAAIAAgAIUEAgSEgoTEwsREQkSkoqTk4uRkZmQkIiSUkpTU0tRUUlS0srT08vQ0MjR0dnSMiozMysxMSkysqqzs6uxsbmwsKiycmpzc2txcWly8urz8+vw8OjwcGhx8fnyEhoTExsRERkSkpqTk5uRsamwkJiSUlpTU1tRUVlS0trT09vQ0NjR8enyMjozMzsxMTkysrqzs7ux0cnQsLiycnpzc3txcXly8vrz8/vw8PjwcHhz///8AAAAAAAAAAAAAAAAAAAAG/kCdcEgkmk6uTHHJJMIYxBVogCFqaJrmEoWpfYYxEEgxZChkp5SWGMNgDGpdeDx8yBoNwXqIOLkJQmEDZDo0Kg0yKiJ7QiI1GCc1BXJihCN3MiyMQxJuGB46DlNkApgDUEw3IQEvqCkGjxgtKwMgJzcuiA0vQwsgES1CCTHEKwI3OgKQGCECESASIrq3OkcHOTmEJjEU3DEPJjcBNTUmOgyLOjUNKgkTDtc51zVDGQ4OxBQOEhotE0spPohIIEOePA4nJg2BQYAbvhhxtMQwmGPDgiY0WBDzgGzNDHkkEKBqcqMFChiMbkhAoJCICAkEZhCYGcLcJgsbDumMAKHE+oOfDzwAHaklAYCjSI+GFOqBxc+mKPe0SJo0xwULJbJqhbBJR4ccHMKGJaFkCQMaREkyYNBRS78QISREbDLhAo0Cc4ncuPACLtyWGGnYpTEhixMUcAnAXKAhRVsrN2DYvUCZBoyOGiSEUEwgBAQNJmwIUNMYmQi7GhgUoCFYsKvEzaBMEG0Di90CV+wuitz6wj8hLUIsSKfhgwDREya0TlFgMioNdXHrJVLguIAWkSdrgNG6QNvHSzRYtwFFsmDHqylHZXSB9gUhylHrSMGateE9xkUbNn/BcF27aWF0XDo68GcYfayBp8VaTrR23w0p3NeVXiIUsN4eQQAAIfkECQkAOgAsAAAAACAAIACFBAIEhIKExMLEREJEpKKk5OLkZGJkJCYklJKU1NLUVFJUtLK09PL0dHJ0HB4cNDY0DAoMjIqMzMrMTEpMrKqs7OrsbGpsnJqc3NrcXFpcvLq8/Pr8fHp8PD48BAYEhIaExMbEREZEpKak5ObkZGZkNDI0lJaU1NbUVFZUtLa09Pb0dHZ0PDo8DA4MjI6MzM7MTE5MrK6s7O7sbG5snJ6c3N7cXF5cvL68/P78fH58////AAAAAAAAAAAAAAAAAAAABv5AnXBIJGIsNlBxySQyGMQIymYh4gqb5lIwW72Gn0yGNGSQQqSsFtxo5FTCQAZFFl5Cg5BkPSS0GzFxGTYGQgUhiBMVfEIyK10NIzphY0IciAMXjEMpfyY6cnQ6EoghKFBMOCkXGnA6Kjl/J5QWOAZ4IQtDGigoCUIYER8RCC84ow1dCy82GTEVpbU6JwYl1jZCNRHbwzQ1OCYNKxg6DIs6MyETCTIB1iUHJVVCIC4R9tsaGxjnRBsSFRJ0eHdNUpkY3La50pLDWrwQKZoUoGHPxLE1BKw9MLEw1QkQqNbgiGHCIJEKN1JoUKmyxiYdFFBMgDFzgo0EMUSIIKCzZ/7HJhgcCB16wMEACjx18iRAIaSWBEKLDnXAosCCGAsoXF3wa5MLFiXAgp1wg4mKET+ZbNCqRsuGGgLipi1iAACAEkpSjQAh4MYNAf2aOLBrN0OBIgxe9F0MYsOGi0Ue5yBsF8IHNTgW/xWAYcOIGjWybFBxbASG0DEOUAaAQMiGv39fwFFR43QF2hiw1K4hacOHFoQbDIELUMiV0xgYyABdQ0UB5KhGkPBwwOUQyDpkIB+BQ/vpDctPF4DcVi3o03DCd75SG4OMlxV2n4tfG84+5uW1nA/d6DR/HZ9hgMFcS2hXw3v91abGW6Bht8ZoTiDXFg4q5PeScSMUgCAjQQEAACH5BAkJADkALAAAAAAgACAAhQQCBISChMTCxERCRKSipOTi5GRiZCQiJJSSlNTS1LSytPTy9HRydFRSVBQWFDQyNIyKjMzKzExKTKyqrOzq7GxqbJyanNza3Ly6vPz6/Hx6fCwqLFxaXBweHAwODISGhMTGxERGRKSmpOTm5GRmZCQmJJSWlNTW1LS2tPT29HR2dBwaHDw6PIyOjMzOzExOTKyurOzu7GxubJyenNze3Ly+vPz+/Hx+fFxeXP///wAAAAAAAAAAAAAAAAAAAAAAAAb+wJxwSCTSAqpIcckkLlJEC4MRINpGmebSBYGchiaG7DZcqDiqrHZo6SKguTBDMxRx7q71UPHp1oRydDkjOHc4FHpCMS0QHy2IYWNCEHccIolDAhCME3FTdC6VJHBLNiAKEXApJo0QNJEBNgyVf0I1JCQXQgUiBCITJzY5CZsQNQkqKhgUlSrCFwwh0gxCIyLX1wojNiJdBTkLMUI3HDg0i9LSA4LDE77XExE250sZLjEnDekDEgwjTgJ+EfClRguEEANCSOBQawkFBdmErZkgTQIBUkxsFHCxIJENDAQQFVngomQEFydFJoJhoNKdCidACKgxs2aNgloubHiwk+fwgwcvbArF2OTEz589N4SgEAGE06YgvmEykS5dAxBMMizA2SQFCgwStdigQOMCDa5LVHQ4IEFJxgU0ypbtuIZFh7sHZPwjkqKAXLM0bGQIS+RCDARr8ZZAIFGj2ccUxprNkiGFsAYAHJzAwOIA3g4EhGR4TAMLOLkUUpQtUACA6wE5MpjY4LnDhyFkC8BxPDdGXBoLVrgGAEMIBRUlBkgVQjjG423OzaYQMfwAKbREMsSVnsP35Awsht/GRNbsXudloYAY7mGvnu1nFT1Wg2N48UTo6eYoH3+QAwAriINJZU7MN0QMKAiISSkjFKCgHkEAACH5BAkJADYALAAAAAAgACAAhQQCBISChMTCxERGROTi5KSipGRmZCQiJNTS1PTy9LSytJSSlHR2dFxaXDQyNBwaHIyKjMzKzExOTOzq7KyqrGxubNza3Pz6/Ly6vDw6PJyanHx+fAwODISGhMTGxExKTOTm5KSmpGxqbCwqLNTW1PT29LS2tJSWlHx6fGRiZDQ2NBweHIyOjMzOzFRSVOzu7KyurHRydNze3Pz+/Ly+vDw+PP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAb+QJtwSCSCTixScckklkpEGARyIs4ml+bSEgoRhqHpYliCxCBZ7VBRCFHSYQhrHavElGqhoBuKCONzNhMMMTEML3lCCV1tCTaAQhqFFSaJQwhtITQ2FB0sYySEFQFQTDMWHhZpJTB8BBRTJzMQFYQeQx4oDBZCEzQCvwQzNjIUbS0WLBAeL4UxLMMyAQ3UG0IvwNkRLzMYBRQTNgmINguGMgka1OsdQzLZvzSqII5FFyQvMinr1eRCJSTgCUijRd26CreYvIjwy8MwNSaopYBRqskVGQS1zKABA8SSEiAIiAxJz5INEzFEqFSJwgIBCzJkwJyZsYmMAThz4kwhs+fpTIyJLOjU2SABgZhHZRDwl6cANRdPU/hZciFBTSYXTAh4qHFCz6tFNjgY0aCFxQQxZ9bTMsCBWwcMwjk5+lPGjAtcicgooWGs2xEZNDyc8dLnhCswsxAwAUXECgcWaEh4OzaEkAs/QWRBC3MCAg4AHBBYQbqBjQsFVIxVEUiQ0lKE1W4AQLtFhhUHVmC4tkGFBI9D8r6YCWJGANoAWsDIvaJGxbxU0+61Mbv2BRe4V1Sx5BUm8OO1bbTIfWCE3DzS01RPLiQGad2WhqMbst6sIAcHVKzNc6FiOeQyDIENUyYNkYAED7RjSRAAIfkECQkAOAAsAAAAACAAIACFBAIEhIKExMLEREJEpKKk5OLkZGJkJCIklJKU1NLUtLK09PL0dHJ0XFpcNDI0FBIUjIqMzMrMTEpMrKqs7OrsbGpsnJqc3NrcvLq8/Pr8fHp8LCosPDo8DA4MhIaExMbEREZEpKak5ObkZGZkJCYklJaU1NbUtLa09Pb0dHZ0XF5cNDY0HB4cjI6MzM7MTE5MrK6s7O7sbG5snJ6c3N7cvL68/P78fH58////AAAAAAAAAAAAAAAAAAAAAAAAAAAABv5AnHBIJFJgE1pxySRmUEQBIQQj2mK25rJQE1CGmFBoMszMILOMlhip1T5qXHg8rEHuyrXQJBDULkI1IQRkODF3Hi0LekIofn5Qc4UTdxA1jEM0jwlyg2Q0EIklUEw2FDQUWTgZH48UglQ2FpUuQwl3BUILNDQXNAtZIn41NAViCQuIBMEIDDIpCI2+0wUoNi59MauLOCEQLSILEwzk5CVDMb3qF6kxpE6/BSnOKc8l2mUU071xWiHz5ALUYoKigC8aqrQIoIfhXakFMfppsREBAz4iKEQU2LgxHCYcNW7c0EBSA4RiB3lNk9ikQIOXMF8yWLePBksmNGLGlLGgAO0vn8Uu6pkgY0TRoikGFsmw4OaSDG8SNjGlzimRFiBAVDAxddc6bloaZM3q4QtGnzVtXABLhAYKAmMlDHgRQpUNg+tSqQDQgdMrNQwcDKDxwcCAAVkHKBCSYZ8INQoASGZgYgOLFwUcbHAwYtWEF2MtDDlVrREJyQBCIGBxgEUCEA40XzKEQIIKs0KkQkC9IkML1ixMnNjsQMI7q0IodEAtAEeL1gcS2FAR28GMjyNQNxDyuzWnBJodrBCq5YDkDrmctw4u5Eb12XpSSG4xpDt7HBQGbABBXsuHCETMAF16hnzQ30c4oGCAA+dgEgQAIfkECQkANwAsAAAAACAAIACFBAIEhIKExMLEREZE5OLkpKakJCIkZGJklJKU1NLU9PL0VFZUtLa0FBIUNDI0dHJ0jIqMzMrMTE5M7OrsrK6snJqc3Nrc/Pr8DA4MLCosXF5cvL68HB4cPDo8fHp8BAYEhIaExMbETEpM5ObkrKqsbG5slJaU1NbU9Pb0XFpcvLq8FBYUdHZ0jI6MzM7MVFJU7O7stLK0nJ6c3N7c/P78LC4sPD48////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABv7Am3BIJCpCglFxySReLsTERhAi0hS05hI2mymGLsF0eIkVGFDtkGDpZm/hsdBVqBPUw9HMYpnMxQJCCnUFJF94Nxdte1BxVTcbhQURiEMwbRZKcYEjhCRpSzQTMxNvNF1tClJUNDEkdRZDJzIyfjcKqF5ZCpgTE2IEKHUyKlATBRDJBUIomHvBNARdKInUNyqFEwoqyd0klnvhfTQooGQjCiMIIBDsIAWHQhcTzhZvWgzdLSaxTChsbvBESNYihLlQCmAcZELjRIh4Q1CMIECRIrpKN0IgaMGRYwWKi3JZWLhkxIOTKE+CEOdsBskiBE6WYCGTRQAF0mbkJAADI/aDAAE8AA0A4gQTCzL6qbkQwcW9JgoefACA4Y4aEylSeFBahEaFFQDCAvimpkSKBRpSmLA1JIIDsWE5wCAAcQ0KClkXZNUQ440CDHA/PIDxgEONWCMM3ggw4AUBFw/S5lUhhADcAUY3cDDAAYSFDjVSjBhAmkWiGBokLxPyAEAGBvJscOYQo0INB4cXkB4Q6JYJDQ/YJiJiYvaLCyZwOzixQQTpFKCeLplQYzMHSslvn6BRYjdZRCxmPxCSffkNC7tF9ERkY3MGJTds4+4HYXdvPBA4cKgwRP5hIRO8MEAKdWnhQgJEFKAcfLdEUCBGN6DQHX+VBAEAIfkECQkAOgAsAAAAACAAIACFBAIEhIKExMLEREZEpKKk5OLkJCIkZGZklJKU1NLUtLK09PL0NDI0dHZ0XFpcHBocjIqMzMrMrKqs7OrsLCosbG5snJqc3NrcvLq8/Pr8PDo8DA4MTE5MfH58ZGJkBAYEhIaExMbETEpMpKak5ObkJCYkbGpslJaU1NbUtLa09Pb0NDY0fHp8XF5cHB4cjI6MzM7MrK6s7O7sLC4sdHJ0nJ6c3N7cvL68/P78PD48////AAAAAAAAAAAAAAAAAAAABv5AnXBIJKoKtkVxySRmMkTS5WIj4lS45lJmSw5J3aowExFEstphgWpDr7tDm+B2k6W/tulECKYKVXMCAip3Y2wXUEh+OgmBF4VDMlQXJDqKVTKBAlBMOBM2E2g4XVQLUl04ETdzlUIFKSl7OgukSVkLkxMqpYCrZzoyGCMEIxh/k3kFWEg2hE9CMHMLKhHDI9c3kXnbF6EqnE4yGRMS19cEGEpD48gXaFoh5xIxBU1HbO9NF8QSCeCdC8QVGpVAHZEQA1YwULgiBwFIjIYRqEGAgAQSDwBo3Kix3p0JECCACCnyhYUNHDk+ukOipEsIJ2KUeECTpgsQEENYOMGTZ+0NMUUKjPCYBgcMFPmYLABRwgWFVlok0KDxAmgRHCMYuDCwNcWdABWm0iBgh0gCEVtdbNUgQxkTEiowTK3QgEYDDGhUzEhrwECABSxm5Hg0IQKUFw4OkEABQuzUEHy4qvXw6AaDGQyqchhgYoKDzzgz3GBBt4KCIQEMDBAwhgPmGRgIDJh9ocJnBxGELBjRAELZMURqXGbQAods2gJuVwCXtIgMDa8T6Dg+wF2H2zEgBhjOQkiN2dV1XGjxuYXBNCIwr5BFfeWJ2zAgIcA8Ykh7ITIOtDBxPk0CFETEAJ4ss8BACERLqBCAAw9BEgQAIfkECQkAOAAsAAAAACAAIACFBAIEhIKExMLEREJEpKKk5OLkZGJkJCIklJKU1NLUVFJUtLK09PL0dHJ0NDI0FBIUjIqMzMrMTEpMrKqs7OrsnJqc3NrcXFpcvLq8/Pr8PDo8bGpsfHp8DAoMhIaExMbEREZEpKak5ObkLCoslJaU1NbUVFZUtLa09Pb0NDY0HB4cjI6MzM7MTE5MrK6s7O7snJ6c3N7cXF5cvL68/P78PD48bG5sfH58////AAAAAAAAAAAAAAAAAAAAAAAAAAAABv5AnHBIJKIKMUZxySRmMkSRxRIj0jK05vIVSw5F3aqQVrAUstphuYtei3GUGFWZFoKnFLtcnKFSoXU4fV0WUEhUelR5gUIvfiI4h1UofjFoSxkyKjaLNIRJUmxudHAREXQTAKodCFAMfhSUSYNmWQwsAjMzLEInqr8jJzShKDhXQmsZlLnMCUMBHb+qGzQogFbWDMwzuQnFQzEm0gAvdSXbH4tLMyOqKpdNBdwClmk0BDcFgTRx30QRMiS0ECjBhAtGOCxgOLGQ4YwXKVQcUCFR4gFIdRiE2EiAY4gFIyhOrKhCX50XITpuXLkAwwAHKVLA1EACYQIXC3BOWLDAZOuRAi58aqExBR4TBitkasCo5QQECDCYFqHhYsAIB1dn1CHx9OkCUkJKXLjqoCwIBiL8EYn1AYKHFW5XfECDQkNZsitQeAChoMqLBFBgNLhBwQKMuE95wSHrwEaVDyBADKhQwIAJwg0y18wQAe5TrUJWOGjxQQgKA5FBzHBxoXWMADYyO8OB4sSKCmDhTYg8wAbV1hdisMhsw8M1o0VetIgswRlrEzIsIcjcAHQgBAMkQxAyAXiVAtQ5lAskg/mi59GFhGgQuwSjCpEPCmHtWgiDGw08qE1TwgIRDCa0pg4KJeyHkGkrbCBfIEEAACH5BAkJADkALAAAAAAgACAAhQQCBISChMTCxERCROTi5KSipGRiZCQiJNTS1FRSVPTy9LSytJSSlHRydDQyNBQWFMzKzExKTOzq7KyqrGxqbNza3FxaXPz6/Ly6vJyanIyKjCwuLHx6fDw6PBweHAQGBMTGxERGROTm5KSmpGRmZCQmJNTW1FRWVPT29LS2tJSWlBwaHMzOzExOTOzu7KyurGxubNze3FxeXPz+/Ly+vJyenIyOjHx+fDw+PP///wAAAAAAAAAAAAAAAAAAAAAAAAb+wJxwSCSiCDFFcckkiiTOSiVGnF1mzSUDABgNkTGqcEaoELDZ4YH7cAlFU3FOEpsq08ITFwATIqdCF1NTF3hCMR97Jjl/YiJ1MVCGQg17IYyQOSiDMWhLFw0dN245Cg97C3BhZHF3pQQEKEIpHh4HGzWFNXswKHUKgnVnOReNBEI0B7a2AwIzOAAfAjlWfoQXEpwVIkMMJbYrtTcoGHJDMygXvtoihUMiFMvKrk3ZkElNECHKHZ5NLpBc+Fsy4wWDY3hmKHDhjggLChYiRjSwYFIOESxYQNDIAoGCARscbAg50oGkNCgE0FDJkgYEHCJjkuSGR8HKmyxB0GgRomf2zwgFLMYAAUEACKIQSBURkYJmmmLDUGaIEKLFySYgRoxIcbVKigQhBvScluaFVq0CZBGpQEGsTwsK2jFhiGBEgQkFRkxAgAYFz54DImRQoMICiWMuKhR6oYGBBBEL8uYdUUGIBMAROBxjIXGECA4wbLjQQNrLDBMTtBZgMSRDCBIQAsGwcMICCAwNcotQQVpDZU0QRiyg1zDHgogybszAAEO3id4qPA0sosDACRkWFuFuAEPEjAK9QVisIVGFEOa6L/a2oRbP7BMGSG1vQDNF7994JliQkWIIevpCEKaBCu3hAcgQAuTWgFK+FGjRECjUcAMNFgUBACH5BAkJADsALAAAAAAgACAAhQQCBISChMTCxERCROTi5GRiZKSipCQiJNTS1FRSVPTy9HRydLSytJSWlBQSFDQyNIyKjMzKzExKTOzq7GxqbKyqrNza3FxaXPz6/Hx6fLy6vDw6PAwKDJyenBwaHAQGBISGhMTGxERGROTm5GRmZKSmpCQmJNTW1FRWVPT29HR2dLS2tJyanDQ2NIyOjMzOzExOTOzu7GxubKyurNze3FxeXPz+/Hx+fLy+vDw+PBweHP///wAAAAAAAAAAAAAAAAb+wJ1wSCSGPBxDcckkTiZECQDgIdowtuayozswhrkpZ2gj0AhZLfige8SEA/EwRrNYUuohRde9CcMAYzs2dTQ0GHlCBCZdByc7cYFCI4VQiUIQfDo1O4BjKYYWNGlLGDcSIG87Cg9sBxoiUw5lhQpDCgQEeDsaD745JYgzXToBMx8AIBiFaDsYZnUEQiG+1TAhNhceJhE7EzSKdSkYE6KiNCNDDS0PJtUBGALgRTbjy4WiBIhDIyrVvqq0lCtEwxaTCCjawSDVhI6oGAyX2FjRIF0eGwpi7CNyIgOFjx8X4Li0KpdJAiMwoBDBsuUAEZbUgDJE8xwMES9xtrSoBoP7nZ/MQhRAceEC0QsVSNKBZoiAwSIjBPDUYmMCxDwpStS4UCBgkxMCcLx4Sg8HhaJGu6kJISCsgBMbhdDIUPSojBQT4s5Z5hZH21FCUpCoW6OGgawLMqRTcGiHgBIzFExgi8MvDosxCENIh2DBAhkrJriAYEBBidMaBhFo63feDgM1VCAQggGE5wUvQkCAAGLCjNMlpO1IYQFHhF1CGOL4rMKFDQG7XYwgYKCEAQakIhZRkOE2ON0gpNvQAHz2pQoyPpeYthsClAnWS1RArsZ2YlW6eVsKAVx4HgafCTAEeC5YksIM19GnBjpEvNBeQBikRBITGMzQQAgkBQEAOw=="
 
 /***/ }),
-/* 54 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/Gustan-Bold.svg";
 
 /***/ }),
-/* 55 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/Gustan-Bold.ttf";
 
 /***/ }),
-/* 56 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/Gustan-Bold.woff";
 
 /***/ }),
-/* 57 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/Gustan-Extrablack.svg";
 
 /***/ }),
-/* 58 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/Gustan-Extrablack.ttf";
 
 /***/ }),
-/* 59 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/Gustan-Extrablack.woff";
 
 /***/ }),
-/* 60 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/Gustan-Light.svg";
 
 /***/ }),
-/* 61 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/Gustan-Light.ttf";
 
 /***/ }),
-/* 62 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/Gustan-Light.woff";
 
 /***/ }),
-/* 63 */
+/* 69 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAeCAYAAAAo5+5WAAAAdUlEQVRIx2MQllCs+P//vwcQM1ATM4waPGrwqMEjzmBSweAxGMgu+k8YFJHjYsvFixfvwWUiSA6khtygsFmxYsV+dENBYiA5SsPYfvXq1QdghoLYIDFqRZ7jxo0bD4MwiE3tVOECxYM0uVHd4NFCaNTgQW4wAKpugq+9Zk7QAAAAAElFTkSuQmCC"
 
 /***/ }),
-/* 64 */
+/* 70 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHdpZHRoPScxNzZweCcgaGVpZ2h0PScxNzZweCcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiIGNsYXNzPSJ1aWwtcmlwcGxlIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0ibm9uZSIgY2xhc3M9ImJrIj48L3JlY3Q+PGc+IDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGR1cj0iMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMHMiIGtleVRpbWVzPSIwOzAuMzM7MSIgdmFsdWVzPSIxOzE7MCI+PC9hbmltYXRlPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQwIiBzdHJva2U9InJnYmEoMTUzLDE1NiwxNTgsMC40NTkpIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgZHVyPSIycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIwcyIga2V5VGltZXM9IjA7MC4zMzsxIiB2YWx1ZXM9IjA7MjI7NDQiPjwvYW5pbWF0ZT48L2NpcmNsZT48L2c+PGc+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgZHVyPSIycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIxcyIga2V5VGltZXM9IjA7MC4zMzsxIiB2YWx1ZXM9IjE7MTswIj48L2FuaW1hdGU+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDAiIHN0cm9rZT0iI2ZjNjYzNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InIiIGR1cj0iMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMXMiIGtleVRpbWVzPSIwOzAuMzM7MSIgdmFsdWVzPSIwOzIyOzQ0Ij48L2FuaW1hdGU+PC9jaXJjbGU+PC9nPjwvc3ZnPg=="
 
 /***/ }),
-/* 65 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -31666,26 +35892,26 @@ return index;
 
 
 /***/ }),
-/* 66 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
- * vue-carousel-3d v0.1.12
+ * vue-carousel-3d v0.1.13
  * (c) 2017 Vladimir Bujanovic
  * https://github.com/wlada/vue-carousel-3d#readme
  */
-!function(t,e){ true?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.Carousel3d=e():t.Carousel3d=e()}(this,function(){return function(t){function e(i){if(n[i])return n[i].exports;var r=n[i]={exports:{},id:i,loaded:!1};return t[i].call(r.exports,r,r.exports,e),r.loaded=!0,r.exports}var n={};return e.m=t,e.c=n,e.p="",e(0)}([function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0}),e.Slide=e.Carousel3d=void 0;var r=n(1),o=i(r),s=n(15),a=i(s),u=function(t){t.component("carousel3d",o.default),t.component("slide",a.default)};e.default={install:u},e.Carousel3d=o.default,e.Slide=a.default},function(t,e,n){n(2);var i=n(7)(n(8),n(57),"data-v-c06c963c",null);t.exports=i.exports},function(t,e,n){var i=n(3);"string"==typeof i&&(i=[[t.id,i,""]]),i.locals&&(t.exports=i.locals);n(5)("738a493f",i,!0)},function(t,e,n){e=t.exports=n(4)(),e.push([t.id,".carousel-3d-container[data-v-c06c963c]{width:100%;position:relative;z-index:0;overflow:hidden;margin:20px auto;box-sizing:border-box}.carousel-3d-slider[data-v-c06c963c]{position:relative;margin:0 auto;transform-style:preserve-3d;-webkit-perspective:1000px;-moz-perspective:1000px;perspective:1000px}",""])},function(t,e){t.exports=function(){var t=[];return t.toString=function(){for(var t=[],e=0;e<this.length;e++){var n=this[e];n[2]?t.push("@media "+n[2]+"{"+n[1]+"}"):t.push(n[1])}return t.join("")},t.i=function(e,n){"string"==typeof e&&(e=[[null,e,""]]);for(var i={},r=0;r<this.length;r++){var o=this[r][0];"number"==typeof o&&(i[o]=!0)}for(r=0;r<e.length;r++){var s=e[r];"number"==typeof s[0]&&i[s[0]]||(n&&!s[2]?s[2]=n:n&&(s[2]="("+s[2]+") and ("+n+")"),t.push(s))}},t}},function(t,e,n){function i(t){for(var e=0;e<t.length;e++){var n=t[e],i=l[n.id];if(i){i.refs++;for(var r=0;r<i.parts.length;r++)i.parts[r](n.parts[r]);for(;r<n.parts.length;r++)i.parts.push(s(n.parts[r]));i.parts.length>n.parts.length&&(i.parts.length=n.parts.length)}else{for(var o=[],r=0;r<n.parts.length;r++)o.push(s(n.parts[r]));l[n.id]={id:n.id,refs:1,parts:o}}}}function r(t,e){for(var n=[],i={},r=0;r<e.length;r++){var o=e[r],s=o[0],a=o[1],u=o[2],c=o[3],l={css:a,media:u,sourceMap:c};i[s]?(l.id=t+":"+i[s].parts.length,i[s].parts.push(l)):(l.id=t+":0",n.push(i[s]={id:s,parts:[l]}))}return n}function o(){var t=document.createElement("style");return t.type="text/css",d.appendChild(t),t}function s(t){var e,n,i=document.querySelector('style[data-vue-ssr-id~="'+t.id+'"]'),r=null!=i;if(r&&p)return v;if(x){var s=f++;i=h||(h=o()),e=a.bind(null,i,s,!1),n=a.bind(null,i,s,!0)}else i=i||o(),e=u.bind(null,i),n=function(){i.parentNode.removeChild(i)};return r||e(t),function(i){if(i){if(i.css===t.css&&i.media===t.media&&i.sourceMap===t.sourceMap)return;e(t=i)}else n()}}function a(t,e,n,i){var r=n?"":i.css;if(t.styleSheet)t.styleSheet.cssText=m(e,r);else{var o=document.createTextNode(r),s=t.childNodes;s[e]&&t.removeChild(s[e]),s.length?t.insertBefore(o,s[e]):t.appendChild(o)}}function u(t,e){var n=e.css,i=e.media,r=e.sourceMap;if(i&&t.setAttribute("media",i),r&&(n+="\n/*# sourceURL="+r.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(r))))+" */"),t.styleSheet)t.styleSheet.cssText=n;else{for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(n))}}var c="undefined"!=typeof document,r=n(6),l={},d=c&&(document.head||document.getElementsByTagName("head")[0]),h=null,f=0,p=!1,v=function(){},x="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());t.exports=function(t,e,n){p=n;var o=r(t,e);return i(o),function(e){for(var n=[],s=0;s<o.length;s++){var a=o[s],u=l[a.id];u.refs--,n.push(u)}e?(o=r(t,e),i(o)):o=[];for(var s=0;s<n.length;s++){var u=n[s];if(0===u.refs){for(var c=0;c<u.parts.length;c++)u.parts[c]();delete l[u.id]}}}};var m=function(){var t=[];return function(e,n){return t[e]=n,t.filter(Boolean).join("\n")}}()},function(t,e){t.exports=function(t,e){for(var n=[],i={},r=0;r<e.length;r++){var o=e[r],s=o[0],a=o[1],u=o[2],c=o[3],l={id:t+":"+r,css:a,media:u,sourceMap:c};i[s]?i[s].parts.push(l):n.push(i[s]={id:s,parts:[l]})}return n}},function(t,e){t.exports=function(t,e,n,i){var r,o=t=t||{},s=typeof t.default;"object"!==s&&"function"!==s||(r=t,o=t.default);var a="function"==typeof o?o.options:o;if(e&&(a.render=e.render,a.staticRenderFns=e.staticRenderFns),n&&(a._scopeId=n),i){var u=a.computed||(a.computed={});Object.keys(i).forEach(function(t){var e=i[t];u[t]=function(){return e}})}return{esModule:r,exports:o,options:a}}},function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0});var r=n(9),o=i(r),s=n(10),a=i(s),u=n(15),c=i(u),l=function(){};e.default={name:"carousel3d",components:{Controls:a.default,Slide:c.default},props:{controlsVisible:{type:Boolean,default:!1},perspective:{type:Number,default:35},display:{type:Number,default:5},loop:{type:Boolean,default:!0},animationSpeed:{type:Number,default:500},dir:{type:String,default:"rtl"},width:{type:Number,default:360},height:{type:Number,default:270},border:{type:Number,default:1},space:{type:[Number,String],default:"auto"},startIndex:{type:Number,default:0},clickable:{type:Boolean,default:!0},minSwipeDistance:{type:Number,default:10},inverseScaling:{type:Number,default:300},onLastSlide:{type:Function,default:l},onSlideChange:{type:Function,default:l}},data:function(){return{viewport:0,currentIndex:0,total:0,lock:!1,dragOffset:0,dragStartX:0,mousedown:!1}},mixins:[o.default],computed:{isLastSlide:function(){return this.currentIndex===this.total-1},isFirstSlide:function(){return 0===this.currentIndex},isNextPossible:function(){return!(!this.loop&&this.isLastSlide)},isPrevPossible:function(){return!(!this.loop&&this.isFirstSlide)},slideWidth:function(){var t=this.viewport,e=parseInt(this.width+2*this.border,10);return t<e?t:e},slideHeight:function(){var t=parseInt(this.width+2*this.border,10),e=parseInt(this.height+2*this.border,10),n=this.calculateAspectRatio(t,e);return this.slideWidth/n},visible:function(){var t=this.display>this.total?this.total:this.display;return 2!==t?t%2?t:t-1:t},hasHiddenSlides:function(){return this.total>this.visible},leftIndices:function(){for(var t=Math.floor(this.visible/2)+1,e=[],n=1;n<t;n++)e.push("ltr"===this.dir?(this.currentIndex+n)%this.total:(this.currentIndex-n)%this.total);return e},rightIndices:function(){for(var t=Math.floor(this.visible/2)+1,e=[],n=1;n<t;n++)e.push("ltr"===this.dir?(this.currentIndex-n)%this.total:(this.currentIndex+n)%this.total);return e},leftOutIndex:function(){var t=Math.floor(this.visible/2)+1;return"ltr"===this.dir?this.total-this.currentIndex-t<=0?-parseInt(this.total-this.currentIndex-t):this.currentIndex+t:this.currentIndex-t},rightOutIndex:function(){var t=Math.floor(this.visible/2)+1;return"ltr"===this.dir?this.currentIndex-t:this.total-this.currentIndex-t<=0?-parseInt(this.total-this.currentIndex-t,10):this.currentIndex+t}},methods:{goNext:function(){this.isNextPossible&&(this.isLastSlide?this.goSlide(0):this.goSlide(this.currentIndex+1))},goPrev:function(){this.isPrevPossible&&(this.isFirstSlide?this.goSlide(this.total-1):this.goSlide(this.currentIndex-1))},goSlide:function(t){var e=this;this.currentIndex=t<0||t>this.total-1?0:t,this.lock=!0,this.isLastSlide&&(this.onLastSlide!==l&&console.warn("onLastSlide deprecated, please use @lastSlide"),this.onLastSlide(this.currentIndex),this.$emit("last-slide",this.currentIndex)),this.$emit("before-slide-change",this.currentIndex),setTimeout(function(){return e.animationEnd()},this.animationSpeed)},goFar:function(t){var e=this,n=t===this.total-1&&this.isFirstSlide?-1:t-this.currentIndex;this.isLastSlide&&0===t&&(n=1);for(var i=n<0?-n:n,r=0,o=0;o<i;){o+=1;var s=1===i?0:r;setTimeout(function(){return n<0?e.goPrev(i):e.goNext(i)},s),r+=this.animationSpeed/i}},animationEnd:function(){this.lock=!1,this.onSlideChange!==l&&console.warn("onSlideChange deprecated, please use @afterSlideChanged"),this.onSlideChange(this.currentIndex),this.$emit("after-slide-change",this.currentIndex)},handleMouseup:function(){this.mousedown=!1,this.dragOffset=0},handleMousedown:function(t){t.touches||t.preventDefault(),this.mousedown=!0,this.dragStartX="ontouchstart"in window?t.touches[0].clientX:t.clientX},handleMousemove:function(t){if(this.mousedown){var e="ontouchstart"in window?t.touches[0].clientX:t.clientX,n=this.dragStartX-e;this.dragOffset=n,this.dragOffset>this.minSwipeDistance?(this.handleMouseup(),this.goNext()):this.dragOffset<-this.minSwipeDistance&&(this.handleMouseup(),this.goPrev())}},attachMutationObserver:function(){var t=this,e=window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver;if(e){var n={attributes:!0,data:!0};this.mutationObserver=new e(function(){t.$nextTick(function(){t.computeData()})}),this.$el&&this.mutationObserver.observe(this.$el,n)}},detachMutationObserver:function(){this.mutationObserver&&this.mutationObserver.disconnect()},getSlideCount:function(){return void 0!==this.$slots.default?this.$slots.default.filter(function(t){return void 0!==t.tag}).length:0},calculateAspectRatio:function(t,e){return Math.min(t/e)},computeData:function(){this.total=this.getSlideCount(),this.currentIndex=this.startIndex>this.total-1?this.total-1:this.startIndex,this.viewport=this.$el.clientWidth},setSize:function(){this.$el.style.cssText+="height:"+this.slideHeight+"px;",this.$el.childNodes[0].style.cssText+="width:"+this.slideWidth+"px; height:"+this.slideHeight+"px;"},beforeDestroy:function(){this.$isServer||(this.detachMutationObserver(),"ontouchstart"in window?this.$el.removeEventListener("touchmove",this.handleMousemove):this.$el.removeEventListener("mousemove",this.handleMousemove),window.removeEventListener("resize",this.setSize))}},mounted:function(){this.computeData(),this.attachMutationObserver(),this.setSize(),this.$isServer||(window.addEventListener("resize",this.setSize),"ontouchstart"in window?(this.$el.addEventListener("touchstart",this.handleMousedown),this.$el.addEventListener("touchend",this.handleMouseup),this.$el.addEventListener("touchmove",this.handleMousemove)):(this.$el.addEventListener("mousedown",this.handleMousedown),this.$el.addEventListener("mouseup",this.handleMouseup),this.$el.addEventListener("mousemove",this.handleMousemove)))}}},function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n={props:{autoplay:{type:Boolean,default:!1},autoplayTimeout:{type:Number,default:2e3},autoplayHoverPause:{type:Boolean,default:!0}},data:function(){return{autoplayInterval:null}},destroyed:function(){this.$isServer||(this.$el.removeEventListener("mouseenter",this.pauseAutoplay),this.$el.removeEventListener("mouseleave",this.startAutoplay))},methods:{pauseAutoplay:function(){this.autoplayInterval&&(this.autoplayInterval=clearInterval(this.autoplayInterval))},startAutoplay:function(){var t=this;this.autoplay&&(this.autoplayInterval=setInterval(function(){"ltr"===t.dir?t.goPrev():t.goNext()},this.autoplayTimeout))}},mounted:function(){!this.$isServer&&this.autoplayHoverPause&&(this.$el.addEventListener("mouseenter",this.pauseAutoplay),this.$el.addEventListener("mouseleave",this.startAutoplay)),this.startAutoplay()}};e.default=n},function(t,e,n){n(11);var i=n(7)(n(13),n(14),"data-v-43e93932",null);t.exports=i.exports},function(t,e,n){var i=n(12);"string"==typeof i&&(i=[[t.id,i,""]]),i.locals&&(t.exports=i.locals);n(5)("21e99dee",i,!0)},function(t,e,n){e=t.exports=n(4)(),e.push([t.id,".carousel-3d-controls[data-v-43e93932]{position:absolute;top:50%;height:60px;margin-top:-30px;left:0;width:100%;z-index:9099}.next[data-v-43e93932],.prev[data-v-43e93932]{width:60px;position:absolute;z-index:9999;font-size:60px;height:60px;line-height:60px;color:#333;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;text-decoration:none;top:0}.next[data-v-43e93932]:hover,.prev[data-v-43e93932]:hover{cursor:pointer;opacity:.7}.prev[data-v-43e93932]{left:10px;text-align:left}.next[data-v-43e93932]{right:10px;text-align:right}.disabled[data-v-43e93932],.disabled[data-v-43e93932]:hover{opacity:.2;cursor:default}",""])},function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"controls",data:function(){return{parent:this.$parent}}}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"carousel-3d-controls"},[n("a",{staticClass:"prev",class:{disabled:!t.parent.isPrevPossible},attrs:{href:"#"},on:{click:function(e){e.preventDefault(),t.parent.goPrev()}}},[n("span",[t._v("‹")])]),t._v(" "),n("a",{staticClass:"next",class:{disabled:!t.parent.isNextPossible},attrs:{href:"#"},on:{click:function(e){e.preventDefault(),t.parent.goNext()}}},[n("span",[t._v("›")])])])},staticRenderFns:[]}},function(t,e,n){n(16);var i=n(7)(n(18),n(56),null,null);t.exports=i.exports},function(t,e,n){var i=n(17);"string"==typeof i&&(i=[[t.id,i,""]]),i.locals&&(t.exports=i.locals);n(5)("af2f578c",i,!0)},function(t,e,n){e=t.exports=n(4)(),e.push([t.id,".carousel-3d-slide{position:absolute;opacity:0;visibility:hidden;overflow:hidden;top:0;border-radius:1px;border-color:#000;border-color:rgba(0,0,0,.4);border-style:solid;background-size:cover;background-color:#ccc;display:block;margin:0;box-sizing:border-box}.carousel-3d-slide img{width:100%}.carousel-3d-slide.current{opacity:1!important;visibility:visible!important;transform:none!important;z-index:99}",""])},function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0});var r=n(19),o=i(r);e.default={name:"slide",props:{index:{type:Number}},data:function(){return{parent:this.$parent,styles:{}}},computed:{isCurrent:function(){return this.index===this.parent.currentIndex},slideStyle:function(){var t={};if(!this.isCurrent){var e=this.getSideIndex(this.parent.rightIndices),n=this.getSideIndex(this.parent.leftIndices);(e>=0||n>=0)&&(t=e>=0?this.calculatePosition(e,!0):this.calculatePosition(n),t.opacity=1,t.visibility="visible"),this.parent.hasHiddenSlides&&(this.matchIndex(this.parent.leftOutIndex)?t=this.calculatePosition(this.parent.leftIndices.length-1):this.matchIndex(this.parent.rightOutIndex)&&(t=this.calculatePosition(this.parent.rightIndices.length-1,!0)))}return(0,o.default)(t,{"border-width":this.parent.border+"px",width:this.parent.slideWidth+"px",height:this.parent.slideHeight+"px",transition:" transform "+this.parent.animationSpeed+"ms,                opacity "+this.parent.animationSpeed+"ms,                visibility "+this.parent.animationSpeed+"ms"})}},methods:{getSideIndex:function(t){var e=this,n=-1;return t.forEach(function(t,i){e.matchIndex(t)&&(n=i)}),n},matchIndex:function(t){return t>=0?this.index===t:this.parent.total+t===this.index},calculatePosition:function(t,e){var n="auto"===this.parent.space?parseInt((t+1)*(this.parent.width/1.5),10):parseInt((t+1)*this.parent.space,10),i=e?"translateX("+n+"px) translateZ(-"+(this.parent.inverseScaling+100*(t+1))+"px) rotateY(-"+this.parent.perspective+"deg)":"translateX(-"+n+"px) translateZ(-"+(this.parent.inverseScaling+100*(t+1))+"px) rotateY("+this.parent.perspective+"deg)",r="auto"===this.parent.space?0:parseInt((t+1)*this.parent.space);return{transform:i,top:r}},goTo:function(){this.parent.clickable===!0&&this.parent.goFar(this.index)}}}},function(t,e,n){t.exports={default:n(20),__esModule:!0}},function(t,e,n){n(21),t.exports=n(24).Object.assign},function(t,e,n){var i=n(22);i(i.S+i.F,"Object",{assign:n(37)})},function(t,e,n){var i=n(23),r=n(24),o=n(25),s=n(27),a="prototype",u=function(t,e,n){var c,l,d,h=t&u.F,f=t&u.G,p=t&u.S,v=t&u.P,x=t&u.B,m=t&u.W,g=f?r:r[e]||(r[e]={}),y=g[a],b=f?i:p?i[e]:(i[e]||{})[a];f&&(n=e);for(c in n)l=!h&&b&&void 0!==b[c],l&&c in g||(d=l?b[c]:n[c],g[c]=f&&"function"!=typeof b[c]?n[c]:x&&l?o(d,i):m&&b[c]==d?function(t){var e=function(e,n,i){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(e);case 2:return new t(e,n)}return new t(e,n,i)}return t.apply(this,arguments)};return e[a]=t[a],e}(d):v&&"function"==typeof d?o(Function.call,d):d,v&&((g.virtual||(g.virtual={}))[c]=d,t&u.R&&y&&!y[c]&&s(y,c,d)))};u.F=1,u.G=2,u.S=4,u.P=8,u.B=16,u.W=32,u.U=64,u.R=128,t.exports=u},function(t,e){var n=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=n)},function(t,e){var n=t.exports={version:"2.4.0"};"number"==typeof __e&&(__e=n)},function(t,e,n){var i=n(26);t.exports=function(t,e,n){if(i(t),void 0===e)return t;switch(n){case 1:return function(n){return t.call(e,n)};case 2:return function(n,i){return t.call(e,n,i)};case 3:return function(n,i,r){return t.call(e,n,i,r)}}return function(){return t.apply(e,arguments)}}},function(t,e){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,e,n){var i=n(28),r=n(36);t.exports=n(32)?function(t,e,n){return i.f(t,e,r(1,n))}:function(t,e,n){return t[e]=n,t}},function(t,e,n){var i=n(29),r=n(31),o=n(35),s=Object.defineProperty;e.f=n(32)?Object.defineProperty:function(t,e,n){if(i(t),e=o(e,!0),i(n),r)try{return s(t,e,n)}catch(t){}if("get"in n||"set"in n)throw TypeError("Accessors not supported!");return"value"in n&&(t[e]=n.value),t}},function(t,e,n){var i=n(30);t.exports=function(t){if(!i(t))throw TypeError(t+" is not an object!");return t}},function(t,e){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,e,n){t.exports=!n(32)&&!n(33)(function(){return 7!=Object.defineProperty(n(34)("div"),"a",{get:function(){return 7}}).a})},function(t,e,n){t.exports=!n(33)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,e){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,e,n){var i=n(30),r=n(23).document,o=i(r)&&i(r.createElement);t.exports=function(t){return o?r.createElement(t):{}}},function(t,e,n){var i=n(30);t.exports=function(t,e){if(!i(t))return t;var n,r;if(e&&"function"==typeof(n=t.toString)&&!i(r=n.call(t)))return r;if("function"==typeof(n=t.valueOf)&&!i(r=n.call(t)))return r;if(!e&&"function"==typeof(n=t.toString)&&!i(r=n.call(t)))return r;throw TypeError("Can't convert object to primitive value")}},function(t,e){t.exports=function(t,e){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:e}}},function(t,e,n){"use strict";var i=n(38),r=n(53),o=n(54),s=n(55),a=n(42),u=Object.assign;t.exports=!u||n(33)(function(){var t={},e={},n=Symbol(),i="abcdefghijklmnopqrst";return t[n]=7,i.split("").forEach(function(t){e[t]=t}),7!=u({},t)[n]||Object.keys(u({},e)).join("")!=i})?function(t,e){for(var n=s(t),u=arguments.length,c=1,l=r.f,d=o.f;u>c;)for(var h,f=a(arguments[c++]),p=l?i(f).concat(l(f)):i(f),v=p.length,x=0;v>x;)d.call(f,h=p[x++])&&(n[h]=f[h]);return n}:u},function(t,e,n){var i=n(39),r=n(52);t.exports=Object.keys||function(t){return i(t,r)}},function(t,e,n){var i=n(40),r=n(41),o=n(45)(!1),s=n(49)("IE_PROTO");t.exports=function(t,e){var n,a=r(t),u=0,c=[];for(n in a)n!=s&&i(a,n)&&c.push(n);for(;e.length>u;)i(a,n=e[u++])&&(~o(c,n)||c.push(n));return c}},function(t,e){var n={}.hasOwnProperty;t.exports=function(t,e){return n.call(t,e)}},function(t,e,n){var i=n(42),r=n(44);t.exports=function(t){return i(r(t))}},function(t,e,n){var i=n(43);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==i(t)?t.split(""):Object(t)}},function(t,e){var n={}.toString;t.exports=function(t){return n.call(t).slice(8,-1)}},function(t,e){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,e,n){var i=n(41),r=n(46),o=n(48);t.exports=function(t){return function(e,n,s){var a,u=i(e),c=r(u.length),l=o(s,c);if(t&&n!=n){for(;c>l;)if(a=u[l++],a!=a)return!0}else for(;c>l;l++)if((t||l in u)&&u[l]===n)return t||l||0;return!t&&-1}}},function(t,e,n){var i=n(47),r=Math.min;t.exports=function(t){return t>0?r(i(t),9007199254740991):0}},function(t,e){var n=Math.ceil,i=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?i:n)(t)}},function(t,e,n){var i=n(47),r=Math.max,o=Math.min;t.exports=function(t,e){return t=i(t),t<0?r(t+e,0):o(t,e)}},function(t,e,n){var i=n(50)("keys"),r=n(51);t.exports=function(t){return i[t]||(i[t]=r(t))}},function(t,e,n){var i=n(23),r="__core-js_shared__",o=i[r]||(i[r]={});t.exports=function(t){return o[t]||(o[t]={})}},function(t,e){var n=0,i=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++n+i).toString(36))}},function(t,e){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,e){e.f=Object.getOwnPropertySymbols},function(t,e){e.f={}.propertyIsEnumerable},function(t,e,n){var i=n(44);t.exports=function(t){return Object(i(t))}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"carousel-3d-slide",class:{current:t.isCurrent},style:t.slideStyle,on:{click:function(e){t.goTo()}}},[t._t("default")],2)},staticRenderFns:[]}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"carousel-3d-container"},[n("div",{staticClass:"carousel-3d-slider"},[t._t("default")],2),t._v(" "),t.controlsVisible?n("controls"):t._e()],1)},staticRenderFns:[]}}])});
+!function(t,e){ true?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.Carousel3d=e():t.Carousel3d=e()}(this,function(){return function(t){function e(i){if(n[i])return n[i].exports;var r=n[i]={exports:{},id:i,loaded:!1};return t[i].call(r.exports,r,r.exports,e),r.loaded=!0,r.exports}var n={};return e.m=t,e.c=n,e.p="",e(0)}([function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0}),e.Slide=e.Carousel3d=void 0;var r=n(1),s=i(r),o=n(15),a=i(o),u=function(t){t.component("carousel3d",s.default),t.component("slide",a.default)};e.default={install:u},e.Carousel3d=s.default,e.Slide=a.default},function(t,e,n){n(2);var i=n(7)(n(8),n(57),"data-v-c06c963c",null);t.exports=i.exports},function(t,e,n){var i=n(3);"string"==typeof i&&(i=[[t.id,i,""]]),i.locals&&(t.exports=i.locals);n(5)("738a493f",i,!0)},function(t,e,n){e=t.exports=n(4)(),e.push([t.id,".carousel-3d-container[data-v-c06c963c]{min-height:1px;width:100%;position:relative;z-index:0;overflow:hidden;margin:20px auto;box-sizing:border-box}.carousel-3d-slider[data-v-c06c963c]{position:relative;margin:0 auto;transform-style:preserve-3d;-webkit-perspective:1000px;-moz-perspective:1000px;perspective:1000px}",""])},function(t,e){t.exports=function(){var t=[];return t.toString=function(){for(var t=[],e=0;e<this.length;e++){var n=this[e];n[2]?t.push("@media "+n[2]+"{"+n[1]+"}"):t.push(n[1])}return t.join("")},t.i=function(e,n){"string"==typeof e&&(e=[[null,e,""]]);for(var i={},r=0;r<this.length;r++){var s=this[r][0];"number"==typeof s&&(i[s]=!0)}for(r=0;r<e.length;r++){var o=e[r];"number"==typeof o[0]&&i[o[0]]||(n&&!o[2]?o[2]=n:n&&(o[2]="("+o[2]+") and ("+n+")"),t.push(o))}},t}},function(t,e,n){function i(t){for(var e=0;e<t.length;e++){var n=t[e],i=l[n.id];if(i){i.refs++;for(var r=0;r<i.parts.length;r++)i.parts[r](n.parts[r]);for(;r<n.parts.length;r++)i.parts.push(o(n.parts[r]));i.parts.length>n.parts.length&&(i.parts.length=n.parts.length)}else{for(var s=[],r=0;r<n.parts.length;r++)s.push(o(n.parts[r]));l[n.id]={id:n.id,refs:1,parts:s}}}}function r(t,e){for(var n=[],i={},r=0;r<e.length;r++){var s=e[r],o=s[0],a=s[1],u=s[2],c=s[3],l={css:a,media:u,sourceMap:c};i[o]?(l.id=t+":"+i[o].parts.length,i[o].parts.push(l)):(l.id=t+":0",n.push(i[o]={id:o,parts:[l]}))}return n}function s(){var t=document.createElement("style");return t.type="text/css",d.appendChild(t),t}function o(t){var e,n,i=document.querySelector('style[data-vue-ssr-id~="'+t.id+'"]'),r=null!=i;if(r&&p)return v;if(x){var o=f++;i=h||(h=s()),e=a.bind(null,i,o,!1),n=a.bind(null,i,o,!0)}else i=i||s(),e=u.bind(null,i),n=function(){i.parentNode.removeChild(i)};return r||e(t),function(i){if(i){if(i.css===t.css&&i.media===t.media&&i.sourceMap===t.sourceMap)return;e(t=i)}else n()}}function a(t,e,n,i){var r=n?"":i.css;if(t.styleSheet)t.styleSheet.cssText=m(e,r);else{var s=document.createTextNode(r),o=t.childNodes;o[e]&&t.removeChild(o[e]),o.length?t.insertBefore(s,o[e]):t.appendChild(s)}}function u(t,e){var n=e.css,i=e.media,r=e.sourceMap;if(i&&t.setAttribute("media",i),r&&(n+="\n/*# sourceURL="+r.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(r))))+" */"),t.styleSheet)t.styleSheet.cssText=n;else{for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(n))}}var c="undefined"!=typeof document,r=n(6),l={},d=c&&(document.head||document.getElementsByTagName("head")[0]),h=null,f=0,p=!1,v=function(){},x="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());t.exports=function(t,e,n){p=n;var s=r(t,e);return i(s),function(e){for(var n=[],o=0;o<s.length;o++){var a=s[o],u=l[a.id];u.refs--,n.push(u)}e?(s=r(t,e),i(s)):s=[];for(var o=0;o<n.length;o++){var u=n[o];if(0===u.refs){for(var c=0;c<u.parts.length;c++)u.parts[c]();delete l[u.id]}}}};var m=function(){var t=[];return function(e,n){return t[e]=n,t.filter(Boolean).join("\n")}}()},function(t,e){t.exports=function(t,e){for(var n=[],i={},r=0;r<e.length;r++){var s=e[r],o=s[0],a=s[1],u=s[2],c=s[3],l={id:t+":"+r,css:a,media:u,sourceMap:c};i[o]?i[o].parts.push(l):n.push(i[o]={id:o,parts:[l]})}return n}},function(t,e){t.exports=function(t,e,n,i){var r,s=t=t||{},o=typeof t.default;"object"!==o&&"function"!==o||(r=t,s=t.default);var a="function"==typeof s?s.options:s;if(e&&(a.render=e.render,a.staticRenderFns=e.staticRenderFns),n&&(a._scopeId=n),i){var u=a.computed||(a.computed={});Object.keys(i).forEach(function(t){var e=i[t];u[t]=function(){return e}})}return{esModule:r,exports:s,options:a}}},function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0});var r=n(9),s=i(r),o=n(10),a=i(o),u=n(15),c=i(u),l=function(){};e.default={name:"carousel3d",components:{Controls:a.default,Slide:c.default},props:{controlsVisible:{type:Boolean,default:!1},perspective:{type:[Number,String],default:35},display:{type:[Number,String],default:5},loop:{type:Boolean,default:!0},animationSpeed:{type:[Number,String],default:500},dir:{type:String,default:"rtl"},width:{type:[Number,String],default:360},height:{type:[Number,String],default:270},border:{type:[Number,String],default:1},space:{type:[Number,String],default:"auto"},startIndex:{type:[Number,String],default:0},clickable:{type:Boolean,default:!0},minSwipeDistance:{type:Number,default:10},inverseScaling:{type:[Number,String],default:300},onLastSlide:{type:Function,default:l},onSlideChange:{type:Function,default:l}},data:function(){return{viewport:0,currentIndex:0,total:0,lock:!1,dragOffset:0,dragStartX:0,mousedown:!1,zIndex:998}},mixins:[s.default],computed:{isLastSlide:function(){return this.currentIndex===this.total-1},isFirstSlide:function(){return 0===this.currentIndex},isNextPossible:function(){return!(!this.loop&&this.isLastSlide)},isPrevPossible:function(){return!(!this.loop&&this.isFirstSlide)},slideWidth:function(){var t=this.viewport,e=parseInt(this.width)+2*parseInt(this.border,10);return t<e?t:e},slideHeight:function(){var t=parseInt(this.width,10)+2*parseInt(this.border,10),e=parseInt(parseInt(this.height)+2*this.border,10),n=this.calculateAspectRatio(t,e);return this.slideWidth/n},visible:function(){var t=this.display>this.total?this.total:this.display;return 2!==t?t%2?t:t-1:t},hasHiddenSlides:function(){return this.total>this.visible},leftIndices:function(){for(var t=Math.floor(this.visible/2)+1,e=[],n=1;n<t;n++)e.push("ltr"===this.dir?(this.currentIndex+n)%this.total:(this.currentIndex-n)%this.total);return e},rightIndices:function(){for(var t=Math.floor(this.visible/2)+1,e=[],n=1;n<t;n++)e.push("ltr"===this.dir?(this.currentIndex-n)%this.total:(this.currentIndex+n)%this.total);return e},leftOutIndex:function(){var t=Math.floor(this.visible/2)+1;return"ltr"===this.dir?this.total-this.currentIndex-t<=0?-parseInt(this.total-this.currentIndex-t):this.currentIndex+t:this.currentIndex-t},rightOutIndex:function(){var t=Math.floor(this.visible/2)+1;return"ltr"===this.dir?this.currentIndex-t:this.total-this.currentIndex-t<=0?-parseInt(this.total-this.currentIndex-t,10):this.currentIndex+t}},methods:{goNext:function(){this.isNextPossible&&(this.isLastSlide?this.goSlide(0):this.goSlide(this.currentIndex+1))},goPrev:function(){this.isPrevPossible&&(this.isFirstSlide?this.goSlide(this.total-1):this.goSlide(this.currentIndex-1))},goSlide:function(t){var e=this;this.currentIndex=t<0||t>this.total-1?0:t,this.lock=!0,this.isLastSlide&&(this.onLastSlide!==l&&console.warn("onLastSlide deprecated, please use @lastSlide"),this.onLastSlide(this.currentIndex),this.$emit("last-slide",this.currentIndex)),this.$emit("before-slide-change",this.currentIndex),setTimeout(function(){return e.animationEnd()},this.animationSpeed)},goFar:function(t){var e=this,n=t===this.total-1&&this.isFirstSlide?-1:t-this.currentIndex;this.isLastSlide&&0===t&&(n=1);for(var i=n<0?-n:n,r=0,s=0;s<i;){s+=1;var o=1===i?0:r;setTimeout(function(){return n<0?e.goPrev(i):e.goNext(i)},o),r+=this.animationSpeed/i}},animationEnd:function(){this.lock=!1,this.onSlideChange!==l&&console.warn("onSlideChange deprecated, please use @afterSlideChanged"),this.onSlideChange(this.currentIndex),this.$emit("after-slide-change",this.currentIndex)},handleMouseup:function(){this.mousedown=!1,this.dragOffset=0},handleMousedown:function(t){t.touches||t.preventDefault(),this.mousedown=!0,this.dragStartX="ontouchstart"in window?t.touches[0].clientX:t.clientX},handleMousemove:function(t){if(this.mousedown){var e="ontouchstart"in window?t.touches[0].clientX:t.clientX,n=this.dragStartX-e;this.dragOffset=n,this.dragOffset>this.minSwipeDistance?(this.handleMouseup(),this.goNext()):this.dragOffset<-this.minSwipeDistance&&(this.handleMouseup(),this.goPrev())}},attachMutationObserver:function(){var t=this,e=window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver;if(e){var n={attributes:!0,childList:!0,characterData:!0};this.mutationObserver=new e(function(){t.$nextTick(function(){t.computeData()})}),this.$el&&this.mutationObserver.observe(this.$el,n)}},detachMutationObserver:function(){this.mutationObserver&&this.mutationObserver.disconnect()},getSlideCount:function(){return void 0!==this.$slots.default?this.$slots.default.filter(function(t){return void 0!==t.tag}).length:0},calculateAspectRatio:function(t,e){return Math.min(t/e)},computeData:function(){this.total=this.getSlideCount(),this.currentIndex=parseInt(this.startIndex)>this.total-1?this.total-1:parseInt(this.startIndex),this.viewport=this.$el.clientWidth},setSize:function(){this.$el.style.cssText+="height:"+this.slideHeight+"px;",this.$el.childNodes[0].style.cssText+="width:"+this.slideWidth+"px; height:"+this.slideHeight+"px;"},beforeDestroy:function(){this.$isServer||(this.detachMutationObserver(),"ontouchstart"in window?this.$el.removeEventListener("touchmove",this.handleMousemove):this.$el.removeEventListener("mousemove",this.handleMousemove),window.removeEventListener("resize",this.setSize))}},mounted:function(){this.computeData(),this.attachMutationObserver(),this.$isServer||(window.addEventListener("resize",this.setSize),"ontouchstart"in window?(this.$el.addEventListener("touchstart",this.handleMousedown),this.$el.addEventListener("touchend",this.handleMouseup),this.$el.addEventListener("touchmove",this.handleMousemove)):(this.$el.addEventListener("mousedown",this.handleMousedown),this.$el.addEventListener("mouseup",this.handleMouseup),this.$el.addEventListener("mousemove",this.handleMousemove)))}}},function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n={props:{autoplay:{type:Boolean,default:!1},autoplayTimeout:{type:Number,default:2e3},autoplayHoverPause:{type:Boolean,default:!0}},data:function(){return{autoplayInterval:null}},destroyed:function(){this.$isServer||(this.$el.removeEventListener("mouseenter",this.pauseAutoplay),this.$el.removeEventListener("mouseleave",this.startAutoplay))},methods:{pauseAutoplay:function(){this.autoplayInterval&&(this.autoplayInterval=clearInterval(this.autoplayInterval))},startAutoplay:function(){var t=this;this.autoplay&&(this.autoplayInterval=setInterval(function(){"ltr"===t.dir?t.goPrev():t.goNext()},this.autoplayTimeout))}},mounted:function(){!this.$isServer&&this.autoplayHoverPause&&(this.$el.addEventListener("mouseenter",this.pauseAutoplay),this.$el.addEventListener("mouseleave",this.startAutoplay)),this.startAutoplay()}};e.default=n},function(t,e,n){n(11);var i=n(7)(n(13),n(14),"data-v-43e93932",null);t.exports=i.exports},function(t,e,n){var i=n(12);"string"==typeof i&&(i=[[t.id,i,""]]),i.locals&&(t.exports=i.locals);n(5)("21e99dee",i,!0)},function(t,e,n){e=t.exports=n(4)(),e.push([t.id,".carousel-3d-controls[data-v-43e93932]{position:absolute;top:50%;height:0;margin-top:-30px;left:0;width:100%;z-index:9099}.next[data-v-43e93932],.prev[data-v-43e93932]{width:60px;position:absolute;z-index:9999;font-size:60px;height:60px;line-height:60px;color:#333;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;text-decoration:none;top:0}.next[data-v-43e93932]:hover,.prev[data-v-43e93932]:hover{cursor:pointer;opacity:.7}.prev[data-v-43e93932]{left:10px;text-align:left}.next[data-v-43e93932]{right:10px;text-align:right}.disabled[data-v-43e93932],.disabled[data-v-43e93932]:hover{opacity:.2;cursor:default}",""])},function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"controls",data:function(){return{parent:this.$parent}}}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"carousel-3d-controls"},[n("a",{staticClass:"prev",class:{disabled:!t.parent.isPrevPossible},attrs:{href:"#"},on:{click:function(e){e.preventDefault(),t.parent.goPrev()}}},[n("span",[t._v("‹")])]),t._v(" "),n("a",{staticClass:"next",class:{disabled:!t.parent.isNextPossible},attrs:{href:"#"},on:{click:function(e){e.preventDefault(),t.parent.goNext()}}},[n("span",[t._v("›")])])])},staticRenderFns:[]}},function(t,e,n){n(16);var i=n(7)(n(18),n(56),null,null);t.exports=i.exports},function(t,e,n){var i=n(17);"string"==typeof i&&(i=[[t.id,i,""]]),i.locals&&(t.exports=i.locals);n(5)("af2f578c",i,!0)},function(t,e,n){e=t.exports=n(4)(),e.push([t.id,".carousel-3d-slide{position:absolute;opacity:0;visibility:hidden;overflow:hidden;top:0;border-radius:1px;border-color:#000;border-color:rgba(0,0,0,.4);border-style:solid;background-size:cover;background-color:#ccc;display:block;margin:0;box-sizing:border-box;text-align:left}.carousel-3d-slide img{width:100%}.carousel-3d-slide.current{opacity:1!important;visibility:visible!important;transform:none!important;z-index:999}",""])},function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0});var r=n(19),s=i(r);e.default={name:"slide",props:{index:{type:Number}},data:function(){return{parent:this.$parent,styles:{},zIndex:999}},computed:{isCurrent:function(){return this.index===this.parent.currentIndex},slideStyle:function(){var t={};if(!this.isCurrent){var e=this.getSideIndex(this.parent.rightIndices),n=this.getSideIndex(this.parent.leftIndices);(e>=0||n>=0)&&(t=e>=0?this.calculatePosition(e,!0,this.zIndex):this.calculatePosition(n,!1,this.zIndex),t.opacity=1,t.visibility="visible"),this.parent.hasHiddenSlides&&(this.matchIndex(this.parent.leftOutIndex)?t=this.calculatePosition(this.parent.leftIndices.length-1,!1,this.zIndex):this.matchIndex(this.parent.rightOutIndex)&&(t=this.calculatePosition(this.parent.rightIndices.length-1,!0,this.zIndex)))}return(0,s.default)(t,{"border-width":this.parent.border+"px",width:this.parent.slideWidth+"px",height:this.parent.slideHeight+"px",transition:" transform "+this.parent.animationSpeed+"ms,                opacity "+this.parent.animationSpeed+"ms,                visibility "+this.parent.animationSpeed+"ms"})}},methods:{getSideIndex:function(t){var e=this,n=-1;return t.forEach(function(t,i){e.matchIndex(t)&&(n=i)}),n},matchIndex:function(t){return t>=0?this.index===t:this.parent.total+t===this.index},calculatePosition:function(t,e,n){var i="auto"===this.parent.space?parseInt((t+1)*(this.parent.width/1.5),10):parseInt((t+1)*this.parent.space,10),r=e?"translateX("+i+"px) translateZ(-"+(parseInt(this.parent.inverseScaling)+100*(t+1))+"px) rotateY(-"+parseInt(this.parent.perspective)+"deg)":"translateX(-"+i+"px) translateZ(-"+(parseInt(this.parent.inverseScaling)+100*(t+1))+"px) rotateY("+parseInt(this.parent.perspective)+"deg)",s="auto"===this.parent.space?0:parseInt((t+1)*this.parent.space);return{transform:r,top:s,zIndex:n-(Math.abs(t)+1)}},goTo:function(){this.parent.clickable===!0&&this.parent.goFar(this.index)}}}},function(t,e,n){t.exports={default:n(20),__esModule:!0}},function(t,e,n){n(21),t.exports=n(24).Object.assign},function(t,e,n){var i=n(22);i(i.S+i.F,"Object",{assign:n(37)})},function(t,e,n){var i=n(23),r=n(24),s=n(25),o=n(27),a="prototype",u=function(t,e,n){var c,l,d,h=t&u.F,f=t&u.G,p=t&u.S,v=t&u.P,x=t&u.B,m=t&u.W,g=f?r:r[e]||(r[e]={}),y=g[a],b=f?i:p?i[e]:(i[e]||{})[a];f&&(n=e);for(c in n)l=!h&&b&&void 0!==b[c],l&&c in g||(d=l?b[c]:n[c],g[c]=f&&"function"!=typeof b[c]?n[c]:x&&l?s(d,i):m&&b[c]==d?function(t){var e=function(e,n,i){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(e);case 2:return new t(e,n)}return new t(e,n,i)}return t.apply(this,arguments)};return e[a]=t[a],e}(d):v&&"function"==typeof d?s(Function.call,d):d,v&&((g.virtual||(g.virtual={}))[c]=d,t&u.R&&y&&!y[c]&&o(y,c,d)))};u.F=1,u.G=2,u.S=4,u.P=8,u.B=16,u.W=32,u.U=64,u.R=128,t.exports=u},function(t,e){var n=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=n)},function(t,e){var n=t.exports={version:"2.4.0"};"number"==typeof __e&&(__e=n)},function(t,e,n){var i=n(26);t.exports=function(t,e,n){if(i(t),void 0===e)return t;switch(n){case 1:return function(n){return t.call(e,n)};case 2:return function(n,i){return t.call(e,n,i)};case 3:return function(n,i,r){return t.call(e,n,i,r)}}return function(){return t.apply(e,arguments)}}},function(t,e){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,e,n){var i=n(28),r=n(36);t.exports=n(32)?function(t,e,n){return i.f(t,e,r(1,n))}:function(t,e,n){return t[e]=n,t}},function(t,e,n){var i=n(29),r=n(31),s=n(35),o=Object.defineProperty;e.f=n(32)?Object.defineProperty:function(t,e,n){if(i(t),e=s(e,!0),i(n),r)try{return o(t,e,n)}catch(t){}if("get"in n||"set"in n)throw TypeError("Accessors not supported!");return"value"in n&&(t[e]=n.value),t}},function(t,e,n){var i=n(30);t.exports=function(t){if(!i(t))throw TypeError(t+" is not an object!");return t}},function(t,e){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,e,n){t.exports=!n(32)&&!n(33)(function(){return 7!=Object.defineProperty(n(34)("div"),"a",{get:function(){return 7}}).a})},function(t,e,n){t.exports=!n(33)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,e){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,e,n){var i=n(30),r=n(23).document,s=i(r)&&i(r.createElement);t.exports=function(t){return s?r.createElement(t):{}}},function(t,e,n){var i=n(30);t.exports=function(t,e){if(!i(t))return t;var n,r;if(e&&"function"==typeof(n=t.toString)&&!i(r=n.call(t)))return r;if("function"==typeof(n=t.valueOf)&&!i(r=n.call(t)))return r;if(!e&&"function"==typeof(n=t.toString)&&!i(r=n.call(t)))return r;throw TypeError("Can't convert object to primitive value")}},function(t,e){t.exports=function(t,e){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:e}}},function(t,e,n){"use strict";var i=n(38),r=n(53),s=n(54),o=n(55),a=n(42),u=Object.assign;t.exports=!u||n(33)(function(){var t={},e={},n=Symbol(),i="abcdefghijklmnopqrst";return t[n]=7,i.split("").forEach(function(t){e[t]=t}),7!=u({},t)[n]||Object.keys(u({},e)).join("")!=i})?function(t,e){for(var n=o(t),u=arguments.length,c=1,l=r.f,d=s.f;u>c;)for(var h,f=a(arguments[c++]),p=l?i(f).concat(l(f)):i(f),v=p.length,x=0;v>x;)d.call(f,h=p[x++])&&(n[h]=f[h]);return n}:u},function(t,e,n){var i=n(39),r=n(52);t.exports=Object.keys||function(t){return i(t,r)}},function(t,e,n){var i=n(40),r=n(41),s=n(45)(!1),o=n(49)("IE_PROTO");t.exports=function(t,e){var n,a=r(t),u=0,c=[];for(n in a)n!=o&&i(a,n)&&c.push(n);for(;e.length>u;)i(a,n=e[u++])&&(~s(c,n)||c.push(n));return c}},function(t,e){var n={}.hasOwnProperty;t.exports=function(t,e){return n.call(t,e)}},function(t,e,n){var i=n(42),r=n(44);t.exports=function(t){return i(r(t))}},function(t,e,n){var i=n(43);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==i(t)?t.split(""):Object(t)}},function(t,e){var n={}.toString;t.exports=function(t){return n.call(t).slice(8,-1)}},function(t,e){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,e,n){var i=n(41),r=n(46),s=n(48);t.exports=function(t){return function(e,n,o){var a,u=i(e),c=r(u.length),l=s(o,c);if(t&&n!=n){for(;c>l;)if(a=u[l++],a!=a)return!0}else for(;c>l;l++)if((t||l in u)&&u[l]===n)return t||l||0;return!t&&-1}}},function(t,e,n){var i=n(47),r=Math.min;t.exports=function(t){return t>0?r(i(t),9007199254740991):0}},function(t,e){var n=Math.ceil,i=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?i:n)(t)}},function(t,e,n){var i=n(47),r=Math.max,s=Math.min;t.exports=function(t,e){return t=i(t),t<0?r(t+e,0):s(t,e)}},function(t,e,n){var i=n(50)("keys"),r=n(51);t.exports=function(t){return i[t]||(i[t]=r(t))}},function(t,e,n){var i=n(23),r="__core-js_shared__",s=i[r]||(i[r]={});t.exports=function(t){return s[t]||(s[t]={})}},function(t,e){var n=0,i=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++n+i).toString(36))}},function(t,e){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,e){e.f=Object.getOwnPropertySymbols},function(t,e){e.f={}.propertyIsEnumerable},function(t,e,n){var i=n(44);t.exports=function(t){return Object(i(t))}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"carousel-3d-slide",class:{current:t.isCurrent},style:t.slideStyle,on:{click:function(e){t.goTo()}}},[t._t("default")],2)},staticRenderFns:[]}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"carousel-3d-container",style:{height:this.slideHeight+"px"}},[n("div",{staticClass:"carousel-3d-slider",style:{width:this.slideWidth+"px",height:this.slideHeight+"px"}},[t._t("default")],2),t._v(" "),t.controlsVisible?n("controls"):t._e()],1)},staticRenderFns:[]}}])});
 
 /***/ }),
-/* 67 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(34)(
   /* script */
-  __webpack_require__(45),
+  __webpack_require__(48),
   /* template */
-  __webpack_require__(70),
+  __webpack_require__(76),
   /* styles */
   null,
   /* scopeId */
@@ -31693,7 +35919,7 @@ var Component = __webpack_require__(34)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/home/calendar2017/themes/calendar/node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue"
+Component.options.__file = "/data/site/docroot/themes/calendar/node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] VueGoogleAutocomplete.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -31717,19 +35943,19 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 68 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(72)
+  __webpack_require__(78)
 }
 var Component = __webpack_require__(34)(
   /* script */
-  __webpack_require__(46),
+  __webpack_require__(49),
   /* template */
-  __webpack_require__(69),
+  __webpack_require__(75),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -31737,7 +35963,7 @@ var Component = __webpack_require__(34)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Applications/MAMP/htdocs/home/calendar2017/themes/calendar/node_modules/vue-radial-progress/src/RadialProgressBar.vue"
+Component.options.__file = "/data/site/docroot/themes/calendar/node_modules/vue-radial-progress/src/RadialProgressBar.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] RadialProgressBar.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -31761,7 +35987,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 69 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -31834,7 +36060,7 @@ if (false) {
 }
 
 /***/ }),
-/* 70 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -31845,8 +36071,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.autocompleteText),
       expression: "autocompleteText"
     }],
+    ref: "autocomplete",
     class: _vm.classname,
     attrs: {
+      "type": "text",
       "id": _vm.id,
       "placeholder": _vm.placeholder
     },
@@ -31878,24 +36106,24 @@ if (false) {
 }
 
 /***/ }),
-/* 71 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(68)
+module.exports = __webpack_require__(74)
 
 
 /***/ }),
-/* 72 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(51);
+var content = __webpack_require__(56);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(73)("6f131426", content, false);
+var update = __webpack_require__(79)("6f131426", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -31911,7 +36139,7 @@ if(false) {
 }
 
 /***/ }),
-/* 73 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -31930,7 +36158,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(74)
+var listToStyles = __webpack_require__(80)
 
 /*
 type StyleObject = {
@@ -32132,7 +36360,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 74 */
+/* 80 */
 /***/ (function(module, exports) {
 
 /**
@@ -32165,12 +36393,12 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 75 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, global) {/*!
- * Vue.js v2.3.3
+ * Vue.js v2.3.4
  * (c) 2014-2017 Evan You
  * Released under the MIT License.
  */
@@ -36599,7 +40827,7 @@ Object.defineProperty(Vue$3.prototype, '$ssrContext', {
   }
 });
 
-Vue$3.version = '2.3.3';
+Vue$3.version = '2.3.4';
 
 /*  */
 
@@ -37090,6 +41318,7 @@ function createPatchFunction (backend) {
   function initComponent (vnode, insertedVnodeQueue) {
     if (isDef(vnode.data.pendingInsert)) {
       insertedVnodeQueue.push.apply(insertedVnodeQueue, vnode.data.pendingInsert);
+      vnode.data.pendingInsert = null;
     }
     vnode.elm = vnode.componentInstance.$el;
     if (isPatchable(vnode)) {
@@ -41860,10 +46089,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(52), __webpack_require__(76)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(58), __webpack_require__(82)))
 
 /***/ }),
-/* 76 */
+/* 82 */
 /***/ (function(module, exports) {
 
 var g;

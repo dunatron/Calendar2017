@@ -42,4 +42,5 @@ File:
     - MyISAMExtension
 
 #### Possibly the solution I have been looking for
-Page_Controller::$search_index_class = 'HappIndex';
+#Page_Controller::$search_index_class = 'HappIndex';
+# put it goes in _config.php ya troll face

@@ -1,0 +1,42 @@
+#StepOne {
+
+  .Bootstrap__DatePicker {
+
+    .table-condensed>tbody>tr>td {
+      padding: 10px;
+    }
+
+    @include breakpoint($min865) {
+      width: 50%;
+      float: left;
+      display: inline-block;
+      .table-condensed>tbody>tr>td {
+        padding: 15px;
+      }
+    }
+
+  }
+
+  .Calendar__Options {
+    @include breakpoint($min865) {
+      width: 50%;
+      float: left;
+      display: inline-block;
+    }
+
+    span {
+      padding: 15px;
+      display: block;
+      border: 1px solid black;
+    }
+
+    .Higlight__Option {
+      background-color: teal;
+    }
+  }
+
+  .Generate__Dates {
+    height: 59px;
+    border: 1px solid black;
+  }
+}

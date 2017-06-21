@@ -1,5 +1,8 @@
 // jquery is required for bootstrap
-import $ from 'jquery'
+import $ from 'jquery';
+
+// jquery UI
+import 'jquery-ui';
 
 // Import custom css
 import './../css/Calendar-Core.css'
@@ -12,6 +15,13 @@ import 'select2'
 
 // BxSlider
 import '../node_modules/bxslider/dist/jquery.bxslider.min';
+
+// Bootstrap DatePicker
+import 'bootstrap-datepicker';
+
+// Bootstrap TimePicker
+import 'bootstrap-timepicker';
+
 
 // scroll reveal
 import ScrollReveal from 'scrollreveal';

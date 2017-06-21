@@ -68,7 +68,26 @@ class Page_Controller extends ContentController {
          * NOTE: The ->setRightTitle is being used in a custom form template and by Vue.
          * It is using it to match the Vue Title and to check for validation.
          */
-        $detailsStart = LiteralField::create('DetailsStart', '<div id="details-step" class="form-step">');
+        //-----> Start Step One
+        $stepOneStart = LiteralField::create('StepOneStart', '<div id="StepOne" class="form-step">');
+
+        $bootstrapDate = LiteralField::create('BootstrapDatePicker', '<div class="Bootstrap__DatePicker"></div>');
+        $calendarOptions = LiteralField::create('CalendarOptions', '<div class="Calendar__Options">
+<span id="CalendarSingle">Single</span>
+<span id="CalendarReccuring">Recurring</span>
+<span id="CalendarMultiDay">Multi Day</span></div>');
+        $date = DateField::create('EventDate', 'Date of the event')->setConfig('dateformat', 'dd-MM-yyyy')->setAttribute('type', 'date');
+        $startTime = TextField::create('StartTime', 'Event start time');
+        $finishTime = LiteralField::create('FinishTime', '<div class="input-group bootstrap-timepicker timepicker">
+            <input id="timepicker1" type="text" class="form-control input-small">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        </div>');
+        $generateDates = LiteralField::create('GenerateDates', '<div class="Generate__Dates"></div>');
+        $dateBack = LiteralField::create('DateBack', '<div class="add-event-controls"><div id="dateBack" @click="dateBackProgress" class="add-event-back"><span>back</span></div>');
+        $dateNext = LiteralField::create('LocationNext', '<div @click="dateForwardProgress" id="dateNext" class="add-event-next"><span>next</span></div></div>');
+
+        $stepOneEnd = LiteralField::create('StepOneEnd', '</div>');
+        //-----> End Step One
 
         // Title
         $Title = TextField::create('Title', 'Event Title')
@@ -93,7 +112,7 @@ class Page_Controller extends ContentController {
             ->setAttribute('v-model', 'HasTickets');
 
         $detailsNext = LiteralField::create('detailsNextBtn', '<div @click="detailsForwardProgress" v-show="!errors.has(\'validate-add-event.Title\') && !errors.has(\'validate-add-event.Description\') " class="add-event-controls"><div id="detailsNextBtn" class="add-event-next"><span>next</span></div></div>');
-        $detailsEnd = LiteralField::create('DetailsEnd', '</div>');
+
 
         //--> Ticket Step
         $ticketStart = LiteralField::create('TicketStart', '<div id="ticket-step" class="form-step field-hidden">');
@@ -152,11 +171,7 @@ class Page_Controller extends ContentController {
 
         //--> Date Step
         $dateStart = LiteralField::create('DateStart', '<div id="date-step" class="form-step field-hidden">');
-        $date = DateField::create('EventDate', 'Date of the event')->setConfig('dateformat', 'dd-MM-yyyy')->setAttribute('type', 'date');
-        $startTime = TextField::create('StartTime', 'Event start time')->addExtraClass('timepicker');
-        $finishTime = TextField::create('FinishTime', 'Event finish time')->addExtraClass('timepicker');
-        $dateBack = LiteralField::create('DateBack', '<div class="add-event-controls"><div id="dateBack" @click="dateBackProgress" class="add-event-back"><span>back</span></div>');
-        $dateNext = LiteralField::create('LocationNext', '<div @click="dateForwardProgress" id="dateNext" class="add-event-next"><span>next</span></div></div>');
+
         $dateEnd = LiteralField::create('DateEnd', '</div>');
 
         //--> Finish Step
@@ -183,11 +198,7 @@ class Page_Controller extends ContentController {
   </radial-progress-bar>');
 
         $fields = new FieldList(
-            $detailsStart, $Title,
-            $desc, $ticket, $detailsNext, $detailsEnd, $ticketStart, $restrictions,
-            $access, $ticketBack, $ticketNext, $ticketEnd, $ticWebStart, $website, $phone, $ticketWebBack, $ticketWebNext,
-            $ticWebEnd, $locationStart,$vueGoogleMap,$mapData, $locationBack,
-            $locationNext, $locationEnd, $dateStart, $date, $startTime, $finishTime, $dateBack, $dateNext, $dateEnd, $finishStepStart,$evaluateData,$finishBack, $finishStepEnd, $formProgress
+            $stepOneStart,$bootstrapDate, $calendarOptions, $startTime, $finishTime, $generateDates, $dateBack,$dateNext , $stepOneEnd
         );
 
 
