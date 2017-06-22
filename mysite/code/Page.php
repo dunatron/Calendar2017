@@ -83,7 +83,7 @@ class Page_Controller extends ContentController {
             <input id="timepicker1" type="text" class="form-control input-small">
             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
         </div>');
-        $generateDates = LiteralField::create('GenerateDates', '<div @click="generateDates" class="Generate__Dates"></div>');
+        $generateDates = LiteralField::create('GenerateDates', '<div @click="generateDates" class="Generate__Dates">Press me to generate your dates and shit</div>');
         $dateBack = LiteralField::create('DateBack', '<div class="add-event-controls"><div id="dateBack" @click="dateBackProgress" class="add-event-back"><span>back</span></div>');
         $dateNext = LiteralField::create('LocationNext', '<div @click="dateForwardProgress" id="dateNext" class="add-event-next"><span>next</span></div></div>');
 
