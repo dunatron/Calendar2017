@@ -1,6 +1,8 @@
 // jquery is required for bootstrap
 import $ from 'jquery';
 
+window.axios = require('axios');
+
 // jquery UI
 import 'jquery-ui';
 

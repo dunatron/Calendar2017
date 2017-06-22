@@ -6,6 +6,7 @@ import RadialProgressBar from 'vue-radial-progress'
 Vue.use(VeeValidate);
 
 import Carousel3d from 'vue-carousel-3d';
+
 Vue.use(Carousel3d);
 
 export default function VueAddEvent() {
@@ -18,6 +19,7 @@ export default function VueAddEvent() {
         },
         name: 'Add-Event',
         data: ({
+            Dates: [],
             Title: '',
             address: '',
             Description: '',
@@ -110,6 +112,60 @@ export default function VueAddEvent() {
             finishBackProgress: function() {
                 this.completedSteps = 4;
             },
+
+            generateDates: function() {
+
+                // First Clear any Dates
+                this.Dates = [];
+
+                // this.Dates.push('hello');
+                console.log('here comes the VUE');
+                let date_input = $('.Bootstrap__DatePicker');
+
+                let Dates = $(date_input).datepicker('getDates');
+                console.log(Dates);
+                for (var value of Dates)
+                {
+                    value.setHours(15);
+                    value.setMinutes(20);
+                    console.log(value.getMonth());
+                    var now = new Date();
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth()+1; //January is 0!
+                    if(dd<10){dd='0'+dd}
+                    if(mm<10){mm='0'+mm}
+                    var yyyy = today.getFullYear();
+                    today = dd+'/'+mm+'/'+yyyy;
+
+
+                    var DateObject =  {
+                        "DateObject": {
+                            "EventDate": today,
+                            "StartTime": "21:35:09",
+                            "EndTime": "21:35:09"
+                        }
+                    };
+
+                    this.Dates.push(DateObject);
+
+                }
+
+            },
+
+
+            submitNewEvents: function() {
+                axios.post('/pagefunction/storeNewEvents', {
+                    firstName: 'Fred',
+                    lastName: 'Flintstone'
+                })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
 
         }
 

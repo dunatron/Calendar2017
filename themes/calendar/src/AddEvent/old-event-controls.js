@@ -96,28 +96,34 @@ export default function AddEventForm() {
 
     $('#timepicker1').timepicker();
 
-    $('.Generate__Dates').on('click', function () {
-        let Dates = $(date_input).datepicker('getDates');
-        console.log(Dates);
-        for (var value of Dates)
-        {
-            value.setHours(15);
-            value.setMinutes(20);
-            console.log(value.getMonth());
-            $('.Generate__Dates').append('<input type="date" class="Start__Date">');
-            var now = new Date();
-            var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth()+1; //January is 0!
-            if(dd<10){dd='0'+dd}
-            if(mm<10){mm='0'+mm}
-            var yyyy = today.getFullYear();
-            today = yyyy+'-'+mm+'-'+dd;
-
-            $('.Start__Date').val(today);
-        }
-        console.log('time to try generate some dates');
-    });
+    // $('.Generate__Dates').on('click', function () {
+    //     let Dates = $(date_input).datepicker('getDates');
+    //     console.log(Dates);
+    //     for (var value of Dates)
+    //     {
+    //         value.setHours(15);
+    //         value.setMinutes(20);
+    //         console.log(value.getMonth());
+    //         $('.Generate__Dates').append('<input type="date" class="Start__Date">');
+    //         var now = new Date();
+    //         var today = new Date();
+    //         var dd = today.getDate();
+    //         var mm = today.getMonth()+1; //January is 0!
+    //         if(dd<10){dd='0'+dd}
+    //         if(mm<10){mm='0'+mm}
+    //         var yyyy = today.getFullYear();
+    //         today = yyyy+'-'+mm+'-'+dd;
+    //
+    //         $('.Start__Date').val(today);
+    //     }
+    //
+    //     //let FormData = $('#Form_HappEventForm').serialize();
+    //
+    //     let FormData = $('.form-step').find("select,textarea, input").serialize();
+    //
+    //     console.log(FormData);
+    //     console.log('time to try generate some dates');
+    // });
 
 
     //var date_input=$('input[name="date"]'); //our date input has the name "date"
