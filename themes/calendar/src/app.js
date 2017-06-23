@@ -39,7 +39,7 @@ window.GlobalTimePickerOptions = {
     downArrow: 'wickedpicker__controls__control-down', //The down arrow class selector to use, for custom CSS
     close: 'wickedpicker__close', //The close class selector to use, for custom CSS
     hoverState: 'hover-state', //The hover state class to use, for custom CSS
-    title: 'Happ Time Picker', //The Wickedpicker's title,
+    title: 'Time Picker', //The Wickedpicker's title,
     showSeconds: false, //Whether or not to show seconds,
     timeSeparator: ' : ', // The string to put in between hours and minutes (and seconds)
     secondsInterval: 1, //Change interval for seconds, defaults to 1,

@@ -6,7 +6,14 @@
  */
 export default function AddEventForm() {
 
-    let DetailsNext = $('#detailsNextBtn'),
+    let StepOneWrapper = $('#StepOne'),
+        StepOneNext = $('#StepOneNext'),
+        StepTwoWrapper = $('#StepTwo'),
+        StepTwoBack = $('#StepTwoBack'),
+
+
+
+        DetailsNext = $('#detailsNextBtn'),
         TicketCheck = $('#hasTickets'),
         DetailsWrapper = $('#details-step'),
         TicketWrapper = $('#ticket-step'),
@@ -52,7 +59,7 @@ export default function AddEventForm() {
 
 
     $('#CalendarSingle').on('click', function(){
-        $('.Bootstrap__DatePicker').datepicker('destroy');
+        CalendarDatePicker.datepicker('destroy');
         //$('.Bootstrap__DatePicker').replaceWith('<div class="Bootstrap__DatePicker"></div>');
         CalendarDatePicker.datepicker(SingleCalendarOptions);
 
@@ -76,8 +83,8 @@ export default function AddEventForm() {
     // });
 
     $('#CalendarMultiDay').on('click', function(){
-        $('.Bootstrap__DatePicker').datepicker('destroy');
-        $('.Bootstrap__DatePicker').datepicker(MultiCalendarOptions);
+        CalendarDatePicker.datepicker('destroy');
+        CalendarDatePicker.datepicker(MultiCalendarOptions);
         addHighlightOption($(this));
         removeHighlightOption('#CalendarReccuring');
         removeHighlightOption('#CalendarSingle');
@@ -113,6 +120,28 @@ export default function AddEventForm() {
     CalendarDatePicker.datepicker(SingleCalendarOptions);
 
 
+
+    $(StepOneNext).on('click', function () {
+        hideStep(StepOneWrapper);
+        showStep(StepTwoWrapper);
+        console.log('Hide the step please');
+    });
+
+    $(StepTwoBack).on('click', function () {
+        hideStep(StepTwoWrapper);
+        showStep(StepOneWrapper);
+        console.log('Hide the step please');
+    });
+
+    function hideStep($container)
+    {
+        $container.addClass('field-hidden');
+    }
+
+    function showStep($container)
+    {
+        $container.removeClass('field-hidden');
+    }
 
 
     $(DetailsNext).on('click', function () {

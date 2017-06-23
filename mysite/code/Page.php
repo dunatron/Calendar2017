@@ -81,11 +81,23 @@ class Page_Controller extends ContentController {
         $startTime = TextField::create('StartTime', 'Event start time');
         $finishTime = TextField::create('FinishTime', 'Event finish time');
         $generateDates = LiteralField::create('GenerateDates', '<div class="clearfix"></div><div @click="generateDates" class="Generate__Dates"><p class="generate_date_text">Press me to generate your dates and shit</p></div>');
-        $dateBack = LiteralField::create('DateBack', '<div class="add-event-controls"><div id="dateBack" @click="dateBackProgress" class="add-event-back"><span>back</span></div>');
-        $dateNext = LiteralField::create('LocationNext', '<div @click="dateForwardProgress" id="dateNext" class="add-event-next"><span>next</span></div></div>');
+
+        $generatedDates = LiteralField::create('GeneratedDates', '<ul class="Event__Dates">
+    <li class="Date__Object" v-for="Date in Dates">
+        <span class="Date">{{ Date.DateObject.EventDate }}</span>
+        <input type="time" class="Generated__Time" v-bind:value="Date.DateObject.StartTime" v-model="Date.DateObject.StartTime">
+        <input type="time" class="Generated__Time" v-bind:value="Date.DateObject.EndTime" v-model="Date.DateObject.EndTime">
+    </li>
+</ul>');
+
+        $StepOneNext = LiteralField::create('StepOneNext', '<div v-show="Dates[0]" class="add-event-controls"><div @click="stepOneForwardProgress" id="StepOneNext" class="add-event-next"><span>next</span></div></div>');
 
         $stepOneEnd = LiteralField::create('StepOneEnd', '</div>');
         //-----> End Step One
+
+
+        //-----> Start Step Two
+        $stepTwoStart = LiteralField::create('StepTwoStart', '<div id="StepTwo" class="form-step field-hidden">');
 
         // Title
         $Title = TextField::create('Title', 'Event Title')
@@ -94,6 +106,14 @@ class Page_Controller extends ContentController {
             ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:80", arg: "Title", scope: "validate-add-event" }')
 //            ->setAttribute('data-vv-rules', 'required|min:5|max:80')
             ->setRightTitle('Title');
+
+        $StepTwoBack = LiteralField::create('StepTwoBack', '<div class="add-event-controls"><div @click="stepTwoBackProgress" id="StepTwoBack" class="add-event-back"><span>back</span></div>');
+        $StepTwoNext = LiteralField::create('StepTwoNext', '<div @click="websiteForwardProgress" id="ticketWebNext" class="add-event-next"><span>next</span></div></div>');
+
+        $stepTwoEnd = LiteralField::create('StepTwoEnd', '</div>');
+        //-----> End Step Two
+
+
 
         //$titleError = LiteralField::create('titleError', '<p class="text-danger" v-if="errors.has(\'Title\')">{{ errors.first(\'Title\') }}</p>');
 
@@ -196,7 +216,8 @@ class Page_Controller extends ContentController {
   </radial-progress-bar>');
 
         $fields = new FieldList(
-            $stepOneStart,$bootstrapDate, $calendarOptions, $startTime, $finishTime, $generateDates, $dateBack,$dateNext , $stepOneEnd
+            $stepOneStart,$bootstrapDate, $calendarOptions, $startTime, $finishTime, $generateDates, $generatedDates, $StepOneNext , $stepOneEnd,
+            $stepTwoStart, $Title, $StepTwoBack, $StepTwoNext, $stepTwoEnd
         );
 
 

@@ -58,8 +58,8 @@ export default function VueAddEvent() {
                 this.address = addressData;
             },
 
-            nextTick: function() {
-              alert('It happen');
+            stepOneForwardProgress() {
+                console.log('Go To Step two after validation');
             },
 
             detailsForwardProgress: function() {
