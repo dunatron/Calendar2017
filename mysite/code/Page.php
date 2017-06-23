@@ -74,7 +74,7 @@ class Page_Controller extends ContentController {
 
         $bootstrapDate = LiteralField::create('BootstrapDatePicker', '<div class="Bootstrap__DatePicker"></div>');
         $calendarOptions = LiteralField::create('CalendarOptions', '<div class="Calendar__Options">
-<span id="CalendarSingle">Single</span>
+<span id="CalendarSingle" class="Higlight__Option">Single</span>
 <!--<span id="CalendarReccuring">Recurring</span>-->
 <span id="CalendarMultiDay">Multi Day</span></div> ');
         $date = DateField::create('EventDate', 'Date of the event')->setConfig('dateformat', 'dd-MM-yyyy')->setAttribute('type', 'date');
