@@ -75,15 +75,12 @@ class Page_Controller extends ContentController {
         $bootstrapDate = LiteralField::create('BootstrapDatePicker', '<div class="Bootstrap__DatePicker"></div>');
         $calendarOptions = LiteralField::create('CalendarOptions', '<div class="Calendar__Options">
 <span id="CalendarSingle">Single</span>
-<span id="CalendarReccuring">Recurring</span>
-<span id="CalendarMultiDay">Multi Day</span></div>');
+<!--<span id="CalendarReccuring">Recurring</span>-->
+<span id="CalendarMultiDay">Multi Day</span></div> ');
         $date = DateField::create('EventDate', 'Date of the event')->setConfig('dateformat', 'dd-MM-yyyy')->setAttribute('type', 'date');
         $startTime = TextField::create('StartTime', 'Event start time');
-        $finishTime = LiteralField::create('FinishTime', '<div class="input-group bootstrap-timepicker timepicker">
-            <input id="timepicker1" type="text" class="form-control input-small">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-        </div>');
-        $generateDates = LiteralField::create('GenerateDates', '<div @click="generateDates" class="Generate__Dates">Press me to generate your dates and shit</div>');
+        $finishTime = TextField::create('FinishTime', 'Event finish time');
+        $generateDates = LiteralField::create('GenerateDates', '<div class="clearfix"></div><div @click="generateDates" class="Generate__Dates"><p class="generate_date_text">Press me to generate your dates and shit</p></div>');
         $dateBack = LiteralField::create('DateBack', '<div class="add-event-controls"><div id="dateBack" @click="dateBackProgress" class="add-event-back"><span>back</span></div>');
         $dateNext = LiteralField::create('LocationNext', '<div @click="dateForwardProgress" id="dateNext" class="add-event-next"><span>next</span></div></div>');
 

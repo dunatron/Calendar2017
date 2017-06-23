@@ -65,7 +65,9 @@ body {
 }
 
 
-
+.wickedpicker {
+  z-index: 9999999999;
+}
 
 .event-btn {
   visibility: hidden;

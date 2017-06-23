@@ -17,7 +17,31 @@
 
   }
 
+  #Form_HappEventForm_StartTime_Holder, #Form_HappEventForm_FinishTime_Holder {
+    display: inline-block;
+    width: 100%;
+    @include breakpoint($min865) {
+      width: 50%;
+    }
+  }
+
+  .clearable-picker {
+    width: 100%;
+    .hasWickedpicker {
+      width: 100%;
+    }
+
+    // close btn
+    span {
+      font-size: 20px;
+    }
+  }
+
+
+
   .Calendar__Options {
+    margin-bottom: 20px;
+    border-bottom: 1px solid lightgrey;
     @include breakpoint($min865) {
       width: 50%;
       float: left;
@@ -25,9 +49,10 @@
     }
 
     span {
-      padding: 15px;
+      padding: 8px;
       display: block;
       border: 1px solid black;
+      margin-bottom: 10px;
     }
 
     .Higlight__Option {
@@ -36,7 +61,21 @@
   }
 
   .Generate__Dates {
+
+    margin: 20px 0;
     height: 59px;
     border: 1px solid black;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    @include breakpoint($min865) {
+      margin: 20px;
+    }
+    .generate_date_text {
+      width: 100%;
+      padding: 20px;
+      margin: 0;
+      text-align: center;
+    }
   }
 }

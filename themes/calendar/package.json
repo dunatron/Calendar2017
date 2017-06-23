@@ -29,6 +29,7 @@
     "jquery": "^3.2.1",
     "jquery-ui": "^1.12.1",
     "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "node-sass": "^4.5.3",
     "resolve-url-loader": "^2.0.2",
     "sass-loader": "^6.0.5",
@@ -46,7 +47,8 @@
     "vue-loader": "^12.2.1",
     "vue-radial-progress": "^0.2.10",
     "vue-template-compiler": "^2.3.4",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "wickedpicker": "^0.4.3"
   },
   "dependencies": {}
 }

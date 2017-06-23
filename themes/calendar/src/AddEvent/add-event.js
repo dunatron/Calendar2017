@@ -2,6 +2,7 @@ import Vue from '../../node_modules/vue/dist/vue.common';
 import VeeValidate from 'vee-validate';
 import VueGoogleAutocomplete from 'vue-google-autocomplete';
 import RadialProgressBar from 'vue-radial-progress'
+import moment from 'moment';
 
 Vue.use(VeeValidate);
 
@@ -11,7 +12,7 @@ Vue.use(Carousel3d);
 
 export default function VueAddEvent() {
 
- new Vue({
+ let AddEventForm = new Vue({
         el: '#site-wrapper',
         components: {
             VueGoogleAutocomplete,
@@ -46,6 +47,7 @@ export default function VueAddEvent() {
                 return `${this.EventForm.first_name} ${this.EventForm.last_name}`;
             }
         },
+
         methods: {
             /**
              * When the location found
@@ -54,6 +56,10 @@ export default function VueAddEvent() {
              */
             getAddressData: function (addressData, placeResultData) {
                 this.address = addressData;
+            },
+
+            nextTick: function() {
+              alert('It happen');
             },
 
             detailsForwardProgress: function() {
@@ -118,36 +124,47 @@ export default function VueAddEvent() {
                 // First Clear any Dates
                 this.Dates = [];
 
-                // this.Dates.push('hello');
-                console.log('here comes the VUE');
+                // Get Calendar Picker
                 let date_input = $('.Bootstrap__DatePicker');
 
                 let Dates = $(date_input).datepicker('getDates');
-                console.log(Dates);
-                for (var value of Dates)
+
+                let StartTime = $('#Form_HappEventForm_StartTime').val();
+                let FinishTime = $('#Form_HappEventForm_FinishTime').val();
+
+                for (let value of Dates)
                 {
-                    value.setHours(15);
-                    value.setMinutes(20);
-                    console.log(value.getMonth());
-                    var now = new Date();
-                    var today = new Date();
-                    var dd = today.getDate();
-                    var mm = today.getMonth()+1; //January is 0!
+
+                    let today = new Date();
+                    let dd = value.getDate();
+                    let mm = value.getMonth()+1; //January is 0!
+
                     if(dd<10){dd='0'+dd}
                     if(mm<10){mm='0'+mm}
-                    var yyyy = today.getFullYear();
-                    today = dd+'/'+mm+'/'+yyyy;
+                    let yyyy = value.getFullYear();
+                    value = dd+'/'+mm+'/'+yyyy;
 
+                    //let DateMom = moment(String(value)).format('dd/mm/yyyy');
+                    let StartTimeFormat =  moment(StartTime, ["h:mm A"]);
+                    let FinishTimeFormat =  moment(FinishTime, ["h:mm A"]);
 
-                    var DateObject =  {
+                    let FormatStartTime = StartTimeFormat.format("HH:mm");
+                    let FormatFinishTime = FinishTimeFormat.format("HH:mm");
+
+                    let DateObject =  {
                         "DateObject": {
-                            "EventDate": today,
-                            "StartTime": "21:35:09",
-                            "EndTime": "21:35:09"
+                            "EventDate": value,
+                            "StartTime": FormatStartTime,
+                            "EndTime": FormatFinishTime
                         }
                     };
 
                     this.Dates.push(DateObject);
+
+                    // Callback method that fires after dom has been updated by this method
+                    this.$nextTick(function () {
+                        //$('.Generated__Time').wickedpicker(GlobalTimePickerOptions);
+                    })
 
                 }
 

@@ -6,7 +6,7 @@
  */
 export default function AddEventForm() {
 
-    var DetailsNext = $('#detailsNextBtn'),
+    let DetailsNext = $('#detailsNextBtn'),
         TicketCheck = $('#hasTickets'),
         DetailsWrapper = $('#details-step'),
         TicketWrapper = $('#ticket-step'),
@@ -29,15 +29,16 @@ export default function AddEventForm() {
         continueAddEventOverlay = $('.continue-add-event-overlay'),
         clearFormBtn = $('#Form_HappEventForm_action_ClearAction'),
         resetFormBtn = $('#reset-add-event'),
-        continueFormBtn = $('#continue-add-event');
+        continueFormBtn = $('#continue-add-event'),
+        CalendarDatePicker = $('.Bootstrap__DatePicker');
 
     /**
      * Setup DatePicker
      */
-    $('.Bootstrap__DatePicker').datepicker({
-        multidate: true,
-        format: "mm/dd/yyy"
-    });
+    // $('.Bootstrap__DatePicker').datepicker({
+    //     multidate: true,
+    //     format: "mm/dd/yyy"
+    // });
 
     function removeHighlightOption($option)
     {
@@ -51,32 +52,32 @@ export default function AddEventForm() {
 
 
     $('#CalendarSingle').on('click', function(){
-        console.log($(date_input).datepicker('getDates'));
+        $('.Bootstrap__DatePicker').datepicker('destroy');
+        //$('.Bootstrap__DatePicker').replaceWith('<div class="Bootstrap__DatePicker"></div>');
+        CalendarDatePicker.datepicker(SingleCalendarOptions);
+
         addHighlightOption($(this));
         removeHighlightOption('#CalendarReccuring');
         removeHighlightOption('#CalendarMultiDay');
     });
 
-    $('#CalendarReccuring').on('click', function(){
-        $('.Bootstrap__DatePicker').replaceWith('<div class="Bootstrap__DatePicker">' +
-            '<div class="range-start"></div>' +
-            '<div class="range-end"></div>' +
-            '</div>');
-        $('.Bootstrap__DatePicker').datepicker({
-            inputs: $('.range-start, .range-end'),
-            format: "mm/dd/yyy"
-        });
-        addHighlightOption($(this));
-        removeHighlightOption('#CalendarSingle');
-        removeHighlightOption('#CalendarMultiDay');
-    });
+    // $('#CalendarReccuring').on('click', function(){
+    //     $('.Bootstrap__DatePicker').replaceWith('<div class="Bootstrap__DatePicker">' +
+    //         '<div class="range-start"></div>' +
+    //         '<div class="range-end"></div>' +
+    //         '</div>');
+    //     $('.Bootstrap__DatePicker').datepicker({
+    //         inputs: $('.range-start, .range-end'),
+    //         format: "mm/dd/yyy"
+    //     });
+    //     addHighlightOption($(this));
+    //     removeHighlightOption('#CalendarSingle');
+    //     removeHighlightOption('#CalendarMultiDay');
+    // });
 
     $('#CalendarMultiDay').on('click', function(){
-        $('.Bootstrap__DatePicker').replaceWith('<div class="Bootstrap__DatePicker"></div>');
-        $('.Bootstrap__DatePicker').datepicker({
-            multidate: true,
-            format: "mm/dd/yyy"
-        });
+        $('.Bootstrap__DatePicker').datepicker('destroy');
+        $('.Bootstrap__DatePicker').datepicker(MultiCalendarOptions);
         addHighlightOption($(this));
         removeHighlightOption('#CalendarReccuring');
         removeHighlightOption('#CalendarSingle');
@@ -86,50 +87,13 @@ export default function AddEventForm() {
     /**
      * TimePicker
      */
-    $('#Form_HappEventForm_StartTime').timepicker({
-        disableMousewheel: false,
-        template:"dropdown",
-        disableFocus:true,
-        modalBackdrop:true,
-        minuteStep: 1,
-    });
+    $('#Form_HappEventForm_StartTime').wickedpicker(GlobalTimePickerOptions);
 
-    $('#timepicker1').timepicker();
+    $('#Form_HappEventForm_FinishTime').wickedpicker(GlobalTimePickerOptions);
 
-    // $('.Generate__Dates').on('click', function () {
-    //     let Dates = $(date_input).datepicker('getDates');
-    //     console.log(Dates);
-    //     for (var value of Dates)
-    //     {
-    //         value.setHours(15);
-    //         value.setMinutes(20);
-    //         console.log(value.getMonth());
-    //         $('.Generate__Dates').append('<input type="date" class="Start__Date">');
-    //         var now = new Date();
-    //         var today = new Date();
-    //         var dd = today.getDate();
-    //         var mm = today.getMonth()+1; //January is 0!
-    //         if(dd<10){dd='0'+dd}
-    //         if(mm<10){mm='0'+mm}
-    //         var yyyy = today.getFullYear();
-    //         today = yyyy+'-'+mm+'-'+dd;
-    //
-    //         $('.Start__Date').val(today);
-    //     }
-    //
-    //     //let FormData = $('#Form_HappEventForm').serialize();
-    //
-    //     let FormData = $('.form-step').find("select,textarea, input").serialize();
-    //
-    //     console.log(FormData);
-    //     console.log('time to try generate some dates');
-    // });
+    let container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
 
-
-    //var date_input=$('input[name="date"]'); //our date input has the name "date"
-    let date_input = $('.Bootstrap__DatePicker');
-    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-    var options={
+    let MultiCalendarOptions={
         format: 'dd/mm/yyyy',
         template:"modal",
         //container: container,
@@ -137,14 +101,16 @@ export default function AddEventForm() {
         autoclose: false,
         multidate: true,
     };
-    var optionsTwo ={
+    let SingleCalendarOptions ={
         format: 'dd/mm/yyyy',
         container: container,
         todayHighlight: true,
         autoclose: false,
         multidate: false,
     };
-    date_input.datepicker(options);
+
+
+    CalendarDatePicker.datepicker(SingleCalendarOptions);
 
 
 
