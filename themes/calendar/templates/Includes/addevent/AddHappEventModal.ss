@@ -19,20 +19,20 @@
                     <% include ContinueAddEventForm %>
                 <%-- Add Event | Form --%>
                 <% include HappEventForm %>
-                <div id="example">
-                    <carousel-3d :controls-visible="true" :clickable="false">
-                        <slide v-for="(slide, i) in slides" :index="i">
-                            <figure>
-                                <img src="https://placehold.it/360x270">
-                                <figcaption>
-                                    The sky is the limit only for those who aren't afraid to fly!
-                                    The sky is the limit only for those who aren't afraid to fly!
+                <%--<div id="example">--%>
+                    <%--<carousel-3d :controls-visible="true" :clickable="false">--%>
+                        <%--<slide v-for="(slide, i) in slides" :index="i">--%>
+                            <%--<figure>--%>
+                                <%--<img src="https://placehold.it/360x270">--%>
+                                <%--<figcaption>--%>
+                                    <%--The sky is the limit only for those who aren't afraid to fly!--%>
+                                    <%--The sky is the limit only for those who aren't afraid to fly!--%>
 
-                                </figcaption>
-                            </figure>
-                        </slide>
-                    </carousel-3d>
-                </div>
+                                <%--</figcaption>--%>
+                            <%--</figure>--%>
+                        <%--</slide>--%>
+                    <%--</carousel-3d>--%>
+                <%--</div>--%>
             </div>
             <%--<div class="modal-footer">--%>
                 <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>

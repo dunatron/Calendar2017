@@ -41,27 +41,27 @@ class CalendarPage_Controller extends Page_Controller
     {
         parent::init();
 
-        $themeFolder = $this->ThemeDir();
-
-        // Set the folder to our theme so that relative image paths work
-        Requirements::set_combined_files_folder($themeFolder . '/combinedfiles');
-
-        $JSFiles = array(
-            //$themeFolder . '/dist/bootstrap.bundle.js',
-            $themeFolder . '/dist/app.bundle.js'
-        );
-
-//        $CSSFiles = array(
-//            //$themeFolder . '/css/base-styles.css',
-//            $themeFolder . '/css/Calendar-Core.css',
-//            $themeFolder . '/css/homepage.css',
-//            $themeFolder . '/css/main.css'
+//        $themeFolder = $this->ThemeDir();
+//
+//        // Set the folder to our theme so that relative image paths work
+//        Requirements::set_combined_files_folder($themeFolder . '/combinedfiles');
+//
+//        $JSFiles = array(
+//            //$themeFolder . '/dist/bootstrap.bundle.js',
+//            $themeFolder . '/dist/app.bundle.js'
 //        );
-
-        // Combine css files
-        //Requirements::combine_files('styles.css', $CSSFiles);
-
-        Requirements::combine_files('scripts.js', $JSFiles);
+//
+////        $CSSFiles = array(
+////            //$themeFolder . '/css/base-styles.css',
+////            $themeFolder . '/css/Calendar-Core.css',
+////            $themeFolder . '/css/homepage.css',
+////            $themeFolder . '/css/main.css'
+////        );
+//
+//        // Combine css files
+//        //Requirements::combine_files('styles.css', $CSSFiles);
+//
+//        Requirements::combine_files('scripts.js', $JSFiles);
 
         /**
          * Because I am using webpack, we want this script in the head to style our document before the elements load.

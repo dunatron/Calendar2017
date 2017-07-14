@@ -1,67 +1,67 @@
 <?php
-class Page extends SiteTree {
 
-	private static $db = array(
-	);
+class Page extends SiteTree
+{
 
-	private static $has_one = array(
-	);
+    private static $db = array();
+
+    private static $has_one = array();
 
 }
-class Page_Controller extends ContentController {
 
-	/**
-	 * An array of actions that can be accessed via a request. Each array element should be an action name, and the
-	 * permissions or conditions required to allow the user to access it.
-	 *
-	 * <code>
-	 * array (
-	 *     'action', // anyone can access this action
-	 *     'action' => true, // same as above
-	 *     'action' => 'ADMIN', // you must have ADMIN permissions to access this action
-	 *     'action' => '->checkAction' // you can only access this action if $this->checkAction() returns true
-	 * );
-	 * </code>
-	 *
-	 * @var array
-	 */
-	private static $allowed_actions = array (
-	    'HappSearchForm',
-	    'searchHappEvents',
+class Page_Controller extends ContentController
+{
+
+    /**
+     * An array of actions that can be accessed via a request. Each array element should be an action name, and the
+     * permissions or conditions required to allow the user to access it.
+     *
+     * <code>
+     * array (
+     *     'action', // anyone can access this action
+     *     'action' => true, // same as above
+     *     'action' => 'ADMIN', // you must have ADMIN permissions to access this action
+     *     'action' => '->checkAction' // you can only access this action if $this->checkAction() returns true
+     * );
+     * </code>
+     *
+     * @var array
+     */
+    private static $allowed_actions = array(
+        'HappSearchForm',
+        'searchHappEvents',
         'HappEventForm',
         'processHappEvent',
         'storeNewEvents'
-	);
+    );
 
-	public function init() {
-		parent::init();
+    public function init()
+    {
+        parent::init();
         Requirements::clear();
-        /*
+
         $themeFolder = $this->ThemeDir();
 
         // Set the folder to our theme so that relative image paths work
         Requirements::set_combined_files_folder($themeFolder . '/combinedfiles');
 
-        // Add all our css files to combine into an array
-        $CSSFiles = array(
-            //$themeFolder . '/css/base-styles.css',
+        $JSFiles = array(
+            //$themeFolder . '/dist/bootstrap.bundle.js',
+            $themeFolder . '/dist/app.bundle.js'
+        );
+
+//        $CSSFiles = array(
+//            //$themeFolder . '/css/base-styles.css',
 //            $themeFolder . '/css/Calendar-Core.css',
 //            $themeFolder . '/css/homepage.css',
 //            $themeFolder . '/css/main.css'
-            $themeFolder . '/dist/styles.css'
-        );
+//        );
 
-        // Add all our files to combine into an array
-        $JSFiles = array(
-//                $themeFolder . '/dist/app.bundle.js'
-        );
         // Combine css files
-        Requirements::combine_files('styles.css', $CSSFiles);
+        //Requirements::combine_files('styles.css', $CSSFiles);
 
-        // Combine js files
         Requirements::combine_files('scripts.js', $JSFiles);
-        */
-	}
+    }
 
     public function HappEventForm()
     {
@@ -103,28 +103,53 @@ class Page_Controller extends ContentController {
         $Title = TextField::create('Title', 'Event Title')
             ->setAttribute('required', true)
             ->setAttribute('v-model', 'Title')
-            ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:80", arg: "Title", scope: "validate-add-event" }')
+            ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:80", arg: "Title", scope: "validateAddEvent" }')
 //            ->setAttribute('data-vv-rules', 'required|min:5|max:80')
             ->setRightTitle('Title');
 
+        // Description
+        $Description = TextareaField::create('Description', 'Event Description')
+            ->setAttribute('required', true)
+            ->setAttribute('v-model', 'Description')
+            ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:500", arg: "Description", scope: "validateAddEvent" }')
+//            ->setAttribute('data-vv-rules', 'required|min:10')
+            ->setRightTitle('Description');
+
         $StepTwoBack = LiteralField::create('StepTwoBack', '<div class="add-event-controls"><div @click="stepTwoBackProgress" id="StepTwoBack" class="add-event-back"><span>back</span></div>');
-        $StepTwoNext = LiteralField::create('StepTwoNext', '<div @click="websiteForwardProgress" id="ticketWebNext" class="add-event-next"><span>next</span></div></div>');
+        $StepTwoNext = LiteralField::create('StepTwoNext', '<div @click="stepTwoForwardProgress"
+            v-show="fields.$validateAddEvent && fields.$validateAddEvent.Title.dirty && fields.$validateAddEvent.Description.dirty && !errors.has(\'validateAddEvent.Title\') && !errors.has(\'validateAddEvent.Description\') "
+            id="StepTwoNext" class="add-event-next"><span>next</span></div></div>');
+
 
         $stepTwoEnd = LiteralField::create('StepTwoEnd', '</div>');
         //-----> End Step Two
 
 
+        //-----> Start Step Three
+        $stepThreeStart = LiteralField::create('StepThreeStart', '<div id="StepThree" class="form-step field-hidden">');
 
-        //$titleError = LiteralField::create('titleError', '<p class="text-danger" v-if="errors.has(\'Title\')">{{ errors.first(\'Title\') }}</p>');
+        $venueName = TextField::create('EventVenue', 'Venue Name');
 
-        // Description
-        $desc = TextareaField::create('Description', 'Event Description')
-            ->setAttribute('required', true)
-            ->setAttribute('v-model', 'Description')
-            ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:500", arg: "Description", scope: "validate-add-event" }')
-//            ->setAttribute('data-vv-rules', 'required|min:10')
-            ->setRightTitle('Description');
-        //$descError = LiteralField::create('descError', '<p class="text-danger" v-if="errors.has(\'Description\')">{{ errors.first(\'Description\') }}</p>');
+        $vueGoogleMap = LiteralField::create('VueMap', ' <vue-google-autocomplete
+                    id="map"
+                    Type="establishment"
+                    classname="input"
+                    placeholder="Start typing"
+                    v-on:placechanged="getAddressData"
+                    country="NZ" 
+                    style="width: 100%"
+                >
+                </vue-google-autocomplete>');
+
+        $mapData = LiteralField::create('MapData', '<h1 v-text="address"></h1>');
+        $map = LiteralField::create('googleMap', '<div v-show="address.latitude" id="addEventMap" style="width: 100%; height: 400px;"></div>');
+
+        $StepThreeBack = LiteralField::create('StepThreeBack', '<div class="add-event-controls"><div @click="stepThreeBackProgress" id="StepThreeBack" class="add-event-back"><span>back</span></div>');
+        $StepThreeNext = LiteralField::create('StepThreeNext', '<div @click="stepThreeForwardProgress" id="StepThreeNext" class="add-event-next"><span>next</span></div></div>');
+
+        $stepThreeEnd = LiteralField::create('StepThreeEnd', '</div>');
+        //-----> End Step Three
+
         $ticket = CheckboxField::create('HasTickets', 'Check if event has tickets')
             ->setAttribute('id', 'hasTickets')
             ->setAttribute('v-model', 'HasTickets');
@@ -169,19 +194,9 @@ class Page_Controller extends ContentController {
         $locLat = HiddenField::create('LocationLat', 'Location Latitude')->setAttribute('id', 'addEventLat');
         $locLong = HiddenField::create('LocationLon', 'Location Longitude')->setAttribute('id', 'addEventLon');
         $locRadius = HiddenField::create('LocationRadius', 'Radius of the event')->setAttribute('id', 'addEventRadius');
-        $map = LiteralField::create('googleMap', '<div id="addEventMap" style="width: 100%; height: 400px;"></div>');
 
-        $vueGoogleMap = LiteralField::create('VueMap', ' <vue-google-autocomplete
-                    id="map"
-                    classname="input"
-                    placeholder="Start typing"
-                    v-on:placechanged="getAddressData"
-                    country="NZ"
-                    style="width: 100%"
-                >
-                </vue-google-autocomplete>');
 
-        $mapData = LiteralField::create('MapData', '<h1 v-text="address"></h1>');
+
 
         $locationBack = LiteralField::create('LocationBack', '<div class="add-event-controls"><div @click="locationBackProgress" id="locationBack" class="add-event-back"><span>back</span></div>');
         $locationNext = LiteralField::create('LocationNext', '<div @click="locationForwardProgress" id="locationNext" class="add-event-next"><span>next</span></div></div>');
@@ -216,8 +231,9 @@ class Page_Controller extends ContentController {
   </radial-progress-bar>');
 
         $fields = new FieldList(
-            $stepOneStart,$bootstrapDate, $calendarOptions, $startTime, $finishTime, $generateDates, $generatedDates, $StepOneNext , $stepOneEnd,
-            $stepTwoStart, $Title, $StepTwoBack, $StepTwoNext, $stepTwoEnd
+            $stepOneStart, $bootstrapDate, $calendarOptions, $startTime, $finishTime, $generateDates, $generatedDates, $StepOneNext, $stepOneEnd,
+            $stepTwoStart, $Title, $Description, $StepTwoBack, $StepTwoNext, $stepTwoEnd,
+            $stepThreeStart, $venueName, $vueGoogleMap, $mapData, $map, $StepThreeBack, $StepThreeNext, $stepThreeEnd
         );
 
 

@@ -136,6 +136,11 @@ body {
   background-color: transparent;
 }
 
+.hdpi.pac-logo:after {
+  //background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3.png);
+  background-image: none;
+}
+
 .ajax-loader {
   .ajax-load-icon {
     background: url('../images/loader/ajax-loader.svg') no-repeat;

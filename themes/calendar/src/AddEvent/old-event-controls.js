@@ -6,10 +6,12 @@
  */
 export default function AddEventForm() {
 
-    let StepOneWrapper = $('#StepOne'),
-        StepOneNext = $('#StepOneNext'),
-        StepTwoWrapper = $('#StepTwo'),
-        StepTwoBack = $('#StepTwoBack'),
+    let StepOneWrapper  =   $('#StepOne'),
+        StepOneNext =   $('#StepOneNext'),
+        StepTwoWrapper  =   $('#StepTwo'),
+        StepTwoBack =   $('#StepTwoBack'),
+        StepTwoNext =   $('#StepTwoNext'),
+        StepThreeWrapper    =   $('#StepThree'),
 
 
 
@@ -130,6 +132,18 @@ export default function AddEventForm() {
     $(StepTwoBack).on('click', function () {
         hideStep(StepTwoWrapper);
         showStep(StepOneWrapper);
+        console.log('Hide the step please');
+    });
+
+    $(StepTwoNext).on('click', function () {
+        hideStep(StepTwoWrapper);
+        showStep(StepThreeWrapper);
+        console.log('Hide the step please');
+    });
+
+    $(StepThreeBack).on('click', function () {
+        hideStep(StepThreeWrapper);
+        showStep(StepTwoWrapper);
         console.log('Hide the step please');
     });
 
@@ -347,9 +361,11 @@ export default function AddEventForm() {
     // Scroll to top of modal
     $('.add-event-back').on('click', function(){
         $('#AddHappEventModal').animate({ scrollTop: 0 }, 'slow');
+        $('#VueAddEvent').animate({ scrollTop: 0 }, 'slow');
     });
 
     $('.add-event-next').on('click', function(){
         $('#AddHappEventModal').animate({ scrollTop: 0 }, 'slow');
+        $('#VueAddEvent').animate({ scrollTop: 0 }, 'slow');
     });
 }

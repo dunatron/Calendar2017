@@ -29,4 +29,5 @@ web.config
 themes/calendar/node_modules
 timepickerfield/
 phpcs.xml.dist
+themes/simple
 
