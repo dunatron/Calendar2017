@@ -2,10 +2,10 @@
 
 $HappEventForm
 
- <vue-recaptcha
-         ref="recaptcha"
-         @verify="onVerify"
-         @expired="onExpired"
-         :sitekey="sitekey">
- </vue-recaptcha>
- <button @click="resetRecaptcha"> Reset ReCAPTCHA </button>
+ <%--<vue-recaptcha--%>
+         <%--ref="recaptcha"--%>
+         <%--@verify="onVerify"--%>
+         <%--@expired="onExpired"--%>
+         <%--:sitekey="sitekey">--%>
+ <%--</vue-recaptcha>--%>
+ <%--<button @click="resetRecaptcha"> Reset ReCAPTCHA </button>--%>
