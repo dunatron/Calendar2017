@@ -261,6 +261,8 @@ class Page_Controller extends ContentController
                 ->addExtraClass('field-hidden happ_btn')
                 ->setAttribute('id', 'submitHappEvent')
                 ->setAttribute('@click.prevent', 'submitNewEvents')
+                ->setUseButtonTag(true)
+                ->setTemplate('RecaptchaSubmit')
         );
 
         $actions->push(

@@ -3,8 +3,10 @@ import VeeValidate from 'vee-validate';
 import VueGoogleAutocomplete from 'vue-google-autocomplete';
 import RadialProgressBar from 'vue-radial-progress'
 import moment from 'moment';
+import VueRecaptcha from 'vue-recaptcha';
 
 Vue.use(VeeValidate);
+
 
 // import Carousel3d from 'vue-carousel-3d';
 //
@@ -16,7 +18,8 @@ export default function VueAddEvent() {
         el: '#site-wrapper',
         components: {
             VueGoogleAutocomplete,
-            RadialProgressBar
+            RadialProgressBar,
+            VueRecaptcha
         },
         name: 'Add-Event',
         data: ({
@@ -42,6 +45,7 @@ export default function VueAddEvent() {
             timingFunc: 'linear',
             // 3d slider
             //slides: 7
+            sitekey: '6LdeySkUAAAAAFkVXrWjtjBccmEVBeSnRVbkzdQ1'
 
         }),
 
@@ -254,6 +258,20 @@ export default function VueAddEvent() {
                     .catch(function (error) {
                         console.log(error);
                     });
+            },
+
+
+            onSubmit: function () {
+                this.$refs.invisibleRecaptcha.execute()
+            },
+            onVerify: function (response) {
+                console.log('Verify: ' + response)
+            },
+            onExpired: function () {
+                console.log('Expired')
+            },
+            resetRecaptcha () {
+                this.$refs.recaptcha.reset() // Direct call reset method
             }
 
         }

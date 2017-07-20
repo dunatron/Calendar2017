@@ -4535,7 +4535,7 @@ return hooks;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(232)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(233)(module)))
 
 /***/ }),
 /* 1 */
@@ -29992,7 +29992,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = VueAddEvent;
 
-var _vue = __webpack_require__(230);
+var _vue = __webpack_require__(231);
 
 var _vue2 = _interopRequireDefault(_vue);
 
@@ -30012,6 +30012,10 @@ var _moment = __webpack_require__(0);
 
 var _moment2 = _interopRequireDefault(_moment);
 
+var _vueRecaptcha = __webpack_require__(227);
+
+var _vueRecaptcha2 = _interopRequireDefault(_vueRecaptcha);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue2.default.use(_veeValidate2.default);
@@ -30026,7 +30030,8 @@ function VueAddEvent() {
         el: '#site-wrapper',
         components: {
             VueGoogleAutocomplete: _vueGoogleAutocomplete2.default,
-            RadialProgressBar: _vueRadialProgress2.default
+            RadialProgressBar: _vueRadialProgress2.default,
+            VueRecaptcha: _vueRecaptcha2.default
         },
         name: 'Add-Event',
         data: {
@@ -30049,9 +30054,10 @@ function VueAddEvent() {
             startColor: '#429321',
             stopColor: '#FF6733',
             innerStrokeColor: '#323232',
-            timingFunc: 'linear'
+            timingFunc: 'linear',
             // 3d slider
             //slides: 7
+            sitekey: '6LdeySkUAAAAAFkVXrWjtjBccmEVBeSnRVbkzdQ1'
 
         },
 
@@ -30263,8 +30269,20 @@ function VueAddEvent() {
                 }).catch(function (error) {
                     console.log(error);
                 });
-            }
+            },
 
+            onSubmit: function onSubmit() {
+                this.$refs.invisibleRecaptcha.execute();
+            },
+            onVerify: function onVerify(response) {
+                console.log('Verify: ' + response);
+            },
+            onExpired: function onExpired() {
+                console.log('Expired');
+            },
+            resetRecaptcha: function resetRecaptcha() {
+                this.$refs.recaptcha.reset(); // Direct call reset method
+            }
         }
 
     });
@@ -55589,7 +55607,7 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(227)
+  __webpack_require__(228)
 }
 var Component = __webpack_require__(159)(
   /* script */
@@ -55756,6 +55774,193 @@ module.exports = __webpack_require__(223)
 /* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
+(function (global, factory) {
+	 true ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.VueRecaptcha = factory());
+}(this, (function () { 'use strict';
+
+var defer = function defer() {
+  var state = false; // Resolved or not
+  var value = void 0;
+  var callbacks = [];
+  var resolve = function resolve(val) {
+    if (state) {
+      return;
+    }
+
+    state = true;
+    value = val;
+    callbacks.forEach(function (cb) {
+      cb(val);
+    });
+  };
+
+  var then = function then(cb) {
+    if (!state) {
+      callbacks.push(cb);
+      return;
+    }
+    cb(value);
+  };
+
+  var deferred = {
+    resolved: function resolved() {
+      return state;
+    },
+
+    resolve: resolve,
+    promise: {
+      then: then
+    }
+  };
+  return deferred;
+};
+
+function createRecaptcha() {
+  var deferred = defer();
+
+  return {
+    setRecaptcha: function setRecaptcha(recap) {
+      deferred.resolve(recap);
+    },
+    getRecaptcha: function getRecaptcha() {
+      return deferred.promise;
+    },
+    render: function render(ele, options, cb) {
+      this.getRecaptcha().then(function (recap) {
+        cb(recap.render(ele, options));
+      });
+    },
+    reset: function reset(widgetId) {
+      if (typeof widgetId === 'undefined') {
+        return;
+      }
+
+      this.assertRecaptchaLoad();
+      this.getRecaptcha().then(function (recap) {
+        return recap.reset(widgetId);
+      });
+    },
+    execute: function execute(widgetId) {
+      if (typeof widgetId === 'undefined') {
+        return;
+      }
+
+      this.assertRecaptchaLoad();
+      this.getRecaptcha().then(function (recap) {
+        return recap.execute(widgetId);
+      });
+    },
+    checkRecaptchaLoad: function checkRecaptchaLoad() {
+      if (window.hasOwnProperty('grecaptcha')) {
+        this.setRecaptcha(window.grecaptcha);
+      }
+    },
+    assertRecaptchaLoad: function assertRecaptchaLoad() {
+      if (!deferred.resolved()) {
+        throw new Error('ReCAPTCHA has not been loaded');
+      }
+    }
+  };
+}
+
+var recaptcha = createRecaptcha();
+
+if (typeof window !== 'undefined') {
+  window.vueRecaptchaApiLoaded = function () {
+    recaptcha.setRecaptcha(window.grecaptcha);
+  };
+}
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var VueRecaptcha$1 = {
+  name: 'VueRecaptcha',
+  props: {
+    sitekey: {
+      type: String,
+      required: true
+    },
+    theme: {
+      type: String
+    },
+    badge: {
+      type: String
+    },
+    type: {
+      type: String
+    },
+    size: {
+      type: String
+    },
+    tabindex: {
+      type: String
+    }
+  },
+  created: function created() {
+    this.$widgetId = null;
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    recaptcha.checkRecaptchaLoad();
+    var opts = _extends({}, this.$props, {
+      callback: this.emitVerify,
+      'expired-callback': this.emitExpired
+    });
+    var container = this.$slots.default ? this.$refs.container.children[0] : this.$refs.container;
+    recaptcha.render(container, opts, function (id) {
+      _this.$widgetId = id;
+      _this.$emit('render', id);
+    });
+  },
+
+  methods: {
+    reset: function reset() {
+      recaptcha.reset(this.$widgetId);
+    },
+    execute: function execute() {
+      recaptcha.execute(this.$widgetId);
+    },
+    emitVerify: function emitVerify(response) {
+      this.$emit('verify', response);
+    },
+    emitExpired: function emitExpired() {
+      this.$emit('expired');
+    }
+  },
+  events: {
+    recaptchaReset: function recaptchaReset() {
+      this.reset();
+    }
+  },
+  render: function render(h) {
+    return h('div', { ref: 'container' }, this.$slots.default);
+  }
+};
+
+return VueRecaptcha$1;
+
+})));
+
+
+/***/ }),
+/* 228 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
@@ -55763,7 +55968,7 @@ var content = __webpack_require__(201);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(228)("6f131426", content, false);
+var update = __webpack_require__(229)("6f131426", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -55779,7 +55984,7 @@ if(false) {
 }
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -55798,7 +56003,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(229)
+var listToStyles = __webpack_require__(230)
 
 /*
 type StyleObject = {
@@ -56000,7 +56205,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports) {
 
 /**
@@ -56033,7 +56238,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66104,10 +66309,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25), __webpack_require__(231)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25), __webpack_require__(232)))
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, exports) {
 
 var g;
@@ -66134,7 +66339,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
