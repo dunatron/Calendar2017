@@ -16442,7 +16442,7 @@ function VueAddEvent() {
         components: {
             VueGoogleAutocomplete: _vueGoogleAutocomplete2.default,
             RadialProgressBar: _vueRadialProgress2.default,
-            VueRecaptcha: _vueRecaptcha2.default
+            'vue-recaptcha': _vueRecaptcha2.default
         },
         name: 'Add-Event',
         data: {
@@ -16468,7 +16468,8 @@ function VueAddEvent() {
             timingFunc: 'linear',
             // 3d slider
             //slides: 7
-            sitekey: '6LdeySkUAAAAAFkVXrWjtjBccmEVBeSnRVbkzdQ1'
+            //sitekey: '6LdeySkUAAAAAFkVXrWjtjBccmEVBeSnRVbkzdQ1'
+            sitekey: '6Ldr6CkUAAAAAIraLSAjSqITbabSitWpJi2nVmnM'
 
         },
 
@@ -16673,7 +16674,7 @@ function VueAddEvent() {
 
             submitNewEvents: function submitNewEvents() {
 
-                this.$refs.grecaptcha.execute();
+                // this.$refs.invisibleRecaptcha.execute();
 
                 axios.post('/pagefunction/storeNewEvents', {
                     firstName: 'Fred',

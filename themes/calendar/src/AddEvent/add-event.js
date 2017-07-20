@@ -19,7 +19,7 @@ export default function VueAddEvent() {
         components: {
             VueGoogleAutocomplete,
             RadialProgressBar,
-            VueRecaptcha
+            'vue-recaptcha': VueRecaptcha
         },
         name: 'Add-Event',
         data: ({
@@ -45,7 +45,8 @@ export default function VueAddEvent() {
             timingFunc: 'linear',
             // 3d slider
             //slides: 7
-            sitekey: '6LdeySkUAAAAAFkVXrWjtjBccmEVBeSnRVbkzdQ1'
+            //sitekey: '6LdeySkUAAAAAFkVXrWjtjBccmEVBeSnRVbkzdQ1'
+            sitekey: '6Ldr6CkUAAAAAIraLSAjSqITbabSitWpJi2nVmnM'
 
         }),
 
@@ -249,7 +250,7 @@ export default function VueAddEvent() {
 
             submitNewEvents: function () {
 
-                this.$refs.invisibleRecaptcha.execute();
+               // this.$refs.invisibleRecaptcha.execute();
 
                 axios.post('/pagefunction/storeNewEvents', {
                     firstName: 'Fred',

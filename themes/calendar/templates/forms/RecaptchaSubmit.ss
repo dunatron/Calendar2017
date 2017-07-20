@@ -1,5 +1,6 @@
 <% if $UseButtonTag %>
     <vue-recaptcha
+            ref="invisibleRecaptcha"
             @verify="onVerify"
             @expired="onExpired"
             :sitekey="sitekey">
