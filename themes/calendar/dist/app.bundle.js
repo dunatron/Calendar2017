@@ -30296,6 +30296,7 @@ function AddEventForm() {
         StepTwoBack = $('#StepTwoBack'),
         StepTwoNext = $('#StepTwoNext'),
         StepThreeWrapper = $('#StepThree'),
+        StepThreeNext = $('#StepThreeNext'),
         DetailsNext = $('#detailsNextBtn'),
         TicketCheck = $('#hasTickets'),
         DetailsWrapper = $('#details-step'),
@@ -30419,6 +30420,10 @@ function AddEventForm() {
         hideStep(StepThreeWrapper);
         showStep(StepTwoWrapper);
         console.log('Hide the step please');
+    });
+
+    $(StepThreeNext).on('click', function () {
+        showSubmitBtn();
     });
 
     function hideStep($container) {

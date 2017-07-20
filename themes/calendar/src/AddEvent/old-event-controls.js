@@ -12,6 +12,7 @@ export default function AddEventForm() {
         StepTwoBack =   $('#StepTwoBack'),
         StepTwoNext =   $('#StepTwoNext'),
         StepThreeWrapper    =   $('#StepThree'),
+        StepThreeNext =   $('#StepThreeNext'),
 
 
 
@@ -145,6 +146,10 @@ export default function AddEventForm() {
         hideStep(StepThreeWrapper);
         showStep(StepTwoWrapper);
         console.log('Hide the step please');
+    });
+
+    $(StepThreeNext).on('click', function () {
+        showSubmitBtn()
     });
 
     function hideStep($container)
