@@ -62,6 +62,7 @@ class Page_Controller extends ContentController
         //Requirements::combine_files('styles.css', $CSSFiles);
 
         Requirements::combine_files('scripts.js', $JSFiles);
+        Requirements::javascript('<script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer>');
     }
 
     public function HappEventForm()
