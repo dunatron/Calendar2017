@@ -28,8 +28,6 @@
         }
     </style>
 
-    <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
-
     <% include InlineAppColors %>
 </head>
 

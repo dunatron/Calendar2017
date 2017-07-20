@@ -1,8 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const jquery = require('jquery');
+//const Vue = require('vue');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+//https://webpack.github.io/docs/code-splitting.html
 
 var isProd = process.env.NODE_ENV === 'production'; // true or false
 
@@ -16,7 +18,7 @@ module.exports = {
 
     entry: {
         app: './app.js',
-        vendor: ['jquery'],
+        vendor: ['jquery', 'vue'],
         bootstrap: bootstrapConfig
     },
 
@@ -37,10 +39,21 @@ module.exports = {
         // Doing the more manual approach with entry of vendor. Remember to cashe the vendor output file
         new webpack.ProvidePlugin({
             $: "jquery",
-            jQuery: "jquery"
-        })
+            jQuery: "jquery",
+        }),
 
+        // new webpack.ProvidePlugin({
+        //     Vue: "Vue",
+        // }),
+
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'vendor.bundle.js',
+            minChunks: 2,
+        }),
     ],
+
+
 
     module: {
 

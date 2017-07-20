@@ -44,7 +44,7 @@ class Page_Controller extends ContentController
         $themeFolder = $this->ThemeDir();
 
         // Set the folder to our theme so that relative image paths work
-        Requirements::set_combined_files_folder($themeFolder . '/combinedfiles');
+        //Requirements::set_combined_files_folder($themeFolder . '/combinedfiles');
 
         $JSFiles = array(
             //$themeFolder . '/dist/bootstrap.bundle.js',
@@ -61,8 +61,11 @@ class Page_Controller extends ContentController
         // Combine css files
         //Requirements::combine_files('styles.css', $CSSFiles);
 
-        Requirements::combine_files('scripts.js', $JSFiles);
+        //Requirements::combine_files('scripts.js', $JSFiles);
+        Requirements::javascript($themeFolder . '/dist/vendor.bundle.js');
         Requirements::javascript('<script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer>');
+        Requirements::javascript($themeFolder . '/dist/app.bundle.js');
+
     }
 
     public function HappEventForm()
