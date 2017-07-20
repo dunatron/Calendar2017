@@ -97,7 +97,7 @@ class AddEventFindaEvents extends BuildTask
 
             /**
              * Run only when event is new to our db
-             * Check for new Tag
+             * Check for new SubTag
              * Store Images
              * Check for new EventRestriction
              */
@@ -146,7 +146,7 @@ class AddEventFindaEvents extends BuildTask
     public function checkTag($tag)
     {
         $tagToCheck = $tag;
-        $dbTags = Tag::get();
+        $dbTags = SubTag::get();
         $tagArray = array();
         foreach ($dbTags as $t){
             array_push($tagArray, $t->Title);
@@ -156,14 +156,14 @@ class AddEventFindaEvents extends BuildTask
             echo ('Tag is already in db');
             $data = new ArrayData(array(
                 'check' => true,
-                'tag'   => $tagToCheck
+                'SubTag' => $tagToCheck
             ));
         } else {
             echo ('we must add the tag');
             echo($tagToCheck);
             $data = new ArrayData(array(
                'check' => false,
-                'tag'   => $tagToCheck
+                'SubTag' => $tagToCheck
             ));
         }
         return $data;
@@ -172,10 +172,10 @@ class AddEventFindaEvents extends BuildTask
 
     public function createTag($tagName)
     {
-        $t = Tag::create();
+        $t = SubTag::create();
         $t->Title = $tagName;
         $t->write();
-        echo ('New Tag: '.$t->Title.' has been created <br />');
+        echo ('New SubTag: '.$t->Title.' has been created <br />');
         return;
     }
 
@@ -206,7 +206,7 @@ class AddEventFindaEvents extends BuildTask
     }
 
     /**
-     * Create A restriction Tag
+     * Create A restriction SubTag
      */
     public function createRestriction($restriction)
     {

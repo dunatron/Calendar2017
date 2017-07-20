@@ -113,7 +113,7 @@ class PullEventFindaEventsAdvanced extends BuildTask
 
             /**
              * Run only when event is new to our db
-             * Check for new Tag
+             * Check for new SubTag
              * Store Images
              * Check for new EventRestriction
              */
@@ -126,10 +126,37 @@ class PullEventFindaEventsAdvanced extends BuildTask
 
                 // Check for tags
                 if(isset ($event->category)){
-                    $checkTag = $this->checkTag($event->category->name);
+
+                    $MainTag = null;
+
+                    // Check for ParentTag
+                    if(isset($event->category->parent_id))
+                    {
+                        $TagID = $event->category->parent_id;
+                        $tagQuery = 'http://api.eventfinda.co.nz/v2/categories.json?rows=1&levels=3&fields=category:(id,name)&id='.$TagID;
+                        //http://api.eventfinda.co.nz/v2/categories.xml?rows=1&levels=3&fields=category:(id,name)&id=6
+                        $TagData = $this->dynamicCollection($tagQuery);
+
+
+                        foreach ($TagData->categories as $cat)
+                        {
+                            $MainTag = $cat->name;
+                            break;
+                        }
+                        $checkTag = $this->checkTag($MainTag, 'HappTag');
+                        var_dump($checkTag->check);
+                        if($checkTag->check == false){
+                            //$this->createTag($checkTag->tag);
+                            $this->createTag($checkTag->tag, 'HappTag');
+                        }
+                    }
+
+                    $checkTag = $this->checkTag($event->category->name, 'SecondaryTag');
                     var_dump($checkTag->check);
                     if($checkTag->check == false){
-                        $this->createTag($checkTag->tag);
+                        $parentTag = $this->getTagByName($MainTag, 'HappTag');
+                        $parentTagID = $parentTag->ID;
+                        $this->createTag($checkTag->tag, 'SecondaryTag', $parentTagID);
                     }
                     $newEvent->EventTags =  $checkTag->tag;
                     $newEvent->write();
@@ -167,11 +194,20 @@ class PullEventFindaEventsAdvanced extends BuildTask
         }
     }
 
+    public function getTagByName($tagName, $tagType)
+    {
+        $Tag = $tagType::get()->filter(array(
+            'Title' =>  $tagName
+        ))->first();
+
+        return $Tag;
+    }
+
     // Check if tag is in the db
-    public function checkTag($tag)
+    public function checkTag($tag, $TagType)
     {
         $tagToCheck = $tag;
-        $dbTags = Tag::get();
+        $dbTags = $TagType::get();
         $tagArray = array();
         foreach ($dbTags as $t){
             array_push($tagArray, $t->Title);
@@ -181,26 +217,31 @@ class PullEventFindaEventsAdvanced extends BuildTask
             echo ('Tag is already in db');
             $data = new ArrayData(array(
                 'check' => true,
-                'tag'   => $tagToCheck
+                'tag' => $tagToCheck
             ));
         } else {
             echo ('we must add the tag');
             echo($tagToCheck);
             $data = new ArrayData(array(
                 'check' => false,
-                'tag'   => $tagToCheck
+                'tag' => $tagToCheck
             ));
         }
         return $data;
 
     }
 
-    public function createTag($tagName)
+    public function createTag($tagName, $TagType, $ParentID = null)
     {
-        $t = Tag::create();
+        $t = $TagType::create();
         $t->Title = $tagName;
+        if($TagType == 'SecondaryTag')
+        {
+            $t->HappTagID = $ParentID;
+        }
+
         $t->write();
-        echo ('New Tag: '.$t->Title.' has been created <br />');
+        echo ('New '.$TagType.': '.$t->Title.' has been created <br />');
         return;
     }
 
@@ -231,7 +272,7 @@ class PullEventFindaEventsAdvanced extends BuildTask
     }
 
     /**
-     * Create A restriction Tag
+     * Create A restriction SubTag
      */
     public function createRestriction($restriction)
     {

@@ -27,7 +27,9 @@ class Event extends DataObject {
         return 1;
     }
 
-    private static $has_one = array();
+    private static $has_one = array(
+        'SecondaryTag'  =>  'SecondaryTag'
+    );
 
     private static $has_many = array(
         'Tickets' => 'Ticket',
@@ -66,7 +68,7 @@ class Event extends DataObject {
         'StartTime' => 'Time',
         'FinishTime' => 'Time',
         'EventApproved' => 'Boolean',
-        'EventTags' => 'Text',
+        //'EventTag' => 'Text',
         'IsFree'    =>  'Boolean',
         'BookingWebsite'    =>  'Text',
         'TicketWebsite' => 'Text',
@@ -108,7 +110,7 @@ class Event extends DataObject {
         //$fields->addFieldToTab('Root.Main', NumericField::create('LocationRadius', 'Event location Radius:'));
         // EventDate
         $fields->addFieldToTab('Root.Main', DateField::create('EventDate', 'Date')
-            ->setConfig('dateformat', 'dd-MM-yyyy')
+            //->setConfig('dateformat', 'yyyy-MM-dd')
             ->setConfig('showcalendar', true)
             ->setDescription('Date for the event'));
         // StartTime
@@ -140,13 +142,13 @@ class Event extends DataObject {
             ->setDescription('The real description field'));
 
         // Tags
-        $fields->addFieldToTab('Root.Main',  HappStringTagField::create(
-            'EventTags',
-            'Event Tags',
-            Tag::get()->map('ID', 'Title')->toArray()
-
-        )->setShouldLazyLoad(false)
-            ->setCanCreate(true));
+//        $fields->addFieldToTab('Root.Main',  HappStringTagField::create(
+//            'EventTags',
+//            'Event Tags',
+//            SubTag::get()->map('ID', 'Title')->toArray()
+//
+//        )->setShouldLazyLoad(false)
+//            ->setCanCreate(true));
 
         // Restrictions
         $fields->addFieldToTab('Root.Main', new DropdownField(

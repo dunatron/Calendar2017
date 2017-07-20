@@ -32,7 +32,8 @@ class Page_Controller extends ContentController
         'searchHappEvents',
         'HappEventForm',
         'processHappEvent',
-        'storeNewEvents'
+        'storeNewEvents',
+        'getHappSecondaryTags'
     );
 
     public function init()
@@ -107,6 +108,9 @@ class Page_Controller extends ContentController
 //            ->setAttribute('data-vv-rules', 'required|min:5|max:80')
             ->setRightTitle('Title');
 
+        $catcha = RecaptchaField::create('Catcha');
+        $catcha->options = array('theme' => 'light');
+
         // Description
         $Description = TextareaField::create('Description', 'Event Description')
             ->setAttribute('required', true)
@@ -114,6 +118,21 @@ class Page_Controller extends ContentController
             ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:500", arg: "Description", scope: "validateAddEvent" }')
 //            ->setAttribute('data-vv-rules', 'required|min:10')
             ->setRightTitle('Description');
+
+        $MainTag = DropdownField::create('HappTag', 'Choose Main Tag',
+            $this->getHappTags())
+            ->addExtraClass('search')
+            ->setAttribute('data-style', 'btn-primary')
+            ->setAttribute('title', 'Choose a primary tag')
+            ->setAttribute('v-model', 'HappTag');
+
+        $SecondaryTag = DropdownField::create('SecondaryTag', 'Choose Secondary Tag',
+            $this->getSecondaryTags())
+            ->addExtraClass('search')
+            ->setAttribute('data-style', 'btn-primary')
+            ->setAttribute('title', 'Choose a secondary tag')
+            ->setAttribute('disabled', 'disabled')
+            ->setAttribute('v-model', 'SecondaryTag');
 
         $StepTwoBack = LiteralField::create('StepTwoBack', '<div class="add-event-controls"><div @click="stepTwoBackProgress" id="StepTwoBack" class="add-event-back"><span>back</span></div>');
         $StepTwoNext = LiteralField::create('StepTwoNext', '<div @click="stepTwoForwardProgress"
@@ -231,8 +250,8 @@ class Page_Controller extends ContentController
   </radial-progress-bar>');
 
         $fields = new FieldList(
-            $stepOneStart, $bootstrapDate, $calendarOptions, $startTime, $finishTime, $generateDates, $generatedDates, $StepOneNext, $stepOneEnd,
-            $stepTwoStart, $Title, $Description, $StepTwoBack, $StepTwoNext, $stepTwoEnd,
+            $stepOneStart, $bootstrapDate, $calendarOptions, $startTime, $finishTime, $generateDates, $generatedDates, $catcha, $StepOneNext, $stepOneEnd,
+            $stepTwoStart, $Title, $Description, $MainTag, $SecondaryTag, $StepTwoBack, $StepTwoNext, $stepTwoEnd,
             $stepThreeStart, $venueName, $vueGoogleMap, $mapData, $map, $StepThreeBack, $StepThreeNext, $stepThreeEnd
         );
 
@@ -256,6 +275,17 @@ class Page_Controller extends ContentController
         $form->setTemplate('AddEventTemplate');
         $form->setAttribute('data-vv-scope', 'validate-add-event')->disableSecurityToken();
 //        return $form;
+
+        // Enable spam protection
+        $form->enableSpamProtection(array(
+            'protector' => 'MathSpamProtector',
+            'name' => 'Captcha'
+        ));
+        /**
+         * Recaptcha Options
+         * https://developers.google.com/recaptcha/docs/display#render_param
+         */
+
         $data = Session::get("FormData.{$form->getName()}.data");
 
         return $data ? $form->loadDataFrom($data) : $form;
@@ -445,6 +475,66 @@ class Page_Controller extends ContentController
         ));
 
         return $this->owner->customise($searchData)->renderWith('Search_Results');
+    }
+
+    public function getHappTags()
+    {
+        $tagArr = array();
+        $Tags = HappTag::get();
+
+        foreach ($Tags as $tag) {
+            $tagArr[$tag->ID] = $tag->Title;
+        }
+
+//        $trimArr = array();
+//
+//        /**
+//         *  Remove white spaces from the end of string for each value & key in array
+//         */
+//        array_walk($regionArr, function (&$key,$value) use (&$trimArr){
+//            $trimArr[rtrim($key)] = rtrim($value);
+//        });
+//
+//        /**
+//         * Remove duplicates from array()
+//         */
+//        $uniqueArr = array_unique($trimArr);
+
+        return $tagArr;
+    }
+
+
+    public function getSecondaryTags()
+    {
+        $tagArr = array();
+        $Tags = SecondaryTag::get();
+
+        foreach ($Tags as $tag) {
+            $tagArr[$tag->ID] = $tag->Title;
+        }
+
+        return $tagArr;
+    }
+
+    public function getHappSecondaryTags(SS_HTTPRequest $request)
+    {
+        $requestVars = $request->postVars();
+
+        $HappTagID = $requestVars['HappTagID'];
+
+        $Tags = SecondaryTag::get()->filter(array(
+            'HappTagID' => $HappTagID
+        ));
+
+        $tagArr = array();
+        foreach ($Tags as $t)
+        {
+            $tagArr[$t->ID] = $t->Title;
+        }
+
+        return json_encode($tagArr);
+
+        return $tagArr;
     }
 
     public function getSearchSVG()

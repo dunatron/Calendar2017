@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Created by PhpStorm.
@@ -6,13 +5,15 @@
  * Date: 12/09/16
  * Time: 7:05 PM
  */
-class MainTag extends DataObject
+class HappTag extends DataObject
 {
 
-    private static $has_one = array();
-    
+    private static $has_many = array(
+        'SecondaryTags'   =>  'SecondaryTag'
+    );
+
     private static $db = array(
-        'Title' => 'Varchar(20)',
+        'Title' => 'Varchar(100)',
         'Description' => 'Text'
     );
 
@@ -20,5 +21,5 @@ class MainTag extends DataObject
         $fields = parent::getCMSFields();
         return $fields;
     }
-    
+
 }

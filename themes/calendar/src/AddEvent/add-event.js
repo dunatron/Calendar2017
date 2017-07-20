@@ -28,6 +28,8 @@ export default function VueAddEvent() {
             HasTickets: false,
             TicketType: null,
             Restriction: '',
+            HappTag: null,
+            SecondaryTag: null,
             // Below is Progress spinner Data
             completedSteps: 0,
             totalSteps: 5,

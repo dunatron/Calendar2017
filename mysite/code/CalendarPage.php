@@ -123,7 +123,7 @@ class CalendarPage_Controller extends Page_Controller
      */
     public function CalendarTags()
     {
-        $tags = Tag::get();
+        $tags = SubTag::get();
         return $tags;
     }
 

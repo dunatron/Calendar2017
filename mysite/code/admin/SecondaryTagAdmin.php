@@ -5,22 +5,22 @@
  * Date: 9/02/17
  * Time: 2:36 PM
  */
-class TagAdmin extends ModelAdmin
+class SecondaryTagAdmin extends ModelAdmin
 {
     /**
      * @var array
      */
-    private static $managed_models = array('Tag');
+    private static $managed_models = array('SecondaryTag');
 
     /**
      * @var string
      */
-    private static $url_segment = "tags";
+    private static $url_segment = "secondarytags";
 
     /**
      * @var string
      */
-    private static $menu_title = "Tags";
+    private static $menu_title = "SecondaryTags";
 
     /**
      * @param null $id
@@ -39,8 +39,8 @@ class TagAdmin extends ModelAdmin
         $config->getComponentByType('GridFieldPaginator')->setItemsPerPage(20);
         $config->getComponentByType('GridFieldDataColumns')
             ->setDisplayFields(array(
-                'Title'  => 'Tag Title',
-                'Description'    =>  'Tag Description'
+                'Title'  => 'SecondaryTag Title',
+                'Description'    =>  'SecondaryTag Description'
             ));
 
         return $form;

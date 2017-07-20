@@ -296,6 +296,60 @@ export default function AddEventForm() {
         //$('#addEventMap').locationpicker('autosize');
     }
 
+    /**
+     * Tag DropDown Select Code
+     */
+    let HappTagDropdown = $('#Form_HappEventForm_HappTag'),
+        SecondaryTagDropdown = $('#Form_HappEventForm_SecondaryTag');
+
+    $(HappTagDropdown).selectpicker({
+        liveSearch: 'true',
+        showTick: true
+    });
+
+    $(SecondaryTagDropdown).selectpicker({
+        liveSearch: 'true',
+        showTick: true,
+    });
+
+    $(SecondaryTagDropdown).prop('disabled', true);
+    $(SecondaryTagDropdown).selectpicker('refresh');
+
+    $(HappTagDropdown).on('change', function () {
+        let selectedOption = $(this).find('option:selected').val();
+        console.log('SelectedOption'+ selectedOption);
+        $.ajax({
+            type:"POST",
+            url: '/calendarfunction/getHappSecondaryTags',
+            data: {HappTagID:selectedOption},
+            success:function (response){
+
+                $(SecondaryTagDropdown).prop('disabled', false);
+
+                let data = JSON.parse(response);
+
+                // Always keep first 2 Options
+                let optionset = $('Form_HappEventForm_SecondaryTag option').slice(0, 2);
+                let select = $(SecondaryTagDropdown).html(optionset);
+
+                // Append Data Options to dropdown
+                $.each( data, function(index, value) {
+                    select.append("<option value="+index+">"+value+"</option>");
+                });
+
+                $(SecondaryTagDropdown).selectpicker('refresh');
+                $(SecondaryTagDropdown).selectpicker('val', '');
+
+
+
+
+
+                $(SecondaryTagDropdown).selectpicker('refresh');
+            }
+        });
+
+    });
+
 // Continue overlay functions
     function hideContinueOverlay() {
         $(continueAddEventOverlay).addClass('hide-continue-options');

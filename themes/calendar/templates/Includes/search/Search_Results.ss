@@ -34,4 +34,4 @@
         <div class="clearfix"></div>
     </div>
 <% end_loop %>
-<script src="$ThemeDir/js/approved/approved-event.js"></script>
+<%--<script src="$ThemeDir/js/approved/approved-event.js"></script>--%>

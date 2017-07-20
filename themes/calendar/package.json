@@ -20,6 +20,7 @@
     "bootstrap-datepicker": "^1.7.0",
     "bootstrap-loader": "^2.1.0",
     "bootstrap-sass": "^3.3.7",
+    "bootstrap-select": "^1.12.4",
     "bootstrap-timepicker": "^0.5.2",
     "breakpoint-sass": "^2.7.1",
     "bxslider": "^4.2.11",

@@ -24,6 +24,9 @@ import 'bootstrap-datepicker';
 // Bootstrap TimePicker
 import 'bootstrap-timepicker';
 
+// Bootstrap Select
+import 'bootstrap-select';
+
 // WickedPicker(timepicker)
 import 'wickedpicker';
 
