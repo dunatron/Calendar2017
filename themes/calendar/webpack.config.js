@@ -42,10 +42,10 @@ module.exports = {
             jQuery: "jquery",
         }),
 
-        new webpack.ProvidePlugin({
-            Vue: "Vue",
-            'window.Vue': 'vue'
-        }),
+        // new webpack.ProvidePlugin({
+        //     Vue: "Vue",
+        //     'window.Vue': 'vue'
+        // }),
 
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
