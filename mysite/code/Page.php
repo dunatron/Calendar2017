@@ -112,9 +112,6 @@ class Page_Controller extends ContentController
 //            ->setAttribute('data-vv-rules', 'required|min:5|max:80')
             ->setRightTitle('Title');
 
-        $catcha = RecaptchaField::create('Catcha');
-        $catcha->options = array('theme' => 'light');
-
         // Description
         $Description = TextareaField::create('Description', 'Event Description')
             ->setAttribute('required', true)
@@ -254,7 +251,7 @@ class Page_Controller extends ContentController
   </radial-progress-bar>');
 
         $fields = new FieldList(
-            $stepOneStart, $bootstrapDate, $calendarOptions, $startTime, $finishTime, $generateDates, $generatedDates, $catcha, $StepOneNext, $stepOneEnd,
+            $stepOneStart, $bootstrapDate, $calendarOptions, $startTime, $finishTime, $generateDates, $generatedDates, $StepOneNext, $stepOneEnd,
             $stepTwoStart, $Title, $Description, $MainTag, $SecondaryTag, $StepTwoBack, $StepTwoNext, $stepTwoEnd,
             $stepThreeStart, $venueName, $vueGoogleMap, $mapData, $map, $StepThreeBack, $StepThreeNext, $stepThreeEnd
         );
