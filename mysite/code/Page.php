@@ -62,7 +62,7 @@ class Page_Controller extends ContentController
         //Requirements::combine_files('styles.css', $CSSFiles);
 
         //Requirements::combine_files('scripts.js', $JSFiles);
-        Requirements::javascript($themeFolder . '/dist/vendor.bundle.js');
+        //Requirements::javascript($themeFolder . '/dist/vendor.bundle.js');
         Requirements::javascript('https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit');
         Requirements::javascript($themeFolder . '/dist/app.bundle.js');
 
