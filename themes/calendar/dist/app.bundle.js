@@ -16687,6 +16687,8 @@ function VueAddEvent() {
                 }).catch(function (error) {
                     console.log(error);
                 });
+
+                this.resetRecaptcha();
             },
 
             onSubmit: function onSubmit() {

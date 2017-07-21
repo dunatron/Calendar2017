@@ -265,6 +265,8 @@ export default function VueAddEvent() {
                     .catch(function (error) {
                         console.log(error);
                     });
+
+                this.resetRecaptcha();
             },
 
 

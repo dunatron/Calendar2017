@@ -39,9 +39,9 @@ module.exports = {
         // Doing the more manual approach with entry of vendor. Remember to cashe the vendor output file
         new webpack.ProvidePlugin({
             $: "jquery",
-            jQuery: "jquery",
+            jQuery: "jquery"
         }),
-
+        //
         // new webpack.ProvidePlugin({
         //     Vue: "Vue",
         //     'window.Vue': 'vue'
