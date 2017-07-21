@@ -16675,9 +16675,9 @@ function VueAddEvent() {
             submitNewEvents: function submitNewEvents() {
 
                 //this.$refs.recaptcha.execute();
-                var TryMe = this.$refs.invisibleRecaptcha.execute();
+                //var TryMe = this.$refs.invisibleRecaptcha.execute();
 
-                console.log(TryMe);
+                //console.log(TryMe);
 
                 axios.post('/pagefunction/storeNewEvents', {
                     firstName: 'Fred',
@@ -16694,6 +16694,9 @@ function VueAddEvent() {
             },
             onVerify: function onVerify(response) {
                 console.log('Verify: ' + response);
+                // I think Recaptcha has passewd at this point(safe to submit form to
+                // server to validate there too
+                this.submitNewEvents();
             },
             onExpired: function onExpired() {
                 console.log('Expired');
