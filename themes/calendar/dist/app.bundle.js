@@ -16675,7 +16675,9 @@ function VueAddEvent() {
             submitNewEvents: function submitNewEvents() {
 
                 //this.$refs.recaptcha.execute();
-                this.$refs.invisibleRecaptcha.execute();
+                var TryMe = this.$refs.invisibleRecaptcha.execute();
+
+                console.log(TryMe);
 
                 axios.post('/pagefunction/storeNewEvents', {
                     firstName: 'Fred',
