@@ -280,13 +280,7 @@ class Page_Controller extends ContentController
         $form = Form::create($this, 'HappEventForm', $fields, $actions, $required)->addExtraClass('happ-add-event-form');
         $form->setTemplate('AddEventTemplate');
         $form->setAttribute('data-vv-scope', 'validate-add-event')->disableSecurityToken();
-//        return $form;
 
-        // Enable spam protection
-        $form->enableSpamProtection(array(
-            'protector' => 'MathSpamProtector',
-            'name' => 'Captcha'
-        ));
         /**
          * Recaptcha Options
          * https://developers.google.com/recaptcha/docs/display#render_param
