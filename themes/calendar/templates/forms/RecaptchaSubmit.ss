@@ -15,10 +15,13 @@
             @expired="onExpired"
             size="invisible"
             :sitekey="sitekey">
+        <button $AttributesHTML>
+            <% if $ButtonContent %>$ButtonContent<% else %>$Title.XML<% end_if %>
+        </button>
     </vue-recaptcha>
-    <button $AttributesHTML>
-    <% if $ButtonContent %>$ButtonContent<% else %>$Title.XML<% end_if %>
-    </button>
+    <%--<button $AttributesHTML>--%>
+    <%--<% if $ButtonContent %>$ButtonContent<% else %>$Title.XML<% end_if %>--%>
+    <%--</button>--%>
 
 <% else %>
     <h1>Heath</h1>
