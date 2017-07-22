@@ -216,8 +216,6 @@ class Page_Controller extends ContentController
         $locRadius = HiddenField::create('LocationRadius', 'Radius of the event')->setAttribute('id', 'addEventRadius');
 
 
-
-
         $locationBack = LiteralField::create('LocationBack', '<div class="add-event-controls"><div @click="locationBackProgress" id="locationBack" class="add-event-back"><span>back</span></div>');
         $locationNext = LiteralField::create('LocationNext', '<div @click="locationForwardProgress" id="locationNext" class="add-event-next"><span>next</span></div></div>');
         $locationEnd = LiteralField::create('LocationEnd', '</div>');
@@ -314,8 +312,57 @@ class Page_Controller extends ContentController
         return $this->redirectBack();
     }
 
-    public function storeNewEvents()
+    public function storeNewEvents(SS_HTTPRequest $request)
     {
+        //error_log(var_export('Event Submitted to server', true));
+        $vars = $request->getBody();
+        $decode = json_decode($vars);
+
+        $d = $decode->Data;
+        //error_log(var_export($d, true));
+
+        foreach ($d->Dates as $date) {
+
+            $new = Event::create();
+
+            if (isset($d->Title)) {
+                $new->EventTitle = $d->Title;
+            }
+
+            if (isset($date->DateObject->EventDate)) {
+                $rawDate = $date->DateObject->EventDate;
+//
+//                $MyDate = DateTime::create($rawDate);
+//                error_log(var_export($MyDate, true));
+
+                $d = new Date($rawDate);
+
+// Output the microseconds.
+                $d->format('y-m-d'); // 012345
+
+                error_log(var_export($d->name, true));
+
+                $new->EventDate = $d->name;
+
+
+            }
+
+            if (isset($date->DateObject->StartTime)) {
+                $new->StartTime = $date->DateObject->StartTime;
+            }
+
+            if (isset($date->DateObject->EndTime)) {
+                $new->FinishTime = $date->DateObject->EndTime;
+            }
+
+            if (isset($d->SecondaryTag)) {
+                $new->SecondaryTagID = $d->SecondaryTag;
+            }
+
+            $new->write();
+        }
+
+
         die('DOING STUFF');
     }
 
@@ -524,8 +571,7 @@ class Page_Controller extends ContentController
         ));
 
         $tagArr = array();
-        foreach ($Tags as $t)
-        {
+        foreach ($Tags as $t) {
             $tagArr[$t->ID] = $t->Title;
         }
 

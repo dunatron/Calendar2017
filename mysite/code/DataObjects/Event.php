@@ -110,16 +110,18 @@ class Event extends DataObject {
         //$fields->addFieldToTab('Root.Main', NumericField::create('LocationRadius', 'Event location Radius:'));
         // EventDate
         $fields->addFieldToTab('Root.Main', DateField::create('EventDate', 'Date')
-            //->setConfig('dateformat', 'yyyy-MM-dd')
+//            ->setConfig('dateformat', 'YYYY-mm-dd')
+            ->setConfig('dateformat', 'yyyy-MM-dd')
             ->setConfig('showcalendar', true)
             ->setDescription('Date for the event'));
         // StartTime
-        $fields->addFieldToTab('Root.Main', DatetimeField::create('StartTime')
-            ->setDescription('Start time for the event'));
+        $fields->addFieldToTab('Root.Main', TimeField::create('StartTime')
+            ->setDescription('Start time for the event format-><strong>18:00:00</strong>'));
 
         // FinishTime
-        $fields->addFieldToTab('Root.Main', DatetimeField::create('FinishTime')
-            ->setDescription('Finish time for the event'));
+        $fields->addFieldToTab('Root.Main', TimeField::create('FinishTime')
+            ->setDescription('Finish time for the event format-><strong>18:01:00</strong>')
+            ->setAttribute('autocomplete', 'on'));
 
         // Type
         $fields->addFieldToTab('Root.Main', CheckboxField::create('EventApproved', 'Event Approved')

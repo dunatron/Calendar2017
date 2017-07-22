@@ -16510,7 +16510,7 @@ function VueAddEvent() {
                     anchorPoint: new google.maps.Point(this.address.latitude, this.address.longitude)
                 });
 
-                var contentString = '<div id="content">' + '<div id="siteNotice">' + '</div>' + '<p id="firstHeading" class="firstHeading">' + this.placeData.adr_address + '</p>' + '<hr>' + '<div id="bodyContent">' + '<p>Lat: <b>' + this.address.latitude + '</b>' + '<p>Lon: <b>' + this.address.latitude + '</b>' + '</p>' + '</div>' + '</div>';
+                var contentString = '<div id="content">' + '<div id="siteNotice">' + '</div>' + '<p id="firstHeading" class="firstHeading">' + this.placeData.adr_address + '</p>' + '</div>' + '</div>';
 
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString,
@@ -16674,21 +16674,19 @@ function VueAddEvent() {
 
             submitNewEvents: function submitNewEvents() {
 
-                //this.$refs.recaptcha.execute();
-                //var TryMe = this.$refs.invisibleRecaptcha.execute();
+                var MyData = this.$data;
 
-                //console.log(TryMe);
+                console.log(MyData);
 
                 axios.post('/pagefunction/storeNewEvents', {
-                    firstName: 'Fred',
-                    lastName: 'Flintstone'
+                    Data: MyData
                 }).then(function (response) {
                     console.log(response);
                 }).catch(function (error) {
                     console.log(error);
                 });
 
-                this.resetRecaptcha();
+                //this.resetRecaptcha();
             },
 
             onSubmit: function onSubmit() {

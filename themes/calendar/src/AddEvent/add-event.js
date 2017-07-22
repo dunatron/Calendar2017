@@ -91,11 +91,6 @@ export default function VueAddEvent() {
                     '<div id="siteNotice">'+
                     '</div>'+
                     '<p id="firstHeading" class="firstHeading">'+this.placeData.adr_address+'</p>'+
-                        '<hr>'+
-                    '<div id="bodyContent">'+
-                    '<p>Lat: <b>'+ this.address.latitude + '</b>' +
-                    '<p>Lon: <b>'+ this.address.latitude + '</b>' +
-                    '</p>'+
                     '</div>'+
                     '</div>';
 
@@ -250,14 +245,12 @@ export default function VueAddEvent() {
 
             submitNewEvents: function () {
 
-                //this.$refs.recaptcha.execute();
-                //var TryMe = this.$refs.invisibleRecaptcha.execute();
+                let MyData = this.$data;
 
-                //console.log(TryMe);
+                console.log(MyData);
 
                 axios.post('/pagefunction/storeNewEvents', {
-                    firstName: 'Fred',
-                    lastName: 'Flintstone'
+                    Data: MyData
                 })
                     .then(function (response) {
                         console.log(response);
@@ -266,7 +259,7 @@ export default function VueAddEvent() {
                         console.log(error);
                     });
 
-                this.resetRecaptcha();
+                //this.resetRecaptcha();
             },
 
 
