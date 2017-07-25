@@ -4,8 +4,10 @@ import VueGoogleAutocomplete from 'vue-google-autocomplete';
 import RadialProgressBar from 'vue-radial-progress'
 import moment from 'moment';
 import VueRecaptcha from 'vue-recaptcha';
+import VueClip from 'vue-clip';
 
 Vue.use(VeeValidate);
+Vue.use(VueClip); // make vue use this plugin
 
 
 // import Carousel3d from 'vue-carousel-3d';
@@ -19,7 +21,7 @@ export default function VueAddEvent() {
         components: {
             VueGoogleAutocomplete,
             RadialProgressBar,
-            'vue-recaptcha': VueRecaptcha
+            'vue-recaptcha': VueRecaptcha,
         },
         name: 'Add-Event',
         data: ({
@@ -46,7 +48,39 @@ export default function VueAddEvent() {
             // 3d slider
             //slides: 7
             //sitekey: '6LdeySkUAAAAAFkVXrWjtjBccmEVBeSnRVbkzdQ1'
-            sitekey: '6Ldr6CkUAAAAAIraLSAjSqITbabSitWpJi2nVmnM'
+            sitekey: '6Ldr6CkUAAAAAIraLSAjSqITbabSitWpJi2nVmnM',
+            image: '',
+            files: [],
+            // Vue clip
+            options: {
+                url: '/pagefunction/UploadFormImages',
+                maxFilesize: {
+                    limit: 1,
+                    message: '{{ filesize }} is greater than the {{ maxFilesize }}'
+                },
+                maxFiles: {
+                    limit: 5,
+                    message: 'You can only upload a max of 5 files'
+                },
+                acceptedFiles: {
+                    extensions: ['image/*'],
+                    message: 'You are uploading an invalid file'
+                },
+                accept: function (file, done) {
+                    console.log('HITTING THE VALIDATION I SUPPOSE, FIRE INCAPSULA');
+                    // if (file.size > (1024 * 1024)) {
+                    //     done('File must be smaller than 1MB')
+                    //     return
+                    // }
+
+                    if (file.size > maxFilesize) {
+                        done('File must be smaller than 1MB')
+                        return
+                    }
+
+                    done()
+                }
+            }
 
         }),
 
@@ -54,6 +88,15 @@ export default function VueAddEvent() {
             name() {
                 return `${this.EventForm.first_name} ${this.EventForm.last_name}`;
             }
+        },
+
+        accept: function (file, done) {
+            if (file.size > (1024 * 1024)) {
+                done('File must be smaller than 1MB')
+                return
+            }
+
+            done()
         },
 
         methods: {
@@ -275,9 +318,21 @@ export default function VueAddEvent() {
             onExpired: function () {
                 console.log('Expired')
             },
-            resetRecaptcha () {
+            resetRecaptcha: function () {
                 this.$refs.recaptcha.reset() // Direct call reset method
-            }
+            },
+
+            fileAdded (file) {
+                this.files.push(file)
+            },
+
+            complete: function  (file, status, xhr) {
+                console.log('good shit you uploaded a file without any validation... get dicked');
+                // Adding server id to be used for deleting
+                // the file.
+                //file.addAttribute('id', xhr.response.id)
+            },
+
 
         }
 

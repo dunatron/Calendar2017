@@ -33,7 +33,8 @@ class Page_Controller extends ContentController
         'HappEventForm',
         'processHappEvent',
         'storeNewEvents',
-        'getHappSecondaryTags'
+        'getHappSecondaryTags',
+        'UploadFormImages'
     );
 
     public function init()
@@ -120,12 +121,16 @@ class Page_Controller extends ContentController
 //            ->setAttribute('data-vv-rules', 'required|min:10')
             ->setRightTitle('Description');
 
-        $MainTag = DropdownField::create('HappTag', 'Choose Main Tag',
-            $this->getHappTags())
-            ->addExtraClass('search')
-            ->setAttribute('data-style', 'btn-primary')
-            ->setAttribute('title', 'Choose a primary tag')
-            ->setAttribute('v-model', 'HappTag');
+
+        $additionalFields = CompositeField::create(
+            HeaderField::create('10. Tags'),
+
+            $MainTag = DropdownField::create('HappTag', 'Choose Main Tag',
+                $this->getHappTags())
+                ->addExtraClass('search')
+                ->setAttribute('data-style', 'btn-primary')
+                ->setAttribute('title', 'Choose a primary tag')
+                ->setAttribute('v-model', 'HappTag'),
 
         $SecondaryTag = DropdownField::create('SecondaryTag', 'Choose Secondary Tag',
             $this->getSecondaryTags())
@@ -133,7 +138,53 @@ class Page_Controller extends ContentController
             ->setAttribute('data-style', 'btn-primary')
             ->setAttribute('title', 'Choose a secondary tag')
             ->setAttribute('disabled', 'disabled')
-            ->setAttribute('v-model', 'SecondaryTag');
+            ->setAttribute('v-model', 'SecondaryTag'),
+
+//            $vueImage = LiteralField::create('VueImage', '<div v-if="!image">
+//    <h2>Select an image</h2>
+//    <input type="file" @change="onFileChange" accept=".jpg, .jpeg, .png" size="2097152" class="img-responsive">
+//  </div>
+//  <div v-else>
+//    <img :src="image" />
+//    <button @click="removeImage">Remove image</button>
+//  </div>')
+
+
+            // Vue Clip : https://www.youtube.com/watch?v=84_SwbPWjKo
+            // https://www.npmjs.com/package/vue-clip
+            // https://npm.runkit.com/vue-clip
+            $vueClip = LiteralField::create('VueClip', '<vue-clip :options="options" :on-added-file="fileAdded" :on-complete="complete">
+<template slot="clip-uploader-action" scope="props">
+<div class="uploader-action" v-bind:class="{dragging: props.dragging}">
+<div class="dz-message">
+Drop and drag files here or click to browse
+</template>
+<template slot="clip-uploader-body" scope="props">
+<div class="uploader-files">
+<div class="uploader-file" v-for="file in props.files">
+<div class="file-avatar">
+<img v-bind:src="file.dataUrl" alt="" class="img-responsive">
+</div>
+<div class="file-details">
+<div class="file-name">
+    {{ file.name }}
+</div>
+<div class="file-progress" v-if="file.status !== \'error\' && file.status !== \'success\' ">
+<span class="progress-indicator" v-bind:style="{width: file.progress}"></span>
+</div>
+<div class="file-meta">
+<span class="file-size">{{ file.size }}</span>
+<span class="file-status">{{ file.status }}</span>
+<span class="file-status">{{ file.errorMessage }}</span>
+</div>
+</div>
+
+</div>
+</div>
+</template>
+</vue-clip>')
+
+        );
 
         $StepTwoBack = LiteralField::create('StepTwoBack', '<div class="add-event-controls"><div @click="stepTwoBackProgress" id="StepTwoBack" class="add-event-back"><span>back</span></div>');
         $StepTwoNext = LiteralField::create('StepTwoNext', '<div @click="stepTwoForwardProgress"
@@ -169,6 +220,8 @@ class Page_Controller extends ContentController
 
         $stepThreeEnd = LiteralField::create('StepThreeEnd', '</div>');
         //-----> End Step Three
+
+
 
         $ticket = CheckboxField::create('HasTickets', 'Check if event has tickets')
             ->setAttribute('id', 'hasTickets')
@@ -250,7 +303,7 @@ class Page_Controller extends ContentController
 
         $fields = new FieldList(
             $stepOneStart, $bootstrapDate, $calendarOptions, $startTime, $finishTime, $generateDates, $generatedDates, $StepOneNext, $stepOneEnd,
-            $stepTwoStart, $Title, $Description, $MainTag, $SecondaryTag, $StepTwoBack, $StepTwoNext, $stepTwoEnd,
+            $stepTwoStart, $Title, $Description, $StepTwoBack, $StepTwoNext, $stepTwoEnd,
             $stepThreeStart, $venueName, $vueGoogleMap, $mapData, $map, $StepThreeBack, $StepThreeNext, $stepThreeEnd
         );
 
@@ -364,6 +417,61 @@ class Page_Controller extends ContentController
 
 
         die('DOING STUFF');
+    }
+
+    public function UploadFormImages(SS_HTTPRequest $request)
+    {
+        $files = $request->postVars();
+
+//        error_log(var_export($request, true));
+        error_log(var_export($files, true));
+        // TMP STORAGE.
+
+        // Hold all the images, Generate some sort of unique session.
+
+        // When form submits check to see if we have any images waiting in here. If we do take them and store them in the right place & folder
+        $Year = date('Y');
+        $Month = date('M');
+
+        // Find or Make the Folder Year
+        $yearFolder = Folder::find_or_make('Uploads/'.$Year);
+
+        $makeDirectory = 'Uploads/'.$Year.'/'.$Month;
+
+        $folderPath = Folder::find_or_make($makeDirectory);
+
+        foreach ($files as $file)
+        {
+            $newFile = File::create();
+            //$newFile->setFilename($file->name);
+            $newFile->write();
+            error_log(var_export($newFile, true));
+
+
+
+//            $folder = File::get()->filter(array(
+//                'ClassName' => 'Folder',
+//                'Filename' => 'assets/Uploads/'.$makeDirectory
+//            ))->first();
+
+//            // Upload Selfie Image
+//            if ($this->isSecureFolder($folder)) {
+                $uploadSelfie = Upload::create();
+                $fileSelfie = new Image();
+                $fileSelfie->ShowInSearch = 0;
+                //$fileSelfie->setFilename()
+                $uploadSelfie->loadIntoFile($file, $fileSelfie, $makeDirectory);
+                //$smartHealthSubmission->SelfieImageID = $fileSelfie->ID;
+//            }
+
+
+
+        }
+
+
+
+
+        return true;
     }
 
     public function HappSearchForm()
