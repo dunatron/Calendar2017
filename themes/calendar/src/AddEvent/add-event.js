@@ -54,10 +54,7 @@ export default function VueAddEvent() {
             // Vue clip
             options: {
                 url: '/pagefunction/UploadFormImages',
-                maxFilesize: {
-                    limit: 1,
-                    message: '{{ filesize }} is greater than the {{ maxFilesize }}'
-                },
+                maxFilesize: 2, // 1mb
                 maxFiles: {
                     limit: 5,
                     message: 'You can only upload a max of 5 files'
@@ -68,12 +65,7 @@ export default function VueAddEvent() {
                 },
                 accept: function (file, done) {
                     console.log('HITTING THE VALIDATION I SUPPOSE, FIRE INCAPSULA');
-                    // if (file.size > (1024 * 1024)) {
-                    //     done('File must be smaller than 1MB')
-                    //     return
-                    // }
-
-                    if (file.size > maxFilesize) {
+                    if (file.size > (2 * 1024 * 1024)) {
                         done('File must be smaller than 1MB')
                         return
                     }
@@ -332,6 +324,7 @@ export default function VueAddEvent() {
                 // the file.
                 //file.addAttribute('id', xhr.response.id)
             },
+
 
 
         }

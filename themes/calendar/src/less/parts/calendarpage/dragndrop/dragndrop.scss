@@ -1,3 +1,10 @@
+.uploader-action {
+  background-color: $c_orange_light_1;
+  border: 3px dashed $color-happ-orange;
+  padding: 30px 5px;
+  text-align: center;
+}
+
 .uploader-action.dragging {
-  background-color: orange;
+  background-color: #fff;
 }

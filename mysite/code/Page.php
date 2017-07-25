@@ -303,7 +303,7 @@ Drop and drag files here or click to browse
 
         $fields = new FieldList(
             $stepOneStart, $bootstrapDate, $calendarOptions, $startTime, $finishTime, $generateDates, $generatedDates, $StepOneNext, $stepOneEnd,
-            $stepTwoStart, $Title, $Description, $StepTwoBack, $StepTwoNext, $stepTwoEnd,
+            $stepTwoStart, $Title, $Description, $additionalFields, $StepTwoBack, $StepTwoNext, $stepTwoEnd,
             $stepThreeStart, $venueName, $vueGoogleMap, $mapData, $map, $StepThreeBack, $StepThreeNext, $stepThreeEnd
         );
 
