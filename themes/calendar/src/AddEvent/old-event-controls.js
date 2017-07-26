@@ -337,8 +337,19 @@ export default function AddEventForm() {
         showTick: true,
     });
 
+    // Disables Touch on mobile device
+    $(HappTagDropdown).attr('readonly', 'readonly');
+    $(SecondaryTagDropdown).attr('readonly', 'readonly');
+    $(RestrictionDropDown).attr('readonly', 'readonly');
+    $('#Form_HappEventForm_StartTime').attr('readonly', 'readonly');
+
+    $('#Form_HappEventForm_FinishTime').attr('readonly', 'readonly');
+
+
+
     $(SecondaryTagDropdown).prop('disabled', true);
     $(SecondaryTagDropdown).selectpicker('refresh');
+
 
     $(HappTagDropdown).on('change', function () {
         let selectedOption = $(this).find('option:selected').val();
