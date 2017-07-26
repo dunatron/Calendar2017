@@ -162,11 +162,19 @@ export default function VueAddEvent() {
                 console.log('Go To Step Three after validation');
             },
 
+            stepFourForwardProgress() {
+                console.log('Go To Step Three after validation');
+            },
+
             stepTwoBackProgress() {
                 console.log('Go Back to step One');
             },
 
             stepThreeBackProgress() {
+                console.log('Go Back to step One');
+            },
+
+            stepFourBackProgress() {
                 console.log('Go Back to step One');
             },
 
@@ -268,13 +276,30 @@ export default function VueAddEvent() {
 
                     this.Dates.push(DateObject);
 
-                    // Callback method that fires after dom has been updated by this method
-                    this.$nextTick(function () {
-                        //$('.Generated__Time').wickedpicker(GlobalTimePickerOptions);
-                    })
+                    // // Callback method that fires after dom has been updated by this method
+                    // this.$nextTick(function () {
+                    //     //$('.Generated__Time').wickedpicker(GlobalTimePickerOptions);
+                    //     this.scrollToDates();
+                    // })
 
                 }
 
+                // Callback method that fires after dom has been updated by this method
+                this.$nextTick(function () {
+                    //$('.Generated__Time').wickedpicker(GlobalTimePickerOptions);
+                    this.scrollToDates();
+                })
+
+            },
+
+            scrollToDates: function () {
+                console.log('I wanna scroll down');
+                //$('.Event__Dates').animate({ scrollTop: 0 }, 'slow');
+
+                // Need Jquery ui
+                // $('html, body').animate({
+                //     scrollTop: $('.Date__Object').offset().top
+                // }, 300, 'easeInOutExpo');
             },
 
 

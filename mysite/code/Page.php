@@ -345,8 +345,8 @@ Drop and drag files here or click to browse
             FormAction::create('processHappEvent', 'Submit')
                 ->addExtraClass('field-hidden happ_btn')
                 ->setAttribute('id', 'submitHappEvent')
-                ->setAttribute('@click.prevent', 'submitNewEvents')
-//                ->setAttribute('@click.prevent', 'onSubmit')
+//                ->setAttribute('@click.prevent', 'submitNewEvents')
+                ->setAttribute('@click.prevent', 'onSubmit')
                 ->setUseButtonTag(true)
                 ->setTemplate('RecaptchaSubmit')
         );
