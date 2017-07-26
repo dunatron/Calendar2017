@@ -14,6 +14,10 @@ export default function AddEventForm() {
         StepThreeWrapper    =   $('#StepThree'),
         StepThreeNext =   $('#StepThreeNext'),
 
+        StepFourWrapper  =   $('#StepFour'),
+        StepFourBack =   $('#StepFourBack'),
+        StepFourNext =   $('#StepFourNext'),
+
 
 
         DetailsNext = $('#detailsNextBtn'),
@@ -149,6 +153,16 @@ export default function AddEventForm() {
     });
 
     $(StepThreeNext).on('click', function () {
+        hideStep(StepThreeWrapper);
+        showStep(StepFourWrapper);
+    });
+
+    $(StepFourBack).on('click', function () {
+        hideStep(StepFourWrapper);
+        showStep(StepThreeWrapper);
+    });
+
+    $(StepFourNext).on('click', function () {
         showSubmitBtn()
     });
 
@@ -305,7 +319,8 @@ export default function AddEventForm() {
      * Tag DropDown Select Code
      */
     let HappTagDropdown = $('#Form_HappEventForm_HappTag'),
-        SecondaryTagDropdown = $('#Form_HappEventForm_SecondaryTag');
+        SecondaryTagDropdown = $('#Form_HappEventForm_SecondaryTag'),
+        RestrictionDropDown = $('#Form_HappEventForm_Restriction');
 
     $(HappTagDropdown).selectpicker({
         liveSearch: 'true',
@@ -313,6 +328,11 @@ export default function AddEventForm() {
     });
 
     $(SecondaryTagDropdown).selectpicker({
+        liveSearch: 'true',
+        showTick: true,
+    });
+
+    $(RestrictionDropDown).selectpicker({
         liveSearch: 'true',
         showTick: true,
     });

@@ -22,6 +22,8 @@ class HappSiteConfig extends DataExtension
         'MenuIconColors'    =>  'Varchar(20)',
         'AddEventHeaderBGColor'    =>  'Varchar(20)',
         'AddEventHeaderTxtColor'    =>  'Varchar(20)',
+        'AddEventBodyBGColor'    =>  'Varchar(20)',
+        'CalendarPickerBGColor' =>  'Varchar(20)',
         'AddCloseBGColor'    =>  'Varchar(20)',
         'AddCloseIcoColor'    =>  'Varchar(20)',
         'EventHeaderBGColor'    =>  'Varchar(20)',
@@ -100,6 +102,16 @@ class HappSiteConfig extends DataExtension
         $fields->addFieldToTab('Root.AddEventModalColors',
             TextField::create('AddEventHeaderTxtColor', 'Text color for the header strip')
                 ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
+        // AddEventBodyBGColor
+        $fields->addFieldToTab('Root.AddEventModalColors',
+            TextField::create('AddEventBodyBGColor', 'Background color for the modal body')
+                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
+        // CalendarPickerBGColor
+        $fields->addFieldToTab('Root.AddEventModalColors',
+            TextField::create('CalendarPickerBGColor', 'Background color for the calendar date picker')
+                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
+
+
         // AddCloseBGColor
         $fields->addFieldToTab('Root.AddEventModalColors',
             TextField::create('AddCloseBGColor', 'Background Color for the close icon')

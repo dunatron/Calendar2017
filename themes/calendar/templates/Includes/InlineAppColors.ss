@@ -96,5 +96,13 @@
         fill: {$SiteConfig.SearchCloseIcoColor} !important;
     }
 
+    #AddHappEventModal .modal-dialog .modal-content .modal-body {
+        background-color: {$SiteConfig.AddEventBodyBGColor} !Important;
+    }
+
+    .datepicker table {
+        background-color: {$SiteConfig.CalendarPickerBGColor};
+    }
+
 
 </style>

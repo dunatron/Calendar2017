@@ -18,7 +18,7 @@
     .field {
       padding-bottom: 15px;
       margin-bottom: 15px;
-      border-bottom: 1px solid lightgray;
+      //border-bottom: 1px solid lightgray;
       input {
         width: 100%;
         //max-width: 336px;
@@ -121,10 +121,24 @@
     }
   }
 
+  .Left {
+    width: 65%;
+    float: left;
+    padding: 20px;
+  }
+
+
+  .Right {
+    width: 35%;
+    float: left;
+    padding: 20px;
+  }
+
   @import "steps/StepOne";
-  @import "steps/details-step";
-  @import "steps/ticket-step";
-  @import "steps/ticket-web-step";
-  @import "steps/location-step";
+  @import "steps/StepTwo";
+  //@import "steps/details-step";
+  //@import "steps/ticket-step";
+  //@import "steps/ticket-web-step";
+  //@import "steps/location-step";
 
 }

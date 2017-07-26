@@ -315,14 +315,35 @@ export default function VueAddEvent() {
             },
 
             fileAdded (file) {
-                this.files.push(file)
+                // console.log('adding this FILE JUSUT ID PLEASE');
+                // console.log(file.xhrResponse.response);
+                // //this.files.push(file)
+                // this.files.push(file.xhrResponse.response);
             },
 
             complete: function  (file, status, xhr) {
-                console.log('good shit you uploaded a file without any validation... get dicked');
+                console.log('---file---');
+                console.log(file)
+                console.log('---status---');
+                console.log(status);
+                console.log('---xhr---');
+                console.log(xhr);
+
+                var data = JSON.parse(file.xhrResponse.response);
                 // Adding server id to be used for deleting
                 // the file.
                 //file.addAttribute('id', xhr.response.id)
+                if (status === 'success')
+                {
+                    // this.files.push(file.xhrResponse.response);
+                    // let FileObject = {
+                    //     "FileObject": {
+                    //         "ID": data,
+                    //     }
+                    // };
+                    this.files.push(data);
+                }
+
             },
 
 

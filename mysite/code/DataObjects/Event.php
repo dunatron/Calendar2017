@@ -33,8 +33,12 @@ class Event extends DataObject {
 
     private static $has_many = array(
         'Tickets' => 'Ticket',
-        'EventImages'  =>  'EventImage',
+        //'EventImages'  =>  'EventImage',
         'EventFindaImages'  =>  'EventFindaImage'
+    );
+
+    private static $many_many = array(
+        'EventImages'  =>  'EventImage',
     );
 
     private static $summary_fields = array(
@@ -189,7 +193,18 @@ class Event extends DataObject {
         $fields->addFieldToTab('Root.EventImages', $eventImages = UploadField::create('EventImages'));
         //Set allowed upload extensions
         $eventImages->getValidator()->setAllowedExtensions(array('png', 'gif', 'jpg', 'jpeg'));
-        $eventImages->setFolderName('event-Images');
+        // Create Folder for images
+        $Year = date('Y');
+        $Month = date('M');
+        $makeDirectory = 'Uploads/' . $Year . '/' . $Month;
+        $eventImages->setFolderName($makeDirectory);
+        //$eventImages->setFolderName('event-Images');
+
+
+
+
+
+
 
         return $fields;
     }
@@ -221,9 +236,14 @@ class EventImage extends Image
         'transformation_id' => 'int'
     );
 
-    public static $has_one = array(
-        'Event' =>  'Event'
+    private static $belongs_many_many = array(
+        "HappEventImages"   =>  'Event'
     );
+
+
+//    public static $has_one = array(
+//        'Event' =>  'Event'
+//    );
 
     public function setFilename($val) {
         $this->setField('Filename', $val);

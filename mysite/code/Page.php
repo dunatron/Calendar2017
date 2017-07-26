@@ -103,27 +103,29 @@ class Page_Controller extends ContentController
 
 
         //-----> Start Step Two
-        $stepTwoStart = LiteralField::create('StepTwoStart', '<div id="StepTwo" class="form-step field-hidden">');
+        $stepTwoStart = LiteralField::create('StepTwoStart', '<div id="StepTwo" class="form-step field-hidden clearfix">');
 
+        $stepTwoWrapStart = LiteralField::create('','<div class="step-content-wrap clearfix">');
+        $stepTwoLeft = CompositeField::create(
         // Title
-        $Title = TextField::create('Title', 'Event Title')
-            ->setAttribute('required', true)
-            ->setAttribute('v-model', 'Title')
-            ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:80", arg: "Title", scope: "validateAddEvent" }')
+            $Title = TextField::create('Title', 'What is the name of your event?')
+                ->setAttribute('required', true)
+                ->setAttribute('v-model', 'Title')
+                ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:80", arg: "Title", scope: "validateAddEvent" }')
 //            ->setAttribute('data-vv-rules', 'required|min:5|max:80')
-            ->setRightTitle('Title');
+                ->setRightTitle('Title')
+                ->setAttribute('placeholder', 'e.g. Dunedin comedy night'),
 
-        // Description
-        $Description = TextareaField::create('Description', 'Event Description')
-            ->setAttribute('required', true)
-            ->setAttribute('v-model', 'Description')
-            ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:500", arg: "Description", scope: "validateAddEvent" }')
+            // Description
+            $Description = TextareaField::create('Description', 'Write a brief description of your event')
+                ->setAttribute('required', true)
+                ->setAttribute('v-model', 'Description')
+                ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:500", arg: "Description", scope: "validateAddEvent" }')
 //            ->setAttribute('data-vv-rules', 'required|min:10')
-            ->setRightTitle('Description');
-
-
-        $additionalFields = CompositeField::create(
-            HeaderField::create('10. Tags'),
+                ->setRightTitle('Description')
+            ->setAttribute('placeholder','e.g A night of local dunedin comedians, A collection
+            of the best from around Dunedin coming together for one night only <br> come on down for a night of
+            fun filled laughter at the Fortune Theatre'),
 
             $MainTag = DropdownField::create('HappTag', 'Choose Main Tag',
                 $this->getHappTags())
@@ -132,27 +134,19 @@ class Page_Controller extends ContentController
                 ->setAttribute('title', 'Choose a primary tag')
                 ->setAttribute('v-model', 'HappTag'),
 
-        $SecondaryTag = DropdownField::create('SecondaryTag', 'Choose Secondary Tag',
-            $this->getSecondaryTags())
-            ->addExtraClass('search')
-            ->setAttribute('data-style', 'btn-primary')
-            ->setAttribute('title', 'Choose a secondary tag')
-            ->setAttribute('disabled', 'disabled')
-            ->setAttribute('v-model', 'SecondaryTag'),
+            $SecondaryTag = DropdownField::create('SecondaryTag', 'Choose Secondary Tag',
+                $this->getSecondaryTags())
+                ->addExtraClass('search')
+                ->setAttribute('data-style', 'btn-primary')
+                ->setAttribute('title', 'Choose a secondary tag')
+                ->setAttribute('disabled', 'disabled')
+                ->setAttribute('v-model', 'SecondaryTag')
+        )->addExtraClass('Left');
 
-//            $vueImage = LiteralField::create('VueImage', '<div v-if="!image">
-//    <h2>Select an image</h2>
-//    <input type="file" @change="onFileChange" accept=".jpg, .jpeg, .png" size="2097152" class="img-responsive">
-//  </div>
-//  <div v-else>
-//    <img :src="image" />
-//    <button @click="removeImage">Remove image</button>
-//  </div>')
-
-
-            // Vue Clip : https://www.youtube.com/watch?v=84_SwbPWjKo
-            // https://www.npmjs.com/package/vue-clip
-            // https://npm.runkit.com/vue-clip
+        $stepTwoRight = CompositeField::create(
+        // Vue Clip : https://www.youtube.com/watch?v=84_SwbPWjKo
+        // https://www.npmjs.com/package/vue-clip
+        // https://npm.runkit.com/vue-clip
             $vueClip = LiteralField::create('VueClip', '<vue-clip :options="options" :on-added-file="fileAdded" :on-complete="complete">
 <template slot="clip-uploader-action" scope="props">
 <div class="uploader-action" v-bind:class="{dragging: props.dragging}">
@@ -183,8 +177,9 @@ Drop and drag files here or click to browse
 </div>
 </template>
 </vue-clip>')
+        )->addExtraClass('Right');
 
-        );
+        $stepTwoWrapEnd = LiteralField::create('','</div>');
 
         $StepTwoBack = LiteralField::create('StepTwoBack', '<div class="add-event-controls"><div @click="stepTwoBackProgress" id="StepTwoBack" class="add-event-back"><span>back</span></div>');
         $StepTwoNext = LiteralField::create('StepTwoNext', '<div @click="stepTwoForwardProgress"
@@ -197,23 +192,34 @@ Drop and drag files here or click to browse
 
 
         //-----> Start Step Three
+
         $stepThreeStart = LiteralField::create('StepThreeStart', '<div id="StepThree" class="form-step field-hidden">');
+        $stepThreeWrapStart = LiteralField::create('','<div class="step-content-wrap clearfix">');
+        $stepThreeLeft = CompositeField::create(
+            $venueName = TextField::create('EventVenue', 'What is the name of the venue?'),
 
-        $venueName = TextField::create('EventVenue', 'Venue Name');
-
-        $vueGoogleMap = LiteralField::create('VueMap', ' <vue-google-autocomplete
+        $vueGoogleMap = LiteralField::create('VueMap', '
+<label for="map" class="left">What is the street address/location</label>
+ <vue-google-autocomplete
                     id="map"
                     Type="establishment"
                     classname="input"
-                    placeholder="Start typing"
+                    placeholder="231 Stuart Street, Dunedin, New Zealand"
                     v-on:placechanged="getAddressData"
                     country="NZ" 
                     style="width: 100%"
                 >
-                </vue-google-autocomplete>');
+                </vue-google-autocomplete>'),
 
-        $mapData = LiteralField::create('MapData', '<h1 v-text="address"></h1>');
-        $map = LiteralField::create('googleMap', '<div v-show="address.latitude" id="addEventMap" style="width: 100%; height: 400px;"></div>');
+        //$mapData = LiteralField::create('MapData', '<h1 v-text="address"></h1>');
+        $map = LiteralField::create('googleMap', '<div v-show="address.latitude" id="addEventMap" style="width: 100%; height: 400px;"></div>')
+        )->addExtraClass('Left');
+        $stepThreeRight = CompositeField::create(
+            TextField::create('SpecialLocationInstructions')
+        )->addExtraClass('Right');
+
+
+        $stepThreeWrapEnd = LiteralField::create('','</div>');
 
         $StepThreeBack = LiteralField::create('StepThreeBack', '<div class="add-event-controls"><div @click="stepThreeBackProgress" id="StepThreeBack" class="add-event-back"><span>back</span></div>');
         $StepThreeNext = LiteralField::create('StepThreeNext', '<div @click="stepThreeForwardProgress" id="StepThreeNext" class="add-event-next"><span>next</span></div></div>');
@@ -221,6 +227,45 @@ Drop and drag files here or click to browse
         $stepThreeEnd = LiteralField::create('StepThreeEnd', '</div>');
         //-----> End Step Three
 
+
+        //-----> Start Step Four
+
+        $stepFourStart = LiteralField::create('StepFourStart', '<div id="StepFour" class="form-step field-hidden">');
+        $stepFourWrapStart = LiteralField::create('','<div class="step-content-wrap clearfix">');
+        $stepFourLeft = CompositeField::create(
+        // Restriction
+            $restrictions = DropdownField::create('Restriction',
+                'Restrictions for event',
+                EventRestriction::get()->map('ID', 'Description')->toArray(),
+                null,
+                true
+            )
+                ->setAttribute('v-model', 'Restriction')
+                ->setAttribute('v-validate.initial', '{ rules: "required", arg: "Restriction", scope: "validate-add-event" }')
+//            ->setAttribute('data-vv-rules', 'required')
+                ->setRightTitle('Restriction')
+                ->setAttribute('title', 'Select entry restriction...')
+                ->addExtraClass('search'),
+
+            $ticketOptions = LiteralField::create('', '<label for="map" class="left">What is the street address/location</label>
+<div class="ticket-type-wrap">
+<button type="button" class="btn btn-default">Yes...</button>
+<button type="button" class="btn btn-default">Free Event</button>
+</div> ')
+
+        )->addExtraClass('Left');
+        $stepFourRight = CompositeField::create(
+
+        )->addExtraClass('Right');
+
+
+        $stepFourWrapEnd = LiteralField::create('','</div>');
+
+        $StepFourBack = LiteralField::create('StepFourBack', '<div class="add-event-controls"><div @click="stepFourBackProgress" id="StepFourBack" class="add-event-back"><span>back</span></div>');
+        $StepFourNext = LiteralField::create('StepFourNext', '<div @click="stepFourForwardProgress" id="StepFourNext" class="add-event-next"><span>next</span></div></div>');
+
+        $stepFourEnd = LiteralField::create('StepFourEnd', '</div>');
+        //-----> End Step Four
 
 
         $ticket = CheckboxField::create('HasTickets', 'Check if event has tickets')
@@ -232,18 +277,7 @@ Drop and drag files here or click to browse
 
         //--> Ticket Step
         $ticketStart = LiteralField::create('TicketStart', '<div id="ticket-step" class="form-step field-hidden">');
-        // Restriction
-        $restrictions = DropdownField::create('Restriction',
-            'Restrictions for event',
-            EventRestriction::get()->map('ID', 'Description')->toArray(),
-            null,
-            true
-        )
-            ->setAttribute('v-model', 'Restriction')
-            ->setAttribute('v-validate.initial', '{ rules: "required", arg: "Restriction", scope: "validate-add-event" }')
-//            ->setAttribute('data-vv-rules', 'required')
-            ->setRightTitle('Restriction')
-            ->setEmptyString('Select Age Restriction');
+
         //$restrictionError = LiteralField::create('restrictionError', '<p class="text-danger" v-if="errors.has(\'Restriction\')">{{ errors.first(\'Restriction\') }}</p>');
 
         $acc = new AccessTypeArray();
@@ -303,8 +337,9 @@ Drop and drag files here or click to browse
 
         $fields = new FieldList(
             $stepOneStart, $bootstrapDate, $calendarOptions, $startTime, $finishTime, $generateDates, $generatedDates, $StepOneNext, $stepOneEnd,
-            $stepTwoStart, $Title, $Description, $additionalFields, $StepTwoBack, $StepTwoNext, $stepTwoEnd,
-            $stepThreeStart, $venueName, $vueGoogleMap, $mapData, $map, $StepThreeBack, $StepThreeNext, $stepThreeEnd
+            $stepTwoStart, $stepTwoWrapStart, $stepTwoLeft, $stepTwoRight, $stepTwoWrapEnd, $StepTwoBack, $StepTwoNext, $stepTwoEnd,
+            $stepThreeStart, $stepThreeWrapStart, $stepThreeLeft, $stepThreeRight, $stepThreeWrapEnd, $StepThreeBack, $StepThreeNext, $stepThreeEnd,
+            $stepFourStart, $stepFourWrapStart, $stepFourLeft, $stepFourRight, $stepFourWrapEnd, $StepFourBack, $StepFourNext, $stepFourEnd
         );
 
 
@@ -312,7 +347,8 @@ Drop and drag files here or click to browse
             FormAction::create('processHappEvent', 'Submit')
                 ->addExtraClass('field-hidden happ_btn')
                 ->setAttribute('id', 'submitHappEvent')
-                ->setAttribute('@click.prevent', 'onSubmit')
+                ->setAttribute('@click.prevent', 'submitNewEvents')
+//                ->setAttribute('@click.prevent', 'onSubmit')
                 ->setUseButtonTag(true)
                 ->setTemplate('RecaptchaSubmit')
         );
@@ -372,48 +408,133 @@ Drop and drag files here or click to browse
         $decode = json_decode($vars);
 
         $d = $decode->Data;
-        //error_log(var_export($d, true));
+        error_log(var_export($d, true));
 
+        // Image IDS
+        $filesIdArr = array();
+
+        // Title
+        if (isset($d->Title)) {
+            $submittedTitle = $d->Title;
+        }
+
+        // Description
+        if (isset($d->Description)) {
+            $submittedDescription = $d->Description;
+        }
+
+        if (isset($d->SecondaryTag)) {
+            $submittedSecondaryTagID = $d->SecondaryTag;
+        }
+
+        // Address Data
+        if (isset($d->placeData)) {
+            if (isset($d->placeData->formatted_address)) {
+                $submittedLocationText = $d->placeData->formatted_address;
+            }
+            if (isset($d->placeData->geometry->location))
+            {
+                $submittedLatitude = $d->placeData->geometry->location->lat;
+                $submittedLongitude = $d->placeData->geometry->location->lng;
+            }
+        }
+
+        // Extract files Id's from their arrays
+        foreach ($d->files as $F)
+        {
+            // Loop the arrays even thought its only one array,
+            // we need Just the ID from this
+            foreach ($F as $k=>$v)
+            {
+                //error_log('THE Value');
+                //error_log(var_export($v, true));
+                array_push($filesIdArr, $v);
+            }
+        }
+
+        // Create a new Event for each date object in Dates
         foreach ($d->Dates as $date) {
 
             $new = Event::create();
 
-            if (isset($d->Title)) {
-                $new->EventTitle = $d->Title;
+            // EventTitle
+            if (isset($submittedTitle)) {
+                $new->EventTitle = $submittedTitle;
             }
 
+            // EventDescription
+            if (isset($submittedDescription)) {
+                $new->EventDescription = $submittedDescription;
+            }
+
+            // SecondaryTag
+            if (isset($submittedSecondaryTagID)) {
+                $new->SecondaryTagID = $submittedSecondaryTagID;
+            }
+
+            // LocationText
+            if (isset($submittedLocationText)) {
+                $new->LocationText = $submittedLocationText;
+            }
+
+            // LocationLat
+            if (isset($submittedLatitude)) {
+                $new->LocationLat = $submittedLatitude;
+            }
+
+            // LocationLon
+            if (isset($submittedLongitude)) {
+                $new->LocationLon = $submittedLongitude;
+            }
+
+
+            // EventDate
             if (isset($date->DateObject->EventDate)) {
                 $rawDate = $date->DateObject->EventDate;
-//
-//                $MyDate = DateTime::create($rawDate);
-//                error_log(var_export($MyDate, true));
 
                 $d = new Date($rawDate);
 
-// Output the microseconds.
+                // Output the microseconds.
                 $d->format('y-m-d'); // 012345
 
-                error_log(var_export($d->name, true));
-
                 $new->EventDate = $d->name;
-
-
             }
 
+            // StartTime
             if (isset($date->DateObject->StartTime)) {
                 $new->StartTime = $date->DateObject->StartTime;
             }
 
+            // FinishTime
             if (isset($date->DateObject->EndTime)) {
                 $new->FinishTime = $date->DateObject->EndTime;
             }
 
-            if (isset($d->SecondaryTag)) {
-                $new->SecondaryTagID = $d->SecondaryTag;
+            $new->write();
+
+            // Assign The submitted images to each Event create from Dates
+            if (!empty($filesIdArr))
+            {
+                error_log('THE ARRAY');
+                error_log(var_export($filesIdArr, true));
+                foreach ($filesIdArr as $FID)
+                {
+                    $newEventImage = EventImage::get()->byID($FID);
+
+                    $newEventImage->write();
+
+                    $new->EventImages()->add($newEventImage);
+
+                    // Approve
+                    $new->EventApproved = true;
+
+                    $new->write();
+                }
             }
 
-            $new->write();
         }
+
+
 
 
         die('DOING STUFF');
@@ -423,8 +544,8 @@ Drop and drag files here or click to browse
     {
         $files = $request->postVars();
 
-//        error_log(var_export($request, true));
-        error_log(var_export($files, true));
+        //error_log(var_export($request, true));
+        //error_log(var_export($files, true));
         // TMP STORAGE.
 
         // Hold all the images, Generate some sort of unique session.
@@ -434,44 +555,29 @@ Drop and drag files here or click to browse
         $Month = date('M');
 
         // Find or Make the Folder Year
-        $yearFolder = Folder::find_or_make('Uploads/'.$Year);
+        $yearFolder = Folder::find_or_make('Uploads/' . $Year);
 
-        $makeDirectory = 'Uploads/'.$Year.'/'.$Month;
+        $makeDirectory = 'Uploads/' . $Year . '/' . $Month;
 
         $folderPath = Folder::find_or_make($makeDirectory);
 
-        foreach ($files as $file)
-        {
-            $newFile = File::create();
-            //$newFile->setFilename($file->name);
-            $newFile->write();
-            error_log(var_export($newFile, true));
+        $uploadedImageIDS = array();
 
+        foreach ($files as $file) {
+            $upload = Upload::create();
+//            $image = new Image();
+            $image = EventImage::create();
+            $image->ShowInSearch = 0;
+            //$fileSelfie->setFilename()
+            $upload->loadIntoFile($file, $image, $makeDirectory);
 
+            //error_log(var_export($image->ID, true));
 
-//            $folder = File::get()->filter(array(
-//                'ClassName' => 'Folder',
-//                'Filename' => 'assets/Uploads/'.$makeDirectory
-//            ))->first();
-
-//            // Upload Selfie Image
-//            if ($this->isSecureFolder($folder)) {
-                $uploadSelfie = Upload::create();
-                $fileSelfie = new Image();
-                $fileSelfie->ShowInSearch = 0;
-                //$fileSelfie->setFilename()
-                $uploadSelfie->loadIntoFile($file, $fileSelfie, $makeDirectory);
-                //$smartHealthSubmission->SelfieImageID = $fileSelfie->ID;
-//            }
-
-
+            array_push($uploadedImageIDS, $image->ID);
 
         }
 
-
-
-
-        return true;
+        return json_encode($uploadedImageIDS);
     }
 
     public function HappSearchForm()
