@@ -123,9 +123,7 @@ class Page_Controller extends ContentController
                 ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:500", arg: "Description", scope: "validateAddEvent" }')
 //            ->setAttribute('data-vv-rules', 'required|min:10')
                 ->setRightTitle('Description')
-            ->setAttribute('placeholder','e.g A night of local dunedin comedians, A collection
-            of the best from around Dunedin coming together for one night only <br> come on down for a night of
-            fun filled laughter at the Fortune Theatre'),
+            ->setAttribute('placeholder','e.g A night of local dunedin comedians, A collection of the best from around Dunedin coming together for one night only come on down for a night of fun filled laughter at the Fortune Theatre'),
 
             $MainTag = DropdownField::create('HappTag', 'Choose Main Tag',
                 $this->getHappTags())

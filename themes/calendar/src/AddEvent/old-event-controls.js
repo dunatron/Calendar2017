@@ -324,17 +324,20 @@ export default function AddEventForm() {
 
     $(HappTagDropdown).selectpicker({
         liveSearch: 'true',
-        showTick: true
+        showTick: true,
+        width: '100%'
     });
 
     $(SecondaryTagDropdown).selectpicker({
         liveSearch: 'true',
         showTick: true,
+        width: '100%'
     });
 
     $(RestrictionDropDown).selectpicker({
         liveSearch: 'true',
         showTick: true,
+        width: '100%'
     });
 
     // Disables Touch on mobile device

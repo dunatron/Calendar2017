@@ -1,6 +1,5 @@
 .happ-add-event-form {
   font-family: $happ_base_ff;
-  //border: 1px dashed rebeccapurple;
 
   fieldset {
 
@@ -122,16 +121,24 @@
   }
 
   .Left {
-    width: 65%;
-    float: left;
-    padding: 20px;
+    width: 100%;
+    padding: 3%;
+    @include breakpoint($min865) {
+      width: 65%;
+      float: left;
+      padding: 20px;
+    }
   }
 
 
   .Right {
-    width: 35%;
-    float: left;
-    padding: 20px;
+   width: 100%;
+    padding: 3%;
+    @include breakpoint($min865) {
+      width: 35%;
+      float: left;
+      padding: 20px;
+    }
   }
 
   @import "steps/StepOne";

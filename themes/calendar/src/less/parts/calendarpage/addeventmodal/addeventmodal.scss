@@ -13,7 +13,8 @@
         @import "continueaddevent.scss";
         // Add event .scss
         @import "addeventform.scss";
-        padding: 30px;
+
+        @include happ_modal_body();
 
         .field-hidden {
           display: none;

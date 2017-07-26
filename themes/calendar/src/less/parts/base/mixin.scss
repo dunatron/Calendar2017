@@ -62,6 +62,13 @@
   }
 }
 
+@mixin happ_modal_body() {
+  padding: 3%;
+  @include breakpoint($min865) {
+    padding: 20px;
+  }
+}
+
 @mixin link_animation() {
   @include animation_animation();
 }
