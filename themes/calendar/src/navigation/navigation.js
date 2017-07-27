@@ -334,13 +334,18 @@ export default function CalendarNavigation() {
         let history = require('history-events');
 
         if (history.isHistorySupported()) {
-            window.addEventListener('changestate', function(e) {
-                console.log('URL changed');
-            });
-
-            // window.history.pushState(null, null, '/login'); // `changestate` will be triggered
-            window.history.pushState(null, null, '?Y=2017&M=07&EID=26'); // `changestate` will be triggered
+            var Month = getUrlParameter('M');
+            alert(Month);
         }
+
+        // if (history.isHistorySupported()) {
+        //     window.addEventListener('changestate', function(e) {
+        //         console.log('URL changed');
+        //     });
+        //
+        //     // window.history.pushState(null, null, '/login'); // `changestate` will be triggered
+        //     window.history.pushState(null, null, '?Y=2017&M=07&EID=26'); // `changestate` will be triggered
+        // }
 
 
 
@@ -410,6 +415,21 @@ export default function CalendarNavigation() {
             });
         }
     });
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
 
 
     var MyRequestsCompleted = (function () {

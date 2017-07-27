@@ -92,6 +92,10 @@ class HappSiteConfig extends DataExtension
         $fields->addFieldToTab('Root.Colors',
             TextField::create('CurrentDayBackground', 'Background color for the current day')
                 ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
+        //DayNumberColor
+        $fields->addFieldToTab('Root.Colors',
+            TextField::create('DayNumberColor', 'Color for the day number on events')
+                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
 
         /* ADD EVENT MODAL */
         // AddEventHeaderBGColor

@@ -18250,13 +18250,19 @@ function CalendarNavigation() {
         var history = __webpack_require__(9);
 
         if (history.isHistorySupported()) {
-            window.addEventListener('changestate', function (e) {
-                console.log('URL changed');
-            });
-
-            // window.history.pushState(null, null, '/login'); // `changestate` will be triggered
-            window.history.pushState(null, null, '?Y=2017&M=07&EID=26'); // `changestate` will be triggered
+            var Month = getUrlParameter('M');
+            alert(Month);
         }
+
+        // if (history.isHistorySupported()) {
+        //     window.addEventListener('changestate', function(e) {
+        //         console.log('URL changed');
+        //     });
+        //
+        //     // window.history.pushState(null, null, '/login'); // `changestate` will be triggered
+        //     window.history.pushState(null, null, '?Y=2017&M=07&EID=26'); // `changestate` will be triggered
+        // }
+
 
         var url = $(this).attr('href');
         $.ajax({
@@ -18324,6 +18330,21 @@ function CalendarNavigation() {
             });
         }
     });
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
 
     var MyRequestsCompleted = function () {
         var numRequestToComplete, requestsCompleted, callBacks, singleCallBack;

@@ -33,6 +33,9 @@
     .happ_e_button {
         color: {$SiteConfig.LetterColor} !important;
     }
+    .day-square .tron-inner-square .day-number {
+        color: {$SteConfig.DayNumberColor}; !important;
+    }
 
     .current-day {
         background-color: {$SiteConfig.CurrentDayBackground} !important;
