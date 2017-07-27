@@ -58,9 +58,11 @@ class CalendarPage_Controller extends Page_Controller
         {
             //$m = date("m", $urlParams->Month);
             Session::set('Month', $urlParams->Month);
+            $mnth = Session::get('Month');
+            error_log(var_export($mnth, true));
         } else {
             $m = date("m");
-            Session::set('Month', $m);
+            //Session::set('Month', $m);
         }
 
         if(isset($urlParams->Year))
@@ -68,31 +70,18 @@ class CalendarPage_Controller extends Page_Controller
             Session::set('Year', $urlParams->Year);
         } else {
             $y = date("Y");
-            Session::set('Year', $y);
+            //Session::set('Year', $y);
         }
 
-        // If session is not set, get today's date and set year and month
+        // If session is not set, && no url params
         if (!isset($_SESSION['Month'])) {
-            //@session_start();
-            if(isset($urlParams->Month))
-            {
-                //$m = date("m", $urlParams->Month);
-                Session::set('Month', $urlParams->Month);
-            } else {
-                $m = date("m");
-                Session::set('Month', $m);
-            }
+            $m = date("m");
+            Session::set('Month', $m);
         }
 
         if (!isset($_SESSION['Year'])) {
-            //@session_start();
-            if(isset($urlParams->Year))
-            {
-                Session::set('Year', $urlParams->Year);
-            } else {
-                $y = date("Y");
-                Session::set('Year', $y);
-            }
+            $y = date("Y");
+            Session::set('Year', $y);
         }
 
         // Check if module session is active, if not set initialise the session variable and set it to 0
@@ -332,6 +321,9 @@ class CalendarPage_Controller extends Page_Controller
     {
         Session::set('ModalCheck', 0);
         $m = Session::get('Month');
+        $m = Session::get('Month');
+        error_log('Ajax Next Month');
+        error_log(var_export($m, true));
 
         $m--;
         $this->formatMonthNumber($m);
