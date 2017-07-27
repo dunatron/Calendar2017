@@ -54,7 +54,22 @@ class CalendarPage_Controller extends Page_Controller
 
         Requirements::set_write_js_to_body(false);
 
+        if(isset($urlParams->Month))
+        {
+            //$m = date("m", $urlParams->Month);
+            Session::set('Month', $urlParams->Month);
+        } else {
+            $m = date("m");
+            Session::set('Month', $m);
+        }
 
+        if(isset($urlParams->Year))
+        {
+            Session::set('Year', $urlParams->Year);
+        } else {
+            $y = date("Y");
+            Session::set('Year', $y);
+        }
 
         // If session is not set, get today's date and set year and month
         if (!isset($_SESSION['Month'])) {
