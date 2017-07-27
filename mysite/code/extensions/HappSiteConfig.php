@@ -18,7 +18,7 @@ class HappSiteConfig extends DataExtension
         'LetterColor'   =>  'Varchar(20)',
         'LetterHoverColor'  =>  'Varchar(20)',
         'CurrentDayColor'   =>  'Varchar(20)',
-        'CurrentDayColor'   =>  'Varchar(20)',
+        'DayNumberColor'   =>  'Varchar(20)',
         'CurrentDayBackground'  =>  'Varchar(20)',
         'MenuIconColors'    =>  'Varchar(20)',
         'AddEventHeaderBGColor'    =>  'Varchar(20)',
