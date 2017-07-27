@@ -34,7 +34,7 @@
         color: {$SiteConfig.LetterColor} !important;
     }
     .day-square .tron-inner-square .day-number {
-        color: {$SteConfig.DayNumberColor}; !important;
+        color: {$SiteConfig.DayNumberColor}; !important;
     }
 
     .current-day {
