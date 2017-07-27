@@ -122,11 +122,11 @@ export default function VueAddEvent() {
                     anchorPoint: new google.maps.Point(this.address.latitude, this.address.longitude)
                 });
 
-                var contentString = '<div id="content">'+
-                    '<div id="siteNotice">'+
-                    '</div>'+
-                    '<p id="firstHeading" class="firstHeading">'+this.placeData.adr_address+'</p>'+
-                    '</div>'+
+                var contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<p id="firstHeading" class="firstHeading">' + this.placeData.adr_address + '</p>' +
+                    '</div>' +
                     '</div>';
 
                 var infowindow = new google.maps.InfoWindow({
@@ -140,7 +140,7 @@ export default function VueAddEvent() {
                     title: 'Location Details',
                     icon: happMarkerIcon
                 });
-                marker.addListener('click', function() {
+                marker.addListener('click', function () {
                     infowindow.open(map, marker);
                 });
 
@@ -346,7 +346,7 @@ export default function VueAddEvent() {
                 // this.files.push(file.xhrResponse.response);
             },
 
-            complete: function  (file, status, xhr) {
+            complete: function (file, status, xhr) {
                 console.log('---file---');
                 console.log(file)
                 console.log('---status---');
@@ -358,8 +358,7 @@ export default function VueAddEvent() {
                 // Adding server id to be used for deleting
                 // the file.
                 //file.addAttribute('id', xhr.response.id)
-                if (status === 'success')
-                {
+                if (status === 'success') {
                     // this.files.push(file.xhrResponse.response);
                     // let FileObject = {
                     //     "FileObject": {
@@ -371,6 +370,61 @@ export default function VueAddEvent() {
 
             },
 
+            eventHasTickets: function () {
+
+                this.HasTickets = true;
+                //
+                // var newurl = window.location.protocol + "//" + window.location.host + window.loctaion.pathname + '?myNewUrlQuery=1';
+                // window.history.pushState({path:newurl},'',newurl);
+                //window.location.href = window.location.href + '#abc';
+
+                // es6b g
+                //this.history.push('/store/' + storeId);
+
+
+                // Get year, Month all from an axios request (from session data)
+                // Update the window url etc
+
+                //for the php
+                //if (parse_url($url, PHP_URL_QUERY))
+                //if ($_GET)
+                //if (isset($_SERVER['QUERY_STRING']))
+
+
+                // var history = require('history-events');
+                //
+                // if (history.isHistorySupported()) {
+                //     window.addEventListener('changestate', function(e) {
+                //         console.log('URL changed');
+                //     });
+                //
+                //     // window.history.pushState(null, null, '/login'); // `changestate` will be triggered
+                //     window.history.pushState(null, null, '?Y=2017&M=07&EID=26'); // `changestate` will be triggered
+                // }
+
+
+
+                this.$nextTick(function () {
+
+                    if (this.HasTickets === true) {
+                        axios.post('/pagefunction/getTicketOptionTemplate', {
+                            Data: this.HasTickets
+                        })
+                            .then(function (response) {
+                                // $('.ticket-type-wrap').html('<h1>Surely</h1>')
+
+                                $('#has-tickets').html('<span id="has-tickets"></span>');
+                                $('.ticket-type-wrap').html(response.data);
+                                console.log(response)
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+                    }
+
+                })
+
+            }
 
 
         }

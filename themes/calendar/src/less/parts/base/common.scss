@@ -52,6 +52,9 @@ body {
 }
 
 
+.btn:focus {
+  outline: none;
+}
 
 @mixin tab-focus() {
 

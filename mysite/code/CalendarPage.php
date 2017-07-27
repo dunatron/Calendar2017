@@ -41,27 +41,9 @@ class CalendarPage_Controller extends Page_Controller
     {
         parent::init();
 
-//        $themeFolder = $this->ThemeDir();
-//
-//        // Set the folder to our theme so that relative image paths work
-//        Requirements::set_combined_files_folder($themeFolder . '/combinedfiles');
-//
-//        $JSFiles = array(
-//            //$themeFolder . '/dist/bootstrap.bundle.js',
-//            $themeFolder . '/dist/app.bundle.js'
-//        );
-//
-////        $CSSFiles = array(
-////            //$themeFolder . '/css/base-styles.css',
-////            $themeFolder . '/css/Calendar-Core.css',
-////            $themeFolder . '/css/homepage.css',
-////            $themeFolder . '/css/main.css'
-////        );
-//
-//        // Combine css files
-//        //Requirements::combine_files('styles.css', $CSSFiles);
-//
-//        Requirements::combine_files('scripts.js', $JSFiles);
+        $urlParams = $this->getURLParamaters();
+
+        error_log(var_export($urlParams, true));
 
         /**
          * Because I am using webpack, we want this script in the head to style our document before the elements load.
@@ -73,18 +55,66 @@ class CalendarPage_Controller extends Page_Controller
         Requirements::set_write_js_to_body(false);
 
 
+
         // If session is not set, get today's date and set year and month
         if (!isset($_SESSION['Month'])) {
             //@session_start();
-            $m = date("m");
-            Session::set('Month', $m);
-            $y = date("Y");
-            Session::set('Year', $y);
+            if(isset($urlParams->Month))
+            {
+                //$m = date("m", $urlParams->Month);
+                Session::set('Month', $urlParams->Month);
+            } else {
+                $m = date("m");
+                Session::set('Month', $m);
+            }
         }
+
+        if (!isset($_SESSION['Year'])) {
+            //@session_start();
+            if(isset($urlParams->Year))
+            {
+                Session::set('Year', $urlParams->Year);
+            } else {
+                $y = date("Y");
+                Session::set('Year', $y);
+            }
+        }
+
         // Check if module session is active, if not set initialise the session variable and set it to 0
         if(!isset($_SESSION['CALID'])){
             Session::set('CALID', $this->CalendarID());
         }
+
+    }
+
+    public function getURLParamaters()
+    {
+        $paramObj = new stdClass();
+
+        $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+        error_log(var_export($actual_link, true));
+
+        $query = parse_url($actual_link, PHP_URL_QUERY);
+        parse_str($query, $params);
+
+        if (isset($_GET['Y'])) {
+            $urlYear = $params['Y'];
+            error_log(var_export($urlYear, true));
+            $paramObj->Year = $urlYear;
+        }
+        if (isset($_GET['M'])) {
+            $urlMonth = $params['M'];
+            error_log(var_export($urlMonth, true));
+            $paramObj->Month = $urlMonth;
+        }
+        if (isset($_GET['EID'])) {
+            $urlEID = $params['EID'];
+            error_log(var_export($urlEID, true));
+            $paramObj->EID = $urlEID;
+        }
+
+        return $paramObj;
 
     }
 

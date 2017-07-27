@@ -331,6 +331,19 @@ export default function CalendarNavigation() {
         e.preventDefault();
         ajaxIsLoading();
 
+        let history = require('history-events');
+
+        if (history.isHistorySupported()) {
+            window.addEventListener('changestate', function(e) {
+                console.log('URL changed');
+            });
+
+            // window.history.pushState(null, null, '/login'); // `changestate` will be triggered
+            window.history.pushState(null, null, '?Y=2017&M=07&EID=26'); // `changestate` will be triggered
+        }
+
+
+
         var url = $(this).attr('href');
         $.ajax({
             type:"POST",

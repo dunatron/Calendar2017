@@ -34,7 +34,8 @@ class Page_Controller extends ContentController
         'processHappEvent',
         'storeNewEvents',
         'getHappSecondaryTags',
-        'UploadFormImages'
+        'UploadFormImages',
+        'getTicketOptionTemplate'
     );
 
     public function init()
@@ -245,9 +246,9 @@ Drop and drag files here or click to browse
                 ->setAttribute('title', 'Select entry restriction...')
                 ->addExtraClass('search'),
 
-            $ticketOptions = LiteralField::create('', '<label for="map" class="left">What is the street address/location</label>
+            $ticketOptions = LiteralField::create('', '<label for="map" class="left">Does your event have tickets? <span id="has-tickets"></span></label>
 <div class="ticket-type-wrap">
-<button type="button" class="btn btn-default">Yes...</button>
+<button type="button" class="btn btn-default" v-on:click="eventHasTickets">Yes...</button>
 <button type="button" class="btn btn-default">Free Event</button>
 </div> ')
 
@@ -790,6 +791,20 @@ Drop and drag files here or click to browse
         return json_encode($tagArr);
 
         return $tagArr;
+    }
+
+    public function getTicketOptionTemplate(SS_HTTPRequest $req)
+    {
+
+        $vars = $req->getBody();
+        $decode = json_decode($vars);
+
+        error_log(var_export($decode, true));
+
+
+         //echo $data->renderWith('AjaxFunds');
+         return $this->renderWith('TicketOptions');
+         //return $this->owner->customise($data)->renderWith('Page_results');
     }
 
     public function getSearchSVG()

@@ -30,6 +30,9 @@ import 'bootstrap-select';
 // WickedPicker(timepicker)
 import 'wickedpicker';
 
+import history from 'history-events';
+//var history = require('history-events');
+
 
 // scroll reveal
 import ScrollReveal from 'scrollreveal';
