@@ -18099,9 +18099,10 @@ function CalendarNavigation() {
             },
             complete: function complete() {
                 setupBxSlider();
-                $('#ApprovedEventModal').modal('show');
             }
         });
+
+        $('#ApprovedEventModal').modal('show');
         // Modal Dialog control | reference
         $('#ApprovedEventModal').on('shown.bs.modal', function () {
             //$('#eventMap1').locationpicker('autosize');
