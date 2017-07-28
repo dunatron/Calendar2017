@@ -41,6 +41,19 @@ class CalendarPage_Controller extends Page_Controller
     {
         parent::init();
 
+        /**
+         * Maybe try destroy sessionData onPage reload? something to discuss
+         */
+
+        /**
+         * weirdly this works. maybe. Test later lmfao.
+         */
+        if(isset($_SESSION['EID']))
+        {
+            unset($_SESSION['EID']);
+            $_SESSION['EID'] = 12;
+        }
+
         $urlParams = $this->getURLParamaters();
 
         error_log(var_export($urlParams, true));
@@ -54,40 +67,67 @@ class CalendarPage_Controller extends Page_Controller
 
         Requirements::set_write_js_to_body(false);
 
-        if(isset($urlParams->Month))
-        {
+//        if(isset($urlParams->Month))
+//        {
+//            //$m = date("m", $urlParams->Month);
+//            Session::set('Month', $urlParams->Month);
+//            $mnth = Session::get('Month');
+//            error_log(var_export($mnth, true));
+//        } else {
+//            $m = date("m");
+//            Session::set('Month', $m);
+//        }
+//
+//        if(isset($urlParams->Year))
+//        {
+//            Session::set('Year', $urlParams->Year);
+//        } else {
+//            $y = date("Y");
+//            Session::set('Year', $y);
+//        }
+
+
+        if (isset($urlParams->Month)) {
             //$m = date("m", $urlParams->Month);
             Session::set('Month', $urlParams->Month);
             $mnth = Session::get('Month');
             error_log(var_export($mnth, true));
         } else {
-            $m = date("m");
-            //Session::set('Month', $m);
+            if (!isset($_SESSION['Month'])) {
+                $m = date("m");
+                Session::set('Month', $m);
+            }
         }
 
-        if(isset($urlParams->Year))
-        {
+        if (isset($urlParams->Year)) {
             Session::set('Year', $urlParams->Year);
         } else {
-            $y = date("Y");
-            //Session::set('Year', $y);
+            if (!isset($_SESSION['Year'])) {
+                $y = date("Y");
+                Session::set('Year', $y);
+            }
         }
 
-        // If session is not set, && no url params
-        if (!isset($_SESSION['Month'])) {
-            $m = date("m");
-            Session::set('Month', $m);
+        if (isset($urlParams->EID)) {
+            Session::set('EID', $urlParams->EID);
         }
 
-        if (!isset($_SESSION['Year'])) {
-            $y = date("Y");
-            Session::set('Year', $y);
-        }
 
-        // Check if module session is active, if not set initialise the session variable and set it to 0
-        if(!isset($_SESSION['CALID'])){
-            Session::set('CALID', $this->CalendarID());
-        }
+//        // If session is not set, && no url params
+//        if (!isset($_SESSION['Month'])) {
+//            $m = date("m");
+//            Session::set('Month', $m);
+//        }
+//
+//        if (!isset($_SESSION['Year'])) {
+//            $y = date("Y");
+//            Session::set('Year', $y);
+//        }
+//
+//        // Check if module session is active, if not set initialise the session variable and set it to 0
+//        if(!isset($_SESSION['CALID'])){
+//            Session::set('CALID', $this->CalendarID());
+//        }
 
     }
 
@@ -122,6 +162,26 @@ class CalendarPage_Controller extends Page_Controller
 
     }
 
+    public function getSessionData()
+    {
+        $sessionData = new stdClass();
+        if (isset($_SESSION['Year'])) {
+            $y = Session::get('Year');
+            $sessionData->year = $y;
+        }
+        if (isset($_SESSION['Month'])) {
+            $m = Session::get('Month');
+            $sessionData->month = $m;
+        }
+        if (isset($_SESSION['EID'])) {
+            $eID = Session::get('EID');
+            $sessionData->eID = $eID;
+        }
+
+        return json_encode($sessionData);
+
+    }
+
 
     // Methods allowed to run on this controller
     private static $allowed_actions = array(
@@ -144,6 +204,7 @@ class CalendarPage_Controller extends Page_Controller
         'EventDate',
         'associatedEventData',
         'resetApprovedModal',
+        'getSessionData'
 //        'searchHappEvents'
     );
 
@@ -178,12 +239,10 @@ class CalendarPage_Controller extends Page_Controller
         $priceArr = array();
         $minPrice = Null;
         $maxPrice = Null;
-        foreach ($tickets as $ticket)
-        {
+        foreach ($tickets as $ticket) {
             array_push($priceArr, $ticket->TicPrice);
         }
-        if ($priceArr)
-        {
+        if ($priceArr) {
             $minPrice = min($priceArr);
             $maxPrice = max($priceArr);
         }
@@ -198,24 +257,24 @@ class CalendarPage_Controller extends Page_Controller
         $StartToFinishTime = $startTimeFormat . ' - ' . $finishTimeFormat;
 
         $data = new ArrayData(array(
-            'EventTitle'  =>  $HappEvent->EventTitle,
-            'EventDescription'  => $HappEvent->EventDescription,
-            'EventVenue'    =>  $HappEvent->EventVenue,
-            'LocationText'  =>  $HappEvent->LocationText,
-            'EventDate' =>  $dateFormat,
-            'MinPrice'  =>  $minPrice,
-            'MaxPrice'  =>  $maxPrice,
-            'StartTime' =>  $startTimeFormat,
-            'FinishTime'    =>  $finishTimeFormat,
-            'StartToFinishTime' =>  $StartToFinishTime,
-            'IsFree'    =>  $HappEvent->IsFree,
-            'IsEventFindaEvent' =>  $HappEvent->IsEventFindaEvent,
-            'TicketWebsite' =>  $HappEvent->TicketWebsite,
-            'BookingWebsite'=>  $HappEvent->BookingWebsite,
-            'TicketPhone'   =>  $HappEvent->TicketPhone,
-            'EventFindaURL' =>  $HappEvent->EventFindaURL,
-            'EventImages'  => $assocImages,
-            'EventFindaImages'  =>  $findaImages
+            'EventTitle' => $HappEvent->EventTitle,
+            'EventDescription' => $HappEvent->EventDescription,
+            'EventVenue' => $HappEvent->EventVenue,
+            'LocationText' => $HappEvent->LocationText,
+            'EventDate' => $dateFormat,
+            'MinPrice' => $minPrice,
+            'MaxPrice' => $maxPrice,
+            'StartTime' => $startTimeFormat,
+            'FinishTime' => $finishTimeFormat,
+            'StartToFinishTime' => $StartToFinishTime,
+            'IsFree' => $HappEvent->IsFree,
+            'IsEventFindaEvent' => $HappEvent->IsEventFindaEvent,
+            'TicketWebsite' => $HappEvent->TicketWebsite,
+            'BookingWebsite' => $HappEvent->BookingWebsite,
+            'TicketPhone' => $HappEvent->TicketPhone,
+            'EventFindaURL' => $HappEvent->EventFindaURL,
+            'EventImages' => $assocImages,
+            'EventFindaImages' => $findaImages
         ));
         return $this->owner->customise($data)->renderWith('Event_Data_Modal');
         //echo $data->renderWith('Event_Data_Modal');
@@ -322,11 +381,13 @@ class CalendarPage_Controller extends Page_Controller
         Session::set('ModalCheck', 0);
         $m = Session::get('Month');
         $m = Session::get('Month');
-        error_log('Ajax Next Month');
+        error_log('Ajax Prev Month');
         error_log(var_export($m, true));
 
         $m--;
         $this->formatMonthNumber($m);
+        error_log('Ajax Prev Month after');
+        error_log(var_export($m, true));
 
         $cal = $this->draw_calendar();
         //$this->reAddScripts();
@@ -418,7 +479,7 @@ class CalendarPage_Controller extends Page_Controller
         $events = Event::get()
             ->where('EventApproved', 'TRUE')
             ->filter(array(
-                'EventDate:PartialMatch' => '%'.$currentYear.'-'.$currentMonth.'-%'
+                'EventDate:PartialMatch' => '%' . $currentYear . '-' . $currentMonth . '-%'
             ))
             ->sort('EventDate', 'ASC'); // returns a 'DataList' containing all the 'Event' objects]
 
@@ -443,8 +504,7 @@ class CalendarPage_Controller extends Page_Controller
         $m = Session::get('Month'); // $var = 3 from init function
         $y = Session::get('Year');
 
-        if($m == $this->getTodaysMonth())
-        {
+        if ($m == $this->getTodaysMonth()) {
             $MonthIsToday = true;
         }
 
@@ -494,7 +554,7 @@ class CalendarPage_Controller extends Page_Controller
         $dates_array = array();
         /* table headings */
         $headings = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
-        $calendar .= '<div class="fc-head" style="background-color: '.$config->SecondBarColor.';"><div>' . implode('</div><div>', $headings) . '</div></div>';
+        $calendar .= '<div class="fc-head" style="background-color: ' . $config->SecondBarColor . ';"><div>' . implode('</div><div>', $headings) . '</div></div>';
         /* days and weeks vars now ... */
         /* start body fc-body */
         $calendar .= '<div class="fc-body">';
@@ -504,7 +564,7 @@ class CalendarPage_Controller extends Page_Controller
         $lastMonthDay = 1; // used for below function render last months days
         for ($x = 0; $x < $running_day; $x++):
             $calendar .= '<div class="day-square last-month-wrap">';
-            $calendar .= '<span class="day-number last-month last-month-'.$lastMonthDay.'" style="">' . '</span></br>';
+            $calendar .= '<span class="day-number last-month last-month-' . $lastMonthDay . '" style="">' . '</span></br>';
             $calendar .= '</div>';
             $lastMonthDay++;
             $days_in_this_week++;
@@ -514,11 +574,9 @@ class CalendarPage_Controller extends Page_Controller
         for ($list_day = 1; $list_day <= $days_in_month; $list_day++):
             $calendar .= '<div class="day-square">';
             $calendar .= '<div class="tron-inner-square">';
-            if(($MonthIsToday == true) && ($list_day == $this->getTodaysday()))
-            {
+            if (($MonthIsToday == true) && ($list_day == $this->getTodaysday())) {
                 $calendar .= '<div class="number-wrap"><span class="day-number current-day" style="">' . $list_day . '</span></div>';
-            }
-            else {
+            } else {
                 $calendar .= '<div class="number-wrap"><span class="day-number" style="">' . $list_day . '</span></div>';
             }
 
@@ -554,7 +612,7 @@ class CalendarPage_Controller extends Page_Controller
                     /**
                      * Begin event button build
                      */
-                    $calendar .= '<div class="event-btn"  data-toggle="modal" data-target="#ApprovedEventModal" lat="' . $e->LocationLat . '" lon="' . $e->LocationLon . '" radius="' . $e->LocationRadius . '" EID="' . $e->ID . '" data-tag="' .$e->EventTags . '" ><a  class="happ_e_button">' . $e->EventTitle . '</a></div>';
+                    $calendar .= '<div class="event-btn"  data-toggle="modal" data-target="#ApprovedEventModal" lat="' . $e->LocationLat . '" lon="' . $e->LocationLon . '" radius="' . $e->LocationRadius . '" EID="' . $e->ID . '" data-tag="' . $e->EventTags . '" ><a  class="happ_e_button">' . $e->EventTitle . '</a></div>';
                 } else {
                     continue;
                 }
@@ -582,7 +640,7 @@ class CalendarPage_Controller extends Page_Controller
             $nextMonthDay = 1;
             for ($x = 1; $x <= (8 - $days_in_this_week); $x++):
                 $calendar .= '<div class="day-square next-month-wrap">';
-                $calendar .= '<span class="day-number next-month next-month-'.$nextMonthDay.'" style="">' . $nextMonthDay . '</span></br>';
+                $calendar .= '<span class="day-number next-month next-month-' . $nextMonthDay . '" style="">' . $nextMonthDay . '</span></br>';
                 $calendar .= '</div>';
                 $nextMonthDay++;
             endfor;

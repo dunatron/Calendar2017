@@ -12,6 +12,8 @@ export default function CalendarNavigation() {
         searchModal = $('#SearchModal'),
         happSearchBtn = $('#searchHappEvents');
 
+    let history = require('history-events');
+
     /**
      *
      * This object is the core of ajax, communicates with server and user computer
@@ -47,6 +49,53 @@ export default function CalendarNavigation() {
             }
         }
     }
+
+    function setInitialUrl()
+    {
+
+        /**
+         * Somehow check the url for an EID first & Y & M
+         * If it is set don't perform the initial ajax call to set the url, instead try open the modal
+         * method is in Approved Event
+         */
+
+        $.ajax({
+            type:"POST",
+            url: '/calendarfunction/getSessionData',
+
+            success: function (response) {
+                console.log(response);
+
+                let data = jQuery.parseJSON(response);
+
+                let year = data.year,
+                    month = data.month,
+                    eID = data.eID;
+
+                if (typeof eID !== 'undefined' && eID.length > 0)
+                {
+                    if (history.isHistorySupported()) {
+                        window.history.pushState(null, null, '?Y='+year+'&M='+month+'&EID='+eID); // `changestate` will be triggered
+                        getAssociatedEventData(eID);
+                    }
+                } else {
+                    if (history.isHistorySupported()) {
+                        window.addEventListener('changestate', function(e) {
+                            //console.log('URL changed');
+                        });
+
+                        window.history.pushState(null, null, '?Y='+year+'&M='+month); // `changestate` will be triggered
+                    }
+                }
+
+            },
+            complete: function(){
+                //doCalendar();
+            }
+        });
+    }
+
+
 
     /**
      *
@@ -98,60 +147,54 @@ export default function CalendarNavigation() {
                 collapseAdvancedSearch()
             },
             complete: function(){
-
-                $('.event-btn').on("click", function () {
-                    var target = $(this).attr("data-target");
-                    var LATITUE = $(this).attr("lat");
-                    var LONGITUDE = $(this).attr("lon");
-                    var RADIUS = $(this).attr("radius");
-
-                    console.log('becaue we need to setup click listner');
-                    // ToDO Create AJAX Call To Database to get different elements
-                    // eventMap | div element
-                    // $('#eventMap1').locationpicker({
-                    //     location: {
-                    //         latitude: LATITUE,
-                    //         longitude: LONGITUDE
-                    //     },
-                    //     radius: RADIUS,
-                    //     enableAutocomplete: true,
-                    //     markerIcon: 'mysite/images/svg/location.svg'
-                    // });
-
-                    var EVENTID = $(this).attr("eid");
-
-                    // Set EventTitle
-                    $.ajax({
-                        type:"POST",
-                        url: '/calendarfunction/EventTitle',
-                        data: {EventID:EVENTID},
-                        success:function (response){
-                            $('.modal-title').html(response);
-                        }
-                    });
-                    //EventImages
-                    $.ajax({
-                        type:"POST",
-                        url: '/calendarfunction/associatedEventData',
-                        data: {EventID:EVENTID},
-                        success:function (response){
-                            $('.event-assocData').html(response);
-                        },
-                        complete: function () {
-                            setupBxSlider();
-                        }
-                    });
-                    // Modal Dialog control | reference
-                    $('#ApprovedEventModal').on('shown.bs.modal', function () {
-                        //$('#eventMap1').locationpicker('autosize');
-                        modalIsOpen();
-                    });
-
-                });
+                setupEventClickListner();
                 ajaxFinishedLoading();
             }
         });
     });
+
+    function setupEventClickListner()
+    {
+        $('.event-btn').on("click", function () {
+            var target = $(this).attr("data-target");
+
+            var EVENTID = $(this).attr("eid");
+
+            getAssociatedEventData(EVENTID);
+
+        });
+    }
+
+    function getAssociatedEventData(eventID)
+    {
+        // Set EventTitle
+        $.ajax({
+            type:"POST",
+            url: '/calendarfunction/EventTitle',
+            data: {EventID:eventID},
+            success:function (response){
+                $('.modal-title').html(response);
+            }
+        });
+        //EventImages
+        $.ajax({
+            type:"POST",
+            url: '/calendarfunction/associatedEventData',
+            data: {EventID:eventID},
+            success:function (response){
+                $('.event-assocData').html(response);
+            },
+            complete: function () {
+                setupBxSlider();
+                $('#ApprovedEventModal').modal('show');
+            }
+        });
+        // Modal Dialog control | reference
+        $('#ApprovedEventModal').on('shown.bs.modal', function () {
+            //$('#eventMap1').locationpicker('autosize');
+            modalIsOpen();
+        });
+    }
 
     function collapseAdvancedSearch() {
         $('#advancedSearch').collapse('hide')
@@ -171,6 +214,35 @@ export default function CalendarNavigation() {
     $(searchModal).on('hidden.bs.modal', function () {
         $('html').removeClass('modal-open');
     });
+
+    function setCorrectPreviousDateData(data)
+    {
+        let year = data.year;
+        let month = data.month;
+        console.log('before minus month ' + month);
+        month--;
+        if(month === 0){
+            year--;
+            month = 12;
+        }
+        console.log('after minus month ' + month);
+        console.log('after minus month for year ' + year);
+        return {month, year}
+    }
+
+    function setCorrectNextDateData(data)
+    {
+        let year = data.year;
+        let month = data.month;
+
+        month++;
+        if(month === 13){
+            year++;
+            month = 1;
+        }
+
+        return {month, year}
+    }
 
     /**
      * Reset Calendar Dates
@@ -242,7 +314,6 @@ export default function CalendarNavigation() {
                 },
                 complete: function(){
                     ajaxFinishedLoading();
-
                 }
             });
         }
@@ -257,18 +328,53 @@ export default function CalendarNavigation() {
         ajaxIsLoading();
 
         var url = $(this).attr('href');
+
+
+        //let history = require('history-events');
+
         $.ajax({
             type:"POST",
-            url: url + '/jaxNextMonth',
+            url: '/calendarfunction/getSessionData',
 
             success: function (response) {
-                $('.fc-calendar-container').html(response);
+                console.log(response);
+
+                let data = jQuery.parseJSON(response);
+
+                let correctData = setCorrectNextDateData(data);
+
+                let year = correctData.year,
+                    month = correctData.month;
+
+                if (history.isHistorySupported()) {
+                    window.addEventListener('changestate', function(e) {
+                        //console.log('URL changed');
+                    });
+
+                    window.history.pushState(null, null, '?Y='+year+'&M='+month); // `changestate` will be triggered
+                }
+
+
             },
             complete: function(){
-                doMonth();
-                setupApprovedEventClick();
+                doCalendar();
             }
         });
+
+        function doCalendar(){
+            $.ajax({
+                type:"POST",
+                url: url + '/jaxNextMonth',
+
+                success: function (response) {
+                    $('.fc-calendar-container').html(response);
+                },
+                complete: function(){
+                    doMonth();
+                    setupApprovedEventClick();
+                }
+            });
+        }
 
         function doMonth(){
             $.ajax({
@@ -331,37 +437,55 @@ export default function CalendarNavigation() {
         e.preventDefault();
         ajaxIsLoading();
 
-        let history = require('history-events');
-
-        if (history.isHistorySupported()) {
-            var Month = getUrlParameter('M');
-            alert(Month);
-        }
-
-        // if (history.isHistorySupported()) {
-        //     window.addEventListener('changestate', function(e) {
-        //         console.log('URL changed');
-        //     });
-        //
-        //     // window.history.pushState(null, null, '/login'); // `changestate` will be triggered
-        //     window.history.pushState(null, null, '?Y=2017&M=07&EID=26'); // `changestate` will be triggered
-        // }
-
-
-
         var url = $(this).attr('href');
+
+        // let history = require('history-events');
+
         $.ajax({
             type:"POST",
-            url: url + '/jaxPreviousMonth',
+            url: '/calendarfunction/getSessionData',
 
             success: function (response) {
-                $('.fc-calendar-container').html(response);
+
+                let data = jQuery.parseJSON(response);
+
+                let correctData = setCorrectPreviousDateData(data);
+
+                let year = correctData.year,
+                    month = correctData.month;
+
+                if (history.isHistorySupported()) {
+                    window.addEventListener('changestate', function(e) {
+                        //console.log('URL changed');
+                    });
+
+                    window.history.pushState(null, null, '?Y='+year+'&M='+month); // `changestate` will be triggered
+                }
+
+
             },
             complete: function(){
-                doMonth();
-                setupApprovedEventClick();
+                doCalendar();
             }
         });
+
+        /**
+         * Will need to send Data now, we will get session data from above,
+         * Then minus the Month by 1 and send this data to server to update session
+         */
+        function doCalendar(){
+            $.ajax({
+                type:"POST",
+                url: url + '/jaxPreviousMonth',
+                success: function (response) {
+                    $('.fc-calendar-container').html(response);
+                },
+                complete: function(){
+                    doMonth();
+                    setupApprovedEventClick();
+                }
+            });
+        }
 
         function doMonth(){
             $.ajax({
@@ -710,6 +834,6 @@ export default function CalendarNavigation() {
 
     setupApprovedEventClick();
 
-
+    setInitialUrl();
 
 }

@@ -1,5 +1,22 @@
 export default function ApprovedEvent() {
 
+
+    /**
+     *
+     *
+     * Thinking about detecting if &EID exists on Page load, If it does,
+     * Then perform an event-btn on click function and parse the EID.
+     * Also seperate the on eventClick and ajax call. i.e fire event click which retrieves the EID and parses
+     * it to get eventAJxData or something.
+     *
+     * Edge cases. Their will potentially be no month and year in the url.
+     * Perhaps on initial Page load we get the year and Month Session Data and auto populate.
+     * It would just suck doing this every time we fired a modal call
+     *
+     *
+     */
+
+
     $('.event-btn').on("click", function () {
         var target = $(this).attr("data-target");
         var LATITUE = $(this).attr("lat");
