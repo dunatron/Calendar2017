@@ -439,13 +439,17 @@ export default function VueAddEvent() {
                 Events.each( function(index){
 
                     let eventTagID =  $(this).attr('data-tag');
+                    let theEvent = $(this);
 
                     if (FilterTags.includes(eventTagID)) {
+                        $(this).removeClass('hide-event');
                         $(this).addClass('show-event');
                     }
                     else
                     {
                         $(this).removeClass('show-event');
+                        $(this).addClass('hide-event');
+
                     }
 
                 });
@@ -454,6 +458,7 @@ export default function VueAddEvent() {
                 if (this.SecondaryFilter.length === 0)
                 {
                     Events.each( function(index){
+                        $(this).removeClass('hide-event');
                         $(this).addClass('show-event');
                     });
                 }

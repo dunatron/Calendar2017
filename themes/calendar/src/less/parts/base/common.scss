@@ -83,7 +83,7 @@ body {
 .event-btn {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 1s, opacity .70s linear;
+  transition: visibility 1s, max-height 1s, opacity .70s linear;
   font-family: $font_GustanLight;
   margin: 0 0 5px 0;
   border: none;
@@ -112,22 +112,16 @@ body {
 .hide-event {
   visibility: hidden !important;
   opacity: 0 !important;
-  transition: visibility 1s, opacity .70s linear;
+  transition: visibility 1s, max-height 1s, opacity .70s linear;
+  max-height: 0;
 }
 
 .show-event {
   display: block;
   visibility: visible !important;
   opacity: 1 !important;
-  height: auto;
-  transition: visibility 1s, opacity .70s linear;
-}
-
-.fully-hide-event {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 1s, opacity .70s linear;
-  display: none;
+  max-height: 250px;
+  transition: visibility 1s, max-height 1s, opacity .70s linear;
 }
 
 .modal-backdrop {
