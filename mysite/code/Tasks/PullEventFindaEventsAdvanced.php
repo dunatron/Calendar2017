@@ -159,6 +159,12 @@ class PullEventFindaEventsAdvanced extends BuildTask
                         $this->createTag($checkTag->tag, 'SecondaryTag', $parentTagID);
                     }
                     $newEvent->EventTags =  $checkTag->tag;
+
+                    $eventTag = SecondaryTag::get()->filter(array(
+                        'Title' => $event->category->name
+                    ))->first();
+
+                    $newEvent->SecondaryTagID = $eventTag->ID;
                     $newEvent->write();
 
                 }
