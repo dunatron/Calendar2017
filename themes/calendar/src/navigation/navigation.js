@@ -14,6 +14,10 @@ export default function CalendarNavigation() {
 
     let history = require('history-events');
 
+    let currMonth = null,
+        currYear    = null,
+        currEID = null;
+
     /**
      *
      * This object is the core of ajax, communicates with server and user computer
@@ -71,12 +75,19 @@ export default function CalendarNavigation() {
                 let year = data.year,
                     month = data.month,
                     eID = data.eID;
+                // Should always return with month and year
+                currMonth   =   month;
+                currYear    =   year;
+                console.log('our constants'+ currMonth);
+                console.log('our constants'+ currYear);
 
                 if (typeof eID !== 'undefined' && eID.length > 0)
                 {
                     if (history.isHistorySupported()) {
                         window.history.pushState(null, null, '?Y='+year+'&M='+month+'&EID='+eID); // `changestate` will be triggered
                         getAssociatedEventData(eID);
+                        currEID   =   eID;
+                        console.log('our constants'+ currEID);
                     }
                 } else {
                     if (history.isHistorySupported()) {
@@ -347,12 +358,15 @@ export default function CalendarNavigation() {
                 let year = correctData.year,
                     month = correctData.month;
 
+                currYear = year;
+                currMonth = month;
+
                 if (history.isHistorySupported()) {
                     window.addEventListener('changestate', function(e) {
                         //console.log('URL changed');
                     });
 
-                    window.history.pushState(null, null, '?Y='+year+'&M='+month); // `changestate` will be triggered
+                    window.history.pushState(null, null, '?Y='+currYear+'&M='+currMonth); // `changestate` will be triggered
                 }
 
 
@@ -455,12 +469,15 @@ export default function CalendarNavigation() {
                 let year = correctData.year,
                     month = correctData.month;
 
+                currYear    =   year;
+                currMonth   =   month;
+
                 if (history.isHistorySupported()) {
                     window.addEventListener('changestate', function(e) {
                         //console.log('URL changed');
                     });
 
-                    window.history.pushState(null, null, '?Y='+year+'&M='+month); // `changestate` will be triggered
+                    window.history.pushState(null, null, '?Y='+currYear+'&M='+currMonth); // `changestate` will be triggered
                 }
 
 
@@ -602,7 +619,7 @@ export default function CalendarNavigation() {
         $(ajaxPageLoad).addClass('ajax-not-loading');
         $(ajaxPageLoad).removeClass('ajax-is-loading');
         applyFilter();
-        happEventReveal();
+        //happEventReveal();
     }
 
     /***
@@ -742,24 +759,21 @@ export default function CalendarNavigation() {
     {
         $('.event-btn').on("click", function () {
             var target = $(this).attr("data-target");
-            var LATITUE = $(this).attr("lat");
-            var LONGITUDE = $(this).attr("lon");
-            var RADIUS = $(this).attr("radius");
+
+            var EVENTID = $(this).attr("eid");
+            currEID = EVENTID;
 
             console.log('becaue we need to setup click listner');
             // ToDO Create AJAX Call To Database to get different elements
-            // eventMap | div element
-            // $('#eventMap1').locationpicker({
-            //     location: {
-            //         latitude: LATITUE,
-            //         longitude: LONGITUDE
-            //     },
-            //     radius: RADIUS,
-            //     enableAutocomplete: true,
-            //     markerIcon: 'mysite/images/svg/location.svg'
-            // });
 
-            var EVENTID = $(this).attr("eid");
+
+            if (history.isHistorySupported()) {
+                window.addEventListener('changestate', function(e) {
+                    //console.log('URL changed');
+                });
+
+                window.history.pushState(null, null, '?Y='+currYear+'&M='+currMonth+'&EID='+currEID); // `changestate` will be triggered
+            }
 
             // Set EventTitle
             $.ajax({

@@ -134,3 +134,23 @@ $navbar-default-toggle-border-color:       #ddd;
 $color-border: 1px solid $color-black;
 $event-modal-strip-padd:10px;
 $gutter-map-sides:20px;
+
+//== CheckBox css for pretty-checkboxes
+$pretty--class-name: notsopretty;
+/* <div class="notsopretty circle"> */
+
+$pretty--border-radius: 0;
+
+$pretty--color-primary: #428bca;
+$pretty--color-success: $color-happ-orange;
+$pretty--color-info: #5bc0de;
+$pretty--color-warning: #f0ad4e;
+$pretty--color-danger: #d9534f;
+$pretty--color-border: #b9b9b9;
+$pretty--color-radio: #b9b9b9;
+$pretty--color-bg: #fff;
+
+/* Google material design icons */
+$pretty--gmdi-class-name:'g-mdi';
+$pretty--gmdi-name:'Material Icons';
+$pretty--gmdi-attr:'data-icon';

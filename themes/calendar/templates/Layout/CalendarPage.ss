@@ -29,3 +29,4 @@
 
 <% include AddHappEventModal %>
 <% include SearchModal %>
+<% include FilterModal %>

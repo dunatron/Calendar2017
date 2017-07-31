@@ -66,7 +66,6 @@ import HappLogoAnimation from './logo/svg-logo';
 // import LocationPickerAutoFill from './location/location-picker-autofill';
 import VueAddEvent from './AddEvent/add-event';
 
-
 $(document).ready(function () {
     VueAddEvent();
     HappLogoAnimation();

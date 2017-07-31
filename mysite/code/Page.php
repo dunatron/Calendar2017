@@ -760,6 +760,16 @@ Drop and drag files here or click to browse
         return $tagArr;
     }
 
+    public function allHappTags()
+    {
+        return HappTag::get();
+    }
+
+    public function allSecondaryTags()
+    {
+        return SecondaryTag::get();
+    }
+
 
     public function getSecondaryTags()
     {

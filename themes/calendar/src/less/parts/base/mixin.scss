@@ -25,35 +25,24 @@
   padding: 0;
   background-color: #000;
   border-bottom: none;
-  .close-event-btn {
+
+  .close-modal {
     float: right;
     position: absolute;
     right:0;
     top:0;
     background-color: #000;
+    z-index: 9999999;
     &:hover {
       cursor: pointer;
     }
     .close-svg {
-      height: 42px;
-      width: 42px;
+      height: 32px;
+      width: 32px;
     }
   }
-  .close-add-btn {
-    float: right;
-    position: absolute;
-    right:0;
-    top:0;
-    background-color: #000;
-    &:hover {
-      cursor: pointer;
-    }
-    .close-svg {
-      height: 42px;
-      width: 42px;
-    }
-  }
-  .modal-title {
+
+  .title {
     padding: 5px;
     font-family: $happ_base_ff;
     font-size: 22px;

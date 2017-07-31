@@ -33,6 +33,7 @@
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "node-sass": "^4.5.3",
+    "pretty-checkbox": "^2.2.1",
     "resolve-url-loader": "^2.0.2",
     "sass-loader": "^6.0.5",
     "scrollreveal": "^3.3.5",

@@ -35,7 +35,7 @@
 
 <div class="container-fluid" id="site-wrapper">
 
-    <div class="site-content-wrapper">
+    <div class="site-content-wrapper" id="VueFilter">
         $Layout
         <% if $Form %>
             <div style="height: 100px;"></div>

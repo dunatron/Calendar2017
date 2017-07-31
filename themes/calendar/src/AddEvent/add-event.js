@@ -72,7 +72,10 @@ export default function VueAddEvent() {
 
                     done()
                 }
-            }
+            },
+            // Filter
+            MainFilter: [],
+            SecondaryFilter: [],
 
         }),
 
@@ -423,6 +426,37 @@ export default function VueAddEvent() {
                     }
 
                 })
+
+            },
+
+
+            CheckFilter: function ()
+            {
+                let Events = $('.event-btn');
+
+                let FilterTags = this.SecondaryFilter;
+
+                Events.each( function(index){
+
+                    let eventTagID =  $(this).attr('data-tag');
+
+                    if (FilterTags.includes(eventTagID)) {
+                        $(this).addClass('show-event');
+                    }
+                    else
+                    {
+                        $(this).removeClass('show-event');
+                    }
+
+                });
+
+                // Remove all filters
+                if (this.SecondaryFilter.length === 0)
+                {
+                    Events.each( function(index){
+                        $(this).addClass('show-event');
+                    });
+                }
 
             }
 

@@ -1,47 +1,17 @@
-@import "filter-modal";
+.notsopretty {
+  font-size: 18px;
+  display: block;
+  margin: 0;
 
-.Event-Filter-Wrapper {
-  padding-left: 60px;
-  min-height: 60px;
   @include breakpoint($min865) {
-    padding-left: 60px;
+    float: left;
+    width: 50%;
   }
 
-  form {
-    .form-group {
-      margin: 0;
+  label {
+    i {
+      padding: 5px;
     }
-    label {
-      display: none;
-    }
-    .select2-container {
-      min-height: 60px;
-      .select2-selection {
-
-        font-size: 13px;
-        min-height: 60px;
-        border: none;
-        border-bottom: 3px solid $c_orange_main;
-        border-radius: 0;
-        @include breakpoint($min865) {
-          font-size: 14px;
-          border: none;
-          min-height: 60px;
-        }
-
-      }
-    }
-    .select2-container--open {
-      //border-bottom: 3px solid $c_orange_main;
-      //@media $min865 {
-      //  border-bottom: 3px solid $c_orange_main;
-      //}
-    }
-
   }
 
-}
-
-.select2-container--default {
-  width: 100% !important;
 }

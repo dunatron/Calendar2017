@@ -46,7 +46,7 @@
                 </div>
                 <div class="filter-events">
                     <%-- Add Event --%>
-                    <a data-toggle="modal" data-target="#FilterModal">
+                    <a data-toggle="modal" data-target="#FilterEventModal">
                         $getFilterSVG
                     </a>
                 </div>
