@@ -449,12 +449,18 @@ Drop and drag files here or click to browse
             }
         }
 
-        //IsFree
+
+        // Restriction
+        if (isset($d->Restriction)) {
+            $submittedRestriction = $d->Restriction;
+        }
+
+        // IsFree
         if (isset($d->HasTickets)) {
             if($d->HasTickets === 'yes') {
-                $submittedHasTickets = true;
+                $isEventFree = false;
             } elseif ($d->HasTickets === 'no') {
-                $submittedHasTickets = false;
+                $isEventFree = true;
             }
         }
 
@@ -535,15 +541,21 @@ Drop and drag files here or click to browse
                 $new->FinishTime = $date->DateObject->EndTime;
             }
 
+            // Restriction
+            if (isset($submittedRestriction)) {
+                $new->Restriction = $submittedRestriction;
+            }
+
             // IsFree
-            if(isset($submittedHasTickets)) {
-                $new->IsFree = $submittedHasTickets;
+            if (isset($isEventFree)) {
+                $new->IsFree = $isEventFree;
             }
 
             // BookingWebsite
-            if(isset($submittedBookingWebsite)) {
+            if (isset($submittedBookingWebsite)) {
                 $new->BookingWebsite = $submittedBookingWebsite;
             }
+
 
             $new->write();
 
