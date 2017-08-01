@@ -5,6 +5,15 @@
                 <div class="close-modal" data-dismiss="modal" aria-label="Close">
                     $getCloseSVG
                 </div>
+                <%--<radial-progress-bar :diameter="80"--%>
+                                     <%--:completed-steps="completedSteps"--%>
+                                     <%--:total-steps="totalSteps"--%>
+                <%--:strokeWidth="strokeWidth"--%>
+                <%--:startColor="startColor"--%>
+                <%--:stopColor="stopColor"--%>
+                <%--:innerStrokeColor="innerStrokeColor">--%>
+                    <%--<p>{{ totalSteps }} / {{ completedSteps }}</p>--%>
+                <%--</radial-progress-bar>--%>
                 <h4 class="title">Add Happ Event</h4>
             </div>
             <div class="modal-body" id="VueAddEvent">

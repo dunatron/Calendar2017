@@ -111,14 +111,14 @@ export default function AddEventForm() {
         format: 'dd/mm/yyyy',
         template:"modal",
         //container: container,
-        todayHighlight: true,
+        todayHighlight: false,
         autoclose: false,
         multidate: true,
     };
     let SingleCalendarOptions ={
         format: 'dd/mm/yyyy',
         container: container,
-        todayHighlight: true,
+        todayHighlight: false,
         autoclose: false,
         multidate: false,
     };

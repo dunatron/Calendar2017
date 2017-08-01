@@ -8,13 +8,12 @@
 
 
                 <div class="notsopretty success smooth">
-                    <input type="checkbox" id="$ID" value="$ID" v-model="SecondaryFilter" @click="CheckFilter">
-                    <label>
-                        <i class="glyphicon glyphicon-pushpin"></i>
-                        $Title
-                    </label>
-                </div>
-
+                <input type="checkbox" id="$ID" value="$ID" v-model="SecondaryFilter" @click="CheckFilter">
+                <label>
+                    <i class="glyphicon glyphicon-pushpin"></i>
+                    $Title
+                </label>
+            </div>
 
                 <%--</div>--%>
             <% end_loop %>

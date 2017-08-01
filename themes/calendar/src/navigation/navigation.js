@@ -763,6 +763,12 @@ export default function CalendarNavigation() {
             var EVENTID = $(this).attr("eid");
             currEID = EVENTID;
 
+            // let mapLatitude = $(this).attr("lat"),
+            //     mapLongitude = $(this).attr("lon");
+
+            let mapLatitude =  Number.parseInt($(this).attr("lat"),10),
+                mapLongitude = Number.parseInt($(this).attr("lon"),10);
+
             console.log('becaue we need to setup click listner');
             // ToDO Create AJAX Call To Database to get different elements
 
@@ -791,6 +797,28 @@ export default function CalendarNavigation() {
                 data: {EventID:EVENTID},
                 success:function (response){
                     $('.event-assocData').html(response);
+
+                    console.log(mapLatitude);
+                    console.log(mapLongitude);
+
+                    let happMarkerIcon = 'mysite/images/svg/location.svg';
+                    let EventPosition = {lat: mapLatitude, lng: mapLongitude};
+
+
+                    var approvedMap = new google.maps.Map(document.getElementById('tronMap'), {
+                        center: {lat: mapLatitude, lng: mapLongitude},
+                        scrollwheel: false,
+                        zoom: 12,
+                        markerIcon: 'mysite/images/svg/location.svg'
+                    });
+
+                    var marker = new google.maps.Marker({
+                        position: EventPosition,
+                        map: approvedMap,
+                        title: 'Location Details',
+                        icon: happMarkerIcon
+                    });
+
                 },
                 complete: function () {
                     setupBxSlider();

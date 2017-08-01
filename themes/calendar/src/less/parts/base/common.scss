@@ -49,6 +49,9 @@ body {
  */
 @import "../../../../node_modules/pretty-checkbox/src/pretty";
 
+// Import components
+@import "components/wicked-picker";
+
 
 .btn {
 
@@ -76,9 +79,7 @@ body {
 }
 
 
-.wickedpicker {
-  z-index: 9999999999;
-}
+
 
 .event-btn {
   visibility: hidden;

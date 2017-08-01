@@ -1,9 +1,26 @@
 #StepOne {
 
   .Bootstrap__DatePicker {
+    margin: 0 0 30px 0;
+
+    .table-condensed {
+      background-color: rgba(255,255,255,0.8);
+    }
 
     .table-condensed>tbody>tr>td {
       padding: 10px;
+    }
+
+    .day {
+
+    }
+
+    .active.day {
+      background-color: $c_orange_main;
+      background-image: linear-gradient(to bottom,$c_orange_light_1,$c_orange_main);
+      -webkit-border-radius:0;
+      -moz-border-radius:0;
+      border-radius:0;
     }
 
     @include breakpoint($min865) {
@@ -35,6 +52,9 @@
     span {
       font-size: 20px;
     }
+    &:hover {
+      cursor: pointer;
+    }
   }
 
 
@@ -51,31 +71,42 @@
     span {
       padding: 8px;
       display: block;
-      border: 1px solid black;
+      border-radius: 20px;
+      border: 2px solid black;
       margin-bottom: 10px;
+      text-align: center;
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .Higlight__Option {
-      background-color: teal;
+      background-color: $c_orange_main;
+      text-align: center;
     }
   }
 
   .Generate__Dates {
 
-    margin: 20px 0;
+    margin: 20px auto;
     height: 59px;
-    border: 1px solid black;
+    max-width: 300px;
+    border: 2px solid black;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     align-content: center;
     @include breakpoint($min865) {
-      margin: 20px;
+
     }
     .generate_date_text {
       width: 100%;
       padding: 20px;
       margin: 0;
       text-align: center;
+    }
+    &:hover {
+      cursor: pointer;
     }
   }
 

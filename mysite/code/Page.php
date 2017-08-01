@@ -87,7 +87,7 @@ class Page_Controller extends ContentController
         $date = DateField::create('EventDate', 'Date of the event')->setConfig('dateformat', 'dd-MM-yyyy')->setAttribute('type', 'date');
         $startTime = TextField::create('StartTime', 'Event start time');
         $finishTime = TextField::create('FinishTime', 'Event finish time');
-        $generateDates = LiteralField::create('GenerateDates', '<div class="clearfix"></div><div @click="generateDates" class="Generate__Dates"><p class="generate_date_text">Press me to generate your dates and shit</p></div>');
+        $generateDates = LiteralField::create('GenerateDates', '<div class="clearfix"></div><div @click="generateDates" class="Generate__Dates"><p class="generate_date_text">Generate Dates</p></div>');
 
         $generatedDates = LiteralField::create('GeneratedDates', '<ul class="Event__Dates">
     <li class="Date__Object" v-for="Date in Dates">

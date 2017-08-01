@@ -14,7 +14,8 @@
             </div>
             <div class="modal-body">
                 <div class="event-assocData"><div class="ajax-loader"><div class="ajax-load-icon"></div> </div> </div>
-                <% include ApprovedEventMap %>
+                <%--<% include ApprovedEventMap %>--%>
+                <div id="tronMap" style="height: 300px;"></div>
             </div>
 
         </div>

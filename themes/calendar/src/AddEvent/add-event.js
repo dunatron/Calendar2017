@@ -1,4 +1,5 @@
-import Vue from '../../node_modules/vue/dist/vue.common';
+// import Vue from '../../node_modules/vue/dist/vue.common';
+import Vue from '../../node_modules/vue/dist/vue.esm.js';
 import VeeValidate from 'vee-validate';
 import VueGoogleAutocomplete from 'vue-google-autocomplete';
 import RadialProgressBar from 'vue-radial-progress'
@@ -10,9 +11,65 @@ Vue.use(VeeValidate);
 Vue.use(VueClip); // make vue use this plugin
 
 
-// import Carousel3d from 'vue-carousel-3d';
+// Vue.component('filter-events', {
 //
-// Vue.use(Carousel3d);
+//     template: `<div class="notsopretty success smooth">
+//                     <input type="checkbox" id="$ID" value="$ID" v-model="SecondaryFilter" @click="CheckFilter">
+//                     <label>
+//                         <i class="glyphicon glyphicon-pushpin"></i>
+//                         $Title
+//                     </label>
+//                 </div>`,
+//
+//     data() {
+//         return {
+//             MainFilter: [],
+//             SecondaryFilter: [],
+//         }
+//     },
+//
+//
+//     methods: {
+//
+//         CheckFilter: function ()
+//         {
+//             let Events = $('.event-btn');
+//
+//             let FilterTags = this.SecondaryFilter;
+//
+//             Events.each( function(index){
+//
+//                 let eventTagID =  $(this).attr('data-tag');
+//                 let theEvent = $(this);
+//
+//                 if (FilterTags.includes(eventTagID)) {
+//                     $(this).removeClass('hide-event');
+//                     $(this).addClass('show-event');
+//                 }
+//                 else
+//                 {
+//                     $(this).removeClass('show-event');
+//                     $(this).addClass('hide-event');
+//
+//                 }
+//
+//             });
+//
+//             // Remove all filters
+//             if (this.SecondaryFilter.length === 0)
+//             {
+//                 Events.each( function(index){
+//                     $(this).removeClass('hide-event');
+//                     $(this).addClass('show-event');
+//                 });
+//             }
+//
+//         }
+//
+//     }
+//
+// });
+
 
 export default function VueAddEvent() {
 
@@ -39,11 +96,11 @@ export default function VueAddEvent() {
             completedSteps: 0,
             totalSteps: 5,
             animateSpeed: 1000,
-            diameter: 300,
-            strokeWidth: 10,
-            startColor: '#429321',
+            diameter: 5,
+            strokeWidth: 2,
+            startColor: '#FF6733',
             stopColor: '#FF6733',
-            innerStrokeColor: '#323232',
+            innerStrokeColor: '#FF6733',
             timingFunc: 'linear',
             // 3d slider
             //slides: 7
@@ -376,36 +433,6 @@ export default function VueAddEvent() {
             eventHasTickets: function () {
 
                 this.HasTickets = true;
-                //
-                // var newurl = window.location.protocol + "//" + window.location.host + window.loctaion.pathname + '?myNewUrlQuery=1';
-                // window.history.pushState({path:newurl},'',newurl);
-                //window.location.href = window.location.href + '#abc';
-
-                // es6b g
-                //this.history.push('/store/' + storeId);
-
-
-                // Get year, Month all from an axios request (from session data)
-                // Update the window url etc
-
-                //for the php
-                //if (parse_url($url, PHP_URL_QUERY))
-                //if ($_GET)
-                //if (isset($_SERVER['QUERY_STRING']))
-
-
-                // var history = require('history-events');
-                //
-                // if (history.isHistorySupported()) {
-                //     window.addEventListener('changestate', function(e) {
-                //         console.log('URL changed');
-                //     });
-                //
-                //     // window.history.pushState(null, null, '/login'); // `changestate` will be triggered
-                //     window.history.pushState(null, null, '?Y=2017&M=07&EID=26'); // `changestate` will be triggered
-                // }
-
-
 
                 this.$nextTick(function () {
 
