@@ -160,6 +160,7 @@ export default function AddEventForm() {
     $(StepFourBack).on('click', function () {
         hideStep(StepFourWrapper);
         showStep(StepThreeWrapper);
+        hideSubmitBtn();
     });
 
     $(StepFourNext).on('click', function () {

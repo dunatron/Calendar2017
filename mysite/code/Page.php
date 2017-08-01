@@ -246,11 +246,22 @@ Drop and drag files here or click to browse
                 ->setAttribute('title', 'Select entry restriction...')
                 ->addExtraClass('search'),
 
-            $ticketOptions = LiteralField::create('', '<label for="map" class="left">Does your event have tickets? <span id="has-tickets"></span></label>
-<div class="ticket-type-wrap">
-<button type="button" class="btn btn-default" v-on:click="eventHasTickets">Yes...</button>
-<button type="button" class="btn btn-default">Free Event</button>
-</div> ')
+            $hasTicketHeader = HeaderField::create('Does your event have tickets?'),
+
+            $ticketOptions = LiteralField::create('', '<div class="notsopretty success">
+  <input type="radio" value="yes" v-model="HasTickets"> 
+  <label class="ticket__check"><i class="default"></i> Yes</label>
+</div>
+<div class="notsopretty success">
+  <input type="radio" value="no" v-model="HasTickets"> 
+  <label class="ticket__check"><i class="default"></i> No</label>
+</div>
+'),
+
+            TextField::create('BookingWebsite', 'BookingWebsite')
+                ->setAttribute('placeholder', 'Copy and paste the direct URL to purchase tickets')
+                ->setAttribute('v-show', 'HasTickets === "yes"')
+                ->setAttribute('v-model', 'BookingWebsite')
 
         )->addExtraClass('Left');
         $stepFourRight = CompositeField::create(
@@ -438,6 +449,21 @@ Drop and drag files here or click to browse
             }
         }
 
+        //IsFree
+        if (isset($d->HasTickets)) {
+            if($d->HasTickets === 'yes') {
+                $submittedHasTickets = true;
+            } elseif ($d->HasTickets === 'no') {
+                $submittedHasTickets = false;
+            }
+        }
+
+        // BookingWebsite
+        if (isset($d->BookingWebsite)) {
+            $submittedBookingWebsite = $d->BookingWebsite;
+        }
+
+
         // Extract files Id's from their arrays
         foreach ($d->files as $F)
         {
@@ -507,6 +533,16 @@ Drop and drag files here or click to browse
             // FinishTime
             if (isset($date->DateObject->EndTime)) {
                 $new->FinishTime = $date->DateObject->EndTime;
+            }
+
+            // IsFree
+            if(isset($submittedHasTickets)) {
+                $new->IsFree = $submittedHasTickets;
+            }
+
+            // BookingWebsite
+            if(isset($submittedBookingWebsite)) {
+                $new->BookingWebsite = $submittedBookingWebsite;
             }
 
             $new->write();

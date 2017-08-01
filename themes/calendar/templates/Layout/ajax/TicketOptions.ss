@@ -13,7 +13,7 @@
                         </div>
                     </label>
                 </div>
-                <div data-toggle="buttons" class="btn-group itemcontent">
+                <div data-toggle="buttons" class="btn-group itemcontent" v-on:click="toggleWebTicket">
                     <label class="btn btn-default">
                         <div class="itemcontent">
                             <input type="checkbox" name="var_id[]" autocomplete="off" value="">
@@ -30,7 +30,7 @@
         <div id="Form_HappEventForm_EventVenue_Holder" class="field text">
             <%--<label for="Form_HappEventForm_TicketWebsite" class="left">Copy and paste the direct URL to purchase tickets</label>--%>
             <div class="middleColumn">
-                <input type="text" name="EventVenue" id="Form_HappEventForm_TicketWebsite" class="text" placeholder="Copy and paste the direct URL to purchase tickets">
+                <input type="text" v-model="BookingWebsite" name="EventVenue" id="Form_HappEventForm_TicketWebsite" class="text" placeholder="Copy and paste the direct URL to purchase tickets">
             </div>
         </div>
     </div>

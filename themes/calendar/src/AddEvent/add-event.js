@@ -89,6 +89,7 @@ export default function VueAddEvent() {
             Description: '',
             HasTickets: false,
             TicketType: null,
+            BookingWebsite: null,
             Restriction: '',
             HappTag: null,
             SecondaryTag: null,
@@ -454,6 +455,11 @@ export default function VueAddEvent() {
 
                 })
 
+            },
+
+            toggleWebTicket: function ()
+            {
+                alert('Toggling');
             },
 
 

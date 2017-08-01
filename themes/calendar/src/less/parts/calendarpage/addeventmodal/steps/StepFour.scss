@@ -1,0 +1,17 @@
+#StepFour {
+
+  .ticket__check {
+    font-size: 36px;
+  }
+
+  #Form_HappEventForm_HeaderFieldDoes_your_event_have_tickets {
+    font-size: $label_fs;
+  }
+
+  #Form_HappEventForm_BookingWebsite_Holder {
+    label {
+      display: none;
+    }
+  }
+
+}

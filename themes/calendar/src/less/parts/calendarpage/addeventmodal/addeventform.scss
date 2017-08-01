@@ -40,8 +40,8 @@
 
       label {
         font-family: $font_GustanLight;
-        font-weight: 100;
-        font-size: 14px;
+        font-weight: 500;
+        font-size: $label_fs;
       }
     }
 
@@ -110,6 +110,7 @@
 
   @import "steps/StepOne";
   @import "steps/StepTwo";
+  @import "steps/StepFour";
   //@import "steps/details-step";
   //@import "steps/ticket-step";
   //@import "steps/ticket-web-step";
