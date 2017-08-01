@@ -118,11 +118,14 @@ class PullEventFindaEventsAdvanced extends BuildTask
              * Check for new EventRestriction
              */
             if($isNewEvent == true){
-                $images = $event->images->images;
                 $eventID = $newEvent->ID;
                 // ToDo create check if is new image. If not dont run store images function
                 //$storeImage = $this->storeEventImage($images, $eventID);
-                $this->storeEventImage($images, $eventID);
+                if (isset($event->images->images)) {
+                    $images = $event->images->images;
+                    $this->storeEventImage($images, $eventID);
+                }
+
 
                 // Check for tags
                 if(isset ($event->category)){
