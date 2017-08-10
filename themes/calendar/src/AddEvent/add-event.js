@@ -103,6 +103,8 @@ export default function VueAddEvent() {
             stopColor: '#FF6733',
             innerStrokeColor: '#FF6733',
             timingFunc: 'linear',
+            specLocation: '',
+            specEntry: '',
             // 3d slider
             //slides: 7
             //sitekey: '6LdeySkUAAAAAFkVXrWjtjBccmEVBeSnRVbkzdQ1'

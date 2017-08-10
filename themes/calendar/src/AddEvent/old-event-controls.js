@@ -390,6 +390,35 @@ export default function AddEventForm() {
 
     });
 
+    /**
+     * Special Location Instructions
+     */
+    $('#spec-location-btn').on('click', function(e){
+        e.preventDefault();
+        $('.special-location-wrapper').removeClass('special-close');
+        $('.special-location-wrapper').addClass('special-open');
+    });
+
+    $('.special-location-wrapper .close-svg').on('click', function(){
+        $('.special-location-wrapper').removeClass('special-open');
+        $('.special-location-wrapper').addClass('special-close');
+    });
+
+    /**
+     * Special Entry Instructions
+     */
+    $('#spec-entry-btn').on('click', function(e){
+        e.preventDefault();
+        $('.special-entry-wrapper').removeClass('special-close');
+        $('.special-entry-wrapper').addClass('special-open');
+    });
+
+    $('.special-entry-wrapper .close-svg').on('click', function(){
+        $('.special-entry-wrapper').removeClass('special-open');
+        $('.special-entry-wrapper').addClass('special-close');
+    });
+
+
 // Continue overlay functions
     function hideContinueOverlay() {
         $(continueAddEventOverlay).addClass('hide-continue-options');

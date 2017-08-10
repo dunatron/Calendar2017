@@ -26,6 +26,10 @@
     </div>
 </div>
 
+<%-- SpecialLocation --%>
+<% if $SpecialLocation %>$SpecialLocation<% end_if %>
+<%-- SpecialEntry --%>
+<% if $SpecialEntry %>$SpecialEntry<% end_if %>
 <%-- Description --%>
 <div class="description-strip">
     {$EventDescription}

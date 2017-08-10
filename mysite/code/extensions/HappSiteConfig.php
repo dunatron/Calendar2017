@@ -21,22 +21,18 @@ class HappSiteConfig extends DataExtension
         'DayNumberColor'   =>  'Varchar(20)',
         'CurrentDayBackground'  =>  'Varchar(20)',
         'MenuIconColors'    =>  'Varchar(20)',
-        'AddEventHeaderBGColor'    =>  'Varchar(20)',
-        'AddEventHeaderTxtColor'    =>  'Varchar(20)',
-        'AddEventBodyBGColor'    =>  'Varchar(20)',
         'CalendarPickerBGColor' =>  'Varchar(20)',
-        'AddCloseBGColor'    =>  'Varchar(20)',
-        'AddCloseIcoColor'    =>  'Varchar(20)',
-        'EventHeaderBGColor'    =>  'Varchar(20)',
-        'EventHeaderTxtColor'    =>  'Varchar(20)',
         'ModalLocationColor'    =>  'Varchar(20)',
         'EventModalIcoColors'   =>  'Varchar(20)',
-        'EventCloseBGColor'    =>  'Varchar(20)',
-        'EventCloseIcoColor'   =>  'Varchar(20)',
         'SearchCloseBGColor'    =>  'Varchar(20)',
         'SearchCloseIcoColor'   =>  'Varchar(20)',
         'SearchBtnBGColor'    =>  'Varchar(20)',
         'SearchBtnIcoColor'   =>  'Varchar(20)',
+        'ModalCloseBtnColor'    =>  'Varchar(20)',
+        'ModalHeaderBGColor'    =>  'Varchar(20)',
+        'ModalHeaderTxtColor'   =>  'Varchar(20)',
+        'ModalBodyBGColor'  =>  'Varchar(20)',
+        'ModalBodyTxtColor' =>  'Varchar(20)'
     );
 
     private static $has_one = array(
@@ -99,42 +95,12 @@ class HappSiteConfig extends DataExtension
                 ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
 
         /* ADD EVENT MODAL */
-        // AddEventHeaderBGColor
-        $fields->addFieldToTab('Root.AddEventModalColors',
-            TextField::create('AddEventHeaderBGColor', 'Background Color for the header strip')
-                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
-        // AddEventHeaderTxtColor
-        $fields->addFieldToTab('Root.AddEventModalColors',
-            TextField::create('AddEventHeaderTxtColor', 'Text color for the header strip')
-                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
-        // AddEventBodyBGColor
-        $fields->addFieldToTab('Root.AddEventModalColors',
-            TextField::create('AddEventBodyBGColor', 'Background color for the modal body')
-                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
         // CalendarPickerBGColor
         $fields->addFieldToTab('Root.AddEventModalColors',
             TextField::create('CalendarPickerBGColor', 'Background color for the calendar date picker')
                 ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
 
-
-        // AddCloseBGColor
-        $fields->addFieldToTab('Root.AddEventModalColors',
-            TextField::create('AddCloseBGColor', 'Background Color for the close icon')
-                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
-        // AddCloseIcoColor
-        $fields->addFieldToTab('Root.AddEventModalColors',
-            TextField::create('AddCloseIcoColor', 'Icon Color for close button')
-                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
-
         /* EVENT MODAL */
-        // EventHeaderBGColor
-        $fields->addFieldToTab('Root.EventModalColors',
-            TextField::create('EventHeaderBGColor', 'Background Color for the header strip')
-                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
-        // EventHeaderTxtColor
-        $fields->addFieldToTab('Root.EventModalColors',
-            TextField::create('EventHeaderTxtColor', 'Color the header strips text')
-                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
         // ModalLocationColor
         $fields->addFieldToTab('Root.EventModalColors',
             TextField::create('ModalLocationColor', 'Color For the Location Icon on the event modal')
@@ -142,14 +108,6 @@ class HappSiteConfig extends DataExtension
         // EventModalIcoColors
         $fields->addFieldToTab('Root.EventModalColors',
             TextField::create('EventModalIcoColors', 'Color for the icons on the event modal')
-                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
-        // EventCloseBGColor
-        $fields->addFieldToTab('Root.EventModalColors',
-            TextField::create('EventCloseBGColor', 'Background Color for close event modal')
-                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
-        // EventCloseIcoColor
-        $fields->addFieldToTab('Root.EventModalColors',
-            TextField::create('EventCloseIcoColor', 'Color for close event modal icon')
                 ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
 
         /* SEARCH MODAL */
@@ -168,6 +126,34 @@ class HappSiteConfig extends DataExtension
         // SearchBtnIcoColor
         $fields->addFieldToTab('Root.SearchModalColors',
             TextField::create('SearchBtnIcoColor', 'Color the search Icon color')
+                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
+
+        /**
+         * Modal config
+         */
+        // ModalCloseBtnColor
+        $fields->addFieldToTab('Root.Modals',
+            TextField::create('ModalCloseBtnColor', 'Color for the close button on modals')
+                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
+
+        // ModalHeaderBGColor
+        $fields->addFieldToTab('Root.Modals',
+            TextField::create('ModalHeaderBGColor', 'background color for the modal header')
+                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
+
+        // ModalHeaderTxtColor
+        $fields->addFieldToTab('Root.Modals',
+            TextField::create('ModalHeaderTxtColor', 'Text color for the modal headers')
+                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
+
+        // ModalBodyBGColor
+        $fields->addFieldToTab('Root.Modals',
+            TextField::create('ModalBodyBGColor', 'Background color for modal body')
+                ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
+
+        // ModalBodyTxtColor
+        $fields->addFieldToTab('Root.Modals',
+            TextField::create('ModalBodyTxtColor', 'Text color for modal body')
                 ->setDescription('Please enter rgb or hex value as varchar e.g #425968 or rgba(66,89,104)'));
 
         // Logos

@@ -1,0 +1,19 @@
+#StepThree {
+
+  .vue-autocomplete {
+    background: url(../../svg/fat-location.svg) no-repeat right 0;
+    padding-right:30px;
+  }
+
+  .fat-location {
+    fill: purple;
+  }
+
+  .special-location-wrapper {
+    @include special_fields_wrapper;
+  }
+
+  // Special fields animations
+  @include special_fields_animations;
+
+}

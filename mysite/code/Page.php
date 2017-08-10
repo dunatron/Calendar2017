@@ -202,7 +202,7 @@ Drop and drag files here or click to browse
  <vue-google-autocomplete
                     id="map"
                     Type="establishment"
-                    classname="input"
+                    classname="vue-autocomplete"
                     placeholder="231 Stuart Street, Dunedin, New Zealand"
                     v-on:placechanged="getAddressData"
                     country="NZ" 
@@ -214,7 +214,13 @@ Drop and drag files here or click to browse
         $map = LiteralField::create('googleMap', '<div v-show="address.latitude" id="addEventMap" style="width: 100%; height: 400px;"></div>')
         )->addExtraClass('Left');
         $stepThreeRight = CompositeField::create(
-            TextField::create('SpecialLocationInstructions')
+//            TextField::create('SpecialLocationInstructions')
+            LiteralField::create('', '<button id="spec-location-btn" class="spec__btn">Add...</button><p style="text-align: center;">(special location instructions)</p>'),
+            CompositeField::create(
+                LiteralField::create('', $this->getCloseSVG()),
+                TextField::create('SpecialLocationInstructions')
+                    ->setAttribute('v-model', 'specLocation')
+            )->addExtraClass('special-location-wrapper')->addExtraClass('special-close')
         )->addExtraClass('Right');
 
 
@@ -265,6 +271,12 @@ Drop and drag files here or click to browse
 
         )->addExtraClass('Left');
         $stepFourRight = CompositeField::create(
+            LiteralField::create('', '<button id="spec-entry-btn" class="spec__btn">Add...</button><p style="text-align: center;">(special entry instructions)</p>'),
+            CompositeField::create(
+                LiteralField::create('', $this->getCloseSVG()),
+                TextField::create('SpecialEntryInstructions')
+                    ->setAttribute('v-model', 'specEntry')
+            )->addExtraClass('special-entry-wrapper')->addExtraClass('special-close')
 
         )->addExtraClass('Right');
 
@@ -357,8 +369,8 @@ Drop and drag files here or click to browse
             FormAction::create('processHappEvent', 'Submit')
                 ->addExtraClass('field-hidden happ_btn')
                 ->setAttribute('id', 'submitHappEvent')
-//                ->setAttribute('@click.prevent', 'submitNewEvents')
-                ->setAttribute('@click.prevent', 'onSubmit')
+                ->setAttribute('@click.prevent', 'submitNewEvents')
+//                ->setAttribute('@click.prevent', 'onSubmit')
                 ->setUseButtonTag(true)
                 ->setTemplate('RecaptchaSubmit')
         );
@@ -469,6 +481,16 @@ Drop and drag files here or click to browse
             $submittedBookingWebsite = $d->BookingWebsite;
         }
 
+        // SpecLocation
+        if (isset($d->specLocation)) {
+            $submittedSpecialLocation = $d->specLocation;
+        }
+
+        // SpecEntry
+        if (isset($d->specEntry)) {
+            $submittedSpecialEntry = $d->specEntry;
+        }
+
 
         // Extract files Id's from their arrays
         foreach ($d->files as $F)
@@ -554,6 +576,16 @@ Drop and drag files here or click to browse
             // BookingWebsite
             if (isset($submittedBookingWebsite)) {
                 $new->BookingWebsite = $submittedBookingWebsite;
+            }
+
+            // SpecialLocation
+            if (isset($submittedSpecialLocation)) {
+                $new->SpecialLocation = $submittedSpecialLocation;
+            }
+
+            // SpecialEntry
+            if (isset($submittedSpecialEntry)) {
+                $new->SpecialEntry = $submittedSpecialEntry;
             }
 
 

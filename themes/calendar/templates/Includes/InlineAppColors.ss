@@ -48,12 +48,6 @@
     }
 
     /* Event Modal SVG COLORS */
-    .event-modal-header {
-        background-color: {$SiteConfig.EventHeaderBGColor} !important;
-    }
-    .event-modal-header .modal-title {
-        color: {$SiteConfig.EventHeaderTxtColor} !important;
-    }
     .location-svg {
         fill: {$SiteConfig.ModalLocationColor} !important;
     }
@@ -64,11 +58,30 @@
         border-bottom: 1px solid #000;
         border-top: 1px solid #000;
     }
-    .close-event-btn {
-        background-color: {$SiteConfig.AddCloseBGColor} !important;
+
+    /* Modals */
+    .close-modal .close-svg {
+        fill: {$SiteConfig.ModalCloseBtnColor} !important;
     }
-    .close-event-btn .close-svg {
-        fill: {$SiteConfig.AddCloseIcoColor} !important;
+
+    .modal-content .modal-header {
+        background-color: {$SiteConfig.ModalHeaderBGColor} !important;
+    }
+
+    .modal-header .title {
+        color: {$SiteConfig.ModalHeaderTxtColor} !important;
+    }
+
+    .modal-content .modal-body, .special-location-wrapper, .special-entry-wrapper {
+        background-color: {$SiteConfig.ModalBodyBGColor} !Important;
+    }
+
+    .modal-content .modal-body,h1,h2,h3,h4,p,.description-strip{
+        color: {$SiteConfig.ModalBodyTxtColor} !Important;
+    }
+
+    .spec__btn {
+        background-color: orange;
     }
 
     /* Search Modal Colors */
@@ -86,21 +99,11 @@
     }
 
     /* Add Event Modal Colors */
-    .add-event-header {
-        background-color: {$SiteConfig.AddEventHeaderBGColor} !important;
-    }
-    .add-event-header .modal-title {
-        color: {$SiteConfig.AddEventHeaderTxtColor} !important;
-    }
     .close-add-btn {
         background-color: {$SiteConfig.SearchCloseBGColor} !important;
     }
     .close-add-btn .close-svg {
         fill: {$SiteConfig.SearchCloseIcoColor} !important;
-    }
-
-    #AddHappEventModal .modal-dialog .modal-content .modal-body {
-        background-color: {$SiteConfig.AddEventBodyBGColor} !Important;
     }
 
     .datepicker table {

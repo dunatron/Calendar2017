@@ -15,7 +15,7 @@ export default function CalendarNavigation() {
     let history = require('history-events');
 
     let currMonth = null,
-        currYear    = null,
+        currYear = null,
         currEID = null;
 
     /**
@@ -54,8 +54,7 @@ export default function CalendarNavigation() {
         }
     }
 
-    function setInitialUrl()
-    {
+    function setInitialUrl() {
 
         /**
          * Somehow check the url for an EID first & Y & M
@@ -64,7 +63,7 @@ export default function CalendarNavigation() {
          */
 
         $.ajax({
-            type:"POST",
+            type: "POST",
             url: '/calendarfunction/getSessionData',
 
             success: function (response) {
@@ -76,36 +75,50 @@ export default function CalendarNavigation() {
                     month = data.month,
                     eID = data.eID;
                 // Should always return with month and year
-                currMonth   =   month;
-                currYear    =   year;
-                console.log('our constants'+ currMonth);
-                console.log('our constants'+ currYear);
+                currMonth = month;
+                currYear = year;
+                console.log('our constants' + currMonth);
+                console.log('our constants' + currYear);
 
-                if (typeof eID !== 'undefined' && eID.length > 0)
-                {
+                if (typeof eID !== 'undefined' && eID.length > 0) {
                     if (history.isHistorySupported()) {
-                        window.history.pushState(null, null, '?Y='+year+'&M='+month+'&EID='+eID); // `changestate` will be triggered
+                        window.history.pushState(null, null, '?Y=' + year + '&M=' + month + '&EID=' + eID); // `changestate` will be triggered
                         getAssociatedEventData(eID);
-                        currEID   =   eID;
-                        console.log('our constants'+ currEID);
+                        currEID = eID;
+                        console.log('our constants' + currEID);
                     }
                 } else {
                     if (history.isHistorySupported()) {
-                        window.addEventListener('changestate', function(e) {
+                        window.addEventListener('changestate', function (e) {
                             //console.log('URL changed');
                         });
 
-                        window.history.pushState(null, null, '?Y='+year+'&M='+month); // `changestate` will be triggered
+                        window.history.pushState(null, null, '?Y=' + year + '&M=' + month); // `changestate` will be triggered
                     }
                 }
 
             },
-            complete: function(){
-                //doCalendar();
+            complete: function () {
+                //drawCalendarBody();
             }
         });
     }
 
+    function drawCalendarBody()
+    {
+        //draw_calendar
+        $.ajax({
+            type: "POST",
+            url: '/calendarfunction/draw_calendar',
+
+            success: function (response) {
+                $('.fc-calendar-container').html(response);
+            },
+            complete: function () {
+                //doCalendar();
+            }
+        });
+    }
 
 
     /**
@@ -140,32 +153,32 @@ export default function CalendarNavigation() {
     /**
      * Happ Search
      */
-    $(happSearchBtn).on('click', function(e){
+    $(happSearchBtn).on('click', function (e) {
         e.preventDefault();
         ajaxIsLoading();
 
         var keyword = $('#Form_HappSearchForm_keyword').val(),
-            pastFuture  = $('input[name=PastOrFuture]:checked').val(),
-            dateOrText  = $('input[name=DateOrText]:checked').val();
+            pastFuture = $('input[name=PastOrFuture]:checked').val(),
+            dateOrText = $('input[name=DateOrText]:checked').val();
 
         //alert(url);
         $.ajax({
-            type:"POST",
+            type: "POST",
             url: '/pagefunction/searchHappEvents',
-            data: {Keyword:keyword, PastFuture:pastFuture, DateOrText:dateOrText},
+            data: {Keyword: keyword, PastFuture: pastFuture, DateOrText: dateOrText},
             success: function (response) {
                 $('.search-results-wrapper').html(response);
                 collapseAdvancedSearch()
             },
-            complete: function(){
-                setupEventClickListner();
+            complete: function () {
+                // setupEventClickListner();
+                setupApprovedEventClick();
                 ajaxFinishedLoading();
             }
         });
     });
 
-    function setupEventClickListner()
-    {
+    function setupEventClickListner() {
         $('.event-btn').on("click", function () {
             var target = $(this).attr("data-target");
 
@@ -176,23 +189,22 @@ export default function CalendarNavigation() {
         });
     }
 
-    function getAssociatedEventData(eventID)
-    {
+    function getAssociatedEventData(eventID) {
         // Set EventTitle
         $.ajax({
-            type:"POST",
+            type: "POST",
             url: '/calendarfunction/EventTitle',
-            data: {EventID:eventID},
-            success:function (response){
+            data: {EventID: eventID},
+            success: function (response) {
                 $('.modal-title').html(response);
             }
         });
         //EventImages
         $.ajax({
-            type:"POST",
+            type: "POST",
             url: '/calendarfunction/associatedEventData',
-            data: {EventID:eventID},
-            success:function (response){
+            data: {EventID: eventID},
+            success: function (response) {
                 $('.event-assocData').html(response);
             },
             complete: function () {
@@ -215,7 +227,7 @@ export default function CalendarNavigation() {
     /**
      * for some reason was submitting the form
      */
-    $('#advancedToggle').on('click', function(e){
+    $('#advancedToggle').on('click', function (e) {
         e.preventDefault();
     });
 
@@ -227,13 +239,12 @@ export default function CalendarNavigation() {
         $('html').removeClass('modal-open');
     });
 
-    function setCorrectPreviousDateData(data)
-    {
+    function setCorrectPreviousDateData(data) {
         let year = data.year;
         let month = data.month;
         console.log('before minus month ' + month);
         month--;
-        if(month === 0){
+        if (month === 0) {
             year--;
             month = 12;
         }
@@ -242,13 +253,12 @@ export default function CalendarNavigation() {
         return {month, year}
     }
 
-    function setCorrectNextDateData(data)
-    {
+    function setCorrectNextDateData(data) {
         let year = data.year;
         let month = data.month;
 
         month++;
-        if(month === 13){
+        if (month === 13) {
             year++;
             month = 1;
         }
@@ -265,66 +275,66 @@ export default function CalendarNavigation() {
 
         var url = $(this).attr('href');
         $.ajax({
-            type:"POST",
+            type: "POST",
             url: url + '/resetCalendarDate',
 
             success: function (response) {
                 $('.fc-calendar-container').html(response);
 
             },
-            complete: function(){
+            complete: function () {
                 doMonth();
                 setupApprovedEventClick();
             }
         });
 
-        function doMonth(){
+        function doMonth() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/currentMonthName',
                 success: function (response) {
                     $('.theMonth').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     doYear();
                 }
             });
         }
 
-        function doYear(){
+        function doYear() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/currentYear',
                 success: function (response) {
                     $('.theYear').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     doNextMonth();
                 }
             });
         }
 
-        function doNextMonth(){
+        function doNextMonth() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/nextShortMonth',
                 success: function (response) {
                     $('.short-next-text').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     doPrevMonth();
                 }
             });
         }
 
-        function doPrevMonth(){
+        function doPrevMonth() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/prevShortMonth',
                 success: function (response) {
                     $('.short-previous-text').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     ajaxFinishedLoading();
                 }
             });
@@ -345,7 +355,7 @@ export default function CalendarNavigation() {
         //let history = require('history-events');
 
         $.ajax({
-            type:"POST",
+            type: "POST",
             url: '/calendarfunction/getSessionData',
 
             success: function (response) {
@@ -362,82 +372,82 @@ export default function CalendarNavigation() {
                 currMonth = month;
 
                 if (history.isHistorySupported()) {
-                    window.addEventListener('changestate', function(e) {
+                    window.addEventListener('changestate', function (e) {
                         //console.log('URL changed');
                     });
 
-                    window.history.pushState(null, null, '?Y='+currYear+'&M='+currMonth); // `changestate` will be triggered
+                    window.history.pushState(null, null, '?Y=' + currYear + '&M=' + currMonth); // `changestate` will be triggered
                 }
 
 
             },
-            complete: function(){
+            complete: function () {
                 doCalendar();
             }
         });
 
-        function doCalendar(){
+        function doCalendar() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/jaxNextMonth',
 
                 success: function (response) {
                     $('.fc-calendar-container').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     doMonth();
                     setupApprovedEventClick();
                 }
             });
         }
 
-        function doMonth(){
+        function doMonth() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/currentMonthName',
                 success: function (response) {
                     $('.theMonth').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     doYear();
                 }
             });
         }
 
-        function doYear(){
+        function doYear() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/currentYear',
                 success: function (response) {
                     $('.theYear').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     doNextMonth();
                 }
             });
         }
 
-        function doNextMonth(){
+        function doNextMonth() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/nextShortMonth',
                 success: function (response) {
                     $('.short-next-text').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     doPrevMonth();
                 }
             });
         }
 
-        function doPrevMonth(){
+        function doPrevMonth() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/prevShortMonth',
                 success: function (response) {
                     $('.short-previous-text').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     ajaxFinishedLoading();
                 }
             });
@@ -457,7 +467,7 @@ export default function CalendarNavigation() {
         // let history = require('history-events');
 
         $.ajax({
-            type:"POST",
+            type: "POST",
             url: '/calendarfunction/getSessionData',
 
             success: function (response) {
@@ -469,20 +479,20 @@ export default function CalendarNavigation() {
                 let year = correctData.year,
                     month = correctData.month;
 
-                currYear    =   year;
-                currMonth   =   month;
+                currYear = year;
+                currMonth = month;
 
                 if (history.isHistorySupported()) {
-                    window.addEventListener('changestate', function(e) {
+                    window.addEventListener('changestate', function (e) {
                         //console.log('URL changed');
                     });
 
-                    window.history.pushState(null, null, '?Y='+currYear+'&M='+currMonth); // `changestate` will be triggered
+                    window.history.pushState(null, null, '?Y=' + currYear + '&M=' + currMonth); // `changestate` will be triggered
                 }
 
 
             },
-            complete: function(){
+            complete: function () {
                 doCalendar();
             }
         });
@@ -491,67 +501,67 @@ export default function CalendarNavigation() {
          * Will need to send Data now, we will get session data from above,
          * Then minus the Month by 1 and send this data to server to update session
          */
-        function doCalendar(){
+        function doCalendar() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/jaxPreviousMonth',
                 success: function (response) {
                     $('.fc-calendar-container').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     doMonth();
                     setupApprovedEventClick();
                 }
             });
         }
 
-        function doMonth(){
+        function doMonth() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/currentMonthName',
                 success: function (response) {
                     $('.theMonth').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     doYear();
                 }
             });
         }
 
-        function doYear(){
+        function doYear() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/currentYear',
                 success: function (response) {
                     $('.theYear').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     doNextMonth();
                 }
             });
         }
 
-        function doNextMonth(){
+        function doNextMonth() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/nextShortMonth',
                 success: function (response) {
                     $('.short-next-text').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     doPrevMonth();
                 }
             });
         }
 
-        function doPrevMonth(){
+        function doPrevMonth() {
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: url + '/prevShortMonth',
                 success: function (response) {
                     $('.short-previous-text').html(response);
                 },
-                complete: function(){
+                complete: function () {
                     ajaxFinishedLoading();
                 }
             });
@@ -633,49 +643,50 @@ export default function CalendarNavigation() {
 
     $(FilterModal).modal({
         backdrop: false,
-        show:false,
-        label:false
+        show: false,
+        label: false
     });
 
     $(FilterTagsHolder).select2({
         placeholder: "Filter..."
     });
 
-    $(FilterTagsHolder).on('select2:select', function(){
+    $(FilterTagsHolder).on('select2:select', function () {
         currentTags();
         //console.log(currentTagArray);
         applyFilter();
         $(this).addClass('Filter-Selected')
     });
 
-    $(FilterTagsHolder).on('select2:unselect', function(){
+    $(FilterTagsHolder).on('select2:unselect', function () {
         currentTags();
         //console.log(currentTagArray);
         applyFilter();
     });
 
-    $(FilterTagsHolder).on('select2:open', function(){
+    $(FilterTagsHolder).on('select2:open', function () {
 
     });
 
-    $(FilterTagsHolder).on('select2:closing', function(){
+    $(FilterTagsHolder).on('select2:closing', function () {
 
     });
 
-    function currentTags(){
+    function currentTags() {
         var TagData = $(FilterTagsHolder).select2('data');
         currentTagArray = [];
-        $.each(TagData, function( key, value ){
+        $.each(TagData, function (key, value) {
             currentTagArray.push(value.text);
         });
     }
-    function applyFilter(){
-        if(currentTagArray.length !== 0){
-            $('.event-btn').each(function(){
+
+    function applyFilter() {
+        if (currentTagArray.length !== 0) {
+            $('.event-btn').each(function () {
                 var eventItem = this;
                 var eventTags = $(this).attr('data-tag');
 
-                if($.inArray(eventTags, currentTagArray) !== -1){
+                if ($.inArray(eventTags, currentTagArray) !== -1) {
                     //console.log('WE have found ONE');
                     $(this).removeClass('fully-hide-event');
                     $(this).addClass('show-event');
@@ -697,8 +708,8 @@ export default function CalendarNavigation() {
         }
     }
 
-    function showAllEvents(){
-        $('.event-btn').each(function(){
+    function showAllEvents() {
+        $('.event-btn').each(function () {
             var eventItem = this;
             $(eventItem).removeClass('fully-hide-event');
             $(eventItem).removeClass('hide-event');
@@ -710,28 +721,27 @@ export default function CalendarNavigation() {
         });
     }
 
-    function happEventReveal(){
+    function happEventReveal() {
         // Scroll Reveal | https://github.com/jlmakes/scrollreveal
 
 
-
-        if($(window).width() <= 880) {
+        if ($(window).width() <= 880) {
             // if smaller or equal
             // window.sr = ScrollReveal({duration: 750});
             // sr.reveal('.event-btn');
             var mobileEventReveal = {
-                delay    : 100,
-                distance : '140px', //90 original
-                easing   : 'ease-in-out',
+                delay: 100,
+                distance: '140px', //90 original
+                easing: 'ease-in-out',
                 //rotate   : { z: -10 }, // x y z
-                width   : 0,
-                scale    : 0.8,
-                origin : 'bottom', // bottom, left , top right
+                width: 0,
+                scale: 0.8,
+                origin: 'bottom', // bottom, left , top right
                 viewFactor: 0.3
             };
 
             //window.sr = ScrollReveal();
-            if ( $( '.event-btn' ).length ) {
+            if ($('.event-btn').length) {
                 window.sr.reveal('.event-btn', mobileEventReveal);
             }
 
@@ -741,7 +751,7 @@ export default function CalendarNavigation() {
         }
     }
 
-    $(window).resize(function() {
+    $(window).resize(function () {
 
     }).resize(); // This will simulate a resize to trigger the initial run.
 
@@ -755,8 +765,7 @@ export default function CalendarNavigation() {
      *
      */
 
-    function setupApprovedEventClick()
-    {
+    function setupApprovedEventClick() {
         $('.event-btn').on("click", function () {
             var target = $(this).attr("data-target");
 
@@ -766,36 +775,36 @@ export default function CalendarNavigation() {
             // let mapLatitude = $(this).attr("lat"),
             //     mapLongitude = $(this).attr("lon");
 
-            let mapLatitude =  Number.parseInt($(this).attr("lat"),10),
-                mapLongitude = Number.parseInt($(this).attr("lon"),10);
+            let mapLatitude = Number.parseInt($(this).attr("lat"), 10),
+                mapLongitude = Number.parseInt($(this).attr("lon"), 10);
 
             console.log('becaue we need to setup click listner');
             // ToDO Create AJAX Call To Database to get different elements
 
 
             if (history.isHistorySupported()) {
-                window.addEventListener('changestate', function(e) {
+                window.addEventListener('changestate', function (e) {
                     //console.log('URL changed');
                 });
 
-                window.history.pushState(null, null, '?Y='+currYear+'&M='+currMonth+'&EID='+currEID); // `changestate` will be triggered
+                window.history.pushState(null, null, '?Y=' + currYear + '&M=' + currMonth + '&EID=' + currEID); // `changestate` will be triggered
             }
 
             // Set EventTitle
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: '/calendarfunction/EventTitle',
-                data: {EventID:EVENTID},
-                success:function (response){
+                data: {EventID: EVENTID},
+                success: function (response) {
                     $('.modal-title').html(response);
                 }
             });
             //EventImages
             $.ajax({
-                type:"POST",
+                type: "POST",
                 url: '/calendarfunction/associatedEventData',
-                data: {EventID:EVENTID},
-                success:function (response){
+                data: {EventID: EVENTID},
+                success: function (response) {
                     $('.event-assocData').html(response);
 
                     console.log(mapLatitude);
@@ -836,9 +845,9 @@ export default function CalendarNavigation() {
     $('#ApprovedEventModal').on('hidden.bs.modal', function () {
         modalIsClosed();
         $.ajax({
-            type:"POST",
+            type: "POST",
             url: 'calendarfunction/resetApprovedModal',
-            success:function (response){
+            success: function (response) {
                 $('.event-assocData').html(response);
             }
         });
@@ -850,9 +859,9 @@ export default function CalendarNavigation() {
 
     function modalIsClosed() {
         // Check if search modal is open
-        if($('#SearchModal').hasClass('in')){
+        if ($('#SearchModal').hasClass('in')) {
 
-        }else {
+        } else {
             $('html').removeClass('modal-open');
         }
     }
@@ -878,5 +887,9 @@ export default function CalendarNavigation() {
     setupApprovedEventClick();
 
     setInitialUrl();
+
+    //showAllEvents();
+
+    //happEventReveal();
 
 }

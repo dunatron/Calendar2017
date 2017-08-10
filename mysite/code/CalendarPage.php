@@ -67,29 +67,13 @@ class CalendarPage_Controller extends Page_Controller
 
         Requirements::set_write_js_to_body(false);
 
-//        if(isset($urlParams->Month))
-//        {
-//            //$m = date("m", $urlParams->Month);
-//            Session::set('Month', $urlParams->Month);
-//            $mnth = Session::get('Month');
-//            error_log(var_export($mnth, true));
-//        } else {
-//            $m = date("m");
-//            Session::set('Month', $m);
-//        }
-//
-//        if(isset($urlParams->Year))
-//        {
-//            Session::set('Year', $urlParams->Year);
-//        } else {
-//            $y = date("Y");
-//            Session::set('Year', $y);
-//        }
-
-
         if (isset($urlParams->Month)) {
             //$m = date("m", $urlParams->Month);
-            Session::set('Month', $urlParams->Month);
+            //$m = date("m");
+            $dateObj   = DateTime::createFromFormat('!m', $urlParams->Month);
+            $month = $dateObj->format('m'); // March
+            Session::set('Month', $month);
+
             $mnth = Session::get('Month');
             error_log(var_export($mnth, true));
         } else {
@@ -204,7 +188,8 @@ class CalendarPage_Controller extends Page_Controller
         'EventDate',
         'associatedEventData',
         'resetApprovedModal',
-        'getSessionData'
+        'getSessionData',
+        'draw_calendar'
 //        'searchHappEvents'
     );
 
@@ -269,6 +254,8 @@ class CalendarPage_Controller extends Page_Controller
             'StartToFinishTime' => $StartToFinishTime,
             'IsFree' => $HappEvent->IsFree,
             'IsEventFindaEvent' => $HappEvent->IsEventFindaEvent,
+            'SpecialEntry'   =>  $HappEvent->SpecEntry,
+            'SpecialLocation'   =>  $HappEvent->SpecLocation,
             'TicketWebsite' => $HappEvent->TicketWebsite,
             'BookingWebsite' => $HappEvent->BookingWebsite,
             'TicketPhone' => $HappEvent->TicketPhone,
@@ -503,6 +490,10 @@ class CalendarPage_Controller extends Page_Controller
 
         $m = Session::get('Month'); // $var = 3 from init function
         $y = Session::get('Year');
+
+        error_log('Draw date data');
+        error_log(var_export($m, true));
+        error_log(var_export($y, true));
 
         if ($m == $this->getTodaysMonth()) {
             $MonthIsToday = true;

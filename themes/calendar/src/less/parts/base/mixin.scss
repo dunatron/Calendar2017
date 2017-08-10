@@ -31,7 +31,7 @@
     position: absolute;
     right:0;
     top:0;
-    background-color: #000;
+    background-color: transparent;
     z-index: 9999999;
     &:hover {
       cursor: pointer;
@@ -55,6 +55,37 @@
   padding: 3%;
   @include breakpoint($min865) {
     padding: 20px;
+  }
+}
+
+@mixin special_fields_wrapper() {
+  position: absolute;
+  top:0;
+  left: 0;
+  transition: max-width 1s ease, padding 1s ease;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  z-index: 9000;
+  background-color: #FFF;
+}
+
+@mixin special_fields_animations() {
+  .special-open {
+    max-width: 100%;
+  }
+
+  .special-close {
+    max-width: 0px;
+    padding: 20px 0;
+    overflow: hidden;
+  }
+
+  .close-svg {
+    height: 42px;
+    position: absolute;
+    top:0;
+    right:0;
   }
 }
 

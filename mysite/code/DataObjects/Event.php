@@ -66,6 +66,7 @@ class Event extends DataObject {
         'LocationText' => 'Text',
         'LocationLat' => 'Varchar(100)', // Find a better data type
         'LocationLon' => 'Varchar(100)',
+        'SpecLocation'  =>  'Text',
         //'LocationRadius' => 'Int',
         'EventDescription' => 'HTMLText',
         'EventDate' => 'Date',
@@ -78,6 +79,7 @@ class Event extends DataObject {
         'TicketWebsite' => 'Text',
         'TicketPhone' => 'Varchar(30)',
         'Restriction' => 'Text',
+        'SpecEntry' =>  'Text',
         'AccessType' => 'Text',
         'IsEventFindaEvent' =>  'Boolean',
         'EventFindaID'  =>  'Int',

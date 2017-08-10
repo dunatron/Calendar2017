@@ -65,8 +65,11 @@
         font-size: 19px;
         letter-spacing: 3px;
       }
-
+      &:hover {
+        cursor: pointer;
+      }
     }
+
     .add-event-back {
       position: relative;
       height: 33px;
@@ -83,6 +86,9 @@
         color: #FFF;
         font-size: 19px;
         letter-spacing: 3px;
+      }
+      &:hover {
+        cursor: pointer;
       }
     }
   }
@@ -110,6 +116,7 @@
 
   @import "steps/StepOne";
   @import "steps/StepTwo";
+  @import "steps/StepThree";
   @import "steps/StepFour";
   //@import "steps/details-step";
   //@import "steps/ticket-step";

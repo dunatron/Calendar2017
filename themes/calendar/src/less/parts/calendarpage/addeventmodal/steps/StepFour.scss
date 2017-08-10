@@ -14,4 +14,11 @@
     }
   }
 
+  .special-entry-wrapper {
+    @include special_fields_wrapper;
+  }
+
+  // Special fields animations
+  @include special_fields_animations;
+
 }
