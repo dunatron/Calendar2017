@@ -33,6 +33,15 @@ import 'wickedpicker';
 import history from 'history-events';
 //var history = require('history-events');
 
+// Ajax Loader
+import HappLoader from './loading/loader';
+
+window.happLoader = new HappLoader('.ajax-page-load')
+// let loader = new HappLoader('.ajax-page-load');
+// loader.startLoading();
+
+
+
 
 // scroll reveal
 import ScrollReveal from 'scrollreveal';
@@ -70,7 +79,7 @@ $(document).ready(function () {
     VueAddEvent();
     HappLogoAnimation();
     CalendarNavigation();
-    //ApprovedEvent();
+    //ApprovedEvent();;
     AddEventForm();
     // LocationPickerAutoFill();
 });

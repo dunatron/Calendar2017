@@ -4,11 +4,11 @@
 /**
  * Created by Heath on 24/05/16.
  */
+/*global $, jQuery, happLoader*/
 
 export default function CalendarNavigation() {
 
     var xmlHttp = createXmlHttpRequestObject(),
-        ajaxPageLoad = $('.ajax-page-load'),
         searchModal = $('#SearchModal'),
         happSearchBtn = $('#searchHappEvents');
 
@@ -155,7 +155,7 @@ export default function CalendarNavigation() {
      */
     $(happSearchBtn).on('click', function (e) {
         e.preventDefault();
-        ajaxIsLoading();
+        happLoader.startLoading();
 
         var keyword = $('#Form_HappSearchForm_keyword').val(),
             pastFuture = $('input[name=PastOrFuture]:checked').val(),
@@ -173,7 +173,7 @@ export default function CalendarNavigation() {
             complete: function () {
                 // setupEventClickListner();
                 setupApprovedEventClick();
-                ajaxFinishedLoading();
+                happLoader.finishLoading();
             }
         });
     });
@@ -271,7 +271,7 @@ export default function CalendarNavigation() {
      */
     $('#reset-calendar-dates').on('click', function (e) {
         e.preventDefault();
-        ajaxIsLoading();
+        happLoader.startLoading();
 
         var url = $(this).attr('href');
         $.ajax({
@@ -335,7 +335,7 @@ export default function CalendarNavigation() {
                     $('.short-previous-text').html(response);
                 },
                 complete: function () {
-                    ajaxFinishedLoading();
+                    happLoader.finishLoading();
                 }
             });
         }
@@ -347,7 +347,7 @@ export default function CalendarNavigation() {
      */
     $('.calendarpage').on('click', '#next-month', function (e) {
         e.preventDefault();
-        ajaxIsLoading();
+        happLoader.startLoading();
 
         var url = $(this).attr('href');
 
@@ -448,7 +448,7 @@ export default function CalendarNavigation() {
                     $('.short-previous-text').html(response);
                 },
                 complete: function () {
-                    ajaxFinishedLoading();
+                    happLoader.finishLoading();
                 }
             });
         }
@@ -460,7 +460,7 @@ export default function CalendarNavigation() {
      */
     $('.calendarpage').on('click', '#previous-month', function (e) {
         e.preventDefault();
-        ajaxIsLoading();
+        happLoader.startLoading();
 
         var url = $(this).attr('href');
 
@@ -562,7 +562,7 @@ export default function CalendarNavigation() {
                     $('.short-previous-text').html(response);
                 },
                 complete: function () {
-                    ajaxFinishedLoading();
+                    happLoader.finishLoading();
                 }
             });
         }
@@ -597,7 +597,7 @@ export default function CalendarNavigation() {
             requestsCompleted = options.requestsCompleted || 0;
             callBacks = [];
             var fireCallbacks = function () {
-                ajaxFinishedLoading();
+                happLoader.finishLoading();
                 applyFilter();
                 for (var i = 0; i < callBacks.length; i++) callBacks[i]();
             };
@@ -618,108 +618,6 @@ export default function CalendarNavigation() {
             };
         };
     })();
-
-
-    function ajaxIsLoading() {
-        $(ajaxPageLoad).addClass('ajax-is-loading');
-        $(ajaxPageLoad).removeClass('ajax-not-loading');
-    }
-
-    function ajaxFinishedLoading() {
-        $(ajaxPageLoad).addClass('ajax-not-loading');
-        $(ajaxPageLoad).removeClass('ajax-is-loading');
-        applyFilter();
-        //happEventReveal();
-    }
-
-    /***
-     *
-     * FILTER jQuery
-     */
-    var FilterTagsHolder = $('.RealTagsHolder'),
-        FilterModal = $('#FilterModal'),
-        currentTagArray = [],
-        event = $('.event-btn');
-
-    $(FilterModal).modal({
-        backdrop: false,
-        show: false,
-        label: false
-    });
-
-    $(FilterTagsHolder).select2({
-        placeholder: "Filter..."
-    });
-
-    $(FilterTagsHolder).on('select2:select', function () {
-        currentTags();
-        //console.log(currentTagArray);
-        applyFilter();
-        $(this).addClass('Filter-Selected')
-    });
-
-    $(FilterTagsHolder).on('select2:unselect', function () {
-        currentTags();
-        //console.log(currentTagArray);
-        applyFilter();
-    });
-
-    $(FilterTagsHolder).on('select2:open', function () {
-
-    });
-
-    $(FilterTagsHolder).on('select2:closing', function () {
-
-    });
-
-    function currentTags() {
-        var TagData = $(FilterTagsHolder).select2('data');
-        currentTagArray = [];
-        $.each(TagData, function (key, value) {
-            currentTagArray.push(value.text);
-        });
-    }
-
-    function applyFilter() {
-        if (currentTagArray.length !== 0) {
-            $('.event-btn').each(function () {
-                var eventItem = this;
-                var eventTags = $(this).attr('data-tag');
-
-                if ($.inArray(eventTags, currentTagArray) !== -1) {
-                    //console.log('WE have found ONE');
-                    $(this).removeClass('fully-hide-event');
-                    $(this).addClass('show-event');
-                    $(this).removeClass('hide-event');
-
-                } else {
-                    //console.log('Not found');
-                    $(this).addClass('hide-event');
-                    $(this).removeClass('show-event');
-                    setTimeout(function () {
-                        $(eventItem).addClass('fully-hide-event');
-                    }, 800);
-                }
-            });
-        } else {
-            setTimeout(function () {
-                showAllEvents();
-            }, 500);
-        }
-    }
-
-    function showAllEvents() {
-        $('.event-btn').each(function () {
-            var eventItem = this;
-            $(eventItem).removeClass('fully-hide-event');
-            $(eventItem).removeClass('hide-event');
-            $(eventItem).addClass('show-event');
-
-            setTimeout(function () {
-                $(eventItem).removeClass('fully-hide-event');
-            }, 300);
-        });
-    }
 
     function happEventReveal() {
         // Scroll Reveal | https://github.com/jlmakes/scrollreveal
@@ -755,7 +653,7 @@ export default function CalendarNavigation() {
 
     }).resize(); // This will simulate a resize to trigger the initial run.
 
-    ajaxFinishedLoading();
+    happLoader.finishLoading();
 
     /**
      *
@@ -888,7 +786,11 @@ export default function CalendarNavigation() {
 
     setInitialUrl();
 
-    //showAllEvents();
+    function revealEvents() {
+        $('.event-btn ').addClass('show-event');
+    }
+
+    revealEvents();
 
     //happEventReveal();
 

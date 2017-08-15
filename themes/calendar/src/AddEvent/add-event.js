@@ -1,4 +1,6 @@
 // import Vue from '../../node_modules/vue/dist/vue.common';
+/*jslint browser: true*/
+/*global $, jQuery, happLoader*/
 import Vue from '../../node_modules/vue/dist/vue.esm.js';
 import VeeValidate from 'vee-validate';
 import VueGoogleAutocomplete from 'vue-google-autocomplete';
@@ -6,6 +8,7 @@ import RadialProgressBar from 'vue-radial-progress'
 import moment from 'moment';
 import VueRecaptcha from 'vue-recaptcha';
 import VueClip from 'vue-clip';
+
 
 Vue.use(VeeValidate);
 Vue.use(VueClip); // make vue use this plugin
@@ -368,6 +371,10 @@ export default function VueAddEvent() {
 
             submitNewEvents: function () {
 
+                happLoader.startLoading();
+
+                $('#submitHappEvent').replaceWith('<h1 id="SubmittingText">Thank-you for your event Submission</h1>');
+
                 let MyData = this.$data;
 
                 console.log(MyData);
@@ -376,13 +383,15 @@ export default function VueAddEvent() {
                     Data: MyData
                 })
                     .then(function (response) {
+                        happLoader.finishLoading();
                         console.log(response);
+                        $('#SubmittingText').replaceWith('<h1>Thank-you for your event Submission</h1>');
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        happLoader.finishLoading();
+                        alert(error);
                     });
 
-                //this.resetRecaptcha();
             },
 
 
@@ -484,7 +493,6 @@ export default function VueAddEvent() {
                     {
                         $(this).removeClass('show-event');
                         $(this).addClass('hide-event');
-
                     }
 
                 });
