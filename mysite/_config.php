@@ -29,3 +29,4 @@ i18n::set_locale('en_US');
 //    ),
 //    'port'  =>  '8983'
 //));
+SilverStripe\Assets\Image::add_extension('EventImage');

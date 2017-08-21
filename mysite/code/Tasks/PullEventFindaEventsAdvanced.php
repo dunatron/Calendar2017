@@ -308,7 +308,7 @@ class PullEventFindaEventsAdvanced extends BuildTask
 
         foreach ($images as $image) {
 //            $file = EventFindaImage::create();
-            $file = Image::create();
+            $file = EventFindaImage::create();
             echo '<h3>' . $image->id . "</h3>";
             // iterate over the transforms collection of transforms
             $imageQuality=0;
@@ -362,7 +362,7 @@ class PullEventFindaEventsAdvanced extends BuildTask
 
     public function DeleteOldFindaImages($eventID)
     {
-        $oldImages = Image::get()->filter(array(
+        $oldImages = EventFindaImage::get()->filter(array(
             'EventID'   =>  $eventID
         ));
 

@@ -10,6 +10,8 @@ use SilverStripe\Assets\Image;
 use SilverStripe\ORM\FieldType\DBDate;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\NumericField;
+use SilverStripe\Forms\HTMLEditor;
+use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
@@ -38,13 +40,14 @@ class Event extends DataObject {
 
     private static $has_many = array(
         'Tickets' => 'Ticket',
-//        'EventFindaImages'  =>  'EventFindaImage'
-        'EventFindaImages'  =>  'Image'
+        'EventFindaImages'  =>  'EventFindaImage'
+//        'EventFindaImages'  =>  'Image'
     );
 
-//    private static $many_many = array(
-//        'EventImages'  =>  'Image',
-//    );
+    private static $many_many = array(
+        //'EventImages'  =>  'Image',
+        'EventImages'   =>  Image::class
+    );
 
     private static $summary_fields = array(
         'EventTitle' => 'EventTitle',
@@ -122,8 +125,8 @@ class Event extends DataObject {
         // EventDate
         $fields->addFieldToTab('Root.Main', DateField::create('EventDate', DBDate::class)
 //            ->setConfig('dateformat', 'YYYY-mm-dd')
-            ->setConfig('dateformat', 'yyyy-MM-dd')
-            ->setConfig('showcalendar', true)
+//            ->setConfig('dateformat', 'yyyy-MM-dd')
+//            ->setConfig('showcalendar', true)
             ->setDescription('Date for the event'));
         // StartTime
         $fields->addFieldToTab('Root.Main', TimeField::create('StartTime')
@@ -151,8 +154,11 @@ class Event extends DataObject {
             ->setDescription('Booking website URL'));
 
         // EventDescription
-        $fields->addFieldToTab('Root.Main', HTMLEditor::create('EventDescription', 'Description')
+
+        $fields->addFieldToTab('Root.Main', TextareaField::create('EventDescription', 'Description')
             ->setDescription('The real description field'));
+//        $fields->addFieldToTab('Root.Main', HTMLEditor::create('EventDescription', 'Description')
+//            ->setDescription('The real description field'));
 
         // Tags
 //        $fields->addFieldToTab('Root.Main',  HappStringTagField::create(
