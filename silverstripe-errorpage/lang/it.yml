@@ -1,0 +1,17 @@
+it:
+  SilverStripe\ErrorPage\ErrorPage:
+    CODE: 'Codice di errore'
+    CODE_400: '400 - Richiesta errata'
+    CODE_401: '401 - Non autorizzato'
+    CODE_403: '403 - Accesso negato'
+    CODE_404: '404 - Non trovato'
+    CODE_405: '405 - Metodo non permesso'
+    CODE_406: '406 - Non accettabile'
+    CODE_407: '407 - Richiesta autenticazione proxy'
+    CODE_408: '408 - Richiesta scaduta'
+    CODE_409: '409 - Conflitto'
+    CODE_410: '410 - Non disponibile'
+    CODE_411: '411 - Richiesta lunghezza'
+    CODE_412: '412 - Fallita precondizione'
+    DEFAULTSERVERERRORPAGETITLE: 'Errore server'
+    PLURALNAME: 'Pagine di Errore'

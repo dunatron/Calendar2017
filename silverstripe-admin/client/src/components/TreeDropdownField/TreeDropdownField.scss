@@ -1,0 +1,85 @@
+@import "~react-select/dist/react-select.css";
+
+.treedropdownfield__option+.treedropdownfield__option {
+  border-top: 1px solid $border-color-light;
+}
+
+.treedropdownfield__option-button {
+  border: 1px solid $border-color-light;
+  border-radius: $border-radius;
+  background: none;
+  // needed to override the width rule in .fill-width
+  width: auto !important; // sass-lint:disable-line no-important
+  max-width: 25%;
+  margin: -4px -5px -4px 5px;
+  padding: 4px 5px 4px 4px;
+
+  &:hover {
+    background: $btn-secondary-bg;
+  }
+}
+
+.treedropdownfield__option-count-icon {
+  padding: 0 ($spacer-x / 2);
+  line-height: 0.8;
+}
+
+.treedropdownfield__menu-loading {
+  padding: 2px 0 0 8px;
+}
+
+// breadcrumbs
+.treedropdownfield__breadcrumbs {
+  color: $white;
+  background: $gray-dark;
+  border-bottom: 1px solid #e6e6e6; // Select.js border color
+  font-weight: $headings-font-weight;
+
+  &:hover {
+    background: lighten($gray-dark, 20%);
+  }
+}
+
+.treedropdownfield__breadcrumbs-button {
+  border: 0;
+  background: none;
+  width: 30px;
+  padding: 0 10px 0 0;
+  line-height: 0.8;
+}
+
+.treedropdownfield__option-context {
+  color: $gray;
+  font-size: $font-size-sm;
+}
+
+.treedropdownfield__option--selected {
+  background: $gray-light;
+}
+
+.treedropdownfield__option-title--highlighted {
+  font-weight: bold;
+}
+
+// sass-lint:disable class-name-format
+.Select--multi .Select-value {
+  color: $body-color;
+  background-color: $white;
+  border-color: $input-border-focus;
+  border-radius: $border-radius;
+
+  &-icon {
+    font-size: $font-size-lg;
+    padding: 0 5px 2px;
+    border-color: $input-border-focus;
+  }
+}
+
+.Select-option.is-selected {
+  background-color: $gray-lighter;
+}
+
+.Select-option.is-focused {
+  background-color: $gray-light;
+}
+// sass-lint:enable class-name-format

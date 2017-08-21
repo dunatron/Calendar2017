@@ -18253,7 +18253,7 @@ function CalendarNavigation() {
     function getAssociatedEventData(eventID) {
         // Set EventTitle
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: '/calendarfunction/EventTitle',
             data: { EventID: eventID },
             success: function success(response) {
@@ -18758,19 +18758,19 @@ function CalendarNavigation() {
                     var happMarkerIcon = 'mysite/images/svg/location.svg';
                     var EventPosition = { lat: mapLatitude, lng: mapLongitude };
 
-                    var approvedMap = new google.maps.Map(document.getElementById('tronMap'), {
-                        center: { lat: mapLatitude, lng: mapLongitude },
-                        scrollwheel: false,
-                        zoom: 12,
-                        markerIcon: 'mysite/images/svg/location.svg'
-                    });
-
-                    var marker = new google.maps.Marker({
-                        position: EventPosition,
-                        map: approvedMap,
-                        title: 'Location Details',
-                        icon: happMarkerIcon
-                    });
+                    // var approvedMap = new google.maps.Map(document.getElementById('tronMap'), {
+                    //     center: {lat: mapLatitude, lng: mapLongitude},
+                    //     scrollwheel: false,
+                    //     zoom: 12,
+                    //     markerIcon: 'mysite/images/svg/location.svg'
+                    // });
+                    //
+                    // var marker = new google.maps.Marker({
+                    //     position: EventPosition,
+                    //     map: approvedMap,
+                    //     title: 'Location Details',
+                    //     icon: happMarkerIcon
+                    // });
                 },
                 complete: function complete() {
                     setupBxSlider();

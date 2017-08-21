@@ -192,7 +192,7 @@ export default function CalendarNavigation() {
     function getAssociatedEventData(eventID) {
         // Set EventTitle
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: '/calendarfunction/EventTitle',
             data: {EventID: eventID},
             success: function (response) {

@@ -1,0 +1,31 @@
+---
+Name: assetadmin
+---
+SilverStripe\Assets\File:
+  extensions:
+    - SilverStripe\AssetAdmin\Controller\AssetAdminFile
+SilverStripe\Admin\LeftAndMain:
+  extensions:
+    - SilverStripe\AssetAdmin\Controller\AssetAdminFieldsExtension
+---
+Name: assetadminfield
+After:
+  - '#coreassetfield'
+---
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Forms\FileHandleField:
+    class: SilverStripe\AssetAdmin\Forms\UploadField
+---
+Name: assetadmincampaigns
+Only:
+  moduleexists: 'silverstripe/campaign-admin'
+---
+SilverStripe\AssetAdmin\Forms\FileFormFactory:
+  extensions:
+    - 'SilverStripe\AssetAdmin\Extensions\CampaignAdminExtension'
+---
+Name: assetadminmodals
+---
+SilverStripe\Admin\ModalController:
+  extensions:
+    - SilverStripe\AssetAdmin\Extensions\RemoteFileModalExtension

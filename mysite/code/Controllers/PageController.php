@@ -108,7 +108,7 @@ class PageController extends ContentController
 <span id="CalendarSingle" class="Higlight__Option">Single</span>
 <!--<span id="CalendarReccuring">Recurring</span>-->
 <span id="CalendarMultiDay">Multi Day</span></div> ');
-        $date = DateField::create('EventDate', 'Date of the event')->setConfig('dateformat', 'dd-MM-yyyy')->setAttribute('type', 'date');
+        $date = DateField::create('EventDate', 'Date of the event');
         $startTime = TextField::create('StartTime', 'Event start time');
         $finishTime = TextField::create('FinishTime', 'Event finish time');
         $generateDates = LiteralField::create('GenerateDates', '<div class="clearfix"></div><div @click="generateDates" class="Generate__Dates"><p class="generate_date_text">Generate Dates</p></div>');
@@ -276,7 +276,7 @@ Drop and drag files here or click to browse
                 ->setAttribute('title', 'Select entry restriction...')
                 ->addExtraClass('search'),
 
-            $hasTicketHeader = HeaderField::create('Does your event have tickets?'),
+            $hasTicketHeader = HeaderField::create('Does your event have tickets?', 'ummm'),
 
             $ticketOptions = LiteralField::create('', '<div class="notsopretty success">
   <input type="radio" value="yes" v-model="HasTickets"> 
@@ -400,7 +400,8 @@ Drop and drag files here or click to browse
         );
 
         $actions->push(
-            ResetFormAction::create('ClearAction', 'Clear')
+            //ResetFormAction::create('ClearAction', 'Clear')
+            FormAction::create('ClearAction', 'Clear')->setAttribute('type', 'reset')
         );
 
         $required = RequiredFields::create(array(
@@ -416,7 +417,10 @@ Drop and drag files here or click to browse
          * https://developers.google.com/recaptcha/docs/display#render_param
          */
 
-        $data = Session::get("FormData.{$form->getName()}.data");
+//        $data = Session::get("FormData.{$form->getName()}.data");
+
+        $data = PageController::curr()->getRequest()->getSession()->get("FormData.{$form->getName()}.data");
+
 
         return $data ? $form->loadDataFrom($data) : $form;
     }

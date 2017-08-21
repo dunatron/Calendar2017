@@ -27,6 +27,6 @@
 </div>
 
 
-<% include 'Modals/AddHappEventModal' %>
-<% include SearchModal %>
-<% include FilterModal %>
+<% include addevent/AddHappEventModal %>
+<% include search/SearchModal %>
+<% include filter/FilterModal %>
