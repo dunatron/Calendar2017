@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\Forms\OptionsetField;
+
 /**
  * Created by PhpStorm.
  * User: admin

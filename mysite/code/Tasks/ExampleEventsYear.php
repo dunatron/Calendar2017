@@ -5,6 +5,9 @@
  * Date: 9/12/16
  * Time: 1:20 PM
  */
+
+use SilverStripe\Dev\BuildTask;
+
 class ExampleEventsYear extends BuildTask
 {
     protected $title = 'Example Events Year Populate';

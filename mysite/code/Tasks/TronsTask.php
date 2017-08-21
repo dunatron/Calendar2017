@@ -5,6 +5,9 @@
  * Date: 13/07/16
  * Time: 8:12 PM
  */
+
+use SilverStripe\Dev\BuildTask;
+
 class TronsTask extends BuildTask {
 
 

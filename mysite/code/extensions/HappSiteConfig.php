@@ -6,6 +6,15 @@
  * Date: 13/02/17
  * Time: 9:24 PM
  */
+
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\Assets\Image;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+
+
 class HappSiteConfig extends DataExtension
 {
     private static $db = array(
@@ -36,8 +45,8 @@ class HappSiteConfig extends DataExtension
     );
 
     private static $has_one = array(
-        'HappLogo' => 'Image',
-        'ClientLogo' => 'Image'
+        'HappLogo' => Image::class,
+        'ClientLogo' => Image::class
     );
 
     public function updateCMSFields(FieldList $fields)

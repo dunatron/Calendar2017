@@ -18074,7 +18074,6 @@ exports.default = CalendarNavigation;
 function CalendarNavigation() {
 
     var xmlHttp = createXmlHttpRequestObject(),
-        ajaxPageLoad = $('.ajax-page-load'),
         searchModal = $('#SearchModal'),
         happSearchBtn = $('#searchHappEvents');
 
@@ -18164,7 +18163,7 @@ function CalendarNavigation() {
                 }
             },
             complete: function complete() {
-                //drawCalendarBody();
+                drawCalendarBody();
             }
         });
     }

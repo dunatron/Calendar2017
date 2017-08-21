@@ -6,6 +6,14 @@
  * Date: 30/01/17
  * Time: 11:28 AM
  */
+
+use SilverStripe\Dev\BuildTask;
+use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\View\ArrayData;
+use SilverStripe\Dev\Debug;
+use SilverStripe\Assets\Image;
+
+
 class AddEventFindaEvents extends BuildTask
 {
     // Guide for array conversion ->http://array.include-once.org/
@@ -224,7 +232,7 @@ class AddEventFindaEvents extends BuildTask
     {
 
         foreach ($images as $image) {
-            $file = EventFindaImage::create();
+            $file = Image::create();
             echo '<h3>' . $image->id . "</h3>";
             // iterate over the transforms collection of transforms
             $imageQuality=0;

@@ -1,46 +1,10 @@
----
-Name: mysite
-After:
-  - 'framework/*'
-  - 'cms/*'
----
-# YAML configuration for SilverStripe
-# See http://doc.silverstripe.org/framework/en/topics/configuration
-# Caution: Indentation through two spaces, not tabs
-SSViewer:
-  theme: 'calendar'
-Debug:
+SilverStripe\Core\Manifest\ModuleManifest:
+  project: mysite
+SilverStripe\View\SSViewer:
+  theme: calendar
+SilverStripe\Dev\Debug:
   friendly_error_httpcode: true
-
-SiteConfig:
+SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - EventFindaExtension
     - HappSiteConfig
-
-
-FulltextSearchable:
-  searchable_classes:
-    - 'SiteTree'
-SiteTree:
-  create_table_options:
-    MySQLDatabase:
-      'ENGINE=MyISAM'
-  extensions:
-    - MyISAMExtension
-    - "FulltextSearchable('Title, MenuTitle, Content, MetaDescription')"
-
-DataObject:
-  extensions:
-    - MyISAMExtension
-
-Event:
-  extensions:
-    - MyISAMExtension
-
-File:
-  extensions:
-    - MyISAMExtension
-
-#### Possibly the solution I have been looking for
-#Page_Controller::$search_index_class = 'HappIndex';
-# put it goes in _config.php ya troll face

@@ -6,6 +6,9 @@
  * Date: 8/12/16
  * Time: 1:38 PM
  */
+
+use SilverStripe\Dev\BuildTask;
+
 class ExampleEvents extends BuildTask
 {
     protected $title = 'Example Events';

@@ -1,15 +1,33 @@
 <?php
 
-class Page extends SiteTree
-{
+use SilverStripe\View\Requirements;
+use SilverStripe\CMS\Controllers\ContentController;
+use SilverStripe\View\ThemeResourceLoader;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\DateField;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\CompositeField;
+use SilverStripe\Forms\HeaderField;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\RequiredFields;
+use SilverStripe\Forms\Form;
+use SilverStripe\Control\Session;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\ORM\FieldType\DBDate;
+use SilverStripe\Assets\Folder;
+use SilverStripe\Assets\Upload;
+use SilverStripe\Forms\OptionsetField;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\View\ArrayData;
+use SilverStripe\Assets\Image;
 
-    private static $db = array();
 
-    private static $has_one = array();
-
-}
-
-class Page_Controller extends ContentController
+class PageController extends ContentController
 {
 
     /**
@@ -38,9 +56,10 @@ class Page_Controller extends ContentController
         'getTicketOptionTemplate'
     );
 
-    public function init()
+    public function doInit()
     {
-        parent::init();
+        //parent::init();
+        parent::doInit();
         Requirements::clear();
 
         $themeFolder = $this->ThemeDir();
@@ -68,6 +87,11 @@ class Page_Controller extends ContentController
         Requirements::javascript('https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit');
         Requirements::javascript($themeFolder . '/dist/app.bundle.js');
 
+    }
+
+    public function ThemeDir()
+    {
+        return ThemeResourceLoader::inst()->getPath('calendar');
     }
 
     public function HappEventForm()
@@ -124,7 +148,7 @@ class Page_Controller extends ContentController
                 ->setAttribute('v-validate.initial', '{ rules: "required|min:5|max:500", arg: "Description", scope: "validateAddEvent" }')
 //            ->setAttribute('data-vv-rules', 'required|min:10')
                 ->setRightTitle('Description')
-            ->setAttribute('placeholder','e.g A night of local dunedin comedians, A collection of the best from around Dunedin coming together for one night only come on down for a night of fun filled laughter at the Fortune Theatre'),
+                ->setAttribute('placeholder','e.g A night of local dunedin comedians, A collection of the best from around Dunedin coming together for one night only come on down for a night of fun filled laughter at the Fortune Theatre'),
 
             $MainTag = DropdownField::create('HappTag', 'Choose Main Tag',
                 $this->getHappTags())
@@ -197,7 +221,7 @@ Drop and drag files here or click to browse
         $stepThreeLeft = CompositeField::create(
             $venueName = TextField::create('EventVenue', 'What is the name of the venue?'),
 
-        $vueGoogleMap = LiteralField::create('VueMap', '
+            $vueGoogleMap = LiteralField::create('VueMap', '
 <label for="map" class="left">What is the street address/location</label>
  <vue-google-autocomplete
                     id="map"
@@ -210,8 +234,8 @@ Drop and drag files here or click to browse
                 >
                 </vue-google-autocomplete>'),
 
-        //$mapData = LiteralField::create('MapData', '<h1 v-text="address"></h1>');
-        $map = LiteralField::create('googleMap', '<div v-show="address.latitude" id="addEventMap" style="width: 100%; height: 400px;"></div>')
+            //$mapData = LiteralField::create('MapData', '<h1 v-text="address"></h1>');
+            $map = LiteralField::create('googleMap', '<div v-show="address.latitude" id="addEventMap" style="width: 100%; height: 400px;"></div>')
         )->addExtraClass('Left');
         $stepThreeRight = CompositeField::create(
 //            TextField::create('SpecialLocationInstructions')
@@ -423,7 +447,7 @@ Drop and drag files here or click to browse
         return $this->redirectBack();
     }
 
-    public function storeNewEvents(SS_HTTPRequest $request)
+    public function storeNewEvents(HTTPRequest $request)
     {
         //error_log(var_export('Event Submitted to server', true));
         $vars = $request->getBody();
@@ -545,7 +569,7 @@ Drop and drag files here or click to browse
             if (isset($date->DateObject->EventDate)) {
                 $rawDate = $date->DateObject->EventDate;
 
-                $d = new Date($rawDate);
+                $d = new DBDate($rawDate);
 
                 // Output the microseconds.
                 $d->format('y-m-d'); // 012345
@@ -598,7 +622,7 @@ Drop and drag files here or click to browse
                 error_log(var_export($filesIdArr, true));
                 foreach ($filesIdArr as $FID)
                 {
-                    $newEventImage = EventImage::get()->byID($FID);
+                    $newEventImage = Image::get()->byID($FID);
 
                     $newEventImage->write();
 
@@ -619,7 +643,7 @@ Drop and drag files here or click to browse
         die('DOING STUFF');
     }
 
-    public function UploadFormImages(SS_HTTPRequest $request)
+    public function UploadFormImages(HTTPRequest $request)
     {
         $files = $request->postVars();
 
@@ -645,7 +669,7 @@ Drop and drag files here or click to browse
         foreach ($files as $file) {
             $upload = Upload::create();
 //            $image = new Image();
-            $image = EventImage::create();
+            $image = Image::create();
             $image->ShowInSearch = 0;
             //$fileSelfie->setFilename()
             $upload->loadIntoFile($file, $image, $makeDirectory);
@@ -673,7 +697,7 @@ Drop and drag files here or click to browse
         ), $value = 2);
 
         $prioritiseTextOrDate = OptionsetField::create('DateOrText', 'prioritise keyword or closest date', array(
-            "1" => "Date",
+            "1" => DBDate::class,
             "2" => "Keyword"
         ), $value = 2);
 
@@ -863,7 +887,7 @@ Drop and drag files here or click to browse
         return $tagArr;
     }
 
-    public function getHappSecondaryTags(SS_HTTPRequest $request)
+    public function getHappSecondaryTags(HTTPRequest $request)
     {
         $requestVars = $request->postVars();
 
@@ -883,7 +907,7 @@ Drop and drag files here or click to browse
         return $tagArr;
     }
 
-    public function getTicketOptionTemplate(SS_HTTPRequest $req)
+    public function getTicketOptionTemplate(HTTPRequest $req)
     {
 
         $vars = $req->getBody();
@@ -892,9 +916,9 @@ Drop and drag files here or click to browse
         error_log(var_export($decode, true));
 
 
-         //echo $data->renderWith('AjaxFunds');
-         return $this->renderWith('TicketOptions');
-         //return $this->owner->customise($data)->renderWith('Page_results');
+        //echo $data->renderWith('AjaxFunds');
+        return $this->renderWith('TicketOptions');
+        //return $this->owner->customise($data)->renderWith('Page_results');
     }
 
     public function getSearchSVG()
@@ -921,21 +945,21 @@ Drop and drag files here or click to browse
     public function getClockSVG()
     {
         $theme = $this->ThemeDir();
-        return file_get_contents('../' . $theme . '/svg/clock.svg');
+        //return file_get_contents('../' . $theme . '/svg/clock.svg');
     }
 
     // Ticket SVG
     public function getTicketSVG()
     {
         $theme = $this->ThemeDir();
-        return file_get_contents('../' . $theme . '/svg/ticket.svg');
+        //return file_get_contents('../' . $theme . '/svg/ticket.svg');
     }
 
     // Restrict SVG
     public function getRestrictSVG()
     {
         $theme = $this->ThemeDir();
-        return file_get_contents('../' . $theme . '/svg/restrict.svg');
+        //return file_get_contents('../' . $theme . '/svg/restrict.svg');
     }
 
     // Location SVG
@@ -949,14 +973,14 @@ Drop and drag files here or click to browse
     public function getCalendarSVG()
     {
         $theme = $this->ThemeDir();
-        return file_get_contents('../' . $theme . '/svg/calendar.svg');
+        //return file_get_contents('../' . $theme . '/svg/calendar.svg');
     }
 
     // Close SVG
     public function getCloseSVG()
     {
         $theme = $this->ThemeDir();
-        return file_get_contents('../' . $theme . '/svg/close.svg');
+        //return file_get_contents('../' . $theme . '/svg/close.svg');
     }
 
 }

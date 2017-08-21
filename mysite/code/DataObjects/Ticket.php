@@ -5,6 +5,9 @@
  * Date: 7/12/16
  * Time: 2:51 PM
  */
+
+use SilverStripe\ORM\DataObject;
+
 class Ticket extends DataObject
 {
     private static $has_one = array(

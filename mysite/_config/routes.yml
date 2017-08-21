@@ -1,8 +1,7 @@
 ---
 Name: calendarsiteroutes
-After: framework/routes#coreroutes
 ---
-Director:
+SilverStripe\Control\Director:
   rules:
-    'pagefunction//$Action/$ID'  : 'Page_Controller'
-    'calendarfunction//$Action/$ID'  : 'CalendarPage_Controller'
+    pagefunction//$Action/$ID: PageController
+    calendarfunction//$Action/$ID: CalendarPage_Controller

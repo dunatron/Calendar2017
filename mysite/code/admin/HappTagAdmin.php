@@ -5,6 +5,12 @@
  * Date: 9/02/17
  * Time: 2:36 PM
  */
+
+use SilverStripe\Admin\ModelAdmin;
+use SilverStripe\Forms\GridField\GridFieldPaginator;
+use SilverStripe\Forms\GridField\GridFieldDataColumns;
+
+
 class HappTagAdmin extends ModelAdmin
 {
     /**
@@ -36,8 +42,8 @@ class HappTagAdmin extends ModelAdmin
 
         $config = $gridField->getConfig();
 
-        $config->getComponentByType('GridFieldPaginator')->setItemsPerPage(20);
-        $config->getComponentByType('GridFieldDataColumns')
+        $config->getComponentByType(GridFieldPaginator::class)->setItemsPerPage(20);
+        $config->getComponentByType(GridFieldDataColumns::class)
             ->setDisplayFields(array(
                 'Title'  => 'HappTag Title',
                 'Description'    =>  'HappTag Description'

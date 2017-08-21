@@ -5,6 +5,9 @@
  * Date: 12/09/16
  * Time: 7:05 PM
  */
+
+use SilverStripe\ORM\DataObject;
+
 class SecondaryTag extends DataObject
 {
 

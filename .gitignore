@@ -12,6 +12,7 @@ _ss_environment.php
 .editorconfig
 .htaccess
 .idea/
+.env
 README.md
 assets/
 cms/
@@ -30,4 +31,5 @@ themes/calendar/node_modules
 timepickerfield/
 phpcs.xml.dist
 themes/simple
+
 

@@ -19,7 +19,7 @@
 
     <%-- Approved Events Modal | AJax to get event id and render maps and data --%>
 
-    <% include ApprovedEventModal %>
+    <%--<% include 'approved/ApprovedEventModal' %>--%>
 
 
     <!-- END CALENDAR -->
@@ -27,6 +27,6 @@
 </div>
 
 
-<% include AddHappEventModal %>
+<% include 'Modals/AddHappEventModal' %>
 <% include SearchModal %>
 <% include FilterModal %>

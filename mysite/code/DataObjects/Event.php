@@ -5,19 +5,24 @@
  * Date: 16/04/16
  * Time: 12:27 AM
  */
+
+use SilverStripe\Assets\Image;
+use SilverStripe\ORM\FieldType\DBDate;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\NumericField;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Control\Controller;
+use SilverStripe\Forms\DateField;
+use SilverStripe\Forms\TimeField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Core\ClassInfo;
+
+
 class Event extends DataObject {
-
-    private static $create_table_options = array(
-        'MySQLDatabase' =>  'ENGINE=MyISAM'
-    );
-
-    private static $indexes = array(
-        'SearchFields'  =>  array(
-            'type'  =>  'fulltext',
-            'name'  =>  'SearchFields',
-            'value' =>  '"EventTitle", "EventDescription"',
-        )
-    );
 
     public function Link($action = 'show') {
         return Controller::join_links('my-controller', $action, $this->ID);
@@ -33,13 +38,13 @@ class Event extends DataObject {
 
     private static $has_many = array(
         'Tickets' => 'Ticket',
-        //'EventImages'  =>  'EventImage',
-        'EventFindaImages'  =>  'EventFindaImage'
+//        'EventFindaImages'  =>  'EventFindaImage'
+        'EventFindaImages'  =>  'Image'
     );
 
-    private static $many_many = array(
-        'EventImages'  =>  'EventImage',
-    );
+//    private static $many_many = array(
+//        'EventImages'  =>  'Image',
+//    );
 
     private static $summary_fields = array(
         'EventTitle' => 'EventTitle',
@@ -115,7 +120,7 @@ class Event extends DataObject {
         // LocationRadius
         //$fields->addFieldToTab('Root.Main', NumericField::create('LocationRadius', 'Event location Radius:'));
         // EventDate
-        $fields->addFieldToTab('Root.Main', DateField::create('EventDate', 'Date')
+        $fields->addFieldToTab('Root.Main', DateField::create('EventDate', DBDate::class)
 //            ->setConfig('dateformat', 'YYYY-mm-dd')
             ->setConfig('dateformat', 'yyyy-MM-dd')
             ->setConfig('showcalendar', true)
@@ -146,7 +151,7 @@ class Event extends DataObject {
             ->setDescription('Booking website URL'));
 
         // EventDescription
-        $fields->addFieldToTab('Root.Main', HtmlEditorField::create('EventDescription', 'Description')
+        $fields->addFieldToTab('Root.Main', HTMLEditor::create('EventDescription', 'Description')
             ->setDescription('The real description field'));
 
         // Tags
@@ -217,8 +222,8 @@ class Event extends DataObject {
         }
 
         // Check filter column
-        if(is_subclass_of($callerClass, 'DataObject')) {
-            $baseClass = ClassInfo::baseDataClass($callerClass);
+        if(is_subclass_of($callerClass, DataObject::class)) {
+            $baseClass = DataObject::getSchema()->baseDataClass($callerClass);
             $column = "\"$baseClass\".\"EventFindaID\"";
         } else{
             // This simpler code will be used by non-DataObject classes that implement DataObjectInterface
@@ -230,28 +235,4 @@ class Event extends DataObject {
         return DataObject::get_one($callerClass, array($column => $id), $cache);
     }
 
-}
-
-class EventImage extends Image
-{
-    static $db=array(
-        'transformation_id' => 'int'
-    );
-
-    private static $belongs_many_many = array(
-        "HappEventImages"   =>  'Event'
-    );
-
-
-//    public static $has_one = array(
-//        'Event' =>  'Event'
-//    );
-
-    public function setFilename($val) {
-        $this->setField('Filename', $val);
-
-        // "Filename" is the "master record" (existing on the filesystem),
-        // meaning we have to adjust the "Name" property in the database as well.
-        //$this->setField('Name', basename($val));
-    }
 }

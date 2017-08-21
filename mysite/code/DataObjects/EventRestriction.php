@@ -5,6 +5,9 @@
  * Date: 7/12/16
  * Time: 3:12 PM
  */
+
+use SilverStripe\ORM\DataObject;
+
 class EventRestriction extends DataObject
 {
     private static $has_one = array();

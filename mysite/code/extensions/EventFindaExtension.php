@@ -6,6 +6,15 @@
  * Date: 2/02/17
  * Time: 1:55 PM
  */
+
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\Forms\ReadonlyField;
+use SilverStripe\Forms\LiteralField;
+
+
 class EventFindaExtension extends DataExtension
 {
     private static $db = array(

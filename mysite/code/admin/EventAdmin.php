@@ -5,6 +5,12 @@
  * Date: 9/12/16
  * Time: 2:11 PM
  */
+
+use SilverStripe\Admin\ModelAdmin;
+use SilverStripe\Forms\GridField\GridFieldPaginator;
+use SilverStripe\Forms\GridField\GridFieldDataColumns;
+
+
 class EventAdmin extends ModelAdmin
 {
     /**
@@ -56,8 +62,8 @@ class EventAdmin extends ModelAdmin
 
         $config = $gridField->getConfig();
 
-        $config->getComponentByType('GridFieldPaginator')->setItemsPerPage(20);
-        $config->getComponentByType('GridFieldDataColumns')
+        $config->getComponentByType(GridFieldPaginator::class)->setItemsPerPage(20);
+        $config->getComponentByType(GridFieldDataColumns::class)
             ->setDisplayFields(array(
                 'EventTitle'  => 'EventTitle',
                 'EventVenue'    =>  'EventVenue',
