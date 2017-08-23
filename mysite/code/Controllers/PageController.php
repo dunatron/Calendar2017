@@ -30,6 +30,10 @@ use SilverStripe\Assets\Image;
 class PageController extends ContentController
 {
 
+    private static $casting = [
+        'SvgHtml' => 'HTMLText'
+    ];
+
     /**
      * An array of actions that can be accessed via a request. Each array element should be an action name, and the
      * permissions or conditions required to allow the user to access it.
@@ -929,7 +933,6 @@ Drop and drag files here or click to browse
     {
         $theme = $this->ThemeDir();
         return file_get_contents('../' . $theme . '/svg/menu/search_icon.svg');
-        //return file_get_contents('/Applications/MAMP/htdocs/home/calendar/themes/happ/svg/menu/search_icon.svg');// for Local MAMP development
     }
 
     public function getAddEventSVG()
@@ -949,21 +952,21 @@ Drop and drag files here or click to browse
     public function getClockSVG()
     {
         $theme = $this->ThemeDir();
-        //return file_get_contents('../' . $theme . '/svg/clock.svg');
+        return file_get_contents('../' . $theme . '/svg/clock.svg');
     }
 
     // Ticket SVG
     public function getTicketSVG()
     {
         $theme = $this->ThemeDir();
-        //return file_get_contents('../' . $theme . '/svg/ticket.svg');
+        return file_get_contents('../' . $theme . '/svg/ticket.svg');
     }
 
     // Restrict SVG
     public function getRestrictSVG()
     {
         $theme = $this->ThemeDir();
-        //return file_get_contents('../' . $theme . '/svg/restrict.svg');
+        return file_get_contents('../' . $theme . '/svg/restrict.svg');
     }
 
     // Location SVG
@@ -977,14 +980,14 @@ Drop and drag files here or click to browse
     public function getCalendarSVG()
     {
         $theme = $this->ThemeDir();
-        //return file_get_contents('../' . $theme . '/svg/calendar.svg');
+        return file_get_contents('../' . $theme . '/svg/calendar.svg');
     }
 
     // Close SVG
     public function getCloseSVG()
     {
         $theme = $this->ThemeDir();
-        //return file_get_contents('../' . $theme . '/svg/close.svg');
+        return file_get_contents('../' . $theme . '/svg/close.svg');
     }
 
 }

@@ -6,7 +6,6 @@ use SilverStripe\SiteConfig\SiteConfig;
 
 class CalendarPage_Controller extends PageController
 {
-
     //Inject assets through controller
     public function init()
     {
@@ -27,7 +26,7 @@ class CalendarPage_Controller extends PageController
 
         $urlParams = $this->getURLParamaters();
 
-        error_log(var_export($urlParams, true));
+        //error_log(var_export($urlParams, true));
 
         /**
          * Because I am using webpack, we want this script in the head to style our document before the elements load.
@@ -48,7 +47,7 @@ class CalendarPage_Controller extends PageController
 
             //$mnth = Session::get('Month');
             $mnth = CalendarPage_Controller::curr()->getRequest()->getSession()->get('Month');
-            error_log(var_export($mnth, true));
+            //error_log(var_export($mnth, true));
         } else {
             if (!isset($_SESSION['Month'])) {
                 $m = date("m");
@@ -99,24 +98,24 @@ class CalendarPage_Controller extends PageController
 
         $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-        error_log(var_export($actual_link, true));
+        //error_log(var_export($actual_link, true));
 
         $query = parse_url($actual_link, PHP_URL_QUERY);
         parse_str($query, $params);
 
         if (isset($_GET['Y'])) {
             $urlYear = $params['Y'];
-            error_log(var_export($urlYear, true));
+            //error_log(var_export($urlYear, true));
             $paramObj->Year = $urlYear;
         }
         if (isset($_GET['M'])) {
             $urlMonth = $params['M'];
-            error_log(var_export($urlMonth, true));
+            //error_log(var_export($urlMonth, true));
             $paramObj->Month = $urlMonth;
         }
         if (isset($_GET['EID'])) {
             $urlEID = $params['EID'];
-            error_log(var_export($urlEID, true));
+            //error_log(var_export($urlEID, true));
             $paramObj->EID = $urlEID;
         }
 
@@ -205,9 +204,13 @@ class CalendarPage_Controller extends PageController
         $priceArr = array();
         $minPrice = Null;
         $maxPrice = Null;
-        foreach ($tickets as $ticket) {
-            array_push($priceArr, $ticket->TicPrice);
+        if(isset($tickets))
+        {
+            foreach ($tickets as $ticket) {
+                array_push($priceArr, $ticket->TicPrice);
+            }
         }
+
         if ($priceArr) {
             $minPrice = min($priceArr);
             $maxPrice = max($priceArr);
@@ -244,8 +247,8 @@ class CalendarPage_Controller extends PageController
             'EventImages' => $assocImages,
             'EventFindaImages' => $findaImages
         ));
-        return $this->owner->customise($data)->renderWith('Event_Data_Modal');
-        //echo $data->renderWith('Event_Data_Modal');
+        //return $this->owner->customise($data)->renderWith('approved/Event_Data_Modal');
+        echo $data->renderWith('approved/Includes/Event_Data_Modal');
     }
 
     public function resetApprovedModal()
@@ -357,13 +360,13 @@ class CalendarPage_Controller extends PageController
         CalendarPage_Controller::curr()->getRequest()->getSession()->set('ModalCheck', 0);
         //$m = Session::get('Month');
         $m = CalendarPage_Controller::curr()->getRequest()->getSession()->get('Month');
-        error_log('Ajax Prev Month');
-        error_log(var_export($m, true));
+        //error_log('Ajax Prev Month');
+        //error_log(var_export($m, true));
 
         $m--;
         $this->formatMonthNumber($m);
-        error_log('Ajax Prev Month after');
-        error_log(var_export($m, true));
+        //error_log('Ajax Prev Month after');
+        //error_log(var_export($m, true));
 
         $cal = $this->draw_calendar();
         //$this->reAddScripts();
@@ -480,6 +483,8 @@ class CalendarPage_Controller extends PageController
     function draw_calendar($m = '', $y = '')
     {
 
+        $calendar = \SilverStripe\View\HTML::class;
+
         $MonthIsToday = false;
 
         // $config is used for setting inline style colors
@@ -490,9 +495,9 @@ class CalendarPage_Controller extends PageController
         $m = CalendarPage_Controller::curr()->getRequest()->getSession()->get('Month');
         $y = CalendarPage_Controller::curr()->getRequest()->getSession()->get('Year');
 
-        error_log('Draw date data');
-        error_log(var_export($m, true));
-        error_log(var_export($y, true));
+        //error_log('Draw date data');
+        //error_log(var_export($m, true));
+        //error_log(var_export($y, true));
 
         if ($m == $this->getTodaysMonth()) {
             $MonthIsToday = true;
@@ -642,10 +647,13 @@ class CalendarPage_Controller extends PageController
         /* end the table */
         $calendar .= '</div>';
         /* end calendar */
-        /* all done, return result */
-        //$calendar.= '<script src="'.$this->ThemeDir() .'/js/locationpicker/locationpicker.jquery.min.js"></script>';
-        //$this->ThemeDir() . "/js/locationpicker/locationpicker.jquery.min.js"
 
+        /**
+         * Il kill it so beautifully if Cole let me
+         */
+//        $pleaseCole = $this->CalendarHTML = $calendar;
+//
+//        return $pleaseCole;
         return $calendar;
     }
 

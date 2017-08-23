@@ -99,7 +99,7 @@ export default function CalendarNavigation() {
 
             },
             complete: function () {
-                drawCalendarBody();
+                // drawCalendarBody();
             }
         });
     }

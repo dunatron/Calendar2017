@@ -13,6 +13,10 @@ class CalendarPage extends Page
 {
     private static $db = array();
 
+    private static $casting = [
+        'draw_calendar' => 'HTMLText'
+    ];
+
     private static $has_one = array(
         'ClientLogo' => Image::class
     );

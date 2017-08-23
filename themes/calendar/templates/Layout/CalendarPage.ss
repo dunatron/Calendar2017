@@ -19,7 +19,7 @@
 
     <%-- Approved Events Modal | AJax to get event id and render maps and data --%>
 
-    <%--<% include 'approved/ApprovedEventModal' %>--%>
+    <% include approved/ApprovedEventModal %>
 
 
     <!-- END CALENDAR -->

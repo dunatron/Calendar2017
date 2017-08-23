@@ -13,6 +13,7 @@ export default function AddEventForm() {
         StepTwoNext =   $('#StepTwoNext'),
         StepThreeWrapper    =   $('#StepThree'),
         StepThreeNext =   $('#StepThreeNext'),
+        StepThreeBack =   $('#StepThreeBack'),
 
         StepFourWrapper  =   $('#StepFour'),
         StepFourBack =   $('#StepFourBack'),
