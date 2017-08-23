@@ -483,6 +483,8 @@ class CalendarPage_Controller extends PageController
     function draw_calendar($m = '', $y = '')
     {
 
+        $t = new Timer(); // echoes "Working, please wait.."
+
         $calendar = \SilverStripe\View\HTML::class;
 
         $MonthIsToday = false;
@@ -648,6 +650,10 @@ class CalendarPage_Controller extends PageController
         $calendar .= '</div>';
         /* end calendar */
 
+        error_log($t);
+
+        unset($t);  // echoes "Job finished in n seconds." n = seconds elapsed
+
         /**
          * Il kill it so beautifully if Cole let me
          */
@@ -658,4 +664,16 @@ class CalendarPage_Controller extends PageController
     }
 
 
+}
+
+class Timer {
+    private $time = null;
+    public function __construct() {
+        $this->time = time();
+        echo 'Working - please wait..<br/>';
+    }
+
+    public function __destruct() {
+        echo '<br/>Job finished in '.(time()-$this->time).' seconds.';
+    }
 }
