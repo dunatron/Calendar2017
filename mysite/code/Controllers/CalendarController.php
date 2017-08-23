@@ -650,7 +650,7 @@ class CalendarPage_Controller extends PageController
         $calendar .= '</div>';
         /* end calendar */
 
-        error_log($t);
+        error_log(var_export('DRAW TIME: ' . $t));
 
         unset($t);  // echoes "Job finished in n seconds." n = seconds elapsed
 
