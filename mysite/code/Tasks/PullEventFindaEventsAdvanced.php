@@ -26,6 +26,8 @@ class PullEventFindaEventsAdvanced extends BuildTask
 
     public $apiUserPass = '78nvbw7qn29x';
 
+    public $EVENTCOUNT = 0;
+
 
 
 
@@ -57,6 +59,13 @@ class PullEventFindaEventsAdvanced extends BuildTask
     public function StoreEvents($collection)
     {
         foreach ($collection->events as $event) {
+
+
+            echo '<br>';
+            echo '====== STEPPING THROUGH EVENT ========';
+            echo $this->EVENTCOUNT++;
+            echo '====== STEPPING THROUGH EVENT ========';
+            echo '<br>';
 
             echo '<p>' . $event->id . '</p>';
             // Check if we have this event already
@@ -432,13 +441,15 @@ class PullEventFindaEventsAdvanced extends BuildTask
         $expireDate = date('Y-m-d', strtotime(date('Y-m-d')." -1 month"));
         $addOffset = $count * 20;
         $rawQuery = $this->apiURL();
-        $query = $rawQuery .= '&offset=' . $addOffset . '&created_since=' . $expireDate;
+//        $query = $rawQuery .= '&offset=' . $addOffset . '&created_since=' . $expireDate;
+        $query = $rawQuery .= '&offset=' . $addOffset;
         //$query = $rawQuery .= '&offset=' . $addOffset;
         return $query;
     }
 
     public function run($request)
     {
+        echo '<h1 style="color:rebeccapurple;">Started Pull Events from event finda'.'</h1>';
         $this->apiURL();
         $collection = $this->getCollection();
         $offset = $this->getOffsetPages($collection);

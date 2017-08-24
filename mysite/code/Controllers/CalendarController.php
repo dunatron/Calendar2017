@@ -3,6 +3,10 @@
 use SilverStripe\View\Requirements;
 use SilverStripe\View\ArrayData;
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\ArrayList;
+
+
 
 class CalendarPage_Controller extends PageController
 {
@@ -470,7 +474,6 @@ class CalendarPage_Controller extends PageController
             ))
             ->sort('EventDate', 'ASC'); // returns a 'DataList' containing all the 'Event' objects]
 
-
         return $events;
 
     }
@@ -564,8 +567,28 @@ class CalendarPage_Controller extends PageController
             $days_in_this_week++;
         endfor;
         /* keep going with days.... */
+
+        // Just need to get the Events for this month once
+        $time_pre = microtime(true);
+
+        //$events = $this->getEvents();
+        //$events = ArrayList::create($this->getEvents()->toArray());
+
+        $EventsDataList = $this->getEvents();
+
+        $eventsArr = $EventsDataList->toArray();
+//        error_log(var_export($eventsArr, true));
+
+        $events = ArrayList::create($eventsArr);
+        //error_log(var_export($events, true));
+
+        error_log($events->count());
+
+
         // GET THE EVENTS OBJECTS IN A DATALIST TO CALL OBJECT VARIABLEIS
         for ($list_day = 1; $list_day <= $days_in_month; $list_day++):
+
+
             $calendar .= '<div class="day-square">';
             $calendar .= '<div class="tron-inner-square">';
             if (($MonthIsToday == true) && ($list_day == $this->getTodaysday())) {
@@ -574,7 +597,6 @@ class CalendarPage_Controller extends PageController
                 $calendar .= '<div class="number-wrap"><span class="day-number" style="">' . $list_day . '</span></div>';
             }
 
-            $events = $this->getEvents();
             if ($list_day == 1) {
                 $convertday = "01";
             } elseif ($list_day == 2) {
@@ -601,16 +623,22 @@ class CalendarPage_Controller extends PageController
             //$calendar .= '<div class="opaque-head"></div>';
             $calendar .= '<div class="events-day-wrapper">';
             foreach ($events as $e) {
-
                 if ($sqDate == $e->EventDate) {
                     /**
                      * Begin event button build
                      */
                     $calendar .= '<div class="event-btn" data-toggle="modal" data-target="#ApprovedEventModal" lat="' . $e->LocationLat . '" lon="' . $e->LocationLon . '" radius="' . $e->LocationRadius . '" EID="' . $e->ID . '" data-tag="' . $e->SecondaryTagID . '" ><a  class="happ_e_button">' . $e->EventTitle . '</a></div>';
+                    // Event has been added to appropriate day so remove from list now
+                    // Slight speed improve, remove from array when added
+                    $events->remove($e);
+
                 } else {
                     continue;
                 }
+
+
             }
+
             $calendar .= '</div>';//close events-day-wrapper
 
             $calendar .= '<span class="fc-weekday">';
@@ -629,6 +657,15 @@ class CalendarPage_Controller extends PageController
             $running_day++;
             $day_counter++;
         endfor;
+
+        //            error_log('Events count after added to calendar');
+        error_log($events->count());
+        $time_post = microtime(true);
+        $exec_time = $time_post - $time_pre;
+        error_log('TIME IT TOOK TO ADD EVENTS TO CALENDAR');
+        error_log($exec_time);
+
+
         /* finish the rest of the days in the week */
         if ($days_in_this_week < 8):
             $nextMonthDay = 1;
