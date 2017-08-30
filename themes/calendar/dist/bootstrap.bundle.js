@@ -1,1 +1,2 @@
-var jquery=webpackJsonpjquery([1],[],[216]);
+var jquery =
+webpackJsonpjquery([1],[],[216]);
