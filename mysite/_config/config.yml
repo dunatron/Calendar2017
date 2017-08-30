@@ -8,3 +8,5 @@ SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - EventFindaExtension
     - HappSiteConfig
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Forms\HTMLEditor\TinyMCEScriptGenerator: 'SilverStripe\Forms\HTMLEditor\TinyMCEGZIPGenerator'

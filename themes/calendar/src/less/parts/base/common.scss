@@ -88,8 +88,8 @@ body {
 
 
 .event-btn {
-  visibility: hidden;
-  opacity: 0;
+  visibility: visible;
+  opacity: 1;
   transition: visibility 1s, max-height 1s, opacity .70s linear;
   font-family: $font_GustanLight;
   margin: 0 0 5px 0;
