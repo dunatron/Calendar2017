@@ -10,7 +10,6 @@ use SilverStripe\Assets\Image;
 use SilverStripe\ORM\FieldType\DBDate;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\NumericField;
-use SilverStripe\Forms\HTMLEditor;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\CheckboxField;
@@ -21,7 +20,6 @@ use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\TimeField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\Core\ClassInfo;
 
 
 class Event extends DataObject {

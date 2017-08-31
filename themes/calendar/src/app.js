@@ -1,10 +1,14 @@
 // jquery is required for bootstrap
-import $ from 'jquery';
+// import $ from 'jquery';
 
 window.axios = require('axios');
 
 // jquery UI
-import 'jquery-ui';
+// import 'jquery-ui';
+require("jquery");
+require("jquery-ui");
+
+import 'webpack-jquery-ui';
 
 // Import custom css
 import './../css/Calendar-Core.css'

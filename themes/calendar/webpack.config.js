@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const jquery = require('jquery');
+// const jqueryUI = require('jquery-ui');
 //const Vue = require('vue');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -41,8 +42,11 @@ module.exports = {
         // }),
         // Doing the more manual approach with entry of vendor. Remember to cashe the vendor output file
         new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
+            // $: "jquery",
+            // jQuery: "jquery",
+            "$":"jquery",
+            "jQuery":"jquery",
+            "window.jQuery":"jquery"
         }),
         //
         // new webpack.ProvidePlugin({
