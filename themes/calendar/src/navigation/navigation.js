@@ -219,7 +219,6 @@ export default function CalendarNavigation() {
             modalIsOpen();
         });
 
-        draggableModal();
     }
 
     function collapseAdvancedSearch() {
@@ -731,7 +730,6 @@ export default function CalendarNavigation() {
                 },
                 complete: function () {
                     setupBxSlider();
-                    draggableModal();
                 }
             });
             // Modal Dialog control | reference
@@ -793,36 +791,8 @@ export default function CalendarNavigation() {
         $('.event-btn ').addClass('show-event');
     }
 
-    function draggableModal()
-    {
-        $("#ApprovedEventModal").draggable({
-            handle: ".modal-header, .description-strip, .ticket-restrict-strip, .date-time-strip, .location-strip, .location-text"
-        });
-        $('.model-content').resizable({
-            minHeight: 300,
-            minWidth: 300
-        });
-        console.log('Setting Up Draggable Modal');
-    }
-
-    function draggableFilterModal() {
-        $("#FilterEventModal").draggable({
-            // handle: ".modal-header, .modal-body"
-            handle: ".modal-content"
-        });
-
-
-        $('.model-header').resizable({
-            minHeight: 300,
-            minWidth: 300
-        });
-        console.log('Setting Up Draggable Modal');
-    }
 
     revealEvents();
-
-    draggableModal();
-    draggableFilterModal();
 
     //happEventReveal();
 
